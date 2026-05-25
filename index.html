@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowledge Capture</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Knowledge Capture</h1>
+
+    <div class="card">
+
+      <div class="field">
+        <label>Nombre</label>
+        <input type="text" id="person_name">
+      </div>
+
+      <div class="field">
+        <label>Cargo</label>
+        <input type="text" id="position">
+      </div>
+
+      <div class="field">
+        <label>Área</label>
+        <select id="area_select">
+          <option value="">Cargando áreas...</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Nivel</label>
+        <select id="level_select">
+          <option value="">Cargando niveles...</option>
+        </select>
+      </div>
+
+      <button id="btn_continue">
+        Continuar
+      </button>
+
+    </div>
+
+    <div id="status"></div>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

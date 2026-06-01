@@ -1,0 +1,1079 @@
+{
+ "questionnaire_version": "KC_V2",
+ "industry": "industrial_atunera",
+ "generation_type": "COMMON",
+ "area": "",
+ "level": "",
+ "blocks": [
+ {
+ "block_id": "COMMON_001_OPERACION_REAL",
+ "block_name": "Operación real y funcionamiento diario",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 10,
+ "objective": "Capturar cómo funciona realmente la operación más allá de procedimientos formales, organigramas o sistemas.",
+ "questions": [
+ {
+ "question_id": "COMMON_001_Q001",
+ "ai_category": "operacion_real",
+ "required": true,
+ "min_characters": 300,
+ "question": "Explique cómo funciona realmente su operación diaria desde que inicia hasta que termina el día o turno. Incluya actividades críticas, personas clave, sistemas usados, controles reales, decisiones frecuentes, urgencias típicas y diferencias entre lo que dice el procedimiento y lo que realmente ocurre.",
+ "context": "Esta pregunta busca capturar la operación viva, no la versión formal documentada.",
+ "tooltip": "Registre: actividades principales, secuencia real, responsables, sistemas usados, controles, decisiones, urgencias frecuentes, diferencias con el procedimiento, ejemplos recientes y consecuencias si algo falla.",
+ "expected_answer_structure": [
+ "Secuencia real de trabajo",
+ "Actividades críticas",
+ "Responsables reales",
+ "Sistemas o herramientas utilizadas",
+ "Controles aplicados",
+ "Problemas frecuentes",
+ "Ejemplo reciente",
+ "Consecuencia operacional"
+ ],
+ "good_answer_example": "El día inicia revisando pendientes del turno anterior, disponibilidad de materia prima, ocupación de cámaras, pedidos urgentes y novedades de calidad. Aunque el sistema muestra el plan, normalmente se valida por WhatsApp con producción y planificación porque puede haber cambios por disponibilidad de pescado, observados de calidad o saturación de cámara. Si no se revisa esta información temprano, se generan reprocesos, cambios de prioridad y conflictos entre áreas.",
+ "validation_rules": {
+ "min_items": 3,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "secuencia",
+ "responsables",
+ "ejemplo",
+ "consecuencia"
+ ]
+ },
+ "incomplete_if": [
+ "Describe solo funciones generales",
+ "No menciona ejemplos reales",
+ "No identifica responsables",
+ "No explica consecuencias"
+ ]
+ },
+ {
+ "question_id": "COMMON_001_Q002",
+ "ai_category": "brecha_procedimiento_realidad",
+ "required": true,
+ "min_characters": 300,
+ "question": "Indique qué actividades se ejecutan de forma distinta a lo establecido en procedimientos, instructivos, sistemas o flujos oficiales. Explique por qué ocurre, quién lo autoriza o tolera, qué riesgo genera y en qué casos esa forma alternativa se vuelve necesaria.",
+ "context": "Permite identificar reglas no escritas, atajos operativos y desviaciones funcionales que sostienen la operación.",
+ "tooltip": "Registre: actividad, procedimiento formal, práctica real, motivo de la diferencia, responsable, frecuencia, riesgo, beneficio, ejemplo y condición bajo la cual se permite.",
+ "expected_answer_structure": [
+ "Actividad",
+ "Forma oficial",
+ "Forma real",
+ "Motivo",
+ "Frecuencia",
+ "Responsable",
+ "Riesgo",
+ "Ejemplo"
+ ],
+ "good_answer_example": "El procedimiento indica que toda liberación debe registrarse antes del despacho, pero en pedidos urgentes se coordina verbalmente con calidad y luego se regulariza el registro. Esto ocurre cuando hay contenedor esperando o presión comercial. Lo valida el jefe responsable, pero genera riesgo documental si no se completa la evidencia.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "forma oficial",
+ "forma real",
+ "motivo",
+ "riesgo"
+ ]
+ },
+ "incomplete_if": [
+ "Solo dice que todo se cumple",
+ "No identifica diferencias reales",
+ "No explica riesgos",
+ "No incluye ejemplo"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_002_REUNIONES_COORDINACION",
+ "block_name": "Reuniones y coordinación operativa",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 20,
+ "objective": "Identificar reuniones formales e informales que sostienen la coordinación diaria, semanal y crítica de la operación.",
+ "questions": [
+ {
+ "question_id": "COMMON_002_Q001",
+ "ai_category": "reuniones_clave",
+ "required": true,
+ "min_characters": 300,
+ "question": "Liste y describa las reuniones, comités, llamadas o coordinaciones recurrentes que realmente sostienen la operación. Incluya reuniones formales e informales, aunque no estén documentadas.",
+ "context": "Busca detectar el sistema real de gobierno operativo.",
+ "tooltip": "Registre: nombre de la reunión, objetivo, frecuencia, duración, participantes obligatorios, quién lidera, temas fijos, indicadores revisados, decisiones tomadas, insumos requeridos, salidas esperadas, acta o evidencia generada y consecuencias si no se realiza.",
+ "expected_answer_structure": [
+ "Nombre de reunión",
+ "Objetivo",
+ "Frecuencia",
+ "Participantes",
+ "Líder",
+ "Indicadores revisados",
+ "Decisiones tomadas",
+ "Evidencia",
+ "Consecuencia si no ocurre"
+ ],
+ "good_answer_example": "Reunión diaria de operaciones: se realiza cada mañana, dura 30 a 45 minutos, participan producción, planificación, calidad, cámaras, comercial y despacho. Se revisa disponibilidad de materia prima, cumplimiento del plan, observados de calidad, ocupación de cámaras, pedidos críticos y restricciones. Si no se realiza, las áreas trabajan con información distinta y aumentan los cambios urgentes.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "frecuencia",
+ "participantes",
+ "decisiones",
+ "consecuencias"
+ ]
+ },
+ "incomplete_if": [
+ "No menciona frecuencia",
+ "No identifica participantes",
+ "No explica decisiones",
+ "No indica consecuencias"
+ ]
+ },
+ {
+ "question_id": "COMMON_002_Q002",
+ "ai_category": "coordinacion_transversal",
+ "required": true,
+ "min_characters": 300,
+ "question": "Describa qué coordinaciones entre áreas son indispensables para que su operación no se detenga. Explique con qué áreas coordina, qué información intercambian, cada cuánto, por qué medio y qué ocurre cuando esa coordinación falla.",
+ "context": "Permite identificar dependencias interáreas y puntos de ruptura operativa.",
+ "tooltip": "Registre: área origen, área destino, información intercambiada, frecuencia, canal, responsable, decisión asociada, falla típica y consecuencia operacional.",
+ "expected_answer_structure": [
+ "Áreas involucradas",
+ "Información intercambiada",
+ "Frecuencia",
+ "Canal",
+ "Responsables",
+ "Falla frecuente",
+ "Consecuencia"
+ ],
+ "good_answer_example": "Planificación coordina con producción, cámaras, calidad y comercial. Se intercambia disponibilidad de materia prima, capacidad de línea, ocupación de cámaras, pedidos comprometidos y observados. Cuando calidad no informa a tiempo un observado, se programa producto que luego no puede despacharse, generando cambios urgentes y uso de cámara externa.",
+ "validation_rules": {
+ "min_items": 3,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "áreas",
+ "información",
+ "frecuencia",
+ "consecuencia"
+ ]
+ },
+ "incomplete_if": [
+ "No menciona áreas específicas",
+ "No explica información intercambiada",
+ "No incluye fallas",
+ "No describe consecuencias"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_003_FRICCIONES",
+ "block_name": "Fricciones, conflictos y discusiones recurrentes",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 30,
+ "objective": "Capturar fricciones reales entre áreas, causas repetitivas, decisiones disputadas y patrones de conflicto operativo.",
+ "questions": [
+ {
+ "question_id": "COMMON_003_Q001",
+ "ai_category": "friccion_interareas",
+ "required": true,
+ "min_characters": 300,
+ "question": "Identifique las fricciones, discusiones o conflictos más frecuentes con otras áreas. Explique qué las genera, qué información falta, qué decisión está en disputa, quién suele intervenir y cómo normalmente se resuelve.",
+ "context": "Las fricciones revelan fallas de proceso, responsabilidades ambiguas y criterios de decisión no documentados.",
+ "tooltip": "Registre: área involucrada, tema de fricción, causa raíz probable, información faltante, decisión disputada, frecuencia, impacto, responsable que arbitra, solución usual y ejemplo reciente.",
+ "expected_answer_structure": [
+ "Área involucrada",
+ "Tema de fricción",
+ "Causa",
+ "Información faltante",
+ "Decisión disputada",
+ "Escalamiento",
+ "Solución usual",
+ "Ejemplo"
+ ],
+ "good_answer_example": "Existe fricción entre comercial, planificación y cámaras cuando se comprometen despachos sin validar disponibilidad física y documental. Comercial presiona por cumplir al cliente, cámaras informa saturación y planificación debe reprogramar. Normalmente interviene operaciones para priorizar por cliente, fecha de exportación o riesgo de pérdida de frío.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "área",
+ "causa",
+ "decisión disputada",
+ "ejemplo"
+ ]
+ },
+ "incomplete_if": [
+ "Responde que no hay fricciones sin justificar",
+ "No menciona áreas",
+ "No identifica causa",
+ "No incluye ejemplo"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_004_HERRAMIENTAS_PARALELAS",
+ "block_name": "Herramientas paralelas y trabajo fuera del sistema",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 40,
+ "objective": "Identificar archivos, chats, controles manuales y mecanismos paralelos que sostienen la operación fuera de los sistemas oficiales.",
+ "questions": [
+ {
+ "question_id": "COMMON_004_Q001",
+ "ai_category": "herramientas_paralelas",
+ "required": true,
+ "min_characters": 300,
+ "question": "Detalle qué archivos Excel, grupos de WhatsApp, correos, tableros manuales, cuadernos, reportes paralelos u otras herramientas no oficiales utiliza para operar, controlar, validar o decidir. Explique por qué existen y qué pasaría si se eliminan.",
+ "context": "Las herramientas paralelas suelen revelar brechas del sistema, controles críticos informales y conocimiento concentrado.",
+ "tooltip": "Registre: herramienta, dueño, información contenida, frecuencia de actualización, usuarios, decisión que soporta, sistema oficial relacionado, razón por la que existe, riesgo de error y consecuencia si desaparece.",
+ "expected_answer_structure": [
+ "Herramienta",
+ "Dueño",
+ "Información",
+ "Frecuencia",
+ "Usuarios",
+ "Decisiones soportadas",
+ "Motivo de existencia",
+ "Riesgo",
+ "Consecuencia"
+ ],
+ "good_answer_example": "Se usa un Excel diario de ocupación de cámaras porque el sistema no refleja a tiempo diferencias físicas, producto observado o transferencias pendientes. Lo actualiza el coordinador y lo revisan planificación, despacho y producción. Si no existe, se puede programar producto sin espacio real o comprometer despachos sin disponibilidad.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "herramienta",
+ "dueño",
+ "frecuencia",
+ "decisión soportada",
+ "consecuencia"
+ ]
+ },
+ "incomplete_if": [
+ "No identifica herramientas concretas",
+ "No explica por qué existen",
+ "No menciona dueño",
+ "No describe riesgo"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_005_RIESGOS_RESTRICCIONES",
+ "block_name": "Riesgos, restricciones y puntos de ruptura",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 50,
+ "objective": "Detectar restricciones operativas, riesgos críticos y condiciones que pueden detener, saturar o descontrolar la operación.",
+ "questions": [
+ {
+ "question_id": "COMMON_005_Q001",
+ "ai_category": "restricciones_operativas",
+ "required": true,
+ "min_characters": 300,
+ "question": "Identifique las principales restricciones que limitan el desempeño de su operación. Considere capacidad, personas, sistemas, materia prima, cámaras, cadena de frío, documentación, calidad, transporte, aprobaciones, proveedores, clientes o decisiones gerenciales.",
+ "context": "Busca identificar cuellos de botella reales y restricciones activas.",
+ "tooltip": "Registre: restricción, dónde ocurre, cuándo se activa, frecuencia, causa probable, área responsable, áreas afectadas, señal temprana, impacto y acción usada para contenerla.",
+ "expected_answer_structure": [
+ "Restricción",
+ "Ubicación",
+ "Condición de activación",
+ "Frecuencia",
+ "Responsable",
+ "Áreas afectadas",
+ "Señal temprana",
+ "Impacto",
+ "Acción de contención"
+ ],
+ "good_answer_example": "La ocupación de cámaras se vuelve restricción cuando producción termina lotes más rápido que la liberación documental o cuando comercial cambia prioridades de despacho. La señal temprana es aumento de producto pendiente de ubicación y uso de pasillos. El impacto es retraso de producción, mayor manipulación y riesgo de pérdida de trazabilidad.",
+ "validation_rules": {
+ "min_items": 3,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "restricción",
+ "señal temprana",
+ "impacto",
+ "acción de contención"
+ ]
+ },
+ "incomplete_if": [
+ "No identifica restricciones específicas",
+ "No menciona cuándo se activan",
+ "No indica impacto",
+ "No incluye señales tempranas"
+ ]
+ },
+ {
+ "question_id": "COMMON_005_Q002",
+ "ai_category": "riesgos_continuidad",
+ "required": true,
+ "min_characters": 300,
+ "question": "Indique qué riesgos podrían detener la operación, afectar la inocuidad, comprometer exportaciones, romper cadena de frío, generar incumplimientos regulatorios o causar pérdidas importantes. Explique cómo se detectan y qué se hace actualmente para controlarlos.",
+ "context": "Captura riesgos críticos de continuidad operacional en industria atunera e industrial.",
+ "tooltip": "Registre: riesgo, causa, señal de alerta, área responsable, controles actuales, frecuencia, impacto, plan de contingencia, escalamiento y ejemplo reciente.",
+ "expected_answer_structure": [
+ "Riesgo",
+ "Causa",
+ "Señal de alerta",
+ "Control actual",
+ "Responsable",
+ "Impacto",
+ "Contingencia",
+ "Escalamiento"
+ ],
+ "good_answer_example": "Un riesgo crítico es el atraso en liberación de calidad para producto de exportación. Se detecta cuando hay lotes observados, documentación incompleta o resultados pendientes. El impacto puede ser pérdida de booking, sobreocupación de cámara y reclamos comerciales. Se contiene escalando a calidad, planificación y comercial para repriorizar.",
+ "validation_rules": {
+ "min_items": 3,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "riesgo",
+ "señal",
+ "control",
+ "impacto",
+ "contingencia"
+ ]
+ },
+ "incomplete_if": [
+ "No menciona riesgos críticos",
+ "No explica detección",
+ "No describe controles",
+ "No incluye impacto"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_006_DEPENDENCIAS_HUMANAS",
+ "block_name": "Dependencias humanas y conocimiento tácito",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 60,
+ "objective": "Identificar personas clave, conocimiento no documentado y criterios que dependen de experiencia individual.",
+ "questions": [
+ {
+ "question_id": "COMMON_006_Q001",
+ "ai_category": "dependencia_humana",
+ "required": true,
+ "min_characters": 300,
+ "question": "Identifique qué actividades, decisiones, controles o coordinaciones dependen fuertemente de personas específicas. Explique qué sabe esa persona, por qué es difícil reemplazarla, qué pasaría si no está disponible y qué información debería documentarse.",
+ "context": "Permite detectar concentración de conocimiento crítico y riesgos de continuidad.",
+ "tooltip": "Registre: persona o rol, conocimiento que concentra, actividad afectada, frecuencia, reemplazo disponible, riesgo de ausencia, señales que interpreta, decisiones que toma y documentación necesaria.",
+ "expected_answer_structure": [
+ "Persona o rol",
+ "Conocimiento concentrado",
+ "Actividad afectada",
+ "Frecuencia",
+ "Reemplazo",
+ "Riesgo",
+ "Decisiones",
+ "Documentación requerida"
+ ],
+ "good_answer_example": "El coordinador de cámaras conoce ubicaciones reales, restricciones de espacio, lotes observados y prioridades no registradas. Si falta, el sistema no refleja toda la situación física y se requiere llamar a varios operadores para reconstruir la información. Deberían documentarse criterios de ubicación, prioridad y alertas de saturación.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "persona o rol",
+ "conocimiento",
+ "riesgo",
+ "documentación necesaria"
+ ]
+ },
+ "incomplete_if": [
+ "No identifica personas o roles",
+ "No explica conocimiento tácito",
+ "No describe riesgo de ausencia",
+ "No propone documentación"
+ ]
+ },
+ {
+ "question_id": "COMMON_006_Q002",
+ "ai_category": "criterios_experiencia",
+ "required": true,
+ "min_characters": 300,
+ "question": "Describa decisiones que se toman por experiencia, criterio práctico o intuición operativa, aunque no exista una regla formal. Transforme esas decisiones en reglas del tipo: SI ocurre una condición, ENTONCES se toma una acción.",
+ "context": "Busca convertir conocimiento tácito en reglas reutilizables para el Cerebro ASY.",
+ "tooltip": "Registre: condición observada, señal usada, criterio aplicado, acción tomada, responsable, excepción, consecuencia esperada y ejemplo en formato SI → ENTONCES.",
+ "expected_answer_structure": [
+ "Condición",
+ "Señal",
+ "Criterio",
+ "Acción",
+ "Responsable",
+ "Excepción",
+ "Regla SI → ENTONCES",
+ "Ejemplo"
+ ],
+ "good_answer_example": "SI la ocupación de cámara supera el nivel seguro y existen lotes pendientes de liberación, ENTONCES se prioriza liberar producto con despacho confirmado antes de recibir nuevos lotes de producción, salvo que exista riesgo de inocuidad o instrucción comercial crítica.",
+ "validation_rules": {
+ "min_items": 3,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "condición",
+ "acción",
+ "responsable",
+ "regla SI → ENTONCES"
+ ]
+ },
+ "incomplete_if": [
+ "No usa formato condicional",
+ "No explica criterio",
+ "No incluye responsable",
+ "No menciona excepción"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_007_INDICADORES_CONTROLES",
+ "block_name": "Indicadores, controles críticos y monitoreo",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 70,
+ "objective": "Capturar qué indicadores y controles realmente se monitorean para sostener la operación.",
+ "questions": [
+ {
+ "question_id": "COMMON_007_Q001",
+ "ai_category": "indicadores_criticos",
+ "required": true,
+ "min_characters": 300,
+ "question": "Indique qué indicadores, reportes o datos revisa realmente para saber si la operación está bajo control. Explique cuáles son críticos, quién los calcula, con qué frecuencia, de dónde sale la información y qué decisión se toma con cada uno.",
+ "context": "Permite separar indicadores decorativos de indicadores operativos reales.",
+ "tooltip": "Registre: indicador, fórmula si existe, fuente de datos, frecuencia, responsable, umbral aceptable, decisión asociada, reunión donde se revisa y consecuencia si no se monitorea.",
+ "expected_answer_structure": [
+ "Indicador",
+ "Fuente",
+ "Frecuencia",
+ "Responsable",
+ "Umbral",
+ "Decisión",
+ "Reunión",
+ "Consecuencia"
+ ],
+ "good_answer_example": "Se revisa ocupación de cámaras diariamente. La fuente es el sistema y validación física del responsable. Si supera el límite operativo, se reprograma producción, se priorizan despachos o se evalúa cámara externa. Si no se monitorea, se generan bloqueos físicos y retrasos de despacho.",
+ "validation_rules": {
+ "min_items": 3,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "indicador",
+ "fuente",
+ "frecuencia",
+ "decisión asociada"
+ ]
+ },
+ "incomplete_if": [
+ "Solo lista indicadores",
+ "No explica decisiones",
+ "No menciona fuente",
+ "No indica frecuencia"
+ ]
+ },
+ {
+ "question_id": "COMMON_007_Q002",
+ "ai_category": "controles_criticos",
+ "required": true,
+ "min_characters": 300,
+ "question": "Describa los controles que nunca pueden dejar de ejecutarse en su operación. Incluya controles físicos, documentales, de sistema, de calidad, inocuidad, cadena de frío, inventario, seguridad, cumplimiento o despacho.",
+ "context": "Captura controles mínimos de continuidad y cumplimiento.",
+ "tooltip": "Registre: control, objetivo, responsable, momento de ejecución, evidencia generada, sistema usado, falla típica, consecuencia si no se ejecuta y acción correctiva.",
+ "expected_answer_structure": [
+ "Control",
+ "Objetivo",
+ "Responsable",
+ "Momento",
+ "Evidencia",
+ "Sistema",
+ "Falla típica",
+ "Consecuencia",
+ "Acción correctiva"
+ ],
+ "good_answer_example": "El control de temperatura de cámara no puede fallar. Lo ejecuta el responsable de cámara por turno, se registra en formato y sistema, y se escala si hay desviaciones. Si no se controla, puede afectarse cadena de frío, inocuidad, trazabilidad y cumplimiento con clientes o autoridades.",
+ "validation_rules": {
+ "min_items": 3,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "control",
+ "responsable",
+ "evidencia",
+ "consecuencia"
+ ]
+ },
+ "incomplete_if": [
+ "No menciona controles concretos",
+ "No identifica evidencia",
+ "No explica consecuencias",
+ "No menciona responsable"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_008_ALERTAS_DESCONTROL",
+ "block_name": "Alertas tempranas y señales de descontrol operacional",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 80,
+ "objective": "Identificar señales tempranas que anticipan saturación, incumplimientos, reprocesos, urgencias o pérdida de control.",
+ "questions": [
+ {
+ "question_id": "COMMON_008_Q001",
+ "ai_category": "alertas_tempranas",
+ "required": true,
+ "min_characters": 300,
+ "question": "Describa las señales tempranas que le indican que la operación puede complicarse antes de que el problema sea evidente. Incluya señales en personas, sistemas, inventarios, cámaras, calidad, producción, documentación, clientes o proveedores.",
+ "context": "Las señales tempranas permiten construir radar preventivo para el Cerebro ASY.",
+ "tooltip": "Registre: señal temprana, dónde aparece, quién la detecta, frecuencia, problema que anticipa, umbral o condición, acción preventiva y ejemplo reciente.",
+ "expected_answer_structure": [
+ "Señal",
+ "Lugar",
+ "Detector",
+ "Frecuencia",
+ "Problema anticipado",
+ "Umbral",
+ "Acción preventiva",
+ "Ejemplo"
+ ],
+ "good_answer_example": "Cuando aumentan los mensajes de coordinación fuera de horario sobre cambios de programa, normalmente se anticipa una semana con restricciones de materia prima, pedidos urgentes o saturación de cámaras. La acción preventiva es convocar coordinación entre planificación, producción, calidad y despacho antes del cierre del plan.",
+ "validation_rules": {
+ "min_items": 3,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "señal",
+ "problema anticipado",
+ "acción preventiva",
+ "ejemplo"
+ ]
+ },
+ "incomplete_if": [
+ "No menciona señales observables",
+ "No indica qué problema anticipan",
+ "No explica acción preventiva",
+ "No incluye ejemplo"
+ ]
+ },
+ {
+ "question_id": "COMMON_008_Q002",
+ "ai_category": "descontrol_operacional",
+ "required": true,
+ "min_characters": 300,
+ "question": "Explique cómo se ve una operación descontrolada en su área o proceso. Describa qué empieza a fallar primero, qué señales aparecen, qué áreas se ven afectadas, quién debe intervenir y qué se hace para recuperar el control.",
+ "context": "Permite entender patrones reales de crisis operacional.",
+ "tooltip": "Registre: primera señal de descontrol, fallas sucesivas, áreas afectadas, impacto, responsable de recuperación, acciones de contención, escalamiento y aprendizaje.",
+ "expected_answer_structure": [
+ "Primera señal",
+ "Fallas sucesivas",
+ "Áreas afectadas",
+ "Impacto",
+ "Responsable",
+ "Acción de contención",
+ "Escalamiento",
+ "Aprendizaje"
+ ],
+ "good_answer_example": "Primero aparecen diferencias entre plan y realidad física; luego aumentan llamadas, cambios de prioridad y reprocesos documentales. Se afectan producción, calidad, cámaras y despacho. Para recuperar control, se detienen nuevas prioridades, se valida inventario real, se define secuencia de despacho y se escala a operaciones.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "primera señal",
+ "áreas afectadas",
+ "acción de recuperación",
+ "responsable"
+ ]
+ },
+ "incomplete_if": [
+ "No describe señales",
+ "No menciona recuperación",
+ "No identifica responsables",
+ "No incluye áreas afectadas"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_009_REPROCESOS_URGENCIAS",
+ "block_name": "Reprocesos, urgencias y actividades que consumen tiempo",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 90,
+ "objective": "Detectar actividades que consumen tiempo, generan urgencias, reprocesos o desgaste operativo.",
+ "questions": [
+ {
+ "question_id": "COMMON_009_Q001",
+ "ai_category": "actividades_consumen_tiempo",
+ "required": true,
+ "min_characters": 300,
+ "question": "Identifique las actividades que más tiempo consumen en su operación y explique por qué. Indique si agregan valor, si son necesarias por control, si existen por fallas de información o si dependen de aprobaciones, validaciones o búsquedas manuales.",
+ "context": "Permite detectar desperdicios Lean, controles necesarios y oportunidades de automatización.",
+ "tooltip": "Registre: actividad, tiempo aproximado, frecuencia, responsable, causa del consumo, valor generado, dependencia, herramienta usada, impacto y posible mejora.",
+ "expected_answer_structure": [
+ "Actividad",
+ "Tiempo",
+ "Frecuencia",
+ "Responsable",
+ "Causa",
+ "Valor generado",
+ "Dependencia",
+ "Impacto",
+ "Mejora posible"
+ ],
+ "good_answer_example": "La conciliación entre inventario físico y sistema consume varias horas cuando hay transferencias no registradas o producto observado. Participan cámara, calidad y planificación. Es necesaria para evitar despachos incorrectos, pero parte del tiempo se pierde por información tardía y registros manuales.",
+ "validation_rules": {
+ "min_items": 3,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "actividad",
+ "tiempo",
+ "causa",
+ "impacto"
+ ]
+ },
+ "incomplete_if": [
+ "No estima tiempo",
+ "No explica causa",
+ "No diferencia valor y desperdicio",
+ "No propone mejora"
+ ]
+ },
+ {
+ "question_id": "COMMON_009_Q002",
+ "ai_category": "reprocesos",
+ "required": true,
+ "min_characters": 300,
+ "question": "Describa los reprocesos más frecuentes que ocurren en su operación. Explique qué los causa, qué información llega mal o tarde, qué áreas intervienen, cuánto impacto generan y cómo se corrigen actualmente.",
+ "context": "Los reprocesos muestran fallas de calidad de información, coordinación o diseño del proceso.",
+ "tooltip": "Registre: reproceso, causa, área origen, área afectada, frecuencia, tiempo perdido, costo o impacto, corrección actual y prevención posible.",
+ "expected_answer_structure": [
+ "Reproceso",
+ "Causa",
+ "Área origen",
+ "Área afectada",
+ "Frecuencia",
+ "Tiempo perdido",
+ "Impacto",
+ "Corrección",
+ "Prevención"
+ ],
+ "good_answer_example": "Se reprocesan documentos de despacho cuando cambia el cliente, lote o destino después de preparar la documentación. La causa suele ser información comercial tardía o cambios de disponibilidad. Afecta despacho, calidad y exportaciones, y se corrige rehaciendo documentos bajo presión.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "reproceso",
+ "causa",
+ "áreas afectadas",
+ "impacto"
+ ]
+ },
+ "incomplete_if": [
+ "No menciona reprocesos concretos",
+ "No identifica causa",
+ "No explica impacto",
+ "No incluye prevención"
+ ]
+ },
+ {
+ "question_id": "COMMON_009_Q003",
+ "ai_category": "urgencias",
+ "required": true,
+ "min_characters": 300,
+ "question": "Explique qué actividades o situaciones generan más urgencias, carreras o presión operativa. Indique quién suele generar la urgencia, si era prevenible, qué información faltó y qué regla ayudaría a evitarla.",
+ "context": "Busca transformar urgencias repetidas en reglas preventivas.",
+ "tooltip": "Registre: situación urgente, origen, frecuencia, causa, información faltante, áreas afectadas, impacto, acción tomada y regla preventiva SI → ENTONCES.",
+ "expected_answer_structure": [
+ "Urgencia",
+ "Origen",
+ "Frecuencia",
+ "Causa",
+ "Información faltante",
+ "Áreas afectadas",
+ "Impacto",
+ "Acción",
+ "Regla preventiva"
+ ],
+ "good_answer_example": "Las urgencias aparecen cuando se confirma despacho sin validar liberación de calidad y disponibilidad física. La regla preventiva sería: SI un pedido requiere despacho en menos de 24 horas, ENTONCES comercial debe validar disponibilidad, calidad y documentación antes de comprometer hora con el cliente.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "urgencia",
+ "origen",
+ "causa",
+ "regla preventiva"
+ ]
+ },
+ "incomplete_if": [
+ "No identifica origen",
+ "No explica si era prevenible",
+ "No incluye regla SI → ENTONCES",
+ "No menciona impacto"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_010_INFORMACION_DATOS",
+ "block_name": "Información incompleta, tardía o poco confiable",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 100,
+ "objective": "Identificar brechas de información que afectan decisiones, programación, coordinación y control.",
+ "questions": [
+ {
+ "question_id": "COMMON_010_Q001",
+ "ai_category": "calidad_informacion",
+ "required": true,
+ "min_characters": 300,
+ "question": "Describa qué información recibe incompleta, tarde, duplicada, contradictoria o poco confiable. Explique de quién viene, cómo debería llegar, qué decisión afecta y qué consecuencias genera.",
+ "context": "La calidad de información es crítica para decisiones operativas y coordinación interáreas.",
+ "tooltip": "Registre: información, emisor, receptor, frecuencia, canal, problema de calidad, decisión afectada, consecuencia, corrección actual y mejora esperada.",
+ "expected_answer_structure": [
+ "Información",
+ "Emisor",
+ "Receptor",
+ "Frecuencia",
+ "Canal",
+ "Problema",
+ "Decisión afectada",
+ "Consecuencia",
+ "Mejora"
+ ],
+ "good_answer_example": "La disponibilidad real de producto puede llegar tarde cuando hay observados de calidad o diferencias físicas. La información debería estar actualizada antes de confirmar despachos. Si llega tarde, comercial compromete pedidos que luego deben reprogramarse.",
+ "validation_rules": {
+ "min_items": 3,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "información",
+ "emisor",
+ "decisión afectada",
+ "consecuencia"
+ ]
+ },
+ "incomplete_if": [
+ "No identifica información específica",
+ "No menciona origen",
+ "No explica decisión afectada",
+ "No incluye consecuencia"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_011_EXCEPCIONES_DECISIONES",
+ "block_name": "Excepciones operativas y criterios de decisión",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 110,
+ "objective": "Capturar excepciones, arbitrajes y criterios usados cuando la operación no sigue el flujo normal.",
+ "questions": [
+ {
+ "question_id": "COMMON_011_Q001",
+ "ai_category": "excepciones_operativas",
+ "required": true,
+ "min_characters": 300,
+ "question": "Describa las excepciones operativas más frecuentes: casos donde se rompe el flujo normal, se salta una secuencia, se prioriza algo diferente o se requiere aprobación especial. Explique cuándo se permite, quién decide y qué controles compensatorios se aplican.",
+ "context": "Las excepciones revelan reglas de negocio reales y criterios de flexibilidad operativa.",
+ "tooltip": "Registre: excepción, condición que la activa, responsable que decide, aprobación requerida, control compensatorio, frecuencia, riesgo, beneficio y ejemplo.",
+ "expected_answer_structure": [
+ "Excepción",
+ "Condición",
+ "Decisor",
+ "Aprobación",
+ "Control compensatorio",
+ "Frecuencia",
+ "Riesgo",
+ "Beneficio",
+ "Ejemplo"
+ ],
+ "good_answer_example": "Se permite priorizar un despacho fuera de secuencia cuando existe booking de exportación próximo a vencer o cliente estratégico. Lo decide operaciones con comercial y despacho. El control compensatorio es validar calidad, documentación, disponibilidad física y trazabilidad antes de mover producto.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "excepción",
+ "condición",
+ "decisor",
+ "control compensatorio"
+ ]
+ },
+ "incomplete_if": [
+ "No identifica excepciones",
+ "No menciona quién decide",
+ "No indica controles",
+ "No incluye ejemplo"
+ ]
+ },
+ {
+ "question_id": "COMMON_011_Q002",
+ "ai_category": "criterios_decision",
+ "required": true,
+ "min_characters": 300,
+ "question": "Explique los criterios que se usan para priorizar cuando existen conflictos entre pedidos, producción, calidad, cámaras, exportaciones, clientes, capacidad, costos o cumplimiento. Indique el orden de prioridad real y ejemplos.",
+ "context": "Permite construir árboles de decisión y reglas de priorización operacional.",
+ "tooltip": "Registre: conflicto típico, criterios usados, orden de prioridad, responsable, información requerida, excepción permitida, ejemplo y regla SI → ENTONCES.",
+ "expected_answer_structure": [
+ "Conflicto",
+ "Criterios",
+ "Orden de prioridad",
+ "Responsable",
+ "Información requerida",
+ "Excepción",
+ "Ejemplo",
+ "Regla SI → ENTONCES"
+ ],
+ "good_answer_example": "Cuando hay conflicto entre despacho local y exportación, normalmente se prioriza exportación si existe booking, documentación completa y riesgo de incumplimiento. Luego se evalúa cliente estratégico, fecha de compromiso y disponibilidad física. SI el booking vence antes que el despacho local, ENTONCES se prioriza exportación salvo riesgo de inocuidad.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "criterios",
+ "orden de prioridad",
+ "responsable",
+ "regla SI → ENTONCES"
+ ]
+ },
+ "incomplete_if": [
+ "No establece orden de prioridad",
+ "No menciona criterios",
+ "No identifica responsable",
+ "No incluye ejemplo"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_012_DESGASTE_OPERATIVO",
+ "block_name": "Desgaste operativo y carga invisible",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 120,
+ "objective": "Identificar carga operativa invisible, presión, dependencia de seguimiento manual y fuentes de agotamiento organizacional.",
+ "questions": [
+ {
+ "question_id": "COMMON_012_Q001",
+ "ai_category": "desgaste_operativo",
+ "required": true,
+ "min_characters": 300,
+ "question": "Describa qué situaciones generan mayor desgaste operativo en su trabajo o equipo. Incluya seguimiento manual, presión por urgencias, conflictos repetidos, búsqueda de información, correcciones, llamadas fuera de horario o dependencia de personas específicas.",
+ "context": "El desgaste muestra fallas sistémicas que no siempre aparecen en indicadores formales.",
+ "tooltip": "Registre: situación, frecuencia, causa, personas afectadas, tiempo consumido, impacto emocional u operativo, áreas involucradas, acción actual y mejora esperada.",
+ "expected_answer_structure": [
+ "Situación",
+ "Frecuencia",
+ "Causa",
+ "Personas afectadas",
+ "Tiempo",
+ "Impacto",
+ "Áreas involucradas",
+ "Acción actual",
+ "Mejora"
+ ],
+ "good_answer_example": "El mayor desgaste ocurre cuando se debe perseguir información entre varias áreas para confirmar si un producto puede despacharse. Se hacen llamadas a calidad, cámaras, comercial y planificación. Esto consume tiempo, genera presión y expone al equipo a errores por información fragmentada.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "situación",
+ "frecuencia",
+ "causa",
+ "impacto"
+ ]
+ },
+ "incomplete_if": [
+ "No describe situaciones concretas",
+ "No explica causa",
+ "No menciona impacto",
+ "No identifica áreas involucradas"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_013_INDUSTRIA_ATUNERA",
+ "block_name": "Contexto atunero, inocuidad, trazabilidad y cadena de frío",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 130,
+ "objective": "Asegurar captura de conocimiento transversal propio de la industria atunera y manufactura con alta exigencia operativa.",
+ "questions": [
+ {
+ "question_id": "COMMON_013_Q001",
+ "ai_category": "cadena_frio_trazabilidad",
+ "required": true,
+ "min_characters": 300,
+ "question": "Explique cómo su operación se relaciona con cadena de frío, trazabilidad, lotes, inocuidad, cámaras, producto observado, documentación o cumplimiento exportador. Indique qué controles aplica directa o indirectamente y qué riesgos debe vigilar.",
+ "context": "Busca conectar cada área con riesgos críticos de industria atunera aunque no pertenezca directamente a producción o calidad.",
+ "tooltip": "Registre: relación con cadena de frío o trazabilidad, controles, responsables, documentos, riesgos, señales de alerta, áreas relacionadas, impacto y ejemplo reciente.",
+ "expected_answer_structure": [
+ "Relación con cadena de frío/trazabilidad",
+ "Controles",
+ "Responsables",
+ "Documentos",
+ "Riesgos",
+ "Señales de alerta",
+ "Áreas relacionadas",
+ "Impacto",
+ "Ejemplo"
+ ],
+ "good_answer_example": "Aunque el área no manipula producto, depende de información correcta de lotes, liberación de calidad y disponibilidad de cámara. Si un lote observado se considera disponible por error, puede comprometerse un despacho que luego no cumple requisitos de cliente o exportación.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "relación",
+ "control",
+ "riesgo",
+ "ejemplo"
+ ]
+ },
+ "incomplete_if": [
+ "No conecta con trazabilidad o cadena de frío",
+ "No menciona riesgos",
+ "No identifica controles",
+ "No incluye ejemplo"
+ ]
+ },
+ {
+ "question_id": "COMMON_013_Q002",
+ "ai_category": "saturacion_camaras_capacidad",
+ "required": true,
+ "min_characters": 300,
+ "question": "Describa cómo impactan en su operación la saturación de cámaras, disponibilidad de materia prima, restricciones de capacidad, cambios de programación, observados de calidad, cámaras externas o retrasos de despacho.",
+ "context": "Permite identificar dependencias sistémicas propias de operaciones atuneras complejas.",
+ "tooltip": "Registre: evento, impacto en su área, señal previa, área origen, área afectada, decisión necesaria, acción de contención, responsable y ejemplo.",
+ "expected_answer_structure": [
+ "Evento",
+ "Impacto",
+ "Señal previa",
+ "Área origen",
+ "Área afectada",
+ "Decisión",
+ "Contención",
+ "Responsable",
+ "Ejemplo"
+ ],
+ "good_answer_example": "Cuando cámaras se saturan, planificación debe ajustar producción, comercial debe revisar compromisos y despacho debe priorizar salidas. Si además hay producto observado, la capacidad útil baja aunque el sistema muestre inventario disponible.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "evento",
+ "impacto",
+ "decisión",
+ "ejemplo"
+ ]
+ },
+ "incomplete_if": [
+ "No menciona impacto específico",
+ "No identifica evento operacional",
+ "No describe decisión requerida",
+ "No incluye ejemplo"
+ ]
+ }
+ ]
+ },
+ {
+ "block_id": "COMMON_014_MEJORAS_AUTOMATIZACION_IA",
+ "block_name": "Mejoras, automatización e inteligencia operativa",
+ "source_type": "common",
+ "enabled": true,
+ "required": true,
+ "order": 140,
+ "objective": "Identificar oportunidades de mejora, automatización, digitalización, integración de datos e inteligencia artificial empresarial.",
+ "questions": [
+ {
+ "question_id": "COMMON_014_Q001",
+ "ai_category": "oportunidades_mejora",
+ "required": true,
+ "min_characters": 300,
+ "question": "Proponga mejoras concretas que reducirían errores, reprocesos, tiempos, urgencias, dependencia humana o fricciones entre áreas. Explique qué problema resuelven, qué datos requieren, quién debería participar y cómo se mediría el beneficio.",
+ "context": "Busca convertir conocimiento capturado en backlog accionable de mejora.",
+ "tooltip": "Registre: mejora propuesta, problema que resuelve, proceso afectado, áreas involucradas, datos requeridos, esfuerzo estimado, beneficio esperado, indicador de medición y primer paso.",
+ "expected_answer_structure": [
+ "Mejora",
+ "Problema",
+ "Proceso",
+ "Áreas",
+ "Datos requeridos",
+ "Esfuerzo",
+ "Beneficio",
+ "Indicador",
+ "Primer paso"
+ ],
+ "good_answer_example": "Crear tablero único de disponibilidad real de producto que integre inventario, calidad, cámaras y pedidos comprometidos. Resolvería llamadas repetidas y decisiones con datos distintos. El beneficio se mediría por reducción de reprocesos documentales, cambios urgentes y diferencias entre sistema e inventario físico.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "mejora",
+ "problema",
+ "beneficio",
+ "indicador"
+ ]
+ },
+ "incomplete_if": [
+ "Propone ideas vagas",
+ "No conecta mejora con problema",
+ "No define indicador",
+ "No identifica áreas involucradas"
+ ]
+ },
+ {
+ "question_id": "COMMON_014_Q002",
+ "ai_category": "automatizacion_ia",
+ "required": true,
+ "min_characters": 300,
+ "question": "Identifique actividades donde un sistema, automatización, alerta, tablero o IA podría ayudar a anticipar problemas, recomendar decisiones, consolidar información, validar datos o reducir trabajo manual.",
+ "context": "Permite alimentar el diseño del Cerebro ASY con casos de uso reales.",
+ "tooltip": "Registre: actividad, problema actual, información requerida, regla o recomendación esperada, usuario beneficiado, frecuencia, riesgo a controlar, integración necesaria y beneficio.",
+ "expected_answer_structure": [
+ "Actividad",
+ "Problema actual",
+ "Información requerida",
+ "Regla esperada",
+ "Usuario",
+ "Frecuencia",
+ "Riesgo",
+ "Integración",
+ "Beneficio"
+ ],
+ "good_answer_example": "Una IA podría alertar cuando un pedido comprometido no tenga combinación válida de inventario disponible, liberación de calidad, documentación completa y espacio logístico. Recomendaría escalar antes de confirmar al cliente.",
+ "validation_rules": {
+ "min_items": 2,
+ "requires_examples": true,
+ "incomplete_if_missing": [
+ "actividad",
+ "información requerida",
+ "regla esperada",
+ "beneficio"
+ ]
+ },
+ "incomplete_if": [
+ "No identifica actividad concreta",
+ "No menciona datos requeridos",
+ "No define recomendación esperada",
+ "No explica beneficio"
+ ]
+ }
+ ]
+ }
+ ]
+ }
+

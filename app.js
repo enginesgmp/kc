@@ -298,7 +298,7 @@ function renderCurrentBlock() {
   btn.onclick = cerrarBloqueActual;
 }
 
-function cerrarBloqueActual() {
+async function cerrarBloqueActual() {
   const block =
     currentSession.blocks[currentBlockIndex];
 
@@ -330,21 +330,72 @@ function cerrarBloqueActual() {
   const blockId =
     block.block_id || block.id || "BLOCK_" + (currentBlockIndex + 1);
 
-  blockAnswers[blockId] = answers;
+  const blockName =
+    block.block_name || block.name || "Bloque sin nombre";
 
-  console.log("Bloque cerrado:");
-  console.log({
-    block: block,
+  const sourceType =
+    block.source_type || block.source || "unknown";
+
+  const payload = {
+    session_id: currentSession.session_id,
+    person_name: currentSession.person_name,
+    position: currentSession.position,
+    area_id: currentSession.area_id,
+    area_name: currentSession.area_name,
+    level_id: currentSession.level_id,
+    level_name: currentSession.level_name,
+    block_id: blockId,
+    block_name: blockName,
+    source_type: sourceType,
+    block_order: currentBlockIndex + 1,
+    total_blocks: currentSession.blocks.length,
+    block_closed_at: new Date().toISOString(),
     answers: answers
+  };
+
+  try {
+    setStatus("Guardando bloque en Drive...");
+
+    const result = await guardarBloqueEnBackend(payload);
+
+    if (!result.ok) {
+      throw new Error(result.message || "Error desconocido guardando bloque.");
+    }
+
+    blockAnswers[blockId] = {
+      payload: payload,
+      backend_response: result.data
+    };
+
+    console.log("Bloque guardado correctamente:");
+    console.log(result);
+
+    setStatus("Bloque guardado correctamente.");
+
+    if (currentBlockIndex < currentSession.blocks.length - 1) {
+      currentBlockIndex++;
+      renderCurrentBlock();
+      window.scrollTo(0, 0);
+    } else {
+      finalizarCaptura();
+    }
+
+  } catch (error) {
+    console.error(error);
+    setStatus("Error guardando bloque: " + error.message);
+    alert("No se pudo guardar el bloque.\n\n" + error.message);
+  }
+}
+
+async function guardarBloqueEnBackend(payload) {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    body: JSON.stringify(payload)
   });
 
-  if (currentBlockIndex < currentSession.blocks.length - 1) {
-    currentBlockIndex++;
-    renderCurrentBlock();
-    window.scrollTo(0, 0);
-  } else {
-    finalizarCaptura();
-  }
+  const result = await response.json();
+
+  return result;
 }
 
 function finalizarCaptura() {

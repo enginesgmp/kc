@@ -1,0 +1,1151 @@
+{
+  "questionnaire_version": "KC_V2",
+  "industry": "industrial_atunera",
+  "source_type": "area",
+  "area": "Compras Generales e Insumos",
+  "level": null,
+  "area_metadata": {
+    "area_id": "area_compras_generales_insumos",
+    "display_name": "Compras Generales e Insumos",
+    "aliases": [
+      "Compras Generales e Insumos",
+      "Compras Generales",
+      "Compras de Insumos",
+      "Compras",
+      "Abastecimiento de Insumos",
+      "Procurement",
+      "Purchasing",
+      "Gestión de Compras",
+      "Requerimientos de Compra"
+    ],
+    "macro_process": "MP-1400 LOGÍSTICA Y ABASTECIMIENTO"
+  },
+  "blocks": [
+    {
+      "block_id": "CGI_01_FLUJO_COMPRA",
+      "block_name": "Flujo de compras generales e insumos",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 10,
+      "objective": "Capturar cómo se gestiona realmente el ciclo de compra de bienes, servicios e insumos, desde la necesidad interna hasta la entrega, recepción y cierre.",
+      "questions": [
+        {
+          "question_id": "CGI_01_Q01",
+          "ai_category": "sop_alignment",
+          "required": true,
+          "min_characters": 350,
+          "question": "Describa el flujo real de compras generales e insumos desde que nace la necesidad hasta que la compra queda cerrada.",
+          "context": "El objetivo es entender la operación real de compras, incluyendo requerimientos, cotizaciones, aprobaciones, órdenes, seguimiento, recepción y cierre documental.",
+          "tooltip": "Registre: origen de la necesidad, etapas del flujo, responsables, documentos, sistemas usados, aprobaciones, tiempos habituales, controles críticos, excepciones frecuentes y consecuencias si una etapa falla.",
+          "expected_answer_structure": [
+            "Origen de la necesidad",
+            "Etapas",
+            "Responsables",
+            "Documentos",
+            "Sistemas",
+            "Aprobaciones",
+            "Tiempos",
+            "Controles críticos",
+            "Excepciones",
+            "Consecuencias"
+          ],
+          "good_answer_example": "Una compra inicia con requerimiento aprobado del área usuaria. Compras valida especificación, solicita cotizaciones, genera orden, coordina entrega y confirma recepción. Si falta aprobación o especificación técnica, la compra queda detenida hasta regularización.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "origen",
+              "etapas",
+              "responsables",
+              "documentos",
+              "sistemas",
+              "aprobaciones",
+              "controles",
+              "consecuencias"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_01_Q02",
+          "ai_category": "operational_decisions",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué decisiones operativas toma Compras durante el ciclo de compra y qué criterios usa para tomarlas?",
+          "context": "Se busca capturar criterios reales de decisión sobre proveedor, precio, plazo, calidad, urgencia, disponibilidad, sustitución, compra directa o escalamiento.",
+          "tooltip": "Registre: decisión, criterio utilizado, información requerida, responsable, momento de decisión, alternativas consideradas, riesgo, evidencia y ejemplo real.",
+          "expected_answer_structure": [
+            "Decisión",
+            "Criterio",
+            "Información requerida",
+            "Responsable",
+            "Momento",
+            "Alternativas",
+            "Riesgo",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Cuando un insumo crítico no está disponible con el proveedor habitual, Compras evalúa proveedores alternos, tiempo de entrega, costo, calidad y autorización del área usuaria antes de confirmar.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "decisión",
+              "criterio",
+              "información",
+              "responsable",
+              "riesgo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "CGI_02_REQUERIMIENTOS_AREAS",
+      "block_name": "Requerimientos internos y especificaciones",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 20,
+      "objective": "Identificar cómo se reciben, validan y corrigen requerimientos de áreas usuarias, especialmente cuando la información llega incompleta o ambigua.",
+      "questions": [
+        {
+          "question_id": "CGI_02_Q01",
+          "ai_category": "hidden_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué información necesita Compras de las áreas usuarias para procesar correctamente una compra y qué ocurre cuando llega tarde o incompleta?",
+          "context": "La calidad del requerimiento afecta cotización, selección de proveedor, tiempos, costos, recepción y satisfacción del área usuaria.",
+          "tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato/canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+          "expected_answer_structure": [
+            "Dato requerido",
+            "Área proveedora",
+            "Momento requerido",
+            "Formato/canal",
+            "Responsable",
+            "Consecuencia",
+            "Solución temporal",
+            "Mejora"
+          ],
+          "good_answer_example": "Compras necesita especificación técnica, cantidad, urgencia y centro de costo. Si la especificación llega incompleta, se consulta al usuario y se retrasa la cotización o se corre riesgo de comprar algo incorrecto.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "dato",
+              "área",
+              "momento",
+              "canal",
+              "responsable",
+              "consecuencia",
+              "solución",
+              "mejora"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_02_Q02",
+          "ai_category": "operational_exceptions",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué excepciones ocurren con los requerimientos internos y cómo se resuelven sin afectar la operación?",
+          "context": "Se busca capturar casos reales: solicitudes urgentes, especificaciones incompletas, cambios de cantidad, falta de aprobación, requerimientos duplicados, compras fuera de presupuesto o solicitudes no planificadas.",
+          "tooltip": "Registre: excepción, frecuencia, causa probable, quién la detecta, quién decide, criterio aplicado, registro posterior, riesgo y ejemplo real.",
+          "expected_answer_structure": [
+            "Excepción",
+            "Frecuencia",
+            "Causa probable",
+            "Detector",
+            "Decisor",
+            "Criterio",
+            "Registro",
+            "Riesgo",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una excepción frecuente es recibir solicitudes urgentes sin aprobación completa. Compras valida criticidad con el jefe del área y escala si afecta continuidad operativa.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "excepción",
+              "frecuencia",
+              "causa",
+              "detector",
+              "decisor",
+              "criterio",
+              "registro",
+              "riesgo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "CGI_03_PROVEEDORES_COTIZACIONES",
+      "block_name": "Gestión de proveedores y cotizaciones",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 30,
+      "objective": "Capturar cómo se seleccionan proveedores, se solicitan cotizaciones y se decide la mejor alternativa según precio, plazo, calidad, riesgo y cumplimiento.",
+      "questions": [
+        {
+          "question_id": "CGI_03_Q01",
+          "ai_category": "external_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué proveedores o categorías de proveedores son críticos para Compras Generales e Insumos y qué información o respuesta se espera de cada uno?",
+          "context": "La operación depende de proveedores que pueden afectar continuidad, calidad, costo, disponibilidad, tiempos de entrega y cumplimiento documental.",
+          "tooltip": "Registre: proveedor/categoría, producto o servicio, información requerida, frecuencia de interacción, responsable interno, tiempo esperado de respuesta, riesgo si falla, contingencia y ejemplo real.",
+          "expected_answer_structure": [
+            "Proveedor/categoría",
+            "Producto/servicio",
+            "Información requerida",
+            "Frecuencia",
+            "Responsable interno",
+            "Tiempo esperado",
+            "Riesgo",
+            "Contingencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Un proveedor de insumos críticos debe confirmar stock, precio y fecha de entrega. Si no responde a tiempo, Compras activa proveedor alterno y alerta al área usuaria.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "proveedor",
+              "producto",
+              "información",
+              "frecuencia",
+              "responsable",
+              "riesgo",
+              "contingencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_03_Q02",
+          "ai_category": "decision_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas se aplican para seleccionar proveedor cuando existen varias cotizaciones o alternativas?",
+          "context": "Se requiere extraer reglas SI → ENTONCES relacionadas con precio, plazo, calidad, historial, crédito, disponibilidad, homologación, urgencia y aprobación.",
+          "tooltip": "Registre reglas concretas: SI ocurre una condición, ENTONCES acción, responsable, evidencia, autorización requerida, tiempo máximo, escalamiento y consecuencia si no se actúa.",
+          "expected_answer_structure": [
+            "Condición SI",
+            "Acción ENTONCES",
+            "Responsable",
+            "Evidencia",
+            "Autorización",
+            "Tiempo máximo",
+            "Escalamiento",
+            "Consecuencia"
+          ],
+          "good_answer_example": "SI el proveedor más económico no cumple plazo requerido para un insumo crítico, ENTONCES Compras evalúa la segunda opción y solicita validación del área usuaria antes de emitir la orden.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "SI",
+              "ENTONCES",
+              "responsable",
+              "evidencia",
+              "autorización",
+              "escalamiento",
+              "consecuencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "CGI_04_APROBACIONES_PRESUPUESTO",
+      "block_name": "Aprobaciones, presupuesto y control de gasto",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 40,
+      "objective": "Identificar cómo se controlan autorizaciones, presupuesto, centros de costo, límites de aprobación y compras fuera de planificación.",
+      "questions": [
+        {
+          "question_id": "CGI_04_Q01",
+          "ai_category": "operational_constraints",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué restricciones de presupuesto, aprobación o centro de costo afectan la gestión de compras y cómo se manejan?",
+          "context": "Las compras pueden detenerse o cambiar por falta de presupuesto, aprobación pendiente, límites de monto, cuenta contable incorrecta o prioridad operativa.",
+          "tooltip": "Registre: restricción, causa, área relacionada, señal temprana, impacto operativo, responsable, acción preventiva, escalamiento y ejemplo reciente.",
+          "expected_answer_structure": [
+            "Restricción",
+            "Causa",
+            "Área relacionada",
+            "Señal temprana",
+            "Impacto",
+            "Responsable",
+            "Acción preventiva",
+            "Escalamiento",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Cuando una compra supera el límite de aprobación del solicitante, Compras retiene la orden hasta obtener autorización superior. Si es crítica, se escala con evidencia de urgencia y riesgo operacional.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "restricción",
+              "causa",
+              "área",
+              "señal",
+              "impacto",
+              "responsable",
+              "acción",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_04_Q02",
+          "ai_category": "critical_indicators",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué indicadores o controles usa Compras para monitorear gasto, presupuesto y cumplimiento de aprobaciones?",
+          "context": "Interesa capturar indicadores reales: compras por categoría, ahorro, desviación de presupuesto, órdenes pendientes, compras urgentes, cumplimiento de política y tiempos de aprobación.",
+          "tooltip": "Registre: indicador/control, fórmula si existe, fuente, frecuencia, responsable, meta o umbral, decisión que dispara, evidencia y ejemplo reciente.",
+          "expected_answer_structure": [
+            "Indicador/control",
+            "Fórmula",
+            "Fuente",
+            "Frecuencia",
+            "Responsable",
+            "Meta/umbral",
+            "Decisión",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Se revisan órdenes pendientes de aprobación y compras urgentes por área. Si aumentan las compras urgentes, se revisa causa con el área usuaria para mejorar planificación.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "indicador",
+              "fuente",
+              "frecuencia",
+              "responsable",
+              "umbral",
+              "decisión",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "CGI_05_INSUMOS_CRITICOS",
+      "block_name": "Insumos críticos y continuidad operativa",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 50,
+      "objective": "Capturar qué insumos son críticos, cómo se anticipa su reposición y qué controles evitan quiebres que afecten producción u operación.",
+      "questions": [
+        {
+          "question_id": "CGI_05_Q01",
+          "ai_category": "operational_risks",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué insumos o categorías de compra son críticos para la operación y qué pasaría si faltan?",
+          "context": "Algunos insumos pueden ser críticos por consumo alto, proveedor único, largo tiempo de reposición, impacto en producción, calidad, seguridad o cumplimiento.",
+          "tooltip": "Registre: insumo/categoría crítica, motivo de criticidad, consumo aproximado, lead time, proveedor, stock mínimo si aplica, impacto de falta, responsable de seguimiento y ejemplo real.",
+          "expected_answer_structure": [
+            "Insumo/categoría",
+            "Motivo",
+            "Consumo",
+            "Lead time",
+            "Proveedor",
+            "Stock mínimo",
+            "Impacto",
+            "Responsable",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Un insumo de empaque puede ser crítico porque no tiene sustituto inmediato y su reposición toma varios días. Si falta, se reprograma producción o se detiene una línea.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "insumo",
+              "motivo",
+              "consumo",
+              "lead time",
+              "proveedor",
+              "stock",
+              "impacto",
+              "responsable"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_05_Q02",
+          "ai_category": "early_warnings",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué señales tempranas indican riesgo de desabastecimiento o retraso en insumos críticos?",
+          "context": "Se busca detectar alertas antes de que la falta impacte producción, mantenimiento, despacho, calidad o servicios generales.",
+          "tooltip": "Registre: señal temprana, cómo se detecta, frecuencia de revisión, responsable, acción preventiva, área escalada y ejemplo real.",
+          "expected_answer_structure": [
+            "Señal temprana",
+            "Detección",
+            "Frecuencia",
+            "Responsable",
+            "Acción preventiva",
+            "Escalamiento",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una señal temprana es que el proveedor no confirma fecha de entrega de un insumo crítico. Compras lo detecta en seguimiento de órdenes y escala al área usuaria para evaluar alternativa.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "señal",
+              "detección",
+              "frecuencia",
+              "responsable",
+              "acción",
+              "escalamiento",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "CGI_06_ORDENES_SEGUIMIENTO",
+      "block_name": "Órdenes de compra, seguimiento y entrega",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 60,
+      "objective": "Identificar cómo se emiten, monitorean y cierran órdenes de compra, incluyendo demoras, entregas parciales, cambios y comunicación con áreas usuarias.",
+      "questions": [
+        {
+          "question_id": "CGI_06_Q01",
+          "ai_category": "governance_routines",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo se realiza el seguimiento diario o semanal de órdenes de compra abiertas, pendientes o retrasadas?",
+          "context": "Se busca capturar la rutina real de control: revisión de órdenes, proveedores, fechas, entregas parciales, cambios, atrasos y comunicación interna.",
+          "tooltip": "Registre: secuencia de revisión, frecuencia, responsables, herramienta usada, alertas, decisiones, cierres obligatorios, pendientes arrastrados y ejemplo real.",
+          "expected_answer_structure": [
+            "Secuencia",
+            "Frecuencia",
+            "Responsables",
+            "Herramienta",
+            "Alertas",
+            "Decisiones",
+            "Cierres obligatorios",
+            "Pendientes",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Cada semana se revisan órdenes abiertas, fechas comprometidas y proveedores pendientes. Si una entrega crítica se retrasa, se actualiza el tracker y se informa al área usuaria.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "secuencia",
+              "frecuencia",
+              "responsable",
+              "herramienta",
+              "alerta",
+              "decisión",
+              "cierre",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_06_Q02",
+          "ai_category": "operational_alerts",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué alertas deben activarse cuando una orden de compra puede retrasarse o afectar la operación?",
+          "context": "Interesa definir alertas accionables sobre atrasos, falta de confirmación, entrega parcial, proveedor sin respuesta, cambio de precio, falta de documento o compra crítica.",
+          "tooltip": "Registre: alerta, condición disparadora, detector, decisor, canal, tiempo máximo de reacción, acción inicial y consecuencia de no actuar.",
+          "expected_answer_structure": [
+            "Alerta",
+            "Condición disparadora",
+            "Detector",
+            "Decisor",
+            "Canal",
+            "Tiempo máximo",
+            "Acción inicial",
+            "Consecuencia"
+          ],
+          "good_answer_example": "Si un proveedor no confirma despacho de un insumo crítico antes de la fecha límite, Compras alerta al área usuaria y activa alternativa o escalamiento.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "alerta",
+              "condición",
+              "detector",
+              "decisor",
+              "canal",
+              "tiempo",
+              "acción",
+              "consecuencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "CGI_07_RECEPCION_CONFORMIDAD",
+      "block_name": "Recepción, conformidad y cierre documental",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 70,
+      "objective": "Capturar cómo se valida la recepción de bienes o servicios, la conformidad del usuario y el cierre documental para pago o registro.",
+      "questions": [
+        {
+          "question_id": "CGI_07_Q01",
+          "ai_category": "manual_controls",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué controles se aplican para validar que lo comprado fue recibido correctamente y cumple lo solicitado?",
+          "context": "Interesa identificar controles físicos, documentales y de conformidad: factura, guía, orden, cantidades, especificación, servicio ejecutado y aceptación del área usuaria.",
+          "tooltip": "Registre: control, responsable, documento asociado, momento, sistema o repositorio, validación aplicada, riesgo si falla, evidencia y ejemplo real.",
+          "expected_answer_structure": [
+            "Control",
+            "Responsable",
+            "Documento asociado",
+            "Momento",
+            "Sistema/repositorio",
+            "Validación",
+            "Riesgo",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Se compara orden de compra, guía y recepción física. Si cantidad o especificación no coincide, se retiene conformidad y se coordina con proveedor y área usuaria.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "control",
+              "responsable",
+              "documento",
+              "momento",
+              "validación",
+              "riesgo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_07_Q02",
+          "ai_category": "critical_failures",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué fallas críticas pueden ocurrir en recepción, conformidad o cierre documental y cómo se previenen?",
+          "context": "Se busca identificar fallas como recibir producto incorrecto, aceptar servicio incompleto, perder evidencia, retrasar facturas, cerrar sin conformidad o generar pagos indebidos.",
+          "tooltip": "Registre: falla crítica, causa, punto de detección, control preventivo, responsable, evidencia, acción correctiva y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Falla crítica",
+            "Causa",
+            "Punto de detección",
+            "Control preventivo",
+            "Responsable",
+            "Evidencia",
+            "Acción correctiva",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una falla crítica es cerrar una compra sin conformidad del área usuaria. Se previene exigiendo evidencia de recepción o acta de servicio antes de liberar el proceso de pago.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "falla",
+              "causa",
+              "detección",
+              "control",
+              "responsable",
+              "evidencia",
+              "acción",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "CGI_08_COORDINACION_INTERNA",
+      "block_name": "Coordinación con áreas usuarias, bodega, finanzas y contabilidad",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 80,
+      "objective": "Identificar patrones de coordinación interna que sostienen compras, recepción, pagos, inventarios, presupuesto y continuidad operativa.",
+      "questions": [
+        {
+          "question_id": "CGI_08_Q01",
+          "ai_category": "coordination_patterns",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo se coordina Compras con áreas usuarias, bodega, finanzas, contabilidad, producción, mantenimiento o calidad durante una compra?",
+          "context": "La operación depende de información oportuna sobre necesidades, presupuesto, recepción, conformidad, pagos, inventarios, especificaciones y urgencias.",
+          "tooltip": "Registre: área involucrada, información intercambiada, frecuencia, canal, responsable, decisión soportada, problema recurrente y ejemplo real.",
+          "expected_answer_structure": [
+            "Área",
+            "Información",
+            "Frecuencia",
+            "Canal",
+            "Responsable",
+            "Decisión soportada",
+            "Problema recurrente",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Con bodega se valida recepción; con finanzas se revisa pago; con contabilidad se confirma documento; con el área usuaria se valida especificación y conformidad.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "área",
+              "información",
+              "frecuencia",
+              "canal",
+              "responsable",
+              "decisión",
+              "problema",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_08_Q02",
+          "ai_category": "process_friction",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son las fricciones más frecuentes entre Compras y otras áreas, y cómo se resuelven en la práctica?",
+          "context": "No se busca culpabilizar áreas; se busca identificar patrones reales que afectan tiempos, costos, recepción, pagos, inventario o continuidad operativa.",
+          "tooltip": "Registre: área, fricción, causa probable, frecuencia, impacto, solución actual, regla no escrita, evidencia y mejora sugerida.",
+          "expected_answer_structure": [
+            "Área",
+            "Fricción",
+            "Causa probable",
+            "Frecuencia",
+            "Impacto",
+            "Solución actual",
+            "Regla no escrita",
+            "Evidencia",
+            "Mejora sugerida"
+          ],
+          "good_answer_example": "Con áreas usuarias hay fricción cuando solicitan compras urgentes sin especificación clara. Se resuelve por llamada directa, pero se requiere dejar evidencia formal para evitar errores.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "área",
+              "fricción",
+              "causa",
+              "frecuencia",
+              "impacto",
+              "solución",
+              "regla",
+              "mejora"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "CGI_09_HERRAMIENTAS_DATOS",
+      "block_name": "Herramientas, datos y controles paralelos de compras",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 90,
+      "objective": "Identificar sistemas oficiales, archivos paralelos, tableros y datos usados para controlar compras, proveedores, órdenes, presupuesto y entregas.",
+      "questions": [
+        {
+          "question_id": "CGI_09_Q01",
+          "ai_category": "parallel_tools",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué sistemas, archivos, tableros o controles paralelos usa Compras para gestionar requerimientos, órdenes, proveedores o entregas?",
+          "context": "Se busca entender el ecosistema real: ERP, Excel, correos, WhatsApp, carpetas compartidas, reportes, trackers, portales de proveedores o controles manuales.",
+          "tooltip": "Registre: herramienta, uso específico, dato capturado, responsable, frecuencia de actualización, fuente oficial, decisión soportada, riesgo de duplicidad y mejora deseada.",
+          "expected_answer_structure": [
+            "Herramienta",
+            "Uso",
+            "Dato capturado",
+            "Responsable",
+            "Frecuencia",
+            "Fuente oficial",
+            "Decisión soportada",
+            "Riesgo",
+            "Mejora deseada"
+          ],
+          "good_answer_example": "Además del ERP se usa Excel para seguimiento de órdenes críticas, fechas de entrega y proveedores pendientes. El riesgo es duplicidad, pero permite anticipar atrasos.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "herramienta",
+              "uso",
+              "dato",
+              "responsable",
+              "frecuencia",
+              "fuente",
+              "decisión",
+              "riesgo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_09_Q02",
+          "ai_category": "hidden_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué datos críticos necesita Compras de otras áreas y qué ocurre cuando llegan tarde o incompletos?",
+          "context": "Esta pregunta busca dependencias ocultas que afectan cotización, aprobación, emisión de orden, recepción, pago y continuidad operativa.",
+          "tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato/canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+          "expected_answer_structure": [
+            "Dato requerido",
+            "Área proveedora",
+            "Momento requerido",
+            "Formato/canal",
+            "Responsable",
+            "Consecuencia",
+            "Solución temporal",
+            "Mejora"
+          ],
+          "good_answer_example": "Compras necesita especificación y fecha requerida antes de cotizar. Si llegan tarde, se compran alternativas inadecuadas o se incrementa el costo por urgencia.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "dato",
+              "área",
+              "momento",
+              "canal",
+              "responsable",
+              "consecuencia",
+              "solución",
+              "mejora"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "CGI_10_REUNIONES_RUTINAS",
+      "block_name": "Reuniones, rutinas y gobierno de compras",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 100,
+      "objective": "Capturar reuniones y rutinas que sostienen seguimiento de requerimientos, órdenes, proveedores, presupuesto, urgencias y riesgos de abastecimiento.",
+      "questions": [
+        {
+          "question_id": "CGI_10_Q01",
+          "ai_category": "meeting_registry",
+          "required": true,
+          "min_characters": 350,
+          "question": "Liste las reuniones o rutinas donde se revisan requerimientos, órdenes de compra, proveedores, presupuesto, insumos críticos, entregas o problemas de compras.",
+          "context": "Interesa conocer reuniones formales e informales que sostienen la operación, incluyendo comités, llamadas, grupos de coordinación y revisiones diarias o semanales.",
+          "tooltip": "Registre: nombre, objetivo, frecuencia, duración, participantes, líder, temas fijos, indicadores, decisiones, insumos, salidas, evidencia y consecuencias si no se realiza.",
+          "expected_answer_structure": [
+            "Nombre",
+            "Objetivo",
+            "Frecuencia",
+            "Duración",
+            "Participantes",
+            "Líder",
+            "Temas fijos",
+            "Indicadores",
+            "Decisiones",
+            "Insumos",
+            "Salidas",
+            "Evidencia",
+            "Consecuencia"
+          ],
+          "good_answer_example": "En la revisión semanal se revisan órdenes abiertas, proveedores críticos, entregas atrasadas y compras urgentes. Si no se realiza, aumentan retrasos no anticipados.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "nombre",
+              "objetivo",
+              "frecuencia",
+              "participantes",
+              "líder",
+              "indicadores",
+              "decisiones",
+              "evidencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_10_Q02",
+          "ai_category": "critical_indicators",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué indicadores revisa Compras para saber si la gestión está bajo control y qué umbrales generan alerta?",
+          "context": "Interesa identificar indicadores reales: tiempo de ciclo, órdenes pendientes, entregas a tiempo, ahorro, compras urgentes, proveedores críticos, reclamos, presupuesto y cumplimiento de política.",
+          "tooltip": "Registre: indicador, fórmula si existe, fuente, frecuencia, responsable, meta o umbral, decisión que dispara, reunión donde se revisa y ejemplo reciente.",
+          "expected_answer_structure": [
+            "Indicador",
+            "Fórmula",
+            "Fuente",
+            "Frecuencia",
+            "Responsable",
+            "Meta/umbral",
+            "Decisión",
+            "Reunión",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Se revisa porcentaje de órdenes atrasadas y compras urgentes. Si superan el umbral, se analizan causas con usuarios y proveedores para corregir planificación.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "indicador",
+              "fuente",
+              "frecuencia",
+              "responsable",
+              "umbral",
+              "decisión",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "CGI_11_REGLAS_ESCALAMIENTO",
+      "block_name": "Reglas no escritas, prioridades y escalamiento",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 110,
+      "objective": "Extraer reglas tácitas y umbrales reales de escalamiento usados cuando una compra, proveedor o insumo está en riesgo.",
+      "questions": [
+        {
+          "question_id": "CGI_11_Q01",
+          "ai_category": "non_written_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas no escritas usa Compras para priorizar requerimientos, proveedores, órdenes o urgencias bajo presión?",
+          "context": "Las reglas no escritas explican cómo se opera cuando el procedimiento formal no alcanza: insumos críticos, continuidad productiva, proveedor lento, urgencias o áreas estratégicas.",
+          "tooltip": "Registre: regla no escrita, condición de uso, quién la valida, beneficio, riesgo, evidencia/comunicación y ejemplo real.",
+          "expected_answer_structure": [
+            "Regla no escrita",
+            "Condición de uso",
+            "Validador",
+            "Beneficio",
+            "Riesgo",
+            "Evidencia/comunicación",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Cuando un requerimiento afecta continuidad productiva, se prioriza cotización y seguimiento sobre compras administrativas, siempre que el área usuaria confirme criticidad.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "regla",
+              "condición",
+              "validador",
+              "beneficio",
+              "riesgo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_11_Q02",
+          "ai_category": "escalation_thresholds",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué situaciones obligan a Compras a escalar y a quién se escala según el tipo de problema?",
+          "context": "Se busca mapear umbrales reales: proveedor sin respuesta, insumo crítico sin stock, presupuesto bloqueado, aprobación atrasada, entrega fallida, sobrecosto o compra urgente.",
+          "tooltip": "Registre: situación, umbral, primer responsable, autoridad final, canal usado, tiempo máximo tolerado, evidencia requerida y ejemplo real.",
+          "expected_answer_structure": [
+            "Situación",
+            "Umbral",
+            "Primer responsable",
+            "Autoridad final",
+            "Canal",
+            "Tiempo máximo",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Si un proveedor no confirma entrega de un insumo crítico dentro del tiempo requerido, el comprador escala a jefatura y al área usuaria con evidencia de orden, fecha y riesgo operativo.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "situación",
+              "umbral",
+              "responsable",
+              "autoridad",
+              "canal",
+              "tiempo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "CGI_12_RIESGOS_CONOCIMIENTO",
+      "block_name": "Riesgos, continuidad y conocimiento crítico de compras",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 120,
+      "objective": "Capturar riesgos críticos y conocimiento no documentado que puede afectar abastecimiento, costos, proveedores, cumplimiento y continuidad operativa.",
+      "questions": [
+        {
+          "question_id": "CGI_12_Q01",
+          "ai_category": "operational_risks",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son los riesgos operacionales más críticos de Compras Generales e Insumos y qué controles evitan que se materialicen?",
+          "context": "Incluya riesgos de desabastecimiento, compras erradas, proveedor único, sobrecostos, aprobaciones tardías, recepción incorrecta, pago indebido, documentación incompleta y dependencia humana.",
+          "tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Riesgo",
+            "Causa",
+            "Impacto",
+            "Probabilidad",
+            "Control actual",
+            "Responsable",
+            "Señal temprana",
+            "Contingencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Un riesgo crítico es comprar un insumo incorrecto por especificación incompleta. Se controla validando ficha, usuario solicitante y proveedor antes de emitir la orden.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "riesgo",
+              "causa",
+              "impacto",
+              "control",
+              "responsable",
+              "señal",
+              "contingencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "CGI_12_Q02",
+          "ai_category": "tacit_knowledge",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué conocimiento crítico de compras no está documentado y debería capturarse para evitar dependencia de personas específicas?",
+          "context": "Se busca identificar conocimiento que vive en la experiencia: proveedores confiables, sustitutos aceptados, tiempos reales, precios habituales, contactos clave, criterios de urgencia o formas de destrabar compras.",
+          "tooltip": "Registre: conocimiento no documentado, persona/rol que lo domina, cuándo se usa, riesgo cubierto, consecuencia de perderlo, forma sugerida de documentarlo y prioridad.",
+          "expected_answer_structure": [
+            "Conocimiento",
+            "Persona/rol que lo domina",
+            "Uso",
+            "Riesgo cubierto",
+            "Consecuencia de pérdida",
+            "Forma de documentación",
+            "Prioridad"
+          ],
+          "good_answer_example": "El comprador conoce qué proveedores responden rápido ante urgencias y qué sustitutos ya han sido aceptados por usuarios. Si ese conocimiento se pierde, aumentan demoras y compras incorrectas.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "conocimiento",
+              "quién",
+              "cuándo",
+              "riesgo",
+              "consecuencia",
+              "documentarlo",
+              "prioridad"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    }
+  ]
+}

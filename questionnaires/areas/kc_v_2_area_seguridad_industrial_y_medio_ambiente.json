@@ -1,0 +1,850 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Seguridad Industrial y Medio Ambiente",
+"level": "",
+"metadata": {
+"area_id": "seguridad_industrial_y_medio_ambiente",
+"display_name": "Seguridad Industrial y Medio Ambiente",
+"aliases": [
+"SIMA",
+"seguridad industrial",
+"medio ambiente",
+"seguridad y ambiente",
+"salud ocupacional",
+"prevención de riesgos",
+"gestión ambiental",
+"EHS",
+"HSE"
+],
+"macro_process": "Gestión de seguridad industrial, salud ocupacional, prevención de riesgos y control ambiental"
+},
+"blocks": [
+{
+"block_id": "SIMA_01_IDENTIFICACION_RIESGOS_OPERACIONALES",
+"block_name": "Identificación de riesgos operacionales",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar cómo Seguridad Industrial y Medio Ambiente identifica, prioriza y controla riesgos asociados a personas, procesos, equipos, instalaciones y ambiente.",
+"questions": [
+{
+"question_id": "SIMA_01_Q01",
+"ai_category": "operational_risks",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se identifican los riesgos de seguridad industrial y medio ambiente en las operaciones diarias.",
+"context": "La respuesta debe describir la forma real en que el área detecta riesgos en planta, mantenimiento, producción, bodegas, cámaras, contratistas, residuos, químicos, energías peligrosas y condiciones ambientales.",
+"tooltip": "Registre: fuente de identificación, proceso o área evaluada, responsable, frecuencia, herramienta usada, tipo de riesgo, criterio de criticidad, evidencia generada, acción tomada y ejemplo real.",
+"expected_answer_structure": [
+"Fuente de identificación del riesgo",
+"Área o proceso evaluado",
+"Responsable",
+"Frecuencia",
+"Herramienta o formato usado",
+"Criterio de criticidad",
+"Acción tomada",
+"Evidencia generada",
+"Ejemplo real"
+],
+"good_answer_example": "Los riesgos se identifican mediante inspecciones de seguridad, reportes de condiciones inseguras, análisis de tareas, recorridos en planta y revisión de incidentes. Por ejemplo, si se detecta una fuga de agua en zona de tránsito, se registra la condición, se señaliza el área, se comunica a mantenimiento y se hace seguimiento hasta el cierre.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"fuente de identificación",
+"responsable",
+"frecuencia",
+"criterio de criticidad",
+"acción tomada",
+"evidencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona que se hacen inspecciones",
+"No indica responsables",
+"No explica criterios de criticidad",
+"No menciona evidencia",
+"No incluye ejemplo real"
+]
+},
+{
+"question_id": "SIMA_01_Q02",
+"ai_category": "early_warnings",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales tempranas permiten anticipar incidentes de seguridad industrial o eventos ambientales antes de que ocurran?",
+"context": "Busca transformar observaciones preventivas en alertas reutilizables por IA para evitar accidentes, incumplimientos o impactos ambientales.",
+"tooltip": "Incluya: señal temprana, dónde aparece, cómo se detecta, quién la detecta, riesgo asociado, tiempo disponible para reaccionar, acción preventiva y ejemplo real.",
+"expected_answer_structure": [
+"Señal temprana",
+"Zona o proceso donde aparece",
+"Forma de detección",
+"Responsable que la detecta",
+"Riesgo asociado",
+"Tiempo de reacción",
+"Acción preventiva",
+"Ejemplo real"
+],
+"good_answer_example": "Una señal temprana puede ser el aumento de reportes de actos inseguros en una línea, presencia de derrames menores, uso incorrecto de EPP o acumulación de residuos fuera del punto definido. Estas señales permiten intervenir antes de que ocurra un accidente o una desviación ambiental.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señales tempranas",
+"zona",
+"forma de detección",
+"responsable",
+"riesgo",
+"acción preventiva",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona accidentes ya ocurridos",
+"No identifica señales preventivas",
+"No indica quién detecta",
+"No describe acción preventiva"
+]
+}
+]
+},
+{
+"block_id": "SIMA_02_CONTROLES_CRITICOS_SEGURIDAD",
+"block_name": "Controles críticos de seguridad industrial",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 20,
+"objective": "Identificar controles de seguridad que nunca pueden fallar por su impacto sobre personas, continuidad operacional, cumplimiento legal o reputación.",
+"questions": [
+{
+"question_id": "SIMA_02_Q01",
+"ai_category": "manual_controls",
+"required": true,
+"min_characters": 300,
+"question": "Detalle los controles de seguridad industrial que nunca pueden fallar durante la operación.",
+"context": "La respuesta debe capturar controles críticos como permisos de trabajo, bloqueo y etiquetado, EPP, trabajos en altura, espacios confinados, manejo de químicos, equipos móviles, zonas calientes, guardas de máquinas y control de contratistas.",
+"tooltip": "Registre: control crítico, proceso donde aplica, responsable, frecuencia, documento o evidencia, criterio de aceptación, acción si falla y consecuencia operacional o legal.",
+"expected_answer_structure": [
+"Control crítico",
+"Proceso o actividad donde aplica",
+"Responsable",
+"Frecuencia",
+"Documento o evidencia",
+"Criterio de aceptación",
+"Acción si falla",
+"Consecuencia si falla",
+"Ejemplo real"
+],
+"good_answer_example": "Un control crítico es verificar permisos de trabajo antes de actividades de mantenimiento con riesgo. El responsable valida condiciones, EPP, bloqueo de energía y autorizaciones. Si el permiso no está completo, la actividad no debe iniciar hasta corregir la condición.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"control crítico",
+"responsable",
+"frecuencia",
+"evidencia",
+"criterio de aceptación",
+"acción si falla",
+"consecuencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona uso de EPP",
+"No describe controles específicos",
+"No indica evidencia",
+"No explica qué pasa si falla",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "SIMA_02_Q02",
+"ai_category": "critical_failures",
+"required": true,
+"min_characters": 300,
+"question": "Explique qué fallas de seguridad industrial se consideran críticas y cómo se actúa cuando ocurren.",
+"context": "Busca capturar eventos que obligan a detener trabajos, escalar incidentes, bloquear áreas o activar planes de emergencia.",
+"tooltip": "Incluya: falla crítica, cómo se detecta, responsable que reporta, área afectada, acción inmediata, evidencia requerida, escalamiento, investigación y consecuencia si no se actúa.",
+"expected_answer_structure": [
+"Falla crítica",
+"Cómo se detecta",
+"Responsable que reporta",
+"Área afectada",
+"Acción inmediata",
+"Evidencia requerida",
+"Escalamiento",
+"Investigación posterior",
+"Consecuencia si no se actúa"
+],
+"good_answer_example": "Una falla crítica es ejecutar mantenimiento sin bloqueo de energía. Si se detecta, la actividad se detiene inmediatamente, se informa al responsable del área, se corrige el permiso y se documenta la desviación. Si no se actúa, puede ocurrir un accidente grave.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"falla crítica",
+"detección",
+"responsable",
+"acción inmediata",
+"evidencia",
+"escalamiento",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No identifica fallas críticas",
+"No indica acción inmediata",
+"No menciona escalamiento",
+"No explica consecuencias"
+]
+}
+]
+},
+{
+"block_id": "SIMA_03_GESTION_AMBIENTAL_OPERATIVA",
+"block_name": "Gestión ambiental operativa",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 30,
+"objective": "Capturar cómo se controlan impactos ambientales, residuos, efluentes, emisiones, consumos, derrames y cumplimiento ambiental en la operación.",
+"questions": [
+{
+"question_id": "SIMA_03_Q01",
+"ai_category": "operational_constraints",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se gestionan los aspectos ambientales críticos de la operación atunera e industrial.",
+"context": "La respuesta debe cubrir residuos, efluentes, olores, emisiones, uso de agua, químicos, aceites, subproductos, limpieza, derrames y controles ambientales aplicables.",
+"tooltip": "Registre: aspecto ambiental, proceso que lo genera, control aplicado, responsable, frecuencia, evidencia, criterio de cumplimiento, acción ante desviación y ejemplo real.",
+"expected_answer_structure": [
+"Aspecto ambiental crítico",
+"Proceso que lo genera",
+"Control aplicado",
+"Responsable",
+"Frecuencia",
+"Evidencia generada",
+"Criterio de cumplimiento",
+"Acción ante desviación",
+"Ejemplo real"
+],
+"good_answer_example": "Los residuos generados en planta se segregan según tipo y se controlan mediante puntos definidos, registros de retiro y coordinación con gestores autorizados. Si se detecta mezcla incorrecta o acumulación fuera de lugar, se corrige la disposición y se comunica al área responsable.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto ambiental",
+"proceso generador",
+"control",
+"responsable",
+"frecuencia",
+"evidencia",
+"acción ante desviación",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona cuidado ambiental",
+"No identifica aspectos ambientales concretos",
+"No menciona evidencia",
+"No explica acciones ante desviación"
+]
+},
+{
+"question_id": "SIMA_03_Q02",
+"ai_category": "operational_exceptions",
+"required": true,
+"min_characters": 300,
+"question": "Describa qué excepciones ambientales ocurren en la práctica y cómo se gestionan sin perder trazabilidad.",
+"context": "Busca capturar situaciones fuera del flujo normal: derrames, residuos mal segregados, reboses, parámetros fuera de rango, acumulaciones, reclamos, olores o eventos no planificados.",
+"tooltip": "Incluya: tipo de excepción, causa probable, responsable que detecta, acción inmediata, área notificada, evidencia, seguimiento, cierre y ejemplo real.",
+"expected_answer_structure": [
+"Tipo de excepción ambiental",
+"Causa probable",
+"Responsable que detecta",
+"Acción inmediata",
+"Área notificada",
+"Evidencia generada",
+"Seguimiento",
+"Cierre",
+"Ejemplo real"
+],
+"good_answer_example": "Una excepción ambiental puede ser un derrame menor de aceite en zona de mantenimiento. Se contiene inmediatamente, se señaliza, se limpia con material absorbente, se dispone el residuo correctamente y se registra la novedad para seguimiento.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"excepción",
+"causa",
+"acción inmediata",
+"área notificada",
+"evidencia",
+"seguimiento",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No menciona excepciones reales",
+"No indica cómo se contienen",
+"No menciona evidencia",
+"No incluye cierre o seguimiento"
+]
+}
+]
+},
+{
+"block_id": "SIMA_04_INCIDENTES_ACCIDENTES_INVESTIGACION",
+"block_name": "Incidentes, accidentes e investigación",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 40,
+"objective": "Capturar cómo se reportan, investigan, escalan y cierran incidentes de seguridad y ambiente.",
+"questions": [
+{
+"question_id": "SIMA_04_Q01",
+"ai_category": "governance_routines",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se reportan, investigan y cierran incidentes, accidentes o casi accidentes.",
+"context": "La respuesta debe reflejar la rutina real desde la detección del evento hasta el cierre de acciones correctivas y preventivas.",
+"tooltip": "Registre: tipo de evento, responsable que reporta, canal, tiempo máximo, investigación, metodología usada, responsables del análisis, acciones correctivas, seguimiento y evidencia de cierre.",
+"expected_answer_structure": [
+"Tipo de evento",
+"Quién reporta",
+"Canal de reporte",
+"Tiempo máximo de reporte",
+"Metodología de investigación",
+"Responsables del análisis",
+"Acciones correctivas",
+"Seguimiento",
+"Evidencia de cierre",
+"Ejemplo real"
+],
+"good_answer_example": "Cuando ocurre un casi accidente, el trabajador o supervisor lo reporta al área de seguridad. Se registra el evento, se investiga la causa, se definen acciones correctivas y se hace seguimiento hasta el cierre. La evidencia puede incluir reporte, fotografías, acta de investigación y cierre de acciones.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"tipo de evento",
+"canal",
+"tiempo máximo",
+"investigación",
+"acciones correctivas",
+"seguimiento",
+"evidencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona que se reportan incidentes",
+"No describe investigación",
+"No menciona acciones correctivas",
+"No indica evidencia de cierre"
+]
+},
+{
+"question_id": "SIMA_04_Q02",
+"ai_category": "decision_rules",
+"required": true,
+"min_characters": 300,
+"question": "Describa los criterios usados para decidir si una actividad debe detenerse por riesgo de seguridad o ambiental.",
+"context": "Busca capturar reglas SI → ENTONCES que permitan automatizar criterios de detención preventiva o escalamiento.",
+"tooltip": "Incluya: condición detectada, nivel de riesgo, criterio de detención, responsable autorizado, acción inmediata, comunicación requerida, evidencia y ejemplo SI → ENTONCES.",
+"expected_answer_structure": [
+"Condición detectada",
+"Nivel de riesgo",
+"Criterio de detención",
+"Responsable autorizado",
+"Acción inmediata",
+"Comunicación requerida",
+"Evidencia",
+"Ejemplo SI → ENTONCES"
+],
+"good_answer_example": "Si una actividad de mantenimiento se ejecuta sin bloqueo de energía o sin permiso autorizado, entonces se detiene de inmediato, se informa al responsable del área y se corrige la condición antes de reiniciar. La evidencia debe quedar registrada en el permiso o reporte de seguridad.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"condición",
+"criterio de detención",
+"responsable",
+"acción inmediata",
+"comunicación",
+"evidencia",
+"regla SI ENTONCES"
+]
+},
+"incomplete_if": [
+"No define criterios de detención",
+"No identifica responsable autorizado",
+"No formula reglas SI ENTONCES",
+"No menciona evidencia"
+]
+}
+]
+},
+{
+"block_id": "SIMA_05_CUMPLIMIENTO_LEGAL_NORMATIVO",
+"block_name": "Cumplimiento legal, normativo y documental",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 50,
+"objective": "Identificar obligaciones legales, permisos, reportes, auditorías, documentación y controles de cumplimiento en seguridad industrial y ambiente.",
+"questions": [
+{
+"question_id": "SIMA_05_Q01",
+"ai_category": "sop_alignment",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se asegura el cumplimiento legal y documental en seguridad industrial y medio ambiente.",
+"context": "Debe capturar permisos, registros, matrices legales, reportes a autoridades, inspecciones, auditorías, procedimientos, evidencias y responsables.",
+"tooltip": "Registre: obligación legal o normativa, responsable, frecuencia, documento requerido, evidencia, sistema o archivo usado, riesgo de incumplimiento, alerta de vencimiento y ejemplo real.",
+"expected_answer_structure": [
+"Obligación legal o normativa",
+"Responsable",
+"Frecuencia",
+"Documento requerido",
+"Evidencia",
+"Sistema o archivo usado",
+"Riesgo de incumplimiento",
+"Alerta de vencimiento",
+"Ejemplo real"
+],
+"good_answer_example": "El cumplimiento se controla mediante matriz legal, revisión de permisos, registros de inspecciones, reportes ambientales y seguimiento de vencimientos. Si un permiso o informe se aproxima a vencer, se coordina su actualización con el responsable y se conserva evidencia documental.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"obligación",
+"responsable",
+"frecuencia",
+"documento",
+"evidencia",
+"riesgo",
+"alerta de vencimiento",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo indica que se cumple la ley",
+"No menciona documentos específicos",
+"No indica responsables",
+"No explica seguimiento de vencimientos"
+]
+},
+{
+"question_id": "SIMA_05_Q02",
+"ai_category": "parallel_tools",
+"required": true,
+"min_characters": 300,
+"question": "Indique qué herramientas, archivos paralelos o controles informales usa el área para asegurar seguimiento de seguridad y ambiente.",
+"context": "Busca identificar Excel, carpetas, chats, listas manuales, tableros o registros auxiliares que sostienen la gestión real aunque no estén integrados en sistemas oficiales.",
+"tooltip": "Incluya: herramienta paralela, propósito, responsable, frecuencia de actualización, datos registrados, riesgo si no se actualiza, relación con sistemas oficiales y ejemplo real.",
+"expected_answer_structure": [
+"Herramienta o archivo paralelo",
+"Propósito",
+"Responsable",
+"Frecuencia de actualización",
+"Datos registrados",
+"Riesgo si no se actualiza",
+"Relación con sistema oficial",
+"Ejemplo real"
+],
+"good_answer_example": "El área puede usar archivos Excel para seguimiento de acciones correctivas, vencimientos de permisos, inspecciones o entrega de EPP. Estos archivos se actualizan semanalmente y permiten controlar compromisos que aún no están completamente integrados en un sistema.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"herramienta",
+"propósito",
+"responsable",
+"frecuencia",
+"riesgo",
+"relación con sistema oficial",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Niega herramientas paralelas sin explicar",
+"No menciona frecuencia",
+"No indica responsable",
+"No explica riesgo de no actualizar"
+]
+}
+]
+},
+{
+"block_id": "SIMA_06_CAPACITACION_CULTURA_PREVENTIVA",
+"block_name": "Capacitación y cultura preventiva",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 60,
+"objective": "Capturar cómo se gestionan competencias, inducciones, entrenamientos, campañas, comportamientos seguros y cultura preventiva.",
+"questions": [
+{
+"question_id": "SIMA_06_Q01",
+"ai_category": "human_dependencies",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se asegura que el personal propio, temporal y contratista conozca los controles de seguridad y ambiente aplicables.",
+"context": "La respuesta debe describir inducciones, capacitaciones, charlas, entrenamientos, evaluaciones, refuerzos y seguimiento de cumplimiento.",
+"tooltip": "Registre: tipo de personal, capacitación requerida, frecuencia, responsable, evidencia, evaluación, refuerzo, brecha frecuente y ejemplo real.",
+"expected_answer_structure": [
+"Tipo de personal",
+"Capacitación o inducción requerida",
+"Frecuencia",
+"Responsable",
+"Evidencia",
+"Evaluación o validación",
+"Brecha frecuente",
+"Acción de refuerzo",
+"Ejemplo real"
+],
+"good_answer_example": "El personal nuevo y contratista recibe inducción antes de ingresar a zonas operativas. Se explican riesgos, EPP, rutas de evacuación, normas ambientales y controles críticos. La evidencia queda en registros de asistencia o evaluación. Si se detecta incumplimiento, se refuerza la capacitación con el área responsable.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"tipo de personal",
+"capacitación",
+"frecuencia",
+"responsable",
+"evidencia",
+"evaluación",
+"brecha",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo menciona capacitaciones generales",
+"No diferencia personal propio y contratista",
+"No menciona evidencia",
+"No indica cómo se valida aprendizaje"
+]
+},
+{
+"question_id": "SIMA_06_Q02",
+"ai_category": "non_written_rules",
+"required": true,
+"min_characters": 300,
+"question": "Describa reglas no escritas o prácticas preventivas que el personal aplica para evitar accidentes o impactos ambientales.",
+"context": "Busca capturar comportamientos aprendidos por experiencia que ayudan a prevenir eventos aunque no siempre estén documentados.",
+"tooltip": "Incluya: regla o práctica, situación donde aplica, quién la conoce, riesgo que evita, cómo se enseña, consecuencia si no se cumple y ejemplo real.",
+"expected_answer_structure": [
+"Regla o práctica preventiva",
+"Situación donde aplica",
+"Quién la conoce",
+"Riesgo que evita",
+"Cómo se transmite",
+"Consecuencia si no se cumple",
+"Ejemplo real"
+],
+"good_answer_example": "Una práctica preventiva es detener una tarea cuando el operador identifica una condición insegura aunque la actividad esté programada. Esta regla se transmite por experiencia y se refuerza en charlas. Evita accidentes por presión operativa o exceso de confianza.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"regla",
+"situación",
+"quién la conoce",
+"riesgo",
+"cómo se transmite",
+"consecuencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No identifica reglas concretas",
+"No explica cuándo aplican",
+"No menciona riesgo evitado",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "SIMA_07_COORDINACION_CON_AREAS_CRITICAS",
+"block_name": "Coordinación con áreas críticas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 70,
+"objective": "Capturar cómo Seguridad Industrial y Medio Ambiente se coordina con producción, mantenimiento, calidad, recursos humanos, sistemas de gestión, bodegas, cámaras y contratistas.",
+"questions": [
+{
+"question_id": "SIMA_07_Q01",
+"ai_category": "coordination_patterns",
+"required": true,
+"min_characters": 300,
+"question": "Describa las coordinaciones críticas que el área mantiene con otras áreas para prevenir incidentes y asegurar cumplimiento.",
+"context": "La respuesta debe identificar áreas coordinadas, información compartida, frecuencia, decisiones, fricciones y consecuencias si la coordinación falla.",
+"tooltip": "Registre: área coordinada, motivo de coordinación, frecuencia, información intercambiada, responsable de cada lado, decisión tomada, evidencia generada y consecuencia si falla.",
+"expected_answer_structure": [
+"Área coordinada",
+"Motivo de coordinación",
+"Frecuencia",
+"Información intercambiada",
+"Responsables",
+"Decisión tomada",
+"Evidencia generada",
+"Consecuencia si falla",
+"Ejemplo real"
+],
+"good_answer_example": "Con mantenimiento se coordinan permisos de trabajo, bloqueo de energía y actividades de riesgo. Con producción se coordinan condiciones inseguras y paradas preventivas. Con Recursos Humanos se coordinan inducciones y capacitación. Si la coordinación falla, pueden ejecutarse trabajos sin controles completos.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"áreas",
+"motivo",
+"frecuencia",
+"responsables",
+"información",
+"decisión",
+"evidencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo lista áreas",
+"No explica qué se coordina",
+"No menciona frecuencia",
+"No describe consecuencias"
+]
+},
+{
+"question_id": "SIMA_07_Q02",
+"ai_category": "process_friction",
+"required": true,
+"min_characters": 300,
+"question": "Identifique fricciones frecuentes entre Seguridad Industrial y Medio Ambiente y otras áreas, y cómo se resuelven en la práctica.",
+"context": "Busca capturar tensiones operativas reales cuando existen presiones de producción, mantenimiento, tiempo, costo o cumplimiento.",
+"tooltip": "Incluya: área involucrada, fricción, causa, impacto, responsable que destraba, regla aplicada, solución práctica, evidencia y ejemplo reciente.",
+"expected_answer_structure": [
+"Área involucrada",
+"Fricción recurrente",
+"Causa",
+"Impacto",
+"Quién destraba",
+"Regla aplicada",
+"Solución práctica",
+"Evidencia",
+"Ejemplo real"
+],
+"good_answer_example": "Una fricción frecuente ocurre cuando producción requiere continuar una actividad, pero seguridad identifica una condición insegura. La situación se resuelve evaluando el riesgo, definiendo controles mínimos y autorizando solo cuando la condición se corrige. Si el riesgo es alto, la actividad se detiene.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"fricción",
+"área",
+"causa",
+"impacto",
+"responsable",
+"regla",
+"solución",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No describe fricciones concretas",
+"No explica cómo se resuelven",
+"No indica quién destraba",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "SIMA_08_REUNIONES_INDICADORES_SEGUIMIENTO",
+"block_name": "Reuniones, indicadores y seguimiento",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 80,
+"objective": "Identificar reuniones, indicadores, rutinas de seguimiento, tableros y decisiones preventivas o correctivas del área.",
+"questions": [
+{
+"question_id": "SIMA_08_Q01",
+"ai_category": "meeting_registry",
+"required": true,
+"min_characters": 300,
+"question": "Registre las reuniones críticas donde Seguridad Industrial y Medio Ambiente participa o entrega información clave.",
+"context": "Debe capturar reuniones de seguridad, ambiente, comités, auditorías, seguimiento de acciones, revisión de incidentes y coordinación operativa.",
+"tooltip": "Registre: nombre de reunión, objetivo, frecuencia, duración, participantes obligatorios, quién lidera, temas fijos, indicadores revisados, decisiones tomadas, insumos requeridos, salidas esperadas, acta o evidencia y consecuencias si no se realiza.",
+"expected_answer_structure": [
+"Nombre de la reunión",
+"Objetivo",
+"Frecuencia",
+"Duración",
+"Participantes",
+"Líder",
+"Temas fijos",
+"Indicadores revisados",
+"Decisiones tomadas",
+"Evidencia",
+"Consecuencia si no se realiza"
+],
+"good_answer_example": "El área participa en reuniones de seguimiento de incidentes, comités de seguridad y revisión de acciones correctivas. Se revisan indicadores de accidentabilidad, condiciones inseguras, hallazgos ambientales y cumplimiento de planes. Si no se realizan, las acciones pueden quedar abiertas y repetirse las desviaciones.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"nombre",
+"frecuencia",
+"participantes",
+"indicadores",
+"decisiones",
+"evidencia",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"Solo menciona reuniones sin detalle",
+"No indica frecuencia",
+"No menciona indicadores",
+"No describe decisiones o evidencias"
+]
+},
+{
+"question_id": "SIMA_08_Q02",
+"ai_category": "critical_indicators",
+"required": true,
+"min_characters": 300,
+"question": "Indique qué indicadores monitorea el área y cómo se usan para tomar decisiones preventivas, correctivas o gerenciales.",
+"context": "La respuesta debe diferenciar indicadores formales, indicadores prácticos y señales usadas aunque no estén documentadas.",
+"tooltip": "Incluya: indicador, fórmula o forma de cálculo, frecuencia, fuente de datos, responsable, umbral esperado, decisión asociada, área que recibe la información y ejemplo de uso.",
+"expected_answer_structure": [
+"Indicador",
+"Cómo se calcula o interpreta",
+"Frecuencia",
+"Fuente de datos",
+"Responsable",
+"Umbral o criterio",
+"Decisión asociada",
+"Área receptora",
+"Ejemplo real"
+],
+"good_answer_example": "Se monitorean accidentabilidad, incidentes, casi accidentes, condiciones inseguras, cumplimiento de inspecciones, cierre de acciones correctivas, entrega de EPP, capacitaciones y hallazgos ambientales. Si aumenta una tendencia, se refuerzan controles o se interviene el área afectada.",
+"validation_rules": {
+"min_items": 4,
+"requires_examples": true,
+"incomplete_if_missing": [
+"indicador",
+"frecuencia",
+"fuente",
+"responsable",
+"criterio",
+"decisión",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo lista indicadores",
+"No explica uso para decisiones",
+"No menciona frecuencia",
+"No incluye criterios o umbrales"
+]
+}
+]
+},
+{
+"block_id": "SIMA_09_CONOCIMIENTO_TACITO_CONTINUIDAD",
+"block_name": "Conocimiento tácito y continuidad operacional",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 90,
+"objective": "Detectar conocimiento crítico concentrado en personas, criterios no documentados y riesgos de pérdida de continuidad en seguridad y ambiente.",
+"questions": [
+{
+"question_id": "SIMA_09_Q01",
+"ai_category": "tacit_knowledge",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué conocimiento crítico de Seguridad Industrial y Medio Ambiente depende de personas específicas y no está suficientemente documentado?",
+"context": "Permite detectar dependencia de expertos internos en permisos, inspecciones, matriz legal, emergencias, auditorías, contratistas, residuos, autoridades o criterios de riesgo.",
+"tooltip": "Incluya: conocimiento crítico, persona o rol que lo domina, situación donde se necesita, riesgo si esa persona no está, respaldo existente, nivel de documentación y acción sugerida para capturarlo.",
+"expected_answer_structure": [
+"Conocimiento crítico",
+"Persona o rol que lo domina",
+"Cuándo se necesita",
+"Riesgo de ausencia",
+"Respaldo actual",
+"Nivel de documentación",
+"Acción sugerida",
+"Ejemplo real"
+],
+"good_answer_example": "El conocimiento sobre interpretación de obligaciones legales, manejo de ciertos permisos, criterios para detener trabajos de alto riesgo o respuesta ante emergencias puede estar concentrado en pocos responsables. Si ellos no están disponibles, se puede retrasar una decisión crítica o aplicar criterios inconsistentes.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"conocimiento",
+"persona o rol",
+"situación",
+"riesgo",
+"respaldo",
+"documentación",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona personas o roles",
+"No indica riesgo de ausencia",
+"No describe conocimiento específico",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "SIMA_09_Q02",
+"ai_category": "operational_priorities",
+"required": true,
+"min_characters": 300,
+"question": "Explique qué prioridades no negociables debe proteger el área cuando existen presiones de producción, tiempo o costo.",
+"context": "Busca capturar criterios de decisión cuando seguridad, ambiente y operación entran en tensión.",
+"tooltip": "Registre: prioridad no negociable, situación donde se activa, presión existente, criterio de decisión, responsable, acción tomada, consecuencia de ceder y ejemplo real.",
+"expected_answer_structure": [
+"Prioridad no negociable",
+"Situación donde aplica",
+"Presión existente",
+"Criterio de decisión",
+"Responsable",
+"Acción tomada",
+"Consecuencia de ceder",
+"Ejemplo real"
+],
+"good_answer_example": "Una prioridad no negociable es no iniciar trabajos de riesgo sin permisos, EPP y controles mínimos validados, aunque exista presión por reiniciar una línea. Si se cede, puede ocurrir un accidente grave o incumplimiento legal.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"prioridad",
+"situación",
+"presión",
+"criterio",
+"responsable",
+"acción",
+"consecuencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No identifica prioridades no negociables",
+"No menciona presión operativa",
+"No explica criterio de decisión",
+"No incluye ejemplo"
+]
+}
+]
+}
+]
+}

@@ -1,0 +1,459 @@
+{
+  "questionnaire_version": "KC_V2",
+  "industry": "industrial_atunera",
+  "source_type": "area",
+  "area": "Mantenimiento",
+  "level": null,
+  "area_metadata": {
+    "area_id": "area_mantenimiento",
+    "display_name": "Mantenimiento",
+    "aliases": ["Mantenimiento", "Área de Mantenimiento", "Maintenance", "Mantenimiento Industrial", "Mantenimiento Preventivo", "Mantenimiento Correctivo", "Taller de Mantenimiento", "Soporte Técnico de Planta", "Confiabilidad", "Gestión de Activos"],
+    "macro_process": "MP-1500 MANTENIMIENTO, ACTIVOS Y SERVICIOS INDUSTRIALES"
+  },
+  "blocks": [
+    {
+      "block_id": "MANT_01_FLUJO_MANTENIMIENTO",
+      "block_name": "Flujo integral de mantenimiento",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 10,
+      "objective": "Capturar cómo Mantenimiento gestiona solicitudes, órdenes de trabajo, diagnóstico, ejecución, validación, cierre y seguimiento.",
+      "questions": [
+        {
+          "question_id": "MANT_01_Q01",
+          "ai_category": "sop_alignment",
+          "required": true,
+          "min_characters": 350,
+          "question": "Describa el flujo real de trabajo de Mantenimiento desde que se detecta una necesidad o falla hasta que el trabajo queda ejecutado, validado y cerrado.",
+          "context": "El objetivo es entender la operación real de Mantenimiento: origen de solicitudes, diagnóstico, planificación, ejecución, coordinación con áreas usuarias, validación, cierre documental y seguimiento.",
+          "tooltip": "Registre: origen de la solicitud, etapas, responsables, documentos o registros, sistemas usados, validaciones, tiempos habituales, controles críticos, excepciones y consecuencias si una etapa falla.",
+          "expected_answer_structure": ["Origen de la solicitud", "Etapas", "Responsables", "Documentos/registros", "Sistemas", "Validaciones", "Tiempos", "Controles críticos", "Excepciones", "Consecuencias"],
+          "good_answer_example": "Una falla puede ser reportada por Producción o detectada en inspección. Mantenimiento evalúa criticidad, genera orden de trabajo, asigna técnico, ejecuta, valida con el área usuaria y cierra con evidencia.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["origen", "etapas", "responsables", "documentos", "sistemas", "validaciones", "controles", "consecuencias"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_01_Q02",
+          "ai_category": "operational_decisions",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué decisiones operativas toma Mantenimiento durante la atención de fallas, trabajos programados o emergencias?",
+          "context": "Se busca capturar criterios reales para priorizar trabajos, decidir reparación temporal o definitiva, detener equipos, asignar técnicos, solicitar repuestos, escalar riesgos o coordinar ventanas de intervención.",
+          "tooltip": "Registre: decisión, criterio utilizado, información requerida, responsable, momento de decisión, alternativas consideradas, riesgo, evidencia y ejemplo real.",
+          "expected_answer_structure": ["Decisión", "Criterio", "Información requerida", "Responsable", "Momento", "Alternativas", "Riesgo", "Evidencia", "Ejemplo"],
+          "good_answer_example": "Si una falla afecta una línea crítica, Mantenimiento decide intervenir de inmediato o programar una ventana según seguridad, impacto productivo, disponibilidad de repuestos y riesgo de daño mayor.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["decisión", "criterio", "información", "responsable", "riesgo", "evidencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "MANT_02_SOLICITUDES_OT",
+      "block_name": "Solicitudes, avisos y órdenes de trabajo",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 20,
+      "objective": "Identificar cómo se reciben, clasifican, aprueban, ejecutan y cierran solicitudes u órdenes de trabajo.",
+      "questions": [
+        {
+          "question_id": "MANT_02_Q01",
+          "ai_category": "hidden_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué información necesita Mantenimiento de Producción, Bodega, Calidad, Seguridad u otras áreas para atender correctamente una solicitud u orden de trabajo?",
+          "context": "La calidad de la solicitud afecta diagnóstico, tiempo de respuesta, repuestos, permisos, seguridad, ejecución y cierre.",
+          "tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato/canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+          "expected_answer_structure": ["Dato requerido", "Área proveedora", "Momento requerido", "Formato/canal", "Responsable", "Consecuencia", "Solución temporal", "Mejora"],
+          "good_answer_example": "Mantenimiento necesita equipo afectado, síntoma, ubicación, criticidad, condiciones de seguridad, disponibilidad del equipo y evidencia. Si falta información, se retrasa el diagnóstico.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["dato", "área", "momento", "canal", "responsable", "consecuencia", "solución", "mejora"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_02_Q02",
+          "ai_category": "manual_controls",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué controles se aplican para asegurar que una orden de trabajo esté bien creada, ejecutada y cerrada?",
+          "context": "Interesa identificar controles sobre descripción del trabajo, equipo, repuestos, responsable, tiempo, causa, evidencia, conformidad del área usuaria y cierre técnico.",
+          "tooltip": "Registre: control, responsable, documento asociado, momento, sistema o repositorio, validación aplicada, riesgo si falla, evidencia y ejemplo real.",
+          "expected_answer_structure": ["Control", "Responsable", "Documento asociado", "Momento", "Sistema/repositorio", "Validación", "Riesgo", "Evidencia", "Ejemplo"],
+          "good_answer_example": "Antes de cerrar una orden se valida que el trabajo esté ejecutado, el equipo funcione, exista conformidad del área usuaria y se registren repuestos, causa y tiempo empleado.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["control", "responsable", "documento", "momento", "validación", "riesgo", "evidencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "MANT_03_PREVENTIVO_PROGRAMADO",
+      "block_name": "Mantenimiento preventivo y programación",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 30,
+      "objective": "Capturar cómo se planifica, programa, ejecuta y controla el mantenimiento preventivo.",
+      "questions": [
+        {
+          "question_id": "MANT_03_Q01",
+          "ai_category": "governance_routines",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo se define y ejecuta el plan de mantenimiento preventivo?",
+          "context": "Se busca conocer frecuencia, criterios de planificación, recursos, responsables, ventanas de intervención, coordinación con operación, evidencias y control de cumplimiento.",
+          "tooltip": "Registre: equipo o sistema, frecuencia, responsable, actividad preventiva, recursos, ventana de intervención, evidencia, control de cumplimiento y ejemplo real.",
+          "expected_answer_structure": ["Equipo/sistema", "Frecuencia", "Responsable", "Actividad preventiva", "Recursos", "Ventana de intervención", "Evidencia", "Control de cumplimiento", "Ejemplo"],
+          "good_answer_example": "El plan preventivo se organiza por criticidad de equipos y frecuencia definida. Se coordina con Producción para liberar equipos y se registra evidencia al finalizar.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["equipo", "frecuencia", "responsable", "actividad", "recursos", "ventana", "evidencia", "control"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_03_Q02",
+          "ai_category": "operational_alerts",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué alertas deben activarse cuando un mantenimiento preventivo está atrasado o no puede ejecutarse?",
+          "context": "Interesa definir alertas sobre trabajos vencidos, falta de repuestos, equipo no disponible, técnico no asignado, parada cancelada, riesgo de falla o incumplimiento de plan.",
+          "tooltip": "Registre: alerta, condición disparadora, detector, decisor, canal, tiempo máximo de reacción, acción inicial y consecuencia de no actuar.",
+          "expected_answer_structure": ["Alerta", "Condición disparadora", "Detector", "Decisor", "Canal", "Tiempo máximo", "Acción inicial", "Consecuencia"],
+          "good_answer_example": "Si un preventivo de equipo crítico se vence, Mantenimiento alerta a Producción y jefatura para reprogramar una ventana y evitar falla no planificada.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["alerta", "condición", "detector", "decisor", "canal", "tiempo", "acción", "consecuencia"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "MANT_04_CORRECTIVO_EMERGENCIAS",
+      "block_name": "Mantenimiento correctivo, emergencias y atención de fallas",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 40,
+      "objective": "Identificar cómo se atienden fallas correctivas, emergencias, paradas no planificadas y acciones temporales o definitivas.",
+      "questions": [
+        {
+          "question_id": "MANT_04_Q01",
+          "ai_category": "critical_failures",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué fallas críticas atiende Mantenimiento y cómo se gestionan desde la detección hasta la recuperación del equipo o sistema?",
+          "context": "Se busca capturar fallas que afectan producción, seguridad, calidad, servicios críticos, equipos clave, cámaras, energía, frío, bombeo, líneas o continuidad operativa.",
+          "tooltip": "Registre: falla crítica, causa probable, punto de detección, responsable, acción inmediata, reparación definitiva, evidencia, tiempo de recuperación y ejemplo histórico.",
+          "expected_answer_structure": ["Falla crítica", "Causa probable", "Punto de detección", "Responsable", "Acción inmediata", "Reparación definitiva", "Evidencia", "Tiempo de recuperación", "Ejemplo"],
+          "good_answer_example": "Una falla crítica puede ser la parada de un equipo principal. Se atiende con diagnóstico inmediato, intervención técnica, prueba de funcionamiento y validación con Producción antes de liberar.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["falla", "causa", "detección", "responsable", "acción", "reparación", "evidencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_04_Q02",
+          "ai_category": "decision_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas se aplican para decidir si una falla se atiende de inmediato, se programa, se repara temporalmente o se escala?",
+          "context": "Se requiere extraer reglas SI → ENTONCES relacionadas con criticidad, seguridad, impacto productivo, calidad, disponibilidad de repuestos, tiempo de parada y riesgo de falla mayor.",
+          "tooltip": "Registre reglas concretas: SI ocurre una condición, ENTONCES acción, responsable, evidencia, autorización requerida, tiempo máximo, escalamiento y consecuencia si no se actúa.",
+          "expected_answer_structure": ["Condición SI", "Acción ENTONCES", "Responsable", "Evidencia", "Autorización", "Tiempo máximo", "Escalamiento", "Consecuencia"],
+          "good_answer_example": "SI la falla compromete seguridad o detiene producción crítica, ENTONCES se atiende de inmediato y se escala a jefatura con evidencia e impacto operativo.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["SI", "ENTONCES", "responsable", "evidencia", "autorización", "escalamiento", "consecuencia"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "MANT_05_REPUESTOS_HERRAMIENTAS",
+      "block_name": "Repuestos, herramientas y materiales técnicos",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 50,
+      "objective": "Capturar cómo se solicitan, controlan y aseguran repuestos, herramientas, materiales y consumibles necesarios para mantenimiento.",
+      "questions": [
+        {
+          "question_id": "MANT_05_Q01",
+          "ai_category": "coordination_patterns",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo se coordina Mantenimiento con Bodega, Compras y proveedores para asegurar repuestos, herramientas y materiales técnicos?",
+          "context": "La disponibilidad de repuestos impacta tiempos de respuesta, preventivos, correctivos, paradas, costos y continuidad operativa.",
+          "tooltip": "Registre: área o actor involucrado, información intercambiada, frecuencia, canal, responsable, decisión soportada, problema recurrente y ejemplo real.",
+          "expected_answer_structure": ["Área/actor", "Información", "Frecuencia", "Canal", "Responsable", "Decisión soportada", "Problema recurrente", "Ejemplo"],
+          "good_answer_example": "Con Bodega se valida stock de repuestos; con Compras se gestionan materiales no disponibles; con proveedores se confirma especificación, plazo y alternativa.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["área", "información", "frecuencia", "canal", "responsable", "decisión", "problema", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_05_Q02",
+          "ai_category": "operational_risks",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué riesgos existen por falta, error o mala gestión de repuestos y herramientas, y qué controles los mitigan?",
+          "context": "Interesa identificar riesgos de parada prolongada, repuesto equivocado, sobrestock, obsolescencia, compras urgentes, uso de piezas no aprobadas o herramientas no disponibles.",
+          "tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+          "expected_answer_structure": ["Riesgo", "Causa", "Impacto", "Probabilidad", "Control actual", "Responsable", "Señal temprana", "Contingencia", "Ejemplo"],
+          "good_answer_example": "Un riesgo es no contar con repuesto crítico durante una falla. Se controla con stock mínimo, revisión de criticidad y alertas de reposición.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["riesgo", "causa", "impacto", "control", "responsable", "señal", "contingencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "MANT_06_EQUIPOS_CRITICOS",
+      "block_name": "Equipos críticos, disponibilidad y confiabilidad",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 60,
+      "objective": "Identificar equipos, sistemas o servicios críticos, riesgos de falla, controles de confiabilidad e impacto sobre la operación.",
+      "questions": [
+        {
+          "question_id": "MANT_06_Q01",
+          "ai_category": "critical_indicators",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué equipos o sistemas son críticos para la operación y qué indicadores usa Mantenimiento para controlar su disponibilidad o confiabilidad?",
+          "context": "Interesa identificar equipos principales, servicios industriales, cámaras, frío, energía, compresores, calderas, bombas, líneas de proceso u otros activos críticos.",
+          "tooltip": "Registre: equipo/sistema crítico, indicador, fórmula si existe, fuente, frecuencia, responsable, meta o umbral, decisión que dispara y ejemplo reciente.",
+          "expected_answer_structure": ["Equipo/sistema crítico", "Indicador", "Fórmula", "Fuente", "Frecuencia", "Responsable", "Meta/umbral", "Decisión", "Ejemplo"],
+          "good_answer_example": "Se controla disponibilidad de equipos críticos y frecuencia de fallas. Si un equipo supera el umbral de paradas, se analiza causa raíz y se define plan de acción.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["equipo", "indicador", "fuente", "frecuencia", "responsable", "umbral", "decisión", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_06_Q02",
+          "ai_category": "early_warnings",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué señales tempranas indican riesgo de falla en equipos o sistemas críticos?",
+          "context": "Se busca detectar alertas antes de que ocurra una parada o daño mayor.",
+          "tooltip": "Registre: señal temprana, cómo se detecta, frecuencia de revisión, responsable, acción preventiva, área escalada y ejemplo real.",
+          "expected_answer_structure": ["Señal temprana", "Detección", "Frecuencia", "Responsable", "Acción preventiva", "Escalamiento", "Ejemplo"],
+          "good_answer_example": "Una señal temprana puede ser ruido, vibración, temperatura elevada o consumo anormal. Se detecta en inspección o monitoreo y se programa intervención preventiva.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["señal", "detección", "frecuencia", "responsable", "acción", "escalamiento", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "MANT_07_SEGURIDAD_PERMISOS",
+      "block_name": "Seguridad, permisos de trabajo y bloqueo de energías",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 70,
+      "objective": "Capturar controles de seguridad aplicados en trabajos de mantenimiento, permisos, bloqueo de energías, contratistas y trabajos de alto riesgo.",
+      "questions": [
+        {
+          "question_id": "MANT_07_Q01",
+          "ai_category": "manual_controls",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué controles de seguridad se aplican antes, durante y después de ejecutar trabajos de mantenimiento?",
+          "context": "Incluya permisos de trabajo, bloqueo y etiquetado, trabajos en altura, espacios confinados, energía eléctrica, equipos en movimiento, uso de EPP, señalización y liberación segura.",
+          "tooltip": "Registre: control de seguridad, responsable, momento de aplicación, evidencia, riesgo cubierto, área involucrada, criterio de aceptación y ejemplo real.",
+          "expected_answer_structure": ["Control de seguridad", "Responsable", "Momento", "Evidencia", "Riesgo cubierto", "Área involucrada", "Criterio de aceptación", "Ejemplo"],
+          "good_answer_example": "Antes de intervenir un equipo se valida permiso, bloqueo de energía y condiciones seguras. Al cierre se retiran bloqueos solo después de validar que el equipo puede operar.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["control", "responsable", "momento", "evidencia", "riesgo", "área", "criterio", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_07_Q02",
+          "ai_category": "decision_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas se aplican para decidir si un trabajo requiere permiso especial, bloqueo de energía, supervisión o detención del equipo?",
+          "context": "Se requiere extraer reglas SI → ENTONCES relacionadas con seguridad, energía, altura, contratistas, equipos críticos, áreas productivas, riesgo de contaminación o afectación de personas.",
+          "tooltip": "Registre reglas concretas: SI ocurre una condición, ENTONCES acción, responsable, evidencia, autorización requerida, tiempo máximo, escalamiento y consecuencia si no se actúa.",
+          "expected_answer_structure": ["Condición SI", "Acción ENTONCES", "Responsable", "Evidencia", "Autorización", "Tiempo máximo", "Escalamiento", "Consecuencia"],
+          "good_answer_example": "SI el trabajo implica energía eléctrica o partes móviles, ENTONCES se aplica bloqueo, permiso y verificación de condición segura antes de intervenir.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["SI", "ENTONCES", "responsable", "evidencia", "autorización", "escalamiento", "consecuencia"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "MANT_08_PROVEEDORES_CONTRATISTAS",
+      "block_name": "Proveedores, contratistas y servicios especializados",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 80,
+      "objective": "Identificar cómo se gestionan proveedores, contratistas y servicios técnicos externos asociados a mantenimiento.",
+      "questions": [
+        {
+          "question_id": "MANT_08_Q01",
+          "ai_category": "external_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué proveedores, contratistas o servicios técnicos externos son críticos para Mantenimiento y qué información o respuesta se espera de cada uno?",
+          "context": "Incluya proveedores de repuestos, servicios eléctricos, mecánicos, refrigeración, automatización, calibración, soldadura, obras, inspecciones, equipos especiales o soporte técnico.",
+          "tooltip": "Registre: proveedor/contratista, servicio, información requerida, frecuencia de interacción, responsable interno, tiempo esperado de respuesta, riesgo si falla, contingencia y ejemplo real.",
+          "expected_answer_structure": ["Proveedor/contratista", "Servicio", "Información requerida", "Frecuencia", "Responsable interno", "Tiempo esperado", "Riesgo", "Contingencia", "Ejemplo"],
+          "good_answer_example": "Un proveedor de refrigeración debe responder ante fallas críticas, confirmar diagnóstico, repuestos, tiempo estimado y costo. Si no responde, se activa proveedor alterno.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["proveedor", "servicio", "información", "frecuencia", "responsable", "riesgo", "contingencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_08_Q02",
+          "ai_category": "process_friction",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son las fricciones más frecuentes con proveedores, contratistas, Compras o áreas usuarias en trabajos de mantenimiento?",
+          "context": "No se busca culpabilizar áreas; se busca identificar patrones reales que afectan tiempos, costos, seguridad, calidad del servicio o continuidad operativa.",
+          "tooltip": "Registre: actor, fricción, causa probable, frecuencia, impacto, solución actual, regla no escrita, evidencia y mejora sugerida.",
+          "expected_answer_structure": ["Actor", "Fricción", "Causa probable", "Frecuencia", "Impacto", "Solución actual", "Regla no escrita", "Evidencia", "Mejora sugerida"],
+          "good_answer_example": "Con proveedores puede haber fricción por demora en repuestos o diagnóstico incompleto. Se resuelve con seguimiento directo y escalamiento según criticidad.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["actor", "fricción", "causa", "frecuencia", "impacto", "solución", "regla", "mejora"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "MANT_09_HERRAMIENTAS_DATOS",
+      "block_name": "Herramientas, sistemas y datos de mantenimiento",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 90,
+      "objective": "Identificar sistemas oficiales, archivos paralelos, reportes y datos críticos usados para gestionar mantenimiento, activos, repuestos, órdenes e indicadores.",
+      "questions": [
+        {
+          "question_id": "MANT_09_Q01",
+          "ai_category": "parallel_tools",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué sistemas, archivos, tableros o controles paralelos usa Mantenimiento para gestionar órdenes, preventivos, correctivos, repuestos, activos o indicadores?",
+          "context": "Se busca entender el ecosistema real: ERP, CMMS, Excel, formularios, correos, WhatsApp, tableros, reportes, checklists o carpetas compartidas.",
+          "tooltip": "Registre: herramienta, uso específico, dato capturado, responsable, frecuencia de actualización, fuente oficial, decisión soportada, riesgo de duplicidad y mejora deseada.",
+          "expected_answer_structure": ["Herramienta", "Uso", "Dato capturado", "Responsable", "Frecuencia", "Fuente oficial", "Decisión soportada", "Riesgo", "Mejora deseada"],
+          "good_answer_example": "Además del sistema se usa Excel para seguimiento de preventivos, órdenes pendientes y repuestos críticos. El riesgo es duplicidad, pero permite controlar atrasos.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["herramienta", "uso", "dato", "responsable", "frecuencia", "fuente", "decisión", "riesgo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_09_Q02",
+          "ai_category": "hidden_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué datos críticos necesita Mantenimiento de otras áreas y qué ocurre cuando llegan tarde o incompletos?",
+          "context": "Esta pregunta busca dependencias ocultas que afectan diagnóstico, programación, ejecución, seguridad, compras, cierre, indicadores y continuidad.",
+          "tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato/canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+          "expected_answer_structure": ["Dato requerido", "Área proveedora", "Momento requerido", "Formato/canal", "Responsable", "Consecuencia", "Solución temporal", "Mejora"],
+          "good_answer_example": "Mantenimiento necesita disponibilidad del equipo, descripción clara de falla, repuestos y condiciones seguras. Si la información llega tarde, se retrasa la atención o se genera reproceso.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["dato", "área", "momento", "canal", "responsable", "consecuencia", "solución", "mejora"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "MANT_10_REUNIONES_RUTINAS",
+      "block_name": "Reuniones, rutinas e indicadores de mantenimiento",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 100,
+      "objective": "Capturar reuniones y rutinas que sostienen seguimiento de órdenes, preventivos, correctivos, equipos críticos, repuestos, proveedores e indicadores.",
+      "questions": [
+        {
+          "question_id": "MANT_10_Q01",
+          "ai_category": "meeting_registry",
+          "required": true,
+          "min_characters": 350,
+          "question": "Liste las reuniones o rutinas donde se revisan órdenes de trabajo, preventivos, correctivos, fallas, repuestos, equipos críticos o indicadores de mantenimiento.",
+          "context": "Interesa conocer reuniones formales e informales que sostienen la operación de Mantenimiento y coordinación con Producción, Bodega, Compras, Seguridad y Calidad.",
+          "tooltip": "Registre: nombre, objetivo, frecuencia, duración, participantes, líder, temas fijos, indicadores, decisiones, insumos, salidas, evidencia y consecuencias si no se realiza.",
+          "expected_answer_structure": ["Nombre", "Objetivo", "Frecuencia", "Duración", "Participantes", "Líder", "Temas fijos", "Indicadores", "Decisiones", "Insumos", "Salidas", "Evidencia", "Consecuencia"],
+          "good_answer_example": "En la reunión diaria o semanal se revisan trabajos pendientes, fallas críticas, preventivos vencidos, repuestos y prioridades. Si no se realiza, se pierde visibilidad de riesgos.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["nombre", "objetivo", "frecuencia", "participantes", "líder", "indicadores", "decisiones", "evidencia"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_10_Q02",
+          "ai_category": "critical_indicators",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué indicadores revisa Mantenimiento para saber si la gestión está bajo control y qué umbrales generan alerta?",
+          "context": "Interesa identificar indicadores reales: cumplimiento preventivo, órdenes vencidas, tiempo de respuesta, tiempo medio de reparación, disponibilidad, reincidencias, paradas, backlog y costo.",
+          "tooltip": "Registre: indicador, fórmula si existe, fuente, frecuencia, responsable, meta o umbral, decisión que dispara, reunión donde se revisa y ejemplo reciente.",
+          "expected_answer_structure": ["Indicador", "Fórmula", "Fuente", "Frecuencia", "Responsable", "Meta/umbral", "Decisión", "Reunión", "Ejemplo"],
+          "good_answer_example": "Se revisa cumplimiento preventivo, backlog y fallas repetitivas. Si un indicador supera el umbral, se reasignan recursos o se genera plan correctivo.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["indicador", "fuente", "frecuencia", "responsable", "umbral", "decisión", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "MANT_11_REGLAS_ESCALAMIENTO",
+      "block_name": "Reglas no escritas, prioridades y escalamiento de mantenimiento",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 110,
+      "objective": "Extraer reglas tácitas y umbrales reales de escalamiento usados cuando una falla, equipo, repuesto, proveedor, orden o preventivo está en riesgo.",
+      "questions": [
+        {
+          "question_id": "MANT_11_Q01",
+          "ai_category": "non_written_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas no escritas usa Mantenimiento para priorizar trabajos, fallas, repuestos o emergencias bajo presión?",
+          "context": "Las reglas no escritas explican cómo se opera cuando el procedimiento formal no alcanza: fallas críticas, riesgo de seguridad, presión productiva, falta de repuestos, proveedor lento o equipos recurrentes.",
+          "tooltip": "Registre: regla no escrita, condición de uso, quién la valida, beneficio, riesgo, evidencia/comunicación y ejemplo real.",
+          "expected_answer_structure": ["Regla no escrita", "Condición de uso", "Validador", "Beneficio", "Riesgo", "Evidencia/comunicación", "Ejemplo"],
+          "good_answer_example": "Cuando una falla afecta seguridad o continuidad productiva, se atiende antes que trabajos de baja criticidad, aunque no estuviera programada, con comunicación a jefatura.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["regla", "condición", "validador", "beneficio", "riesgo", "evidencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_11_Q02",
+          "ai_category": "escalation_thresholds",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué situaciones obligan a Mantenimiento a escalar y a quién se escala según el tipo de problema?",
+          "context": "Se busca mapear umbrales reales: parada crítica, riesgo de seguridad, repuesto no disponible, proveedor incumplido, preventivo vencido, falla repetitiva, sobrecosto o falta de ventana operativa.",
+          "tooltip": "Registre: situación, umbral, primer responsable, autoridad final, canal usado, tiempo máximo tolerado, evidencia requerida y ejemplo real.",
+          "expected_answer_structure": ["Situación", "Umbral", "Primer responsable", "Autoridad final", "Canal", "Tiempo máximo", "Evidencia", "Ejemplo"],
+          "good_answer_example": "Si una falla crítica no se resuelve dentro del tiempo tolerado o requiere repuesto no disponible, se escala a jefatura con impacto, causa probable y alternativa temporal.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["situación", "umbral", "responsable", "autoridad", "canal", "tiempo", "evidencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "MANT_12_RIESGOS_CONOCIMIENTO",
+      "block_name": "Riesgos, continuidad y conocimiento crítico de mantenimiento",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 120,
+      "objective": "Capturar riesgos críticos y conocimiento no documentado que puede afectar continuidad, seguridad, equipos, repuestos, proveedores y gestión técnica.",
+      "questions": [
+        {
+          "question_id": "MANT_12_Q01",
+          "ai_category": "operational_risks",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son los riesgos operacionales más críticos del área de Mantenimiento y qué controles evitan que se materialicen?",
+          "context": "Incluya riesgos de paradas no planificadas, fallas de equipos críticos, accidentes, mantenimiento vencido, repuestos faltantes, dependencia humana, proveedores críticos, errores técnicos y trabajos sin permiso.",
+          "tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+          "expected_answer_structure": ["Riesgo", "Causa", "Impacto", "Probabilidad", "Control actual", "Responsable", "Señal temprana", "Contingencia", "Ejemplo"],
+          "good_answer_example": "Un riesgo crítico es una parada no planificada de equipo principal. Se controla con preventivos, inspecciones, repuestos críticos, análisis de fallas y seguimiento de indicadores.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["riesgo", "causa", "impacto", "control", "responsable", "señal", "contingencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "MANT_12_Q02",
+          "ai_category": "tacit_knowledge",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué conocimiento crítico de Mantenimiento no está documentado y debería capturarse para evitar dependencia de personas específicas?",
+          "context": "Se busca identificar conocimiento que vive en la experiencia: fallas recurrentes, ajustes técnicos, ubicación de repuestos, proveedores confiables, parámetros de equipos, soluciones temporales o criterios de prioridad.",
+          "tooltip": "Registre: conocimiento no documentado, persona/rol que lo domina, cuándo se usa, riesgo cubierto, consecuencia de perderlo, forma sugerida de documentarlo y prioridad.",
+          "expected_answer_structure": ["Conocimiento", "Persona/rol que lo domina", "Uso", "Riesgo cubierto", "Consecuencia de pérdida", "Forma de documentación", "Prioridad"],
+          "good_answer_example": "Un técnico puede conocer ajustes específicos de equipos antiguos y fallas recurrentes. Si ese conocimiento se pierde, aumentan tiempos de diagnóstico, paradas y reprocesos.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["conocimiento", "quién", "cuándo", "riesgo", "consecuencia", "documentarlo", "prioridad"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,850 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Sistemas de Gestión",
+"level": "",
+"metadata": {
+"area_id": "sistemas_de_gestion",
+"display_name": "Sistemas de Gestión",
+"aliases": [
+"sistemas de gestión",
+"gestión documental",
+"certificaciones",
+"auditorías",
+"cumplimiento",
+"BASC",
+"calidad documental",
+"gestión integrada",
+"acciones correctivas"
+],
+"macro_process": "Gestión integrada de certificaciones, auditorías, cumplimiento documental y mejora del sistema de gestión"
+},
+"blocks": [
+{
+"block_id": "SDG_01_GESTION_CERTIFICACIONES_CUMPLIMIENTO",
+"block_name": "Gestión de certificaciones y cumplimiento",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar cómo Sistemas de Gestión administra certificaciones, requisitos normativos, cumplimiento documental y sostenimiento de estándares críticos.",
+"questions": [
+{
+"question_id": "SDG_01_Q01",
+"ai_category": "sop_alignment",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se gestionan las certificaciones, normas y requisitos aplicables al sistema de gestión de la empresa.",
+"context": "La respuesta debe describir cómo el área identifica requisitos, los traduce en procedimientos, controla evidencias, coordina auditorías y asegura cumplimiento con áreas responsables.",
+"tooltip": "Registre: certificación o norma, requisito crítico, responsable interno, área involucrada, evidencia requerida, frecuencia de revisión, riesgo de incumplimiento, acción preventiva y ejemplo real.",
+"expected_answer_structure": [
+"Certificación o norma aplicable",
+"Requisito crítico",
+"Responsable interno",
+"Área involucrada",
+"Evidencia requerida",
+"Frecuencia de revisión",
+"Riesgo de incumplimiento",
+"Acción preventiva",
+"Ejemplo real"
+],
+"good_answer_example": "Sistemas de Gestión mantiene identificados los requisitos de certificaciones como BASC y otros sistemas aplicables. Cada requisito se relaciona con procedimientos, registros y responsables de área. Por ejemplo, para sostener BASC se revisan controles de seguridad, evidencias de acceso, inspecciones y acciones correctivas junto con Seguridad Física.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"certificación o norma",
+"requisito crítico",
+"responsable",
+"evidencia",
+"frecuencia",
+"riesgo de incumplimiento",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona que se cumplen certificaciones",
+"No identifica requisitos críticos",
+"No menciona responsables",
+"No describe evidencias",
+"No incluye ejemplo real"
+]
+},
+{
+"question_id": "SDG_01_Q02",
+"ai_category": "basc_controls",
+"required": true,
+"min_characters": 300,
+"question": "Describa cómo Sistemas de Gestión se integra con BASC y qué controles deben mantenerse activos para evitar incumplimientos.",
+"context": "Busca capturar la coordinación entre Sistemas de Gestión, Seguridad Física y áreas operativas para asegurar evidencias, trazabilidad y control BASC.",
+"tooltip": "Incluya: control BASC, área responsable, evidencia requerida, frecuencia, responsable de validación, hallazgos comunes, acción correctiva, riesgo si falla y ejemplo real.",
+"expected_answer_structure": [
+"Control BASC",
+"Área responsable",
+"Evidencia requerida",
+"Frecuencia",
+"Responsable de validación",
+"Hallazgo común",
+"Acción correctiva",
+"Riesgo si falla",
+"Ejemplo real"
+],
+"good_answer_example": "Sistemas de Gestión coordina con Seguridad Física la revisión de controles de acceso, inspección de contenedores, registros de novedades, evidencias fotográficas y seguimiento de hallazgos. Si una evidencia BASC no se mantiene actualizada, se puede generar incumplimiento en auditoría o pérdida de trazabilidad.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"control BASC",
+"área responsable",
+"evidencia",
+"frecuencia",
+"hallazgo",
+"acción correctiva",
+"riesgo",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No menciona BASC",
+"No explica integración con Seguridad Física",
+"No indica evidencias",
+"No menciona riesgos de incumplimiento"
+]
+}
+]
+},
+{
+"block_id": "SDG_02_GESTION_DOCUMENTAL_PROCEDIMIENTOS",
+"block_name": "Gestión documental y procedimientos",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 20,
+"objective": "Identificar cómo se crean, actualizan, controlan y comunican documentos, procedimientos, formatos y registros del sistema de gestión.",
+"questions": [
+{
+"question_id": "SDG_02_Q01",
+"ai_category": "sop_alignment",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se controla la creación, actualización, aprobación, difusión y retiro de documentos del sistema de gestión.",
+"context": "La respuesta debe capturar el flujo real de gestión documental, responsables, versiones, aprobaciones, registros vigentes y riesgos de uso de documentos obsoletos.",
+"tooltip": "Registre: tipo de documento, responsable de elaboración, aprobador, criterio de actualización, control de versión, medio de difusión, evidencia de comunicación, retiro de versiones anteriores y ejemplo real.",
+"expected_answer_structure": [
+"Tipo de documento",
+"Responsable de elaboración",
+"Aprobador",
+"Criterio de actualización",
+"Control de versión",
+"Medio de difusión",
+"Evidencia de comunicación",
+"Retiro de versión obsoleta",
+"Ejemplo real"
+],
+"good_answer_example": "Cuando un procedimiento cambia, el área responsable propone la modificación, Sistemas de Gestión revisa estructura y control documental, se aprueba con los responsables definidos y se comunica la nueva versión. La versión anterior debe retirarse o marcarse como obsoleta para evitar uso incorrecto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"tipo de documento",
+"responsable",
+"aprobador",
+"control de versión",
+"difusión",
+"retiro de obsoletos",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo indica que se actualizan documentos",
+"No menciona aprobación",
+"No explica control de versiones",
+"No indica cómo se evita uso de obsoletos",
+"No incluye ejemplo real"
+]
+},
+{
+"question_id": "SDG_02_Q02",
+"ai_category": "critical_failures",
+"required": true,
+"min_characters": 300,
+"question": "Describa qué fallas documentales se consideran críticas y cómo se actúa cuando se detectan.",
+"context": "Busca identificar fallas como documentos vencidos, procedimientos no actualizados, formatos no controlados, registros incompletos, evidencia faltante o uso de versiones obsoletas.",
+"tooltip": "Incluya: falla documental, cómo se detecta, área afectada, responsable, impacto, acción inmediata, evidencia de corrección, seguimiento y ejemplo real.",
+"expected_answer_structure": [
+"Falla documental crítica",
+"Cómo se detecta",
+"Área afectada",
+"Responsable",
+"Impacto",
+"Acción inmediata",
+"Evidencia de corrección",
+"Seguimiento",
+"Ejemplo real"
+],
+"good_answer_example": "Una falla crítica es encontrar un formato obsoleto en uso durante una auditoría o revisión interna. Se retira el formato, se comunica la versión vigente al área, se corrigen registros afectados si aplica y se deja evidencia del cierre de la acción.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"falla documental",
+"detección",
+"área afectada",
+"responsable",
+"impacto",
+"acción inmediata",
+"seguimiento",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No identifica fallas críticas",
+"No menciona impacto",
+"No explica acción inmediata",
+"No incluye seguimiento"
+]
+}
+]
+},
+{
+"block_id": "SDG_03_AUDITORIAS_HALLAZGOS",
+"block_name": "Auditorías, hallazgos y evidencias",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 30,
+"objective": "Capturar cómo se planifican, ejecutan, documentan y cierran auditorías internas, externas y revisiones de cumplimiento.",
+"questions": [
+{
+"question_id": "SDG_03_Q01",
+"ai_category": "governance_routines",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se planifican y ejecutan las auditorías internas, externas o revisiones del sistema de gestión.",
+"context": "La respuesta debe describir programación, criterios, alcance, responsables, áreas auditadas, evidencias, comunicación de hallazgos y seguimiento.",
+"tooltip": "Registre: tipo de auditoría, frecuencia, alcance, responsable, áreas auditadas, criterios usados, evidencias solicitadas, forma de comunicar hallazgos y ejemplo real.",
+"expected_answer_structure": [
+"Tipo de auditoría",
+"Frecuencia",
+"Alcance",
+"Responsable",
+"Áreas auditadas",
+"Criterios utilizados",
+"Evidencias solicitadas",
+"Comunicación de hallazgos",
+"Ejemplo real"
+],
+"good_answer_example": "Las auditorías internas se planifican según un programa anual, priorizando procesos críticos, requisitos normativos y hallazgos anteriores. Sistemas de Gestión coordina con las áreas auditadas, solicita evidencias, ejecuta entrevistas o revisiones documentales y comunica hallazgos para su tratamiento.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"tipo de auditoría",
+"frecuencia",
+"alcance",
+"responsable",
+"criterios",
+"evidencias",
+"hallazgos",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona que se hacen auditorías",
+"No indica frecuencia",
+"No describe alcance",
+"No menciona evidencias",
+"No incluye ejemplo real"
+]
+},
+{
+"question_id": "SDG_03_Q02",
+"ai_category": "operational_alerts",
+"required": true,
+"min_characters": 300,
+"question": "Identifique los hallazgos recurrentes del sistema de gestión y las señales que permiten anticiparlos antes de una auditoría.",
+"context": "Busca transformar experiencia de auditoría en alertas preventivas para evitar repetición de no conformidades, observaciones o brechas.",
+"tooltip": "Incluya: hallazgo recurrente, proceso afectado, causa probable, señal temprana, responsable, control preventivo, evidencia esperada y ejemplo real.",
+"expected_answer_structure": [
+"Hallazgo recurrente",
+"Proceso afectado",
+"Causa probable",
+"Señal temprana",
+"Responsable",
+"Control preventivo",
+"Evidencia esperada",
+"Ejemplo real"
+],
+"good_answer_example": "Un hallazgo recurrente puede ser registros incompletos o evidencias no disponibles en el momento de la auditoría. Una señal temprana es que el área no actualice sus formatos o no cierre acciones dentro del plazo. El control preventivo es revisar evidencias antes de la auditoría y solicitar correcciones oportunas.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"hallazgo recurrente",
+"proceso afectado",
+"causa",
+"señal temprana",
+"control preventivo",
+"evidencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No identifica hallazgos recurrentes",
+"No menciona señales tempranas",
+"No explica control preventivo",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "SDG_04_ACCIONES_CORRECTIVAS_MEJORA",
+"block_name": "Acciones correctivas, preventivas y mejora",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 40,
+"objective": "Identificar cómo se registran, asignan, ejecutan, validan y cierran acciones correctivas, preventivas y oportunidades de mejora.",
+"questions": [
+{
+"question_id": "SDG_04_Q01",
+"ai_category": "governance_routines",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se gestionan las acciones correctivas, preventivas y oportunidades de mejora desde su apertura hasta el cierre.",
+"context": "La respuesta debe capturar origen de la acción, responsable, análisis de causa, plazo, evidencia, validación de eficacia y seguimiento.",
+"tooltip": "Registre: origen de la acción, tipo de acción, responsable, causa identificada, plazo, evidencia requerida, seguimiento, validación de eficacia y ejemplo real.",
+"expected_answer_structure": [
+"Origen de la acción",
+"Tipo de acción",
+"Responsable",
+"Causa identificada",
+"Plazo",
+"Evidencia requerida",
+"Seguimiento",
+"Validación de eficacia",
+"Ejemplo real"
+],
+"good_answer_example": "Una acción correctiva puede originarse por auditoría interna, hallazgo externo o desviación operativa. Se asigna responsable, se analiza causa, se define plan y plazo, se solicita evidencia de cierre y se valida si la acción realmente eliminó o redujo la causa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"origen",
+"tipo de acción",
+"responsable",
+"causa",
+"plazo",
+"evidencia",
+"validación de eficacia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona seguimiento de acciones",
+"No indica análisis de causa",
+"No menciona plazos",
+"No describe validación de eficacia",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "SDG_04_Q02",
+"ai_category": "escalation_thresholds",
+"required": true,
+"min_characters": 300,
+"question": "Explique cuándo una acción correctiva o hallazgo debe escalarse por retraso, criticidad o riesgo de incumplimiento.",
+"context": "Busca capturar umbrales reales de escalamiento, responsables, canales y consecuencias por no cerrar acciones a tiempo.",
+"tooltip": "Incluya: tipo de acción o hallazgo, condición de escalamiento, días de retraso o nivel de criticidad, responsable que escala, destinatario, canal, decisión esperada y ejemplo real.",
+"expected_answer_structure": [
+"Tipo de acción o hallazgo",
+"Condición de escalamiento",
+"Nivel de criticidad o retraso",
+"Responsable que escala",
+"Destinatario",
+"Canal usado",
+"Decisión esperada",
+"Consecuencia si no se escala",
+"Ejemplo real"
+],
+"good_answer_example": "Una acción debe escalarse cuando supera el plazo comprometido, afecta un requisito crítico o puede generar incumplimiento en auditoría. Sistemas de Gestión comunica al responsable del área y, si no hay respuesta, escala a jefatura o gerencia para asegurar cierre.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"condición de escalamiento",
+"criticidad",
+"responsable",
+"destinatario",
+"canal",
+"decisión esperada",
+"consecuencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No define umbrales",
+"No indica a quién se escala",
+"No menciona canales",
+"No explica consecuencias"
+]
+}
+]
+},
+{
+"block_id": "SDG_05_COORDINACION_SEGURIDAD_FISICA_AREAS",
+"block_name": "Coordinación con Seguridad Física y áreas críticas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 50,
+"objective": "Capturar cómo Sistemas de Gestión coordina requisitos, evidencias, hallazgos y acciones con Seguridad Física y demás áreas operativas.",
+"questions": [
+{
+"question_id": "SDG_05_Q01",
+"ai_category": "coordination_patterns",
+"required": true,
+"min_characters": 300,
+"question": "Describa las coordinaciones críticas que Sistemas de Gestión mantiene con Seguridad Física y otras áreas para sostener cumplimiento.",
+"context": "La respuesta debe identificar coordinación con Seguridad Física, Producción, Calidad, Seguridad Industrial, Recursos Humanos, Bodegas, Cámaras, COMEX y otras áreas según aplique.",
+"tooltip": "Registre: área coordinada, motivo de coordinación, frecuencia, información intercambiada, responsable de cada lado, evidencia requerida, decisión tomada, consecuencia si falla y ejemplo real.",
+"expected_answer_structure": [
+"Área coordinada",
+"Motivo de coordinación",
+"Frecuencia",
+"Información intercambiada",
+"Responsables",
+"Evidencia requerida",
+"Decisión tomada",
+"Consecuencia si falla",
+"Ejemplo real"
+],
+"good_answer_example": "Con Seguridad Física se coordinan controles BASC, registros de acceso, inspecciones, hallazgos y acciones correctivas. Con Calidad y Producción se coordinan procedimientos y evidencias operativas. Si esta coordinación falla, pueden existir brechas documentales o hallazgos repetidos en auditoría.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"áreas",
+"motivo",
+"frecuencia",
+"información",
+"responsables",
+"evidencia",
+"consecuencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo lista áreas",
+"No explica qué se coordina",
+"No menciona evidencias",
+"No describe consecuencias"
+]
+},
+{
+"question_id": "SDG_05_Q02",
+"ai_category": "process_friction",
+"required": true,
+"min_characters": 300,
+"question": "Identifique fricciones frecuentes entre Sistemas de Gestión y otras áreas, y cómo se resuelven en la práctica.",
+"context": "Busca capturar tensiones reales relacionadas con actualización documental, entrega de evidencias, cierre de acciones, preparación de auditorías o cumplimiento de procedimientos.",
+"tooltip": "Incluya: área involucrada, fricción recurrente, causa, impacto, quién destraba, regla aplicada, solución práctica, evidencia y ejemplo reciente.",
+"expected_answer_structure": [
+"Área involucrada",
+"Fricción recurrente",
+"Causa",
+"Impacto",
+"Quién destraba",
+"Regla aplicada",
+"Solución práctica",
+"Evidencia",
+"Ejemplo real"
+],
+"good_answer_example": "Una fricción frecuente ocurre cuando un área no entrega evidencias a tiempo para una auditoría o no cierra acciones correctivas dentro del plazo. En la práctica, Sistemas de Gestión recuerda el compromiso, solicita evidencia mínima, escala si existe riesgo de incumplimiento y deja trazabilidad del seguimiento.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"fricción",
+"área",
+"causa",
+"impacto",
+"responsable",
+"solución",
+"evidencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No describe fricciones concretas",
+"No explica cómo se resuelven",
+"No indica quién destraba",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "SDG_06_REUNIONES_INDICADORES_SEGUIMIENTO",
+"block_name": "Reuniones, indicadores y seguimiento del sistema",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 60,
+"objective": "Identificar reuniones, indicadores, rutinas de revisión y reportes utilizados para sostener el sistema de gestión.",
+"questions": [
+{
+"question_id": "SDG_06_Q01",
+"ai_category": "meeting_registry",
+"required": true,
+"min_characters": 300,
+"question": "Registre las reuniones críticas donde Sistemas de Gestión participa, lidera o entrega información relevante.",
+"context": "Debe capturar reuniones de auditoría, revisión de hallazgos, acciones correctivas, comités de gestión, BASC, cumplimiento documental y seguimiento de certificaciones.",
+"tooltip": "Registre: nombre de reunión, objetivo, frecuencia, duración, participantes obligatorios, quién lidera, temas fijos, indicadores revisados, decisiones tomadas, insumos requeridos, salidas esperadas, acta o evidencia y consecuencias si no se realiza.",
+"expected_answer_structure": [
+"Nombre de reunión",
+"Objetivo",
+"Frecuencia",
+"Duración",
+"Participantes",
+"Líder",
+"Temas fijos",
+"Indicadores revisados",
+"Decisiones tomadas",
+"Evidencia generada",
+"Consecuencia si no se realiza"
+],
+"good_answer_example": "Sistemas de Gestión lidera reuniones de seguimiento de hallazgos y acciones correctivas, donde se revisan pendientes por área, fechas comprometidas, evidencias entregadas y riesgos de incumplimiento. Si estas reuniones no se realizan, pueden vencerse acciones o repetirse hallazgos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"nombre de reunión",
+"frecuencia",
+"participantes",
+"indicadores",
+"decisiones",
+"evidencia",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"Solo menciona reuniones sin detalle",
+"No indica frecuencia",
+"No menciona decisiones",
+"No describe evidencias"
+]
+},
+{
+"question_id": "SDG_06_Q02",
+"ai_category": "critical_indicators",
+"required": true,
+"min_characters": 300,
+"question": "Indique qué indicadores monitorea Sistemas de Gestión y cómo se usan para tomar decisiones preventivas, correctivas o gerenciales.",
+"context": "La respuesta debe diferenciar indicadores formales, indicadores prácticos, alertas de cumplimiento y señales usadas aunque no estén completamente sistematizadas.",
+"tooltip": "Incluya: indicador, forma de cálculo o interpretación, frecuencia, fuente de datos, responsable, umbral esperado, decisión asociada, área que recibe información y ejemplo de uso.",
+"expected_answer_structure": [
+"Indicador",
+"Cómo se calcula o interpreta",
+"Frecuencia",
+"Fuente de datos",
+"Responsable",
+"Umbral o criterio",
+"Decisión asociada",
+"Área receptora",
+"Ejemplo real"
+],
+"good_answer_example": "Se monitorean acciones correctivas vencidas, hallazgos por área, cumplimiento de auditorías, actualización documental, evidencias pendientes, cierre de no conformidades y cumplimiento BASC. Si aumenta el número de acciones vencidas, se escala a responsables de área y se prioriza seguimiento.",
+"validation_rules": {
+"min_items": 4,
+"requires_examples": true,
+"incomplete_if_missing": [
+"indicador",
+"frecuencia",
+"fuente",
+"responsable",
+"criterio",
+"decisión",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo lista indicadores",
+"No explica uso para decisiones",
+"No menciona frecuencia",
+"No incluye criterios o umbrales"
+]
+}
+]
+},
+{
+"block_id": "SDG_07_HERRAMIENTAS_PARALELAS_TRAZABILIDAD",
+"block_name": "Herramientas paralelas y trazabilidad",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 70,
+"objective": "Capturar herramientas formales e informales usadas para controlar documentos, evidencias, auditorías, acciones y cumplimiento.",
+"questions": [
+{
+"question_id": "SDG_07_Q01",
+"ai_category": "parallel_tools",
+"required": true,
+"min_characters": 300,
+"question": "Indique qué herramientas, archivos paralelos o controles informales utiliza Sistemas de Gestión para dar seguimiento al cumplimiento.",
+"context": "Busca identificar Excel, carpetas, matrices, listas, correos, chats, tableros o registros auxiliares que sostienen la gestión real aunque no estén integrados.",
+"tooltip": "Incluya: herramienta paralela, propósito, responsable, frecuencia de actualización, datos registrados, riesgo si no se actualiza, relación con sistemas oficiales y ejemplo real.",
+"expected_answer_structure": [
+"Herramienta o archivo paralelo",
+"Propósito",
+"Responsable",
+"Frecuencia de actualización",
+"Datos registrados",
+"Riesgo si no se actualiza",
+"Relación con sistema oficial",
+"Ejemplo real"
+],
+"good_answer_example": "El área puede usar matrices en Excel para controlar acciones correctivas, auditorías, documentos vigentes, vencimientos y evidencias pendientes. Si estas matrices no se actualizan, se puede perder seguimiento de compromisos o llegar a auditoría con información incompleta.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"herramienta",
+"propósito",
+"responsable",
+"frecuencia",
+"datos registrados",
+"riesgo",
+"relación con sistema oficial",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Niega herramientas paralelas sin explicar",
+"No menciona frecuencia",
+"No indica responsable",
+"No explica riesgo de no actualizar"
+]
+},
+{
+"question_id": "SDG_07_Q02",
+"ai_category": "hidden_dependencies",
+"required": true,
+"min_characters": 300,
+"question": "Identifique dependencias ocultas que permiten que el sistema de gestión funcione aunque no estén formalmente documentadas.",
+"context": "Busca capturar dependencias humanas, contactos clave, archivos personales, conocimiento de auditorías pasadas, criterios de interpretación y rutas informales de seguimiento.",
+"tooltip": "Incluya: dependencia oculta, persona o área involucrada, situación donde se activa, riesgo si falla, respaldo existente, forma de comunicación y ejemplo real.",
+"expected_answer_structure": [
+"Dependencia oculta",
+"Persona o área involucrada",
+"Situación donde se activa",
+"Riesgo si falla",
+"Respaldo existente",
+"Forma de comunicación",
+"Ejemplo real"
+],
+"good_answer_example": "Una dependencia oculta puede ser que una persona específica conozca dónde están ciertas evidencias históricas o cómo responder a un requisito particular de auditoría. Si esa persona no está disponible, se retrasa la preparación o se entrega información incompleta.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"dependencia",
+"persona o área",
+"situación",
+"riesgo",
+"respaldo",
+"comunicación",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas",
+"No menciona personas o áreas",
+"No explica riesgo",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "SDG_08_REGLAS_NO_ESCRITAS_CONOCIMIENTO_TACITO",
+"block_name": "Reglas no escritas y conocimiento tácito",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 80,
+"objective": "Capturar conocimiento práctico no documentado que permite sostener certificaciones, auditorías, cumplimiento y trazabilidad del sistema.",
+"questions": [
+{
+"question_id": "SDG_08_Q01",
+"ai_category": "non_written_rules",
+"required": true,
+"min_characters": 300,
+"question": "Describa las reglas no escritas que Sistemas de Gestión aplica para evitar hallazgos, incumplimientos o pérdida de trazabilidad.",
+"context": "Busca capturar criterios aprendidos por experiencia que no siempre están escritos, pero ayudan a preparar auditorías y sostener el cumplimiento.",
+"tooltip": "Registre: regla no escrita, situación donde aplica, quién la conoce, por qué existe, qué riesgo evita, qué pasa si no se cumple y ejemplo real.",
+"expected_answer_structure": [
+"Regla no escrita",
+"Situación donde aplica",
+"Quién la conoce",
+"Riesgo que evita",
+"Consecuencia si no se cumple",
+"Ejemplo real"
+],
+"good_answer_example": "Una regla no escrita es revisar evidencias críticas antes de auditoría directamente con el responsable del proceso, no solo por correo. Esto evita que se asuma que una evidencia existe cuando en realidad está incompleta o desactualizada.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"regla",
+"situación",
+"quién la conoce",
+"riesgo",
+"consecuencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No identifica reglas concretas",
+"No explica cuándo aplican",
+"No menciona riesgo evitado",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "SDG_08_Q02",
+"ai_category": "tacit_knowledge",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué conocimiento crítico de Sistemas de Gestión depende de personas específicas y no está suficientemente documentado?",
+"context": "Permite detectar concentración de conocimiento sobre certificaciones, auditorías, criterios de interpretación, evidencias, historial de hallazgos y gestión documental.",
+"tooltip": "Incluya: conocimiento crítico, persona o rol que lo domina, situación donde se necesita, riesgo si esa persona no está, respaldo existente, nivel de documentación y acción sugerida para capturarlo.",
+"expected_answer_structure": [
+"Conocimiento crítico",
+"Persona o rol que lo domina",
+"Cuándo se necesita",
+"Riesgo de ausencia",
+"Respaldo actual",
+"Nivel de documentación",
+"Acción sugerida",
+"Ejemplo real"
+],
+"good_answer_example": "El conocimiento sobre criterios específicos de auditorías anteriores, interpretación de requisitos BASC o ubicación de evidencias históricas puede estar concentrado en pocos responsables. Si estas personas no están, se puede perder continuidad o repetir hallazgos.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"conocimiento",
+"persona o rol",
+"situación",
+"riesgo",
+"respaldo",
+"documentación",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona personas o roles",
+"No indica riesgo de ausencia",
+"No describe conocimiento específico",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "SDG_09_RIESGOS_CONTINUIDAD_SISTEMA",
+"block_name": "Riesgos y continuidad del sistema de gestión",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 90,
+"objective": "Identificar riesgos que pueden afectar la continuidad del sistema de gestión, certificaciones, auditorías, cumplimiento documental y mejora continua.",
+"questions": [
+{
+"question_id": "SDG_09_Q01",
+"ai_category": "operational_risks",
+"required": true,
+"min_characters": 300,
+"question": "Identifique los riesgos más críticos que pueden afectar la continuidad y eficacia del sistema de gestión.",
+"context": "La respuesta debe permitir construir un mapa de riesgos sobre certificaciones, documentación, auditorías, acciones correctivas, evidencias y dependencia de áreas.",
+"tooltip": "Registre: riesgo crítico, causa, impacto, señal temprana, control actual, responsable, plan de contingencia y ejemplo real.",
+"expected_answer_structure": [
+"Riesgo crítico",
+"Causa",
+"Impacto",
+"Señal temprana",
+"Control actual",
+"Responsable",
+"Plan de contingencia",
+"Ejemplo real"
+],
+"good_answer_example": "Un riesgo crítico es no contar con evidencias actualizadas antes de una auditoría externa. La causa puede ser falta de seguimiento por áreas o registros incompletos. El control actual es revisar matrices de cumplimiento, solicitar evidencias y escalar pendientes críticos antes de la auditoría.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"riesgo",
+"causa",
+"impacto",
+"señal temprana",
+"control",
+"responsable",
+"contingencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo menciona riesgos generales",
+"No explica controles actuales",
+"No indica responsables",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "SDG_09_Q02",
+"ai_category": "operational_constraints",
+"required": true,
+"min_characters": 300,
+"question": "Explique qué restricciones limitan el trabajo de Sistemas de Gestión y qué decisiones obligan a tomar.",
+"context": "Busca capturar restricciones de recursos, tiempo, respuesta de áreas, disponibilidad de evidencias, cambios normativos, dependencia de responsables y prioridades operativas.",
+"tooltip": "Incluya: restricción, origen, frecuencia, proceso afectado, decisión que obliga a tomar, responsable, alternativa disponible, riesgo si no se gestiona y ejemplo real.",
+"expected_answer_structure": [
+"Restricción",
+"Origen",
+"Frecuencia",
+"Proceso afectado",
+"Decisión obligada",
+"Responsable",
+"Alternativa disponible",
+"Riesgo si no se gestiona",
+"Ejemplo real"
+],
+"good_answer_example": "Una restricción frecuente es depender de que las áreas entreguen evidencias completas dentro del plazo. Cuando esto no ocurre, Sistemas de Gestión debe priorizar evidencias críticas, escalar pendientes y preparar soportes mínimos para evitar incumplimientos en auditoría.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"restricción",
+"origen",
+"frecuencia",
+"decisión",
+"responsable",
+"alternativa",
+"riesgo",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No describe restricciones concretas",
+"No explica decisiones asociadas",
+"No menciona alternativas",
+"No incluye ejemplo"
+]
+}
+]
+}
+]
+}

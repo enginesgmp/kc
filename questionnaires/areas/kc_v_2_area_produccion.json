@@ -1,0 +1,1148 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Producción",
+"level": null,
+"area_metadata": {
+"area_id": "area_produccion",
+"display_name": "Producción",
+"aliases": [
+"Producción",
+"Produccion",
+"Área de Producción",
+"Production",
+"Operaciones de Planta",
+"Manufactura",
+"Proceso Productivo",
+"Planta",
+"Líneas de Producción",
+"Ejecución Productiva"
+],
+"macro_process": "MP-1300 PLANIFICACIÓN, PRODUCCIÓN Y CONTROL OPERATIVO"
+},
+"blocks": [
+{
+"block_id": "PROD_01_FLUJO_PRODUCCION",
+"block_name": "Flujo integral de producción",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar cómo el área de Producción gestiona el proceso productivo desde la recepción del plan hasta la entrega del producto terminado, semielaborado o lote procesado.",
+"questions": [
+{
+"question_id": "PROD_01_Q01",
+"ai_category": "sop_alignment",
+"required": true,
+"min_characters": 350,
+"question": "Describa el flujo real de trabajo de Producción desde que recibe el plan o programa hasta que entrega el producto terminado, semielaborado o lote procesado.",
+"context": "El objetivo es entender la operación real de Producción, incluyendo recepción del plan, preparación, asignación de recursos, ejecución, controles en proceso, registros, entrega, cierre y retroalimentación.",
+"tooltip": "Registre: origen del plan, etapas reales del proceso, responsables por etapa, documentos o registros utilizados, sistemas usados, validaciones, tiempos habituales, controles críticos, excepciones frecuentes y consecuencias si una etapa falla.",
+"expected_answer_structure": [
+"Origen del plan",
+"Etapas del proceso",
+"Responsables",
+"Documentos/registros",
+"Sistemas usados",
+"Validaciones",
+"Tiempos habituales",
+"Controles críticos",
+"Excepciones frecuentes",
+"Consecuencias"
+],
+"good_answer_example": "Producción recibe el programa validado por Planificación. Antes de iniciar confirma materia prima, personal, equipos, materiales, liberación de Calidad y disponibilidad de línea. Durante la ejecución controla parámetros, avance, rendimiento y registros por lote. Al finalizar entrega producto, registra resultados y reporta desviaciones.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"origen del plan",
+"etapas",
+"responsables",
+"registros",
+"sistemas",
+"validaciones",
+"controles",
+"excepciones",
+"consecuencias"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe el flujo real de Producción.",
+"No se identifican responsables por etapa.",
+"No se mencionan documentos, registros o sistemas usados.",
+"No se incluyen controles críticos ni consecuencias operativas.",
+"No diferencia operación normal de excepciones."
+]
+},
+{
+"question_id": "PROD_01_Q02",
+"ai_category": "operational_decisions",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué decisiones operativas toma Producción durante la ejecución diaria del plan y qué criterios usa?",
+"context": "Se busca capturar criterios reales para priorizar líneas, ajustar secuencias, reasignar personal, detener equipos, solicitar soporte, reprocesar, segregar producto o escalar problemas.",
+"tooltip": "Registre: decisión tomada, criterio utilizado, información requerida, responsable de decidir, momento de la decisión, alternativas consideradas, riesgo asociado, evidencia usada y ejemplo real.",
+"expected_answer_structure": [
+"Decisión",
+"Criterio utilizado",
+"Información requerida",
+"Responsable",
+"Momento de decisión",
+"Alternativas",
+"Riesgo",
+"Evidencia",
+"Ejemplo real"
+],
+"good_answer_example": "Si una línea presenta atraso, Producción decide reasignar personal, extender operación o ajustar la secuencia según criticidad del pedido, fecha compromiso, disponibilidad de materia prima, estado de calidad y capacidad disponible.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"decisión",
+"criterio",
+"responsable",
+"momento",
+"riesgo",
+"evidencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta solo enumera decisiones sin criterios.",
+"No se identifica quién decide.",
+"No se explican alternativas consideradas.",
+"No se incluye evidencia ni ejemplo real.",
+"No permite extraer reglas SI → ENTONCES."
+]
+}
+]
+},
+{
+"block_id": "PROD_02_PLAN_PROGRAMA",
+"block_name": "Plan de producción, programación y prioridades",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 20,
+"objective": "Identificar cómo Producción recibe, interpreta, valida y ejecuta el plan de producción, incluyendo prioridades, programación de piso, restricciones y cambios operativos.",
+"questions": [
+{
+"question_id": "PROD_02_Q01",
+"ai_category": "hidden_dependencies",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información necesita Producción de Planificación, Comercial, Bodega, Cámaras, Calidad, Mantenimiento, Compras u otras áreas para ejecutar correctamente el plan?",
+"context": "La ejecución depende de un plan claro, disponibilidad de materia prima, materiales, liberaciones, capacidad, equipos operativos, prioridades, personal, cámaras disponibles y restricciones conocidas.",
+"tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato o canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+"expected_answer_structure": [
+"Dato requerido",
+"Área proveedora",
+"Momento requerido",
+"Formato/canal",
+"Responsable",
+"Consecuencia del retraso",
+"Solución temporal",
+"Mejora recomendada"
+],
+"good_answer_example": "Producción necesita programa confirmado, materia prima disponible, estado de calidad, ocupación de cámaras, disponibilidad de materiales, equipos operativos y prioridades claras. Si el dato llega tarde, se generan cambios, paradas o reprocesos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"dato",
+"área",
+"momento",
+"canal",
+"responsable",
+"consecuencia",
+"solución",
+"mejora"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica áreas proveedoras de información.",
+"No indica cuándo se requiere la información.",
+"No describe consecuencias operativas del retraso.",
+"No incluye soluciones temporales ni mejoras.",
+"No menciona ejemplos reales."
+]
+},
+{
+"question_id": "PROD_02_Q02",
+"ai_category": "operational_priorities",
+"required": true,
+"min_characters": 350,
+"question": "¿Cómo prioriza Producción cuando existen varios pedidos, líneas, lotes, turnos o actividades compitiendo por los mismos recursos?",
+"context": "Se busca capturar criterios reales de prioridad: fecha compromiso, cliente, programa, capacidad, materia prima, cámaras, calidad, eficiencia, cambio de formato, urgencias o restricciones productivas.",
+"tooltip": "Registre: criterio de prioridad, quién decide, datos usados, frecuencia de revisión, cómo se comunica, riesgo asociado, excepción permitida y ejemplo real.",
+"expected_answer_structure": [
+"Criterio de prioridad",
+"Decisor",
+"Datos usados",
+"Frecuencia de revisión",
+"Comunicación",
+"Riesgo",
+"Excepción permitida",
+"Ejemplo real"
+],
+"good_answer_example": "Se prioriza según programa, fecha compromiso, disponibilidad de materia prima, ocupación de cámaras y criticidad del pedido. Las urgencias se validan con Planificación y jefatura antes de desplazar producción programada.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"decisor",
+"datos",
+"frecuencia",
+"comunicación",
+"riesgo",
+"excepción",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta solo dice que se sigue el plan sin explicar criterios.",
+"No identifica quién decide.",
+"No menciona datos usados.",
+"No describe excepciones.",
+"No incluye ejemplo real."
+]
+}
+]
+},
+{
+"block_id": "PROD_03_PREPARACION_ARRANQUE",
+"block_name": "Preparación, arranque y alistamiento operativo",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 30,
+"objective": "Capturar cómo se preparan líneas, equipos, personal, materiales, condiciones operativas y controles antes de iniciar producción.",
+"questions": [
+{
+"question_id": "PROD_03_Q01",
+"ai_category": "manual_controls",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué actividades de preparación o alistamiento realiza Producción antes de iniciar una jornada, lote, línea o proceso?",
+"context": "Interesa identificar validaciones de limpieza, equipos, herramientas, materia prima, materiales, personal, parámetros, seguridad, calidad, documentación y disponibilidad operativa.",
+"tooltip": "Registre: actividad de preparación, responsable, momento de ejecución, documento o registro, validación aplicada, riesgo si falla, evidencia generada y ejemplo real.",
+"expected_answer_structure": [
+"Actividad de preparación",
+"Responsable",
+"Momento",
+"Documento/registro",
+"Validación",
+"Riesgo si falla",
+"Evidencia",
+"Ejemplo real"
+],
+"good_answer_example": "Antes de iniciar se verifica limpieza, disponibilidad de materiales, condición del equipo, personal asignado, parámetros requeridos y liberación de Calidad. Si falta un requisito, el arranque se retrasa o se escala al área correspondiente.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"actividad",
+"responsable",
+"momento",
+"documento",
+"validación",
+"riesgo",
+"evidencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no menciona responsables.",
+"No indica evidencia o registros.",
+"No identifica riesgos si falla el alistamiento.",
+"No describe validaciones reales.",
+"No incluye ejemplo operativo."
+]
+},
+{
+"question_id": "PROD_03_Q02",
+"ai_category": "operational_alerts",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué alertas deben activarse cuando una línea, equipo, lote, cámara, material o turno no está listo para iniciar producción?",
+"context": "Interesa definir alertas sobre falta de materiales, equipo no disponible, personal incompleto, liberación pendiente, cámara saturada, parámetro fuera de rango o condición insegura.",
+"tooltip": "Registre: alerta, condición disparadora, quién la detecta, quién decide, canal usado, tiempo máximo de reacción, acción inicial y consecuencia de no actuar.",
+"expected_answer_structure": [
+"Alerta",
+"Condición disparadora",
+"Detector",
+"Decisor",
+"Canal",
+"Tiempo máximo",
+"Acción inicial",
+"Consecuencia"
+],
+"good_answer_example": "Si una materia prima no está liberada, una cámara está saturada o el equipo no está listo, Producción alerta a Calidad, Cámaras, Bodega o Mantenimiento antes de iniciar para evitar reprocesos o incumplimientos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"alerta",
+"condición",
+"detector",
+"decisor",
+"canal",
+"tiempo",
+"acción",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"La respuesta no define condición disparadora.",
+"No identifica quién detecta ni quién decide.",
+"No menciona tiempo máximo de reacción.",
+"No describe consecuencias.",
+"No permite generar reglas de alerta."
+]
+}
+]
+},
+{
+"block_id": "PROD_04_EJECUCION_CONTROL",
+"block_name": "Ejecución productiva y control en proceso",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 40,
+"objective": "Identificar cómo se ejecuta el proceso productivo, se monitorean parámetros, se registran controles y se gestionan desviaciones en tiempo real.",
+"questions": [
+{
+"question_id": "PROD_04_Q01",
+"ai_category": "sop_alignment",
+"required": true,
+"min_characters": 350,
+"question": "Explique cómo Producción controla la ejecución del proceso durante la jornada, lote, línea o turno.",
+"context": "El objetivo es comprender controles operativos, parámetros críticos, registros, inspecciones, responsables, frecuencia de revisión y coordinación con Calidad, Mantenimiento, Planificación, Bodega o Cámaras.",
+"tooltip": "Registre: etapa controlada, parámetro o condición controlada, responsable, frecuencia, registro usado, criterio de aceptación, acción ante desviación y ejemplo real.",
+"expected_answer_structure": [
+"Etapa controlada",
+"Parámetro/condición",
+"Responsable",
+"Frecuencia",
+"Registro",
+"Criterio de aceptación",
+"Acción ante desviación",
+"Ejemplo real"
+],
+"good_answer_example": "Durante el proceso se revisan parámetros, avance, rendimiento, temperatura si aplica, condición del producto y cumplimiento de calidad. Si un valor sale de rango, se detiene, ajusta, segrega o escala según criticidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"etapa",
+"parámetro",
+"responsable",
+"frecuencia",
+"registro",
+"criterio",
+"acción",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica parámetros o condiciones controladas.",
+"No menciona frecuencia de control.",
+"No indica criterio de aceptación.",
+"No describe acciones ante desviación.",
+"No incluye ejemplo real."
+]
+},
+{
+"question_id": "PROD_04_Q02",
+"ai_category": "decision_rules",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué reglas se aplican para ajustar parámetros, detener una línea, reprocesar, segregar producto o escalar una desviación?",
+"context": "Se requiere extraer reglas SI → ENTONCES relacionadas con calidad, seguridad, inocuidad, rendimiento, equipo, materiales, parámetros críticos, producto no conforme o riesgo de incumplimiento.",
+"tooltip": "Registre reglas concretas: condición SI, acción ENTONCES, responsable, evidencia, autorización requerida, tiempo máximo, escalamiento y consecuencia si no se actúa.",
+"expected_answer_structure": [
+"Condición SI",
+"Acción ENTONCES",
+"Responsable",
+"Evidencia",
+"Autorización",
+"Tiempo máximo",
+"Escalamiento",
+"Consecuencia"
+],
+"good_answer_example": "SI un parámetro crítico queda fuera de especificación, ENTONCES Producción detiene o segrega el producto, registra evidencia y solicita validación de Calidad antes de continuar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"SI",
+"ENTONCES",
+"responsable",
+"evidencia",
+"autorización",
+"escalamiento",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"La respuesta no está redactada como regla SI → ENTONCES.",
+"No indica responsable.",
+"No menciona evidencia.",
+"No define autorización o escalamiento.",
+"No describe consecuencia de no actuar."
+]
+}
+]
+},
+{
+"block_id": "PROD_05_CALIDAD_INOCUIDAD",
+"block_name": "Calidad, inocuidad y producto no conforme",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 50,
+"objective": "Capturar cómo Producción asegura requisitos de calidad e inocuidad y cómo gestiona producto no conforme, segregaciones, reprocesos, trazabilidad y liberaciones.",
+"questions": [
+{
+"question_id": "PROD_05_Q01",
+"ai_category": "operational_risks",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué riesgos de calidad, inocuidad o cumplimiento considera Producción durante la ejecución del proceso?",
+"context": "Incluya riesgos de contaminación, mezcla, error de lote, parámetros fuera de rango, material no liberado, mala identificación, reproceso, limpieza insuficiente, pérdida de trazabilidad o incumplimiento de especificación.",
+"tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+"expected_answer_structure": [
+"Riesgo",
+"Causa",
+"Impacto",
+"Probabilidad",
+"Control actual",
+"Responsable",
+"Señal temprana",
+"Contingencia",
+"Ejemplo histórico"
+],
+"good_answer_example": "Un riesgo es procesar material no liberado o mal identificado. Se controla validando etiqueta, lote, estado de calidad, documentación y registros antes de usarlo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"riesgo",
+"causa",
+"impacto",
+"control",
+"responsable",
+"señal",
+"contingencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica riesgos específicos.",
+"No indica causas ni impactos.",
+"No menciona controles actuales.",
+"No incluye señales tempranas.",
+"No incluye ejemplo histórico."
+]
+},
+{
+"question_id": "PROD_05_Q02",
+"ai_category": "critical_failures",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué fallas críticas de calidad, inocuidad o trazabilidad pueden ocurrir en Producción y cómo se previenen?",
+"context": "Se busca identificar fallas como contaminación cruzada, lote mezclado, producto fuera de especificación, falta de trazabilidad, error de etiquetado, liberación incorrecta o despacho de producto no conforme.",
+"tooltip": "Registre: falla crítica, causa, punto de detección, control preventivo, responsable, evidencia, acción correctiva y ejemplo histórico.",
+"expected_answer_structure": [
+"Falla crítica",
+"Causa",
+"Punto de detección",
+"Control preventivo",
+"Responsable",
+"Evidencia",
+"Acción correctiva",
+"Ejemplo histórico"
+],
+"good_answer_example": "Una falla crítica es mezclar lotes sin trazabilidad. Se previene con identificación física, registros por lote, segregación, validación de Calidad y control de documentación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"falla",
+"causa",
+"detección",
+"control",
+"responsable",
+"evidencia",
+"acción",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta describe riesgos generales, pero no fallas críticas.",
+"No indica punto de detección.",
+"No menciona controles preventivos.",
+"No identifica responsable.",
+"No incluye ejemplo histórico."
+]
+}
+]
+},
+{
+"block_id": "PROD_06_RENDIMIENTO_EFICIENCIA",
+"block_name": "Rendimiento, eficiencia y productividad",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 60,
+"objective": "Identificar cómo Producción mide rendimiento, eficiencia, productividad, merma, tiempos muertos, cumplimiento del plan y uso de recursos.",
+"questions": [
+{
+"question_id": "PROD_06_Q01",
+"ai_category": "critical_indicators",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué indicadores revisa Producción para saber si la operación está bajo control y qué umbrales generan alerta?",
+"context": "Interesa identificar indicadores reales: cumplimiento del plan, rendimiento, eficiencia, productividad, merma, tiempos muertos, reproceso, avance por turno, utilización de línea, disponibilidad de materia prima y cumplimiento de programa.",
+"tooltip": "Registre: indicador, fórmula si existe, fuente, frecuencia, responsable, meta o umbral, decisión que dispara, reunión donde se revisa y ejemplo reciente.",
+"expected_answer_structure": [
+"Indicador",
+"Fórmula",
+"Fuente",
+"Frecuencia",
+"Responsable",
+"Meta/umbral",
+"Decisión que dispara",
+"Reunión donde se revisa",
+"Ejemplo reciente"
+],
+"good_answer_example": "Se revisa cumplimiento del plan, rendimiento, merma y tiempos muertos. Si el rendimiento cae bajo el umbral o el avance por turno se retrasa, se revisan causas y se activa acción correctiva con soporte.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"indicador",
+"fuente",
+"frecuencia",
+"responsable",
+"umbral",
+"decisión",
+"reunión",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta solo enumera indicadores sin explicar uso.",
+"No menciona fuente ni frecuencia.",
+"No define umbrales.",
+"No indica decisiones asociadas.",
+"No incluye ejemplo reciente."
+]
+},
+{
+"question_id": "PROD_06_Q02",
+"ai_category": "early_warnings",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas indican pérdida de eficiencia, atraso, baja productividad, aumento de merma o riesgo de incumplimiento del plan?",
+"context": "Se busca detectar alertas antes de que afecten cumplimiento, costo, calidad, entrega, ocupación de cámaras o continuidad productiva.",
+"tooltip": "Registre: señal temprana, cómo se detecta, frecuencia de revisión, responsable, acción preventiva, área escalada y ejemplo real.",
+"expected_answer_structure": [
+"Señal temprana",
+"Detección",
+"Frecuencia",
+"Responsable",
+"Acción preventiva",
+"Escalamiento",
+"Ejemplo real"
+],
+"good_answer_example": "Una señal temprana es aumento de paradas menores, merma por encima del promedio o avance inferior al plan horario. Se detecta en el seguimiento del turno y se escala para corrección inmediata.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"detección",
+"frecuencia",
+"responsable",
+"acción",
+"escalamiento",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no diferencia señales tempranas de problemas ya materializados.",
+"No indica cómo se detectan.",
+"No menciona frecuencia.",
+"No define acción preventiva.",
+"No incluye ejemplo real."
+]
+}
+]
+},
+{
+"block_id": "PROD_07_PERSONAL_TURNOS",
+"block_name": "Personal, turnos y asignación de recursos",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 70,
+"objective": "Capturar cómo Producción gestiona dotación, turnos, roles, polivalencia, ausencias, competencias y asignación de personal a líneas o procesos.",
+"questions": [
+{
+"question_id": "PROD_07_Q01",
+"ai_category": "production_constraints",
+"required": true,
+"min_characters": 350,
+"question": "¿Cómo asigna Producción personal, turnos y roles para cumplir el plan operativo?",
+"context": "Se busca conocer criterios de dotación, experiencia, competencias, disponibilidad, ausencias, cargas de trabajo, turnos, polivalencia, restricciones laborales y criticidad de líneas.",
+"tooltip": "Registre: rol o recurso, criterio de asignación, responsable, frecuencia, restricción detectada, acción tomada, impacto y ejemplo real.",
+"expected_answer_structure": [
+"Rol/recurso",
+"Criterio de asignación",
+"Responsable",
+"Frecuencia",
+"Restricción detectada",
+"Acción tomada",
+"Impacto",
+"Ejemplo real"
+],
+"good_answer_example": "El personal se asigna según plan, experiencia, disponibilidad, competencia y criticidad de línea. Ante ausencias, se redistribuye personal, se ajusta la secuencia o se solicita apoyo según prioridad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"rol",
+"criterio",
+"responsable",
+"frecuencia",
+"restricción",
+"acción",
+"impacto",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no explica criterios de asignación.",
+"No identifica responsable.",
+"No menciona restricciones.",
+"No describe impacto operativo.",
+"No incluye ejemplo real."
+]
+},
+{
+"question_id": "PROD_07_Q02",
+"ai_category": "human_dependencies",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué actividades, decisiones o ajustes dependen de personas específicas dentro de Producción y qué riesgo existe si esas personas no están disponibles?",
+"context": "Se busca identificar dependencia de supervisores, operadores expertos, técnicos de línea, personal con conocimiento de ajustes, líderes de turno o personas que resuelven excepciones críticas.",
+"tooltip": "Registre: persona o rol crítico, conocimiento que concentra, actividad donde se usa, frecuencia, riesgo de ausencia, reemplazo disponible, evidencia y acción para reducir dependencia.",
+"expected_answer_structure": [
+"Persona/rol crítico",
+"Conocimiento concentrado",
+"Actividad donde se usa",
+"Frecuencia",
+"Riesgo de ausencia",
+"Reemplazo disponible",
+"Evidencia",
+"Acción para reducir dependencia"
+],
+"good_answer_example": "Un supervisor o operador experto puede conocer ajustes específicos para evitar merma o destrabar una línea. Si no está disponible, aumentan tiempos de diagnóstico, paradas y variabilidad del proceso.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"persona",
+"conocimiento",
+"actividad",
+"frecuencia",
+"riesgo",
+"reemplazo",
+"evidencia",
+"acción"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica roles críticos.",
+"No explica qué conocimiento concentran.",
+"No describe riesgo de ausencia.",
+"No menciona reemplazo o respaldo.",
+"No propone acción para reducir dependencia."
+]
+}
+]
+},
+{
+"block_id": "PROD_08_MATERIALES_EQUIPOS_CAMARAS",
+"block_name": "Materiales, equipos, bodegas y cámaras",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 80,
+"objective": "Identificar cómo Producción coordina materiales, equipos, mantenimiento, bodegas, cámaras, calidad y soporte para asegurar continuidad operativa.",
+"questions": [
+{
+"question_id": "PROD_08_Q01",
+"ai_category": "coordination_patterns",
+"required": true,
+"min_characters": 350,
+"question": "¿Cómo se coordina Producción con Bodega, Cámaras, Calidad, Mantenimiento, Planificación, Compras, Comercial, Despacho y otras áreas de soporte?",
+"context": "La producción depende de materiales disponibles, materia prima, cámaras con capacidad, equipos operativos, liberaciones, mantenimiento, cambios de plan, retiros, despachos y recursos de soporte.",
+"tooltip": "Registre: área involucrada, información intercambiada, frecuencia, canal, responsable, decisión soportada, problema recurrente y ejemplo real.",
+"expected_answer_structure": [
+"Área",
+"Información intercambiada",
+"Frecuencia",
+"Canal",
+"Responsable",
+"Decisión soportada",
+"Problema recurrente",
+"Ejemplo real"
+],
+"good_answer_example": "Con Bodega se coordina abastecimiento de materiales; con Cámaras disponibilidad y transferencias; con Calidad liberaciones; con Mantenimiento fallas; con Planificación cambios de programa; con Despacho entrega de producto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"área",
+"información",
+"frecuencia",
+"canal",
+"responsable",
+"decisión",
+"problema",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica áreas específicas.",
+"No describe información intercambiada.",
+"No menciona frecuencia ni canal.",
+"No explica decisiones soportadas.",
+"No incluye ejemplo real."
+]
+},
+{
+"question_id": "PROD_08_Q02",
+"ai_category": "process_friction",
+"required": true,
+"min_characters": 350,
+"question": "¿Cuáles son las fricciones más frecuentes entre Producción y otras áreas, y cómo se resuelven en la práctica?",
+"context": "No se busca culpabilizar áreas; se busca identificar patrones que afectan continuidad, calidad, disponibilidad de materiales, ocupación de cámaras, mantenimiento, planificación o entrega.",
+"tooltip": "Registre: área, fricción, causa probable, frecuencia, impacto, solución actual, regla no escrita, evidencia y mejora sugerida.",
+"expected_answer_structure": [
+"Área",
+"Fricción",
+"Causa probable",
+"Frecuencia",
+"Impacto",
+"Solución actual",
+"Regla no escrita",
+"Evidencia",
+"Mejora sugerida"
+],
+"good_answer_example": "Una fricción frecuente es recibir materiales tarde, cámaras saturadas o liberaciones pendientes. Se resuelve con llamadas directas y escalamiento, pero debería existir una alerta previa formal.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"área",
+"fricción",
+"causa",
+"frecuencia",
+"impacto",
+"solución",
+"regla",
+"mejora"
+]
+},
+"incomplete_if": [
+"La respuesta culpa a áreas sin describir el patrón operativo.",
+"No identifica causa probable.",
+"No menciona frecuencia.",
+"No describe impacto.",
+"No propone mejora."
+]
+}
+]
+},
+{
+"block_id": "PROD_09_HERRAMIENTAS_DATOS",
+"block_name": "Herramientas, registros y datos de producción",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 90,
+"objective": "Identificar sistemas oficiales, archivos paralelos, reportes y datos críticos usados para controlar producción, avance, calidad, rendimiento y trazabilidad.",
+"questions": [
+{
+"question_id": "PROD_09_Q01",
+"ai_category": "parallel_tools",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué sistemas, archivos, formatos, tableros o controles paralelos usa Producción para gestionar avance, turnos, lotes, materiales, calidad, cámaras, paradas o rendimiento?",
+"context": "Se busca entender el ecosistema real: ERP, MES, Excel, formatos físicos, checklists, reportes de turno, correos, WhatsApp, tableros visuales o sistemas internos.",
+"tooltip": "Registre: herramienta, uso específico, dato capturado, responsable, frecuencia de actualización, fuente oficial, decisión soportada, riesgo de duplicidad y mejora deseada.",
+"expected_answer_structure": [
+"Herramienta",
+"Uso específico",
+"Dato capturado",
+"Responsable",
+"Frecuencia",
+"Fuente oficial",
+"Decisión soportada",
+"Riesgo",
+"Mejora deseada"
+],
+"good_answer_example": "Además del sistema oficial, se usan reportes de turno o Excel para registrar avance, merma, paradas, observaciones y restricciones. El riesgo es duplicidad, retraso o error manual.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"herramienta",
+"uso",
+"dato",
+"responsable",
+"frecuencia",
+"fuente",
+"decisión",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta solo enumera herramientas.",
+"No indica qué dato captura cada herramienta.",
+"No identifica responsable ni frecuencia.",
+"No distingue fuente oficial de control paralelo.",
+"No menciona riesgos de duplicidad."
+]
+},
+{
+"question_id": "PROD_09_Q02",
+"ai_category": "hidden_dependencies",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué datos críticos necesita Producción durante la operación y qué ocurre cuando llegan tarde, incompletos o inconsistentes?",
+"context": "Esta pregunta busca dependencias ocultas que afectan ejecución, calidad, trazabilidad, cumplimiento, cierre de producción, indicadores, cámaras y coordinación.",
+"tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato o canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+"expected_answer_structure": [
+"Dato requerido",
+"Área proveedora",
+"Momento requerido",
+"Formato/canal",
+"Responsable",
+"Consecuencia",
+"Solución temporal",
+"Mejora"
+],
+"good_answer_example": "Producción necesita datos de lote, especificación, plan, estado de calidad, disponibilidad de materiales, capacidad de cámara y restricciones. Si son inconsistentes, se detiene o consulta antes de ejecutar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"dato",
+"área",
+"momento",
+"canal",
+"responsable",
+"consecuencia",
+"solución",
+"mejora"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica datos críticos.",
+"No menciona áreas proveedoras.",
+"No explica consecuencias del dato incorrecto.",
+"No describe solución temporal.",
+"No propone mejora."
+]
+}
+]
+},
+{
+"block_id": "PROD_10_REUNIONES_RUTINAS",
+"block_name": "Reuniones, rutinas y gobierno operativo",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 100,
+"objective": "Capturar reuniones y rutinas que sostienen seguimiento del plan, cumplimiento, restricciones, calidad, seguridad, mantenimiento, cámaras y acciones correctivas.",
+"questions": [
+{
+"question_id": "PROD_10_Q01",
+"ai_category": "meeting_registry",
+"required": true,
+"min_characters": 350,
+"question": "Liste las reuniones o rutinas donde Producción revisa plan, avance, restricciones, calidad, seguridad, mantenimiento, cámaras, indicadores o pendientes.",
+"context": "Interesa conocer reuniones formales e informales: arranque de turno, pase de guardia, revisión diaria, seguimiento de producción, reuniones con soporte, S&OP operativo si aplica y cierre de turno.",
+"tooltip": "Registre: nombre de la reunión, objetivo, frecuencia, duración, participantes obligatorios, quién lidera, temas fijos, indicadores revisados, decisiones tomadas, insumos requeridos, salidas esperadas, acta o evidencia generada y consecuencias si no se realiza.",
+"expected_answer_structure": [
+"Nombre",
+"Objetivo",
+"Frecuencia",
+"Duración",
+"Participantes",
+"Líder",
+"Temas fijos",
+"Indicadores",
+"Decisiones",
+"Insumos",
+"Salidas",
+"Evidencia",
+"Consecuencia"
+],
+"good_answer_example": "En el arranque de turno se revisa plan, personal, equipos, materiales, cámaras, seguridad y restricciones. Si no se realiza, aumentan errores, cambios no comunicados y falta de coordinación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"nombre",
+"objetivo",
+"frecuencia",
+"participantes",
+"líder",
+"indicadores",
+"decisiones",
+"evidencia",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"La respuesta solo enumera reuniones.",
+"No indica frecuencia ni participantes.",
+"No menciona indicadores revisados.",
+"No describe decisiones tomadas.",
+"No indica evidencia o consecuencia si no se realiza."
+]
+},
+{
+"question_id": "PROD_10_Q02",
+"ai_category": "governance_routines",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué seguimiento diario o por turno realiza Producción para asegurar avance, calidad, seguridad, disponibilidad de recursos y cierre correcto?",
+"context": "Se busca capturar rutina real de gestión: arranque, seguimiento horario, resolución de problemas, registro de datos, comunicación, cierre, pase de turno y pendientes arrastrados.",
+"tooltip": "Registre: secuencia de revisión, horarios o frecuencia, responsables, evidencias, alertas, decisiones, cierres obligatorios y pendientes arrastrados.",
+"expected_answer_structure": [
+"Secuencia",
+"Frecuencia/horarios",
+"Responsables",
+"Evidencias",
+"Alertas",
+"Decisiones",
+"Cierres obligatorios",
+"Pendientes arrastrados"
+],
+"good_answer_example": "Durante el turno se revisa avance, paradas, calidad, merma, materiales y restricciones. Al cierre se registran resultados, causas de desviación y pendientes para el siguiente turno.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"secuencia",
+"frecuencia",
+"responsables",
+"evidencia",
+"alertas",
+"decisiones",
+"cierre"
+]
+},
+"incomplete_if": [
+"La respuesta no describe una rutina secuencial.",
+"No indica horarios o frecuencia.",
+"No menciona responsables.",
+"No describe evidencia de seguimiento.",
+"No incluye decisiones ni pendientes."
+]
+}
+]
+},
+{
+"block_id": "PROD_11_REGLAS_ESCALAMIENTO",
+"block_name": "Reglas no escritas, prioridades y escalamiento de producción",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 110,
+"objective": "Extraer reglas tácitas y umbrales reales de escalamiento usados cuando el plan, la línea, el lote, la calidad, la seguridad, las cámaras o los recursos están en riesgo.",
+"questions": [
+{
+"question_id": "PROD_11_Q01",
+"ai_category": "non_written_rules",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué reglas no escritas usa Producción para priorizar actividades, resolver problemas o mantener continuidad bajo presión?",
+"context": "Las reglas no escritas explican cómo se opera cuando el procedimiento formal no alcanza: fallas, atrasos, urgencias, falta de material, cámaras saturadas, desviaciones, cambios de plan o presión de entrega.",
+"tooltip": "Registre: regla no escrita, condición de uso, quién la valida, beneficio, riesgo, evidencia o comunicación y ejemplo real.",
+"expected_answer_structure": [
+"Regla no escrita",
+"Condición de uso",
+"Validador",
+"Beneficio",
+"Riesgo",
+"Evidencia/comunicación",
+"Ejemplo real"
+],
+"good_answer_example": "Cuando una línea crítica está detenida, se prioriza soporte inmediato sobre tareas no críticas, con comunicación a jefatura y áreas de soporte aunque no estuviera planificado formalmente.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"regla",
+"condición",
+"validador",
+"beneficio",
+"riesgo",
+"evidencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica reglas tácitas.",
+"No indica cuándo se usan.",
+"No menciona quién valida.",
+"No explica beneficio y riesgo.",
+"No incluye ejemplo real."
+]
+},
+{
+"question_id": "PROD_11_Q02",
+"ai_category": "escalation_thresholds",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué situaciones obligan a Producción a escalar y a quién se escala según el tipo de problema?",
+"context": "Se busca mapear umbrales reales: parada crítica, desviación de calidad, riesgo de seguridad, falta de material, atraso, equipo fallando, personal insuficiente, cámara saturada, plan inviable o incumplimiento de entrega.",
+"tooltip": "Registre: situación, umbral, primer responsable, autoridad final, canal usado, tiempo máximo tolerado, evidencia requerida y ejemplo real.",
+"expected_answer_structure": [
+"Situación",
+"Umbral",
+"Primer responsable",
+"Autoridad final",
+"Canal",
+"Tiempo máximo",
+"Evidencia",
+"Ejemplo real"
+],
+"good_answer_example": "Si una desviación de calidad afecta producto o trazabilidad, Producción escala a Calidad y jefatura con lote, evidencia, impacto, acción tomada y decisión requerida.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"umbral",
+"responsable",
+"autoridad",
+"canal",
+"tiempo",
+"evidencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no define umbrales.",
+"No identifica primer responsable ni autoridad final.",
+"No menciona canal.",
+"No indica tiempo máximo tolerado.",
+"No incluye evidencia ni ejemplo."
+]
+}
+]
+},
+{
+"block_id": "PROD_12_RIESGOS_CONOCIMIENTO",
+"block_name": "Riesgos, continuidad y conocimiento crítico de producción",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 120,
+"objective": "Capturar riesgos críticos y conocimiento no documentado que puede afectar continuidad productiva, calidad, seguridad, eficiencia, trazabilidad, cámaras y cumplimiento del plan.",
+"questions": [
+{
+"question_id": "PROD_12_Q01",
+"ai_category": "operational_risks",
+"required": true,
+"min_characters": 350,
+"question": "¿Cuáles son los riesgos operacionales más críticos del área de Producción y qué controles evitan que se materialicen?",
+"context": "Incluya riesgos de parada de línea, producto no conforme, accidente, falta de materiales, cámaras sin capacidad, pérdida de trazabilidad, baja eficiencia, merma elevada, error humano, dependencia de personal clave y cambios de programa.",
+"tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+"expected_answer_structure": [
+"Riesgo",
+"Causa",
+"Impacto",
+"Probabilidad",
+"Control actual",
+"Responsable",
+"Señal temprana",
+"Contingencia",
+"Ejemplo histórico"
+],
+"good_answer_example": "Un riesgo crítico es producir fuera de especificación o sin trazabilidad. Se controla con registros por lote, validación de Calidad, controles en proceso, segregación y supervisión.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"riesgo",
+"causa",
+"impacto",
+"control",
+"responsable",
+"señal",
+"contingencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no prioriza riesgos críticos.",
+"No identifica causas ni impactos.",
+"No menciona controles actuales.",
+"No define señales tempranas.",
+"No incluye contingencia ni ejemplo."
+]
+},
+{
+"question_id": "PROD_12_Q02",
+"ai_category": "tacit_knowledge",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué conocimiento crítico de Producción no está documentado y debería capturarse para evitar dependencia de personas específicas?",
+"context": "Se busca identificar conocimiento que vive en la experiencia: ajustes de línea, comportamiento de equipos, criterios de prioridad, manejo de excepciones, secuencias eficientes, fallas recurrentes, coordinación con cámaras o mejores prácticas.",
+"tooltip": "Registre: conocimiento no documentado, persona o rol que lo domina, cuándo se usa, riesgo cubierto, consecuencia de perderlo, forma sugerida de documentarlo y prioridad.",
+"expected_answer_structure": [
+"Conocimiento no documentado",
+"Persona/rol que lo domina",
+"Cuándo se usa",
+"Riesgo cubierto",
+"Consecuencia de perderlo",
+"Forma de documentación",
+"Prioridad"
+],
+"good_answer_example": "Un supervisor puede conocer ajustes específicos para evitar merma o fallas recurrentes. Si ese conocimiento se pierde, aumentan paradas, reprocesos, variabilidad y dependencia operativa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"conocimiento",
+"persona",
+"cuándo",
+"riesgo",
+"consecuencia",
+"documentación",
+"prioridad"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica conocimiento tácito.",
+"No menciona quién lo domina.",
+"No explica cuándo se usa.",
+"No describe consecuencia de perderlo.",
+"No propone forma de documentarlo."
+]
+}
+]
+}
+]
+}

@@ -1,0 +1,1155 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Ready to Eat y Maquilas",
+"level": null,
+"area_metadata": {
+"area_id": "area_ready_to_eat_y_maquilas",
+"display_name": "Ready to Eat y Maquilas",
+"aliases": [
+"Ready to Eat y Maquilas",
+"Ready to Eat",
+"RTE",
+"Maquilas",
+"Productos Listos para Comer",
+"Productos Ready to Eat",
+"Maquila",
+"Procesos de Maquila",
+"Producción RTE",
+"Operaciones RTE",
+"Empaque RTE"
+],
+"macro_process": "MP-1350 PRODUCCIÓN READY TO EAT, MAQUILAS Y OPERACIONES ESPECIALES"
+},
+"blocks": [
+{
+"block_id": "RTE_01_FLUJO_RTE_MAQUILAS",
+"block_name": "Flujo integral de Ready to Eat y Maquilas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar cómo el área de Ready to Eat y Maquilas gestiona productos listos para comer, procesos tercerizados o especiales, desde la planificación hasta la entrega y cierre.",
+"questions": [
+{
+"question_id": "RTE_01_Q01",
+"ai_category": "sop_alignment",
+"required": true,
+"min_characters": 350,
+"question": "Describa el flujo real de trabajo de Ready to Eat y Maquilas desde que recibe un requerimiento, programa o pedido hasta que entrega el producto procesado, empacado o maquilado.",
+"context": "El objetivo es entender la operación real: recepción del plan, validación de materiales, preparación, ejecución, control de calidad, coordinación con maquiladores o áreas internas, empaque, entrega, trazabilidad y cierre documental.",
+"tooltip": "Registre: origen del requerimiento, etapas del flujo, responsables, documentos o registros, sistemas usados, validaciones, tiempos habituales, controles críticos, excepciones frecuentes y consecuencias si una etapa falla.",
+"expected_answer_structure": [
+"Origen del requerimiento",
+"Etapas",
+"Responsables",
+"Documentos/registros",
+"Sistemas usados",
+"Validaciones",
+"Tiempos habituales",
+"Controles críticos",
+"Excepciones frecuentes",
+"Consecuencias"
+],
+"good_answer_example": "El proceso inicia con un programa o pedido confirmado. Se valida disponibilidad de materia prima, materiales de empaque, especificaciones, liberación de calidad y capacidad. Luego se ejecuta el proceso RTE o maquila, se controlan parámetros, se registra trazabilidad y se entrega producto conforme.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"origen",
+"etapas",
+"responsables",
+"documentos",
+"sistemas",
+"validaciones",
+"controles",
+"excepciones",
+"consecuencias"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe el flujo real del área.",
+"No se identifican responsables por etapa.",
+"No se mencionan documentos, registros o sistemas usados.",
+"No se incluyen controles críticos ni consecuencias operativas.",
+"No diferencia operación normal de excepciones."
+]
+},
+{
+"question_id": "RTE_01_Q02",
+"ai_category": "operational_decisions",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué decisiones operativas toma Ready to Eat y Maquilas durante la planificación, ejecución, control y entrega de productos?",
+"context": "Se busca capturar criterios reales para priorizar pedidos, aceptar o rechazar lotes, ajustar procesos, detener producción, segregar producto, cambiar secuencia, activar maquiladores o escalar desviaciones.",
+"tooltip": "Registre: decisión tomada, criterio utilizado, información requerida, responsable de decidir, momento de decisión, alternativas consideradas, riesgo asociado, evidencia usada y ejemplo real.",
+"expected_answer_structure": [
+"Decisión",
+"Criterio utilizado",
+"Información requerida",
+"Responsable",
+"Momento de decisión",
+"Alternativas",
+"Riesgo",
+"Evidencia",
+"Ejemplo real"
+],
+"good_answer_example": "Si un material de empaque no está disponible o una materia prima no está liberada, el responsable decide reprogramar, cambiar secuencia o escalar a Planificación, Calidad y Bodega según criticidad del pedido.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"decisión",
+"criterio",
+"información",
+"responsable",
+"riesgo",
+"evidencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta solo enumera decisiones sin criterios.",
+"No se identifica quién decide.",
+"No se explican alternativas consideradas.",
+"No se incluye evidencia ni ejemplo real.",
+"No permite extraer reglas SI → ENTONCES."
+]
+}
+]
+},
+{
+"block_id": "RTE_02_PLANIFICACION_PEDIDOS",
+"block_name": "Planificación, pedidos y prioridades operativas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 20,
+"objective": "Identificar cómo se reciben, validan y priorizan pedidos, programas y requerimientos para productos Ready to Eat y maquilas.",
+"questions": [
+{
+"question_id": "RTE_02_Q01",
+"ai_category": "hidden_dependencies",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información necesita Ready to Eat y Maquilas de Planificación, Comercial, Producción, Bodega, Calidad, Compras, Cámaras o clientes internos para ejecutar correctamente el programa?",
+"context": "La ejecución depende de demanda confirmada, especificaciones, disponibilidad de materia prima, materiales de empaque, liberaciones, capacidad, fechas compromiso, documentación y restricciones operativas.",
+"tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato o canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+"expected_answer_structure": [
+"Dato requerido",
+"Área proveedora",
+"Momento requerido",
+"Formato/canal",
+"Responsable",
+"Consecuencia del retraso",
+"Solución temporal",
+"Mejora recomendada"
+],
+"good_answer_example": "El área necesita pedido confirmado, especificación del producto, formato de empaque, fecha de entrega, materia prima liberada, materiales disponibles y capacidad. Si falta información, se genera reproceso o cambio de programa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"dato",
+"área",
+"momento",
+"canal",
+"responsable",
+"consecuencia",
+"solución",
+"mejora"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica datos críticos.",
+"No menciona áreas proveedoras.",
+"No indica consecuencias del retraso.",
+"No describe soluciones temporales.",
+"No propone mejora."
+]
+},
+{
+"question_id": "RTE_02_Q02",
+"ai_category": "operational_priorities",
+"required": true,
+"min_characters": 350,
+"question": "¿Cómo prioriza Ready to Eat y Maquilas cuando existen varios pedidos, lotes, clientes, formatos o maquilas compitiendo por recursos limitados?",
+"context": "Se busca capturar criterios reales de prioridad: fecha compromiso, cliente, vida útil, capacidad, disponibilidad de materia prima, materiales, inocuidad, cambios de formato, eficiencia y urgencias comerciales.",
+"tooltip": "Registre: criterio de prioridad, quién decide, datos usados, frecuencia de revisión, comunicación, riesgo, excepción permitida y ejemplo real.",
+"expected_answer_structure": [
+"Criterio de prioridad",
+"Decisor",
+"Datos usados",
+"Frecuencia de revisión",
+"Comunicación",
+"Riesgo",
+"Excepción permitida",
+"Ejemplo real"
+],
+"good_answer_example": "Se prioriza según fecha compromiso, vida útil, disponibilidad de insumos, cliente crítico y capacidad. Un pedido urgente puede desplazar una producción programada si Planificación y jefatura validan el impacto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"decisor",
+"datos",
+"frecuencia",
+"comunicación",
+"riesgo",
+"excepción",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no explica criterios de prioridad.",
+"No identifica quién decide.",
+"No menciona datos usados.",
+"No describe excepciones.",
+"No incluye ejemplo real."
+]
+}
+]
+},
+{
+"block_id": "RTE_03_MATERIA_PRIMA_INSUMOS",
+"block_name": "Materia prima, insumos, empaque y abastecimiento",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 30,
+"objective": "Capturar cómo se valida disponibilidad, estado, liberación y uso de materia prima, insumos, materiales de empaque y recursos para RTE y maquilas.",
+"questions": [
+{
+"question_id": "RTE_03_Q01",
+"ai_category": "inventory_controls",
+"required": true,
+"min_characters": 350,
+"question": "¿Cómo controla Ready to Eat y Maquilas la disponibilidad, liberación, trazabilidad y uso correcto de materia prima, insumos y materiales de empaque?",
+"context": "Interesa identificar controles sobre lotes, fechas, cantidades, estado de calidad, vida útil, especificaciones, inventario físico, materiales críticos y abastecimiento oportuno.",
+"tooltip": "Registre: material o insumo, control aplicado, responsable, momento, documento o sistema, criterio de aceptación, riesgo si falla, evidencia y ejemplo real.",
+"expected_answer_structure": [
+"Material/insumo",
+"Control aplicado",
+"Responsable",
+"Momento",
+"Documento/sistema",
+"Criterio de aceptación",
+"Riesgo si falla",
+"Evidencia",
+"Ejemplo real"
+],
+"good_answer_example": "Antes de iniciar se valida lote, cantidad, estado de calidad, fecha, especificación y disponibilidad del material de empaque. Si existe diferencia física o material no liberado, se detiene el uso y se consulta con Bodega y Calidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"material",
+"control",
+"responsable",
+"momento",
+"documento",
+"criterio",
+"riesgo",
+"evidencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica controles de inventario.",
+"No menciona responsables.",
+"No indica evidencia o sistema usado.",
+"No describe riesgo si falla.",
+"No incluye ejemplo real."
+]
+},
+{
+"question_id": "RTE_03_Q02",
+"ai_category": "operational_alerts",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué alertas deben activarse cuando existe riesgo de desabastecimiento, material no liberado, diferencia física o insumo crítico no disponible?",
+"context": "Interesa definir alertas sobre quiebre de stock, retraso de compras, error de inventario, materiales vencidos, empaque equivocado, insumos críticos o materia prima no conforme.",
+"tooltip": "Registre: alerta, condición disparadora, quién la detecta, quién decide, canal usado, tiempo máximo de reacción, acción inicial y consecuencia de no actuar.",
+"expected_answer_structure": [
+"Alerta",
+"Condición disparadora",
+"Detector",
+"Decisor",
+"Canal",
+"Tiempo máximo",
+"Acción inicial",
+"Consecuencia"
+],
+"good_answer_example": "Si un material de empaque crítico no está disponible antes del arranque, se alerta a Bodega, Compras y Planificación para reprogramar, sustituir bajo aprobación o escalar el riesgo de incumplimiento.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"alerta",
+"condición",
+"detector",
+"decisor",
+"canal",
+"tiempo",
+"acción",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"La respuesta no define condición disparadora.",
+"No identifica quién detecta ni quién decide.",
+"No menciona tiempo máximo de reacción.",
+"No describe consecuencias.",
+"No permite generar reglas de alerta."
+]
+}
+]
+},
+{
+"block_id": "RTE_04_EJECUCION_PROCESO",
+"block_name": "Ejecución del proceso RTE y maquila",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 40,
+"objective": "Identificar cómo se ejecutan operaciones Ready to Eat y maquilas, incluyendo preparación, proceso, empaque, controles, registros y cierre.",
+"questions": [
+{
+"question_id": "RTE_04_Q01",
+"ai_category": "sop_alignment",
+"required": true,
+"min_characters": 350,
+"question": "Explique cómo se ejecuta el proceso Ready to Eat o maquila durante la jornada, lote, turno o pedido.",
+"context": "El objetivo es comprender actividades reales, secuencia operativa, controles en proceso, parámetros, responsables, registros, inspecciones, cambios de formato, empaque y entrega.",
+"tooltip": "Registre: etapa ejecutada, actividad, responsable, parámetro o condición controlada, frecuencia, registro, criterio de aceptación, acción ante desviación y ejemplo real.",
+"expected_answer_structure": [
+"Etapa ejecutada",
+"Actividad",
+"Responsable",
+"Parámetro/condición",
+"Frecuencia",
+"Registro",
+"Criterio de aceptación",
+"Acción ante desviación",
+"Ejemplo real"
+],
+"good_answer_example": "Durante el proceso se verifica materia prima, limpieza, empaque, peso, presentación, codificación, trazabilidad y condiciones de inocuidad. Si se detecta desviación, se detiene, segrega o solicita validación de Calidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"etapa",
+"actividad",
+"responsable",
+"parámetro",
+"frecuencia",
+"registro",
+"criterio",
+"acción",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no describe etapas reales.",
+"No identifica parámetros o condiciones controladas.",
+"No menciona registros.",
+"No describe acciones ante desviación.",
+"No incluye ejemplo real."
+]
+},
+{
+"question_id": "RTE_04_Q02",
+"ai_category": "decision_rules",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué reglas se aplican para detener, ajustar, reprocesar, segregar, liberar o escalar un lote Ready to Eat o maquilado?",
+"context": "Se requiere extraer reglas SI → ENTONCES relacionadas con calidad, inocuidad, trazabilidad, empaque, vida útil, especificación, parámetros críticos, materiales o desviaciones operativas.",
+"tooltip": "Registre reglas concretas: condición SI, acción ENTONCES, responsable, evidencia, autorización requerida, tiempo máximo, escalamiento y consecuencia si no se actúa.",
+"expected_answer_structure": [
+"Condición SI",
+"Acción ENTONCES",
+"Responsable",
+"Evidencia",
+"Autorización",
+"Tiempo máximo",
+"Escalamiento",
+"Consecuencia"
+],
+"good_answer_example": "SI un lote RTE presenta desviación de etiquetado o pérdida de trazabilidad, ENTONCES se segrega, se registra evidencia y se solicita validación de Calidad antes de liberar o reprocesar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"SI",
+"ENTONCES",
+"responsable",
+"evidencia",
+"autorización",
+"escalamiento",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"La respuesta no está redactada como regla SI → ENTONCES.",
+"No indica responsable.",
+"No menciona evidencia.",
+"No define autorización o escalamiento.",
+"No describe consecuencia de no actuar."
+]
+}
+]
+},
+{
+"block_id": "RTE_05_CALIDAD_INOCUIDAD_RTE",
+"block_name": "Calidad, inocuidad y trazabilidad RTE",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 50,
+"objective": "Capturar controles de calidad, inocuidad, trazabilidad, liberación, segregación y producto no conforme en Ready to Eat y Maquilas.",
+"questions": [
+{
+"question_id": "RTE_05_Q01",
+"ai_category": "operational_risks",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué riesgos de calidad, inocuidad, trazabilidad o cumplimiento son críticos en Ready to Eat y Maquilas?",
+"context": "Incluya riesgos de contaminación, mezcla de lotes, pérdida de cadena de frío, error de codificación, empaque incorrecto, producto fuera de especificación, liberación indebida o incumplimiento de cliente.",
+"tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+"expected_answer_structure": [
+"Riesgo",
+"Causa",
+"Impacto",
+"Probabilidad",
+"Control actual",
+"Responsable",
+"Señal temprana",
+"Contingencia",
+"Ejemplo histórico"
+],
+"good_answer_example": "Un riesgo crítico es perder trazabilidad entre lote, empaque y producto final. Se controla con identificación física, registros, validación de codificación, segregación y revisión de Calidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"riesgo",
+"causa",
+"impacto",
+"control",
+"responsable",
+"señal",
+"contingencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no prioriza riesgos críticos.",
+"No identifica causas ni impactos.",
+"No menciona controles actuales.",
+"No define señales tempranas.",
+"No incluye contingencia ni ejemplo."
+]
+},
+{
+"question_id": "RTE_05_Q02",
+"ai_category": "critical_failures",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué fallas críticas pueden ocurrir en calidad, inocuidad o trazabilidad durante RTE o maquilas y cómo se previenen?",
+"context": "Se busca identificar fallas como contaminación cruzada, etiqueta incorrecta, lote mezclado, empaque equivocado, producto no conforme, falta de evidencia, liberación errónea o error de vida útil.",
+"tooltip": "Registre: falla crítica, causa, punto de detección, control preventivo, responsable, evidencia, acción correctiva y ejemplo histórico.",
+"expected_answer_structure": [
+"Falla crítica",
+"Causa",
+"Punto de detección",
+"Control preventivo",
+"Responsable",
+"Evidencia",
+"Acción correctiva",
+"Ejemplo histórico"
+],
+"good_answer_example": "Una falla crítica es etiquetar producto con fecha o lote incorrecto. Se previene con doble verificación, control de etiqueta, revisión de codificación y autorización antes de liberar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"falla",
+"causa",
+"detección",
+"control",
+"responsable",
+"evidencia",
+"acción",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta describe riesgos generales, pero no fallas críticas.",
+"No indica punto de detección.",
+"No menciona controles preventivos.",
+"No identifica responsable.",
+"No incluye ejemplo histórico."
+]
+}
+]
+},
+{
+"block_id": "RTE_06_CADENA_FRIO_ALMACENAMIENTO",
+"block_name": "Cadena de frío, almacenamiento y transferencias",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 60,
+"objective": "Identificar cómo se controla temperatura, almacenamiento, ocupación, transferencias, cámaras y condiciones críticas para productos RTE o maquilados.",
+"questions": [
+{
+"question_id": "RTE_06_Q01",
+"ai_category": "cold_chain_controls",
+"required": true,
+"min_characters": 350,
+"question": "¿Cómo controla Ready to Eat y Maquilas la cadena de frío, almacenamiento, transferencias y condiciones de conservación del producto?",
+"context": "Interesa identificar controles de temperatura, tiempos fuera de frío, ubicación, cámaras internas o externas, transferencias, ocupación, liberación y trazabilidad.",
+"tooltip": "Registre: etapa o punto de control, temperatura o condición requerida, responsable, frecuencia, registro, criterio de aceptación, acción ante desviación y ejemplo real.",
+"expected_answer_structure": [
+"Etapa/punto de control",
+"Temperatura/condición",
+"Responsable",
+"Frecuencia",
+"Registro",
+"Criterio de aceptación",
+"Acción ante desviación",
+"Ejemplo real"
+],
+"good_answer_example": "Se controla temperatura durante almacenamiento, espera y transferencia. Si el producto supera el tiempo o temperatura permitida, se segrega y se solicita evaluación de Calidad antes de continuar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"etapa",
+"temperatura",
+"responsable",
+"frecuencia",
+"registro",
+"criterio",
+"acción",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no menciona temperatura o condición requerida.",
+"No identifica responsable.",
+"No indica frecuencia ni registro.",
+"No describe acción ante desviación.",
+"No incluye ejemplo real."
+]
+},
+{
+"question_id": "RTE_06_Q02",
+"ai_category": "early_warnings",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas indican riesgo de ruptura de cadena de frío, saturación de cámara, atraso en transferencia o deterioro del producto?",
+"context": "Se busca detectar alertas antes de que afecten inocuidad, vida útil, calidad, cumplimiento de pedido o continuidad operativa.",
+"tooltip": "Registre: señal temprana, cómo se detecta, frecuencia de revisión, responsable, acción preventiva, área escalada y ejemplo real.",
+"expected_answer_structure": [
+"Señal temprana",
+"Detección",
+"Frecuencia",
+"Responsable",
+"Acción preventiva",
+"Escalamiento",
+"Ejemplo real"
+],
+"good_answer_example": "Una señal temprana es aumento de ocupación de cámara, demora en retiro de producto o temperatura cercana al límite. Se detecta en revisión operativa y se escala a Cámaras, Calidad o Planificación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"detección",
+"frecuencia",
+"responsable",
+"acción",
+"escalamiento",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no diferencia señales tempranas de problemas ya materializados.",
+"No indica cómo se detectan.",
+"No menciona frecuencia.",
+"No define acción preventiva.",
+"No incluye ejemplo real."
+]
+}
+]
+},
+{
+"block_id": "RTE_07_MAQUILADORES_TERCEROS",
+"block_name": "Maquiladores, terceros y dependencias externas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 70,
+"objective": "Capturar cómo se coordinan, controlan y validan maquiladores, proveedores externos, servicios tercerizados y entregables asociados.",
+"questions": [
+{
+"question_id": "RTE_07_Q01",
+"ai_category": "external_dependencies",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué maquiladores, proveedores o servicios externos son críticos para Ready to Eat y Maquilas, y qué información o respuesta se espera de cada uno?",
+"context": "El área puede depender de maquiladores, proveedores de empaque, servicios de transporte, cámaras externas, análisis externos, logística, inspecciones o servicios técnicos.",
+"tooltip": "Registre: actor externo, servicio o entregable, información requerida, frecuencia de interacción, responsable interno, tiempo esperado de respuesta, riesgo si falla, contingencia y ejemplo real.",
+"expected_answer_structure": [
+"Actor externo",
+"Servicio/entregable",
+"Información requerida",
+"Frecuencia",
+"Responsable interno",
+"Tiempo esperado",
+"Riesgo si falla",
+"Contingencia",
+"Ejemplo real"
+],
+"good_answer_example": "Un maquilador debe confirmar capacidad, fecha de proceso, condiciones de calidad, evidencias, trazabilidad y cantidad entregada. Si no responde, se activa reprogramación o alternativa interna.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"actor",
+"servicio",
+"información",
+"frecuencia",
+"responsable",
+"riesgo",
+"contingencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica actores externos críticos.",
+"No indica qué información se espera.",
+"No menciona tiempo de respuesta.",
+"No describe riesgo si falla.",
+"No incluye contingencia."
+]
+},
+{
+"question_id": "RTE_07_Q02",
+"ai_category": "manual_controls",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué controles se aplican para validar trabajos, entregables, cantidades, calidad, trazabilidad y documentación de maquiladores o terceros?",
+"context": "Interesa identificar controles de recepción, inspección, conformidad, documentación, registros de lote, evidencias, diferencias físicas, cumplimiento de especificación y aceptación final.",
+"tooltip": "Registre: control aplicado, responsable, documento asociado, momento, sistema o repositorio, validación aplicada, riesgo si falla, evidencia y ejemplo real.",
+"expected_answer_structure": [
+"Control aplicado",
+"Responsable",
+"Documento asociado",
+"Momento",
+"Sistema/repositorio",
+"Validación",
+"Riesgo si falla",
+"Evidencia",
+"Ejemplo real"
+],
+"good_answer_example": "Al recibir producto maquilado se valida cantidad, lote, condición, documentación, temperatura si aplica, trazabilidad y conformidad de calidad antes de aceptar o liberar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"control",
+"responsable",
+"documento",
+"momento",
+"validación",
+"riesgo",
+"evidencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no describe controles concretos.",
+"No identifica responsable.",
+"No menciona evidencia o documento.",
+"No describe riesgo si falla.",
+"No incluye ejemplo real."
+]
+}
+]
+},
+{
+"block_id": "RTE_08_COORDINACION_INTERNA",
+"block_name": "Coordinación con áreas internas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 80,
+"objective": "Identificar patrones de coordinación interna con planificación, producción, calidad, bodegas, cámaras, comercial, compras, despacho y soporte.",
+"questions": [
+{
+"question_id": "RTE_08_Q01",
+"ai_category": "coordination_patterns",
+"required": true,
+"min_characters": 350,
+"question": "¿Cómo se coordina Ready to Eat y Maquilas con Planificación, Producción, Calidad, Bodega, Cámaras, Comercial, Compras, Despacho y Mantenimiento?",
+"context": "La operación depende de pedidos, capacidad, materiales, liberaciones, cámaras, disponibilidad de materia prima, cambios de programa, mantenimiento, despacho y cumplimiento de especificación.",
+"tooltip": "Registre: área involucrada, información intercambiada, frecuencia, canal, responsable, decisión soportada, problema recurrente y ejemplo real.",
+"expected_answer_structure": [
+"Área",
+"Información intercambiada",
+"Frecuencia",
+"Canal",
+"Responsable",
+"Decisión soportada",
+"Problema recurrente",
+"Ejemplo real"
+],
+"good_answer_example": "Con Planificación se revisa programa; con Calidad liberaciones; con Bodega materiales; con Cámaras disponibilidad; con Comercial urgencias; con Despacho fechas de entrega.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"área",
+"información",
+"frecuencia",
+"canal",
+"responsable",
+"decisión",
+"problema",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica áreas específicas.",
+"No describe información intercambiada.",
+"No menciona frecuencia ni canal.",
+"No explica decisiones soportadas.",
+"No incluye ejemplo real."
+]
+},
+{
+"question_id": "RTE_08_Q02",
+"ai_category": "process_friction",
+"required": true,
+"min_characters": 350,
+"question": "¿Cuáles son las fricciones más frecuentes entre Ready to Eat y Maquilas y otras áreas, y cómo se resuelven en la práctica?",
+"context": "No se busca culpabilizar áreas; se busca identificar patrones que afectan disponibilidad de materiales, liberaciones, cámaras, trazabilidad, cambios de plan, tiempos de entrega o calidad.",
+"tooltip": "Registre: área, fricción, causa probable, frecuencia, impacto, solución actual, regla no escrita, evidencia y mejora sugerida.",
+"expected_answer_structure": [
+"Área",
+"Fricción",
+"Causa probable",
+"Frecuencia",
+"Impacto",
+"Solución actual",
+"Regla no escrita",
+"Evidencia",
+"Mejora sugerida"
+],
+"good_answer_example": "Una fricción frecuente es recibir cambios de pedido con materiales no disponibles o cámaras saturadas. Se resuelve por coordinación directa, pero debería existir una hora límite formal de cambios.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"área",
+"fricción",
+"causa",
+"frecuencia",
+"impacto",
+"solución",
+"regla",
+"mejora"
+]
+},
+"incomplete_if": [
+"La respuesta culpa a áreas sin describir el patrón operativo.",
+"No identifica causa probable.",
+"No menciona frecuencia.",
+"No describe impacto.",
+"No propone mejora."
+]
+}
+]
+},
+{
+"block_id": "RTE_09_HERRAMIENTAS_DATOS",
+"block_name": "Herramientas, registros y datos de RTE y maquilas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 90,
+"objective": "Identificar sistemas oficiales, controles paralelos, reportes y datos críticos usados para gestionar RTE, maquilas, trazabilidad, calidad y cumplimiento.",
+"questions": [
+{
+"question_id": "RTE_09_Q01",
+"ai_category": "parallel_tools",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué sistemas, archivos, formatos, tableros o controles paralelos usa Ready to Eat y Maquilas para gestionar pedidos, lotes, materiales, trazabilidad, calidad, maquiladores o entregas?",
+"context": "Se busca entender el ecosistema real: ERP, Excel, formularios, checklists, reportes físicos, carpetas compartidas, WhatsApp, correos, tableros de seguimiento o registros manuales.",
+"tooltip": "Registre: herramienta, uso específico, dato capturado, responsable, frecuencia de actualización, fuente oficial, decisión soportada, riesgo de duplicidad y mejora deseada.",
+"expected_answer_structure": [
+"Herramienta",
+"Uso específico",
+"Dato capturado",
+"Responsable",
+"Frecuencia",
+"Fuente oficial",
+"Decisión soportada",
+"Riesgo",
+"Mejora deseada"
+],
+"good_answer_example": "Además del sistema oficial, se usa Excel para controlar pedidos, materiales, fechas, maquilador, estado de calidad y entregas. El riesgo es duplicidad o información desactualizada.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"herramienta",
+"uso",
+"dato",
+"responsable",
+"frecuencia",
+"fuente",
+"decisión",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta solo enumera herramientas.",
+"No indica qué dato captura cada herramienta.",
+"No identifica responsable ni frecuencia.",
+"No distingue fuente oficial de control paralelo.",
+"No menciona riesgos de duplicidad."
+]
+},
+{
+"question_id": "RTE_09_Q02",
+"ai_category": "critical_indicators",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué indicadores revisa Ready to Eat y Maquilas para saber si la operación está bajo control y qué umbrales generan alerta?",
+"context": "Interesa identificar indicadores reales: cumplimiento del programa, entregas a tiempo, merma, reproceso, producto no conforme, uso de materiales, diferencias físicas, cumplimiento de maquila, eficiencia, reclamos y trazabilidad.",
+"tooltip": "Registre: indicador, fórmula si existe, fuente, frecuencia, responsable, meta o umbral, decisión que dispara, reunión donde se revisa y ejemplo reciente.",
+"expected_answer_structure": [
+"Indicador",
+"Fórmula",
+"Fuente",
+"Frecuencia",
+"Responsable",
+"Meta/umbral",
+"Decisión que dispara",
+"Reunión donde se revisa",
+"Ejemplo reciente"
+],
+"good_answer_example": "Se revisa cumplimiento de pedidos, merma, reprocesos, no conformidades y atrasos de maquila. Si un indicador supera el umbral, se analiza causa y se activa acción correctiva.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"indicador",
+"fuente",
+"frecuencia",
+"responsable",
+"umbral",
+"decisión",
+"reunión",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta solo enumera indicadores sin explicar uso.",
+"No menciona fuente ni frecuencia.",
+"No define umbrales.",
+"No indica decisiones asociadas.",
+"No incluye ejemplo reciente."
+]
+}
+]
+},
+{
+"block_id": "RTE_10_REUNIONES_RUTINAS",
+"block_name": "Reuniones, rutinas y seguimiento operativo",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 100,
+"objective": "Capturar reuniones y rutinas que sostienen seguimiento de pedidos, materiales, producción, maquilas, calidad, cámaras, indicadores y pendientes.",
+"questions": [
+{
+"question_id": "RTE_10_Q01",
+"ai_category": "meeting_registry",
+"required": true,
+"min_characters": 350,
+"question": "Liste las reuniones o rutinas donde Ready to Eat y Maquilas revisa pedidos, programa, materiales, maquiladores, calidad, cámaras, entregas, indicadores o pendientes.",
+"context": "Interesa conocer reuniones formales e informales: revisión diaria, seguimiento de programa, reunión con Planificación, reunión con Calidad, coordinación con maquiladores y cierre de turno.",
+"tooltip": "Registre: nombre de la reunión, objetivo, frecuencia, duración, participantes obligatorios, quién lidera, temas fijos, indicadores revisados, decisiones tomadas, insumos requeridos, salidas esperadas, acta o evidencia generada y consecuencias si no se realiza.",
+"expected_answer_structure": [
+"Nombre",
+"Objetivo",
+"Frecuencia",
+"Duración",
+"Participantes",
+"Líder",
+"Temas fijos",
+"Indicadores",
+"Decisiones",
+"Insumos",
+"Salidas",
+"Evidencia",
+"Consecuencia"
+],
+"good_answer_example": "En la revisión diaria se revisa programa, materiales críticos, liberaciones, ocupación de cámaras, maquilas pendientes y fechas de entrega. Si no se realiza, aumentan atrasos y cambios no controlados.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"nombre",
+"objetivo",
+"frecuencia",
+"participantes",
+"líder",
+"indicadores",
+"decisiones",
+"evidencia",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"La respuesta solo enumera reuniones.",
+"No indica frecuencia ni participantes.",
+"No menciona indicadores revisados.",
+"No describe decisiones tomadas.",
+"No indica evidencia o consecuencia si no se realiza."
+]
+},
+{
+"question_id": "RTE_10_Q02",
+"ai_category": "governance_routines",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué seguimiento diario o semanal realiza Ready to Eat y Maquilas para asegurar cumplimiento de pedidos, calidad, materiales, maquiladores y entregas?",
+"context": "Se busca capturar rutina real de gestión: revisión de programa, pedidos críticos, materiales, liberaciones, trazabilidad, cámaras, pendientes, desviaciones, comunicación y escalamiento.",
+"tooltip": "Registre: secuencia de revisión, horarios o frecuencia, responsables, evidencias, alertas, decisiones, cierres obligatorios y pendientes arrastrados.",
+"expected_answer_structure": [
+"Secuencia",
+"Frecuencia/horarios",
+"Responsables",
+"Evidencias",
+"Alertas",
+"Decisiones",
+"Cierres obligatorios",
+"Pendientes arrastrados"
+],
+"good_answer_example": "Cada día se revisa programa, materiales críticos, lotes en proceso, liberaciones, entregas y pendientes de maquiladores. Al cierre se actualiza estado y se escalan riesgos de incumplimiento.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"secuencia",
+"frecuencia",
+"responsables",
+"evidencia",
+"alertas",
+"decisiones",
+"cierre"
+]
+},
+"incomplete_if": [
+"La respuesta no describe una rutina secuencial.",
+"No indica horarios o frecuencia.",
+"No menciona responsables.",
+"No describe evidencia de seguimiento.",
+"No incluye decisiones ni pendientes."
+]
+}
+]
+},
+{
+"block_id": "RTE_11_REGLAS_ESCALAMIENTO",
+"block_name": "Reglas no escritas, excepciones y escalamiento",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 110,
+"objective": "Extraer reglas tácitas y umbrales reales de escalamiento usados cuando pedidos, materiales, calidad, maquiladores, cámaras o entregas están en riesgo.",
+"questions": [
+{
+"question_id": "RTE_11_Q01",
+"ai_category": "non_written_rules",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué reglas no escritas usa Ready to Eat y Maquilas para priorizar, ajustar, liberar, detener o resolver problemas bajo presión?",
+"context": "Las reglas no escritas explican cómo se opera cuando el procedimiento formal no alcanza: urgencias comerciales, falta de material, retraso de maquila, cámaras saturadas, desviaciones de calidad o pedidos críticos.",
+"tooltip": "Registre: regla no escrita, condición de uso, quién la valida, beneficio, riesgo, evidencia o comunicación y ejemplo real.",
+"expected_answer_structure": [
+"Regla no escrita",
+"Condición de uso",
+"Validador",
+"Beneficio",
+"Riesgo",
+"Evidencia/comunicación",
+"Ejemplo real"
+],
+"good_answer_example": "Cuando un pedido RTE crítico está en riesgo, se prioriza la coordinación directa con Planificación, Bodega, Calidad y Cámaras, aunque el flujo formal todavía no haya vencido.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"regla",
+"condición",
+"validador",
+"beneficio",
+"riesgo",
+"evidencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica reglas tácitas.",
+"No indica cuándo se usan.",
+"No menciona quién valida.",
+"No explica beneficio y riesgo.",
+"No incluye ejemplo real."
+]
+},
+{
+"question_id": "RTE_11_Q02",
+"ai_category": "escalation_thresholds",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué situaciones obligan a Ready to Eat y Maquilas a escalar y a quién se escala según el tipo de problema?",
+"context": "Se busca mapear umbrales reales: material crítico faltante, lote no conforme, ruptura de frío, retraso de maquilador, pedido crítico, cámara saturada, error de etiqueta o incumplimiento de fecha.",
+"tooltip": "Registre: situación, umbral, primer responsable, autoridad final, canal usado, tiempo máximo tolerado, evidencia requerida y ejemplo real.",
+"expected_answer_structure": [
+"Situación",
+"Umbral",
+"Primer responsable",
+"Autoridad final",
+"Canal",
+"Tiempo máximo",
+"Evidencia",
+"Ejemplo real"
+],
+"good_answer_example": "Si un maquilador retrasa una entrega crítica o un lote presenta no conformidad, se escala a jefatura, Calidad, Planificación y Comercial con evidencia, impacto y alternativa propuesta.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"umbral",
+"responsable",
+"autoridad",
+"canal",
+"tiempo",
+"evidencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta no define umbrales.",
+"No identifica primer responsable ni autoridad final.",
+"No menciona canal.",
+"No indica tiempo máximo tolerado.",
+"No incluye evidencia ni ejemplo."
+]
+}
+]
+},
+{
+"block_id": "RTE_12_RIESGOS_CONOCIMIENTO",
+"block_name": "Riesgos, continuidad y conocimiento crítico",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 120,
+"objective": "Capturar riesgos críticos y conocimiento no documentado que puede afectar continuidad, calidad, inocuidad, trazabilidad, maquilas y cumplimiento de pedidos.",
+"questions": [
+{
+"question_id": "RTE_12_Q01",
+"ai_category": "operational_risks",
+"required": true,
+"min_characters": 350,
+"question": "¿Cuáles son los riesgos operacionales más críticos del área de Ready to Eat y Maquilas y qué controles evitan que se materialicen?",
+"context": "Incluya riesgos de producto no conforme, contaminación, pérdida de trazabilidad, ruptura de frío, falta de material, incumplimiento de maquilador, atraso de entrega, error de empaque, dependencia humana y cambios de programa.",
+"tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+"expected_answer_structure": [
+"Riesgo",
+"Causa",
+"Impacto",
+"Probabilidad",
+"Control actual",
+"Responsable",
+"Señal temprana",
+"Contingencia",
+"Ejemplo histórico"
+],
+"good_answer_example": "Un riesgo crítico es entregar producto RTE con error de lote o empaque. Se controla con doble verificación, trazabilidad, revisión de Calidad, registros y segregación ante desviación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"riesgo",
+"causa",
+"impacto",
+"control",
+"responsable",
+"señal",
+"contingencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no prioriza riesgos críticos.",
+"No identifica causas ni impactos.",
+"No menciona controles actuales.",
+"No define señales tempranas.",
+"No incluye contingencia ni ejemplo."
+]
+},
+{
+"question_id": "RTE_12_Q02",
+"ai_category": "tacit_knowledge",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué conocimiento crítico de Ready to Eat y Maquilas no está documentado y debería capturarse para evitar dependencia de personas específicas?",
+"context": "Se busca identificar conocimiento que vive en la experiencia: criterios de priorización, manejo de maquiladores, formatos especiales, ajustes de empaque, excepciones de cliente, vida útil, trazabilidad, coordinación con cámaras o solución de problemas recurrentes.",
+"tooltip": "Registre: conocimiento no documentado, persona o rol que lo domina, cuándo se usa, riesgo cubierto, consecuencia de perderlo, forma sugerida de documentarlo y prioridad.",
+"expected_answer_structure": [
+"Conocimiento no documentado",
+"Persona/rol que lo domina",
+"Cuándo se usa",
+"Riesgo cubierto",
+"Consecuencia de perderlo",
+"Forma de documentación",
+"Prioridad"
+],
+"good_answer_example": "Un responsable puede conocer qué maquilador responde mejor, qué formatos generan más errores o cómo resolver diferencias de empaque. Si ese conocimiento se pierde, aumentan reprocesos, atrasos y dependencia operativa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"conocimiento",
+"persona",
+"cuándo",
+"riesgo",
+"consecuencia",
+"documentación",
+"prioridad"
+]
+},
+"incomplete_if": [
+"La respuesta no identifica conocimiento tácito.",
+"No menciona quién lo domina.",
+"No explica cuándo se usa.",
+"No describe consecuencia de perderlo.",
+"No propone forma de documentarlo."
+]
+}
+]
+}
+]
+}

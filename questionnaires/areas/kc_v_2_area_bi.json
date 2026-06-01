@@ -1,0 +1,562 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"generation_type": "AREA",
+"area": {
+"area_id": "AREA_BI",
+"display_name": "BI",
+"aliases": [
+"Business Intelligence",
+"Inteligencia de Negocios",
+"Analítica",
+"Datos",
+"Dashboards",
+"Reportería",
+"Power BI",
+"Indicadores",
+"Data Analytics"
+],
+"macro_process": "Administración Tecnológica"
+},
+"level": "",
+"blocks": [
+{
+"block_id": "AREA_BI_001_INDICADORES_CRITICOS",
+"block_name": "Indicadores críticos y tableros reales",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar qué indicadores y tableros sostienen realmente la gestión operativa, comercial, financiera y estratégica.",
+"questions": [
+{
+"question_id": "AREA_BI_001_Q001",
+"ai_category": "indicadores_criticos_bi",
+"required": true,
+"min_characters": 300,
+"question": "Describa cuáles son los indicadores, reportes o tableros que BI considera más críticos para la operación y la toma de decisiones. Explique quién los usa, con qué frecuencia, qué decisión soportan y qué ocurre si no están disponibles o están desactualizados.",
+"context": "Busca diferenciar tableros realmente usados de reportes decorativos o poco accionables.",
+"tooltip": "Registre: indicador o tablero, usuario principal, frecuencia de uso, fuente de datos, decisión que soporta, nivel de criticidad, responsable, consecuencia si falla y ejemplo reciente.",
+"expected_answer_structure": [
+"Indicador o tablero",
+"Usuario principal",
+"Frecuencia",
+"Fuente de datos",
+"Decisión soportada",
+"Criticidad",
+"Responsable",
+"Consecuencia",
+"Ejemplo"
+],
+"good_answer_example": "El tablero de ventas, inventario disponible y cumplimiento de despacho es crítico porque lo revisan comercial, operaciones y gerencia para priorizar pedidos. Si no está actualizado, se pueden comprometer despachos sin disponibilidad real o con producto observado.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"indicador o tablero",
+"usuario",
+"decisión soportada",
+"consecuencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo lista reportes",
+"No identifica usuarios",
+"No explica decisiones",
+"No menciona consecuencias"
+]
+}
+]
+},
+{
+"block_id": "AREA_BI_002_CALIDAD_DATOS",
+"block_name": "Calidad, oportunidad y confiabilidad de datos",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 20,
+"objective": "Identificar problemas de calidad de datos que afectan decisiones, indicadores y confianza en los tableros.",
+"questions": [
+{
+"question_id": "AREA_BI_002_Q001",
+"ai_category": "calidad_datos",
+"required": true,
+"min_characters": 300,
+"question": "Explique qué datos llegan incompletos, tarde, duplicados, inconsistentes o poco confiables a BI. Indique de qué sistema o área provienen, qué indicador afectan, cómo se corrigen y qué riesgo generan si se usan sin validar.",
+"context": "La calidad de datos define la confiabilidad del Cerebro ASY y de los tableros ejecutivos.",
+"tooltip": "Registre: dato afectado, sistema origen, área dueña, problema de calidad, frecuencia, indicador afectado, corrección actual, riesgo de decisión y ejemplo.",
+"expected_answer_structure": [
+"Dato afectado",
+"Sistema origen",
+"Área dueña",
+"Problema de calidad",
+"Frecuencia",
+"Indicador afectado",
+"Corrección actual",
+"Riesgo",
+"Ejemplo"
+],
+"good_answer_example": "El inventario disponible puede tener diferencias entre sistema, validación física y reportes manuales. Esto afecta tableros de disponibilidad, planificación y despacho. BI debe validar con operaciones antes de publicar ciertos cortes, porque una cifra errada puede generar compromisos comerciales incorrectos.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"dato",
+"sistema origen",
+"indicador afectado",
+"riesgo",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No identifica datos específicos",
+"No menciona origen",
+"No explica impacto",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "AREA_BI_003_FUENTES_INTEGRACION",
+"block_name": "Fuentes de información e integración de sistemas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 30,
+"objective": "Mapear fuentes, sistemas, archivos manuales e integraciones que alimentan BI.",
+"questions": [
+{
+"question_id": "AREA_BI_003_Q001",
+"ai_category": "fuentes_integracion_bi",
+"required": true,
+"min_characters": 300,
+"question": "Detalle las principales fuentes de datos que alimentan los reportes de BI. Incluya sistemas, bases de datos, Excel, archivos planos, correos, cargas manuales, APIs o consultas directas. Explique qué tan confiable es cada fuente y qué validaciones se hacen.",
+"context": "Permite identificar dependencia de fuentes manuales y riesgos de integración.",
+"tooltip": "Registre: fuente, dueño del dato, tipo de extracción, frecuencia de actualización, validación aplicada, confiabilidad, falla frecuente, impacto y mejora necesaria.",
+"expected_answer_structure": [
+"Fuente",
+"Dueño del dato",
+"Tipo de extracción",
+"Frecuencia",
+"Validación",
+"Confiabilidad",
+"Falla frecuente",
+"Impacto",
+"Mejora"
+],
+"good_answer_example": "Los datos de ventas vienen del ERP, pero algunos ajustes comerciales se validan por Excel. Los datos de inventario requieren validación con operaciones cuando hay diferencias físicas o producto observado. La falla frecuente es que BI termina conciliando información que debería venir limpia desde el proceso origen.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"fuente",
+"dueño del dato",
+"frecuencia",
+"validación",
+"falla frecuente"
+]
+},
+"incomplete_if": [
+"Solo lista sistemas",
+"No menciona dueños de datos",
+"No explica validaciones",
+"No identifica fallas"
+]
+}
+]
+},
+{
+"block_id": "AREA_BI_004_REGLAS_NEGOCIO",
+"block_name": "Reglas de negocio y criterios de cálculo",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 40,
+"objective": "Capturar reglas de cálculo, definiciones de indicadores y criterios no documentados usados por BI.",
+"questions": [
+{
+"question_id": "AREA_BI_004_Q001",
+"ai_category": "reglas_calculo_bi",
+"required": true,
+"min_characters": 300,
+"question": "Explique qué indicadores, métricas o reportes tienen reglas de cálculo complejas, criterios no documentados o interpretaciones distintas entre áreas. Convierta esos criterios en reglas tipo SI → ENTONCES cuando aplique.",
+"context": "Busca evitar que distintas áreas usen números con definiciones diferentes.",
+"tooltip": "Registre: indicador, definición formal, definición real usada, área usuaria, criterio de cálculo, excepción, conflicto generado, regla SI → ENTONCES y ejemplo.",
+"expected_answer_structure": [
+"Indicador",
+"Definición formal",
+"Definición real",
+"Área usuaria",
+"Criterio de cálculo",
+"Excepción",
+"Conflicto",
+"Regla SI → ENTONCES",
+"Ejemplo"
+],
+"good_answer_example": "La disponibilidad de producto puede interpretarse diferente: comercial la ve como producto vendible, operaciones como producto físicamente disponible y calidad como producto liberado. SI un lote está físicamente disponible pero observado por calidad, ENTONCES no debe mostrarse como disponible comercialmente.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"indicador",
+"criterio de cálculo",
+"conflicto",
+"regla SI → ENTONCES",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No identifica indicadores específicos",
+"No explica reglas de cálculo",
+"No menciona conflictos",
+"No incluye regla operacional"
+]
+}
+]
+},
+{
+"block_id": "AREA_BI_005_ALERTAS_ANALITICAS",
+"block_name": "Alertas analíticas y señales tempranas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 50,
+"objective": "Identificar alertas tempranas que BI puede detectar mediante datos, tendencias, desviaciones o patrones.",
+"questions": [
+{
+"question_id": "AREA_BI_005_Q001",
+"ai_category": "alertas_analiticas",
+"required": true,
+"min_characters": 300,
+"question": "Describa qué alertas, patrones o desviaciones deberían detectarse desde BI antes de que se conviertan en problemas operativos, comerciales, financieros o de cumplimiento.",
+"context": "Alimenta el radar preventivo del Cerebro ASY.",
+"tooltip": "Registre: alerta, dato que la activa, umbral, frecuencia de revisión, usuario que debe recibirla, decisión esperada, riesgo prevenido y ejemplo.",
+"expected_answer_structure": [
+"Alerta",
+"Dato activador",
+"Umbral",
+"Frecuencia",
+"Usuario receptor",
+"Decisión esperada",
+"Riesgo prevenido",
+"Ejemplo"
+],
+"good_answer_example": "Una alerta útil sería detectar aumento de inventario observado, caída de cumplimiento de despacho o acumulación de pedidos sin disponibilidad validada. Esto permitiría escalar antes de generar conflictos entre comercial, calidad, cámaras y planificación.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"alerta",
+"dato activador",
+"umbral",
+"decisión esperada",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No define alertas concretas",
+"No menciona datos activadores",
+"No define umbrales",
+"No explica decisiones"
+]
+}
+]
+},
+{
+"block_id": "AREA_BI_006_FRICCIONES_DATOS",
+"block_name": "Fricciones por datos, reportes y versiones de la verdad",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 60,
+"objective": "Detectar conflictos causados por diferencias de información, criterios de cálculo o reportes paralelos.",
+"questions": [
+{
+"question_id": "AREA_BI_006_Q001",
+"ai_category": "fricciones_datos",
+"required": true,
+"min_characters": 300,
+"question": "Explique qué fricciones se generan cuando distintas áreas manejan cifras, reportes o interpretaciones diferentes. Indique qué dato se discute, qué áreas participan, cuál es la causa y cómo se resuelve actualmente.",
+"context": "Las fricciones por datos revelan ausencia de gobierno de datos o definiciones comunes.",
+"tooltip": "Registre: dato o reporte en disputa, áreas involucradas, causa de diferencia, fuente usada por cada área, decisión afectada, responsable que arbitra, solución actual y ejemplo.",
+"expected_answer_structure": [
+"Dato en disputa",
+"Áreas involucradas",
+"Causa",
+"Fuente por área",
+"Decisión afectada",
+"Arbitraje",
+"Solución actual",
+"Ejemplo"
+],
+"good_answer_example": "Comercial y operaciones pueden discutir disponibilidad porque comercial mira pedidos comprometidos y operaciones mira inventario físico más restricciones de calidad. BI termina conciliando datos para una reunión, pero la causa es que no existe una definición única de disponibilidad vendible.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"dato en disputa",
+"áreas",
+"causa",
+"decisión afectada",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona datos en disputa",
+"No identifica áreas",
+"No explica causa",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "AREA_BI_007_HERRAMIENTAS_PARALELAS",
+"block_name": "Herramientas paralelas y reportería manual",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 70,
+"objective": "Identificar reportes manuales, Excel, consultas y mecanismos paralelos usados para compensar brechas de sistemas.",
+"questions": [
+{
+"question_id": "AREA_BI_007_Q001",
+"ai_category": "herramientas_paralelas_bi",
+"required": true,
+"min_characters": 300,
+"question": "Detalle qué reportes manuales, Excel, consultas, macros, carpetas compartidas, correos o tableros paralelos usa BI para completar información que no llega correctamente desde los sistemas oficiales.",
+"context": "Permite identificar carga invisible, riesgos de error y oportunidades de automatización.",
+"tooltip": "Registre: herramienta, dueño, información contenida, frecuencia de actualización, usuarios, sistema relacionado, razón de existencia, riesgo de error, tiempo consumido y consecuencia si desaparece.",
+"expected_answer_structure": [
+"Herramienta",
+"Dueño",
+"Información",
+"Frecuencia",
+"Usuarios",
+"Sistema relacionado",
+"Razón de existencia",
+"Riesgo",
+"Tiempo consumido",
+"Consecuencia"
+],
+"good_answer_example": "BI mantiene un Excel de validación de ventas e inventario porque algunos datos requieren ajustes manuales antes de publicarse. El riesgo es que solo una persona conozca la lógica y que los usuarios tomen decisiones con cortes diferentes.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"herramienta",
+"razón de existencia",
+"riesgo",
+"tiempo consumido",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No identifica herramientas concretas",
+"No explica por qué existen",
+"No menciona riesgo",
+"No estima tiempo"
+]
+}
+]
+},
+{
+"block_id": "AREA_BI_008_PRIORIZACION_DEMANDA",
+"block_name": "Priorización de requerimientos y demanda analítica",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 80,
+"objective": "Capturar cómo BI prioriza solicitudes, reportes, tableros y requerimientos de distintas áreas.",
+"questions": [
+{
+"question_id": "AREA_BI_008_Q001",
+"ai_category": "priorizacion_bi",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo BI prioriza solicitudes de reportes, tableros, cambios, automatizaciones o análisis especiales. Incluya criterios reales de prioridad, urgencias, áreas que más demandan, conflictos y reglas de escalamiento.",
+"context": "Busca entender la carga de BI y cómo se decide qué se atiende primero.",
+"tooltip": "Registre: tipo de solicitud, área solicitante, criterio de prioridad, frecuencia, esfuerzo, impacto, responsable de aprobación, conflicto típico, escalamiento y ejemplo.",
+"expected_answer_structure": [
+"Tipo de solicitud",
+"Área solicitante",
+"Criterio de prioridad",
+"Frecuencia",
+"Esfuerzo",
+"Impacto",
+"Aprobador",
+"Conflicto",
+"Escalamiento",
+"Ejemplo"
+],
+"good_answer_example": "Se priorizan requerimientos de gerencia, cierre mensual, ventas críticas y operación diaria. El problema es que muchas solicitudes llegan como urgentes sin definición clara del indicador ni dueño del dato. BI debe validar alcance antes de construir.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio de prioridad",
+"área solicitante",
+"impacto",
+"escalamiento",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No explica criterios de prioridad",
+"No menciona conflictos",
+"No identifica aprobadores",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "AREA_BI_009_DEPENDENCIA_HUMANA",
+"block_name": "Dependencia humana y conocimiento técnico concentrado",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 90,
+"objective": "Identificar conocimiento concentrado en personas clave sobre datos, consultas, modelos, tableros y reglas de negocio.",
+"questions": [
+{
+"question_id": "AREA_BI_009_Q001",
+"ai_category": "dependencia_humana_bi",
+"required": true,
+"min_characters": 300,
+"question": "Identifique qué reportes, consultas, modelos, tableros, reglas de cálculo o integraciones dependen de personas específicas. Explique qué sabe esa persona, por qué es difícil reemplazarla y qué debería documentarse.",
+"context": "Permite reducir riesgo de continuidad por conocimiento técnico y de negocio concentrado.",
+"tooltip": "Registre: persona o rol, activo analítico dependiente, conocimiento concentrado, frecuencia de uso, reemplazo disponible, riesgo de ausencia, documentación faltante y ejemplo.",
+"expected_answer_structure": [
+"Persona o rol",
+"Activo analítico",
+"Conocimiento concentrado",
+"Frecuencia",
+"Reemplazo",
+"Riesgo de ausencia",
+"Documentación faltante",
+"Ejemplo"
+],
+"good_answer_example": "Algunos tableros dependen de una persona que conoce la consulta SQL, los ajustes manuales y las excepciones de negocio. Si no está, el tablero puede seguir visualmente activo, pero nadie sabe corregirlo cuando cambia la fuente o aparece una inconsistencia.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"persona o rol",
+"activo analítico",
+"conocimiento concentrado",
+"riesgo",
+"documentación faltante"
+]
+},
+"incomplete_if": [
+"No identifica dependencias específicas",
+"No explica conocimiento concentrado",
+"No menciona riesgo de ausencia",
+"No propone documentación"
+]
+}
+]
+},
+{
+"block_id": "AREA_BI_010_GOBIERNO_DATOS",
+"block_name": "Gobierno de datos, ownership y seguridad",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 100,
+"objective": "Capturar reglas de gobierno, propiedad, acceso, seguridad y control sobre la información empresarial.",
+"questions": [
+{
+"question_id": "AREA_BI_010_Q001",
+"ai_category": "gobierno_datos",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se define quién es dueño de cada dato crítico, quién puede modificarlo, quién puede aprobar cambios de definición y quién debe validar inconsistencias antes de publicar un indicador.",
+"context": "Sin ownership claro, BI termina corrigiendo problemas que nacen en los procesos origen.",
+"tooltip": "Registre: dato crítico, dueño funcional, dueño técnico, aprobador de cambios, usuarios autorizados, validación previa, conflicto frecuente, riesgo y ejemplo.",
+"expected_answer_structure": [
+"Dato crítico",
+"Dueño funcional",
+"Dueño técnico",
+"Aprobador",
+"Usuarios autorizados",
+"Validación previa",
+"Conflicto",
+"Riesgo",
+"Ejemplo"
+],
+"good_answer_example": "Ventas debería ser dueña funcional del dato comercial, operaciones del inventario físico y calidad del estado de liberación. BI integra y visualiza, pero no debería redefinir unilateralmente si un producto está disponible para venta.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"dato crítico",
+"dueño funcional",
+"aprobador",
+"riesgo",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No identifica dueños de datos",
+"No diferencia dueño funcional y técnico",
+"No explica aprobaciones",
+"No menciona riesgos"
+]
+}
+]
+},
+{
+"block_id": "AREA_BI_011_MEJORAS_IA",
+"block_name": "Mejoras, automatización e IA analítica",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 110,
+"objective": "Identificar oportunidades de mejora, automatización, IA, analítica predictiva y asistentes de decisión.",
+"questions": [
+{
+"question_id": "AREA_BI_011_Q001",
+"ai_category": "ia_analitica_bi",
+"required": true,
+"min_characters": 300,
+"question": "Identifique casos donde BI podría usar automatización o IA para detectar anomalías, anticipar riesgos, explicar variaciones, recomendar decisiones o reducir análisis manual.",
+"context": "Permite alimentar casos de uso del Cerebro ASY basados en datos.",
+"tooltip": "Registre: caso de uso, problema actual, datos requeridos, modelo o regla esperada, usuario beneficiado, frecuencia, riesgo controlado, integración necesaria y beneficio.",
+"expected_answer_structure": [
+"Caso de uso",
+"Problema actual",
+"Datos requeridos",
+"Modelo o regla esperada",
+"Usuario beneficiado",
+"Frecuencia",
+"Riesgo controlado",
+"Integración necesaria",
+"Beneficio"
+],
+"good_answer_example": "Una IA podría detectar desviaciones entre ventas proyectadas, inventario disponible, producto liberado y capacidad de despacho. Si detecta una combinación inviable, debería alertar a comercial, planificación y operaciones antes de comprometer al cliente.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de uso",
+"datos requeridos",
+"modelo o regla",
+"beneficio",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No identifica caso concreto",
+"No menciona datos requeridos",
+"No define recomendación esperada",
+"No explica beneficio"
+]
+}
+]
+}
+]
+}

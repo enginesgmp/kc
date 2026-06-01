@@ -1,0 +1,715 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Recursos Pesqueros",
+"level": "",
+"metadata": {
+"area_id": "recursos_pesqueros",
+"display_name": "Recursos Pesqueros",
+"aliases": [
+"pesca",
+"flota",
+"materia prima pesquera",
+"abastecimiento pesquero",
+"recursos marinos",
+"operaciones pesqueras"
+],
+"macro_process": "Abastecimiento y gestión de materia prima pesquera"
+},
+"blocks": [
+{
+"block_id": "RP_01_PLANIFICACION_ABASTECIMIENTO_PESQUERO",
+"block_name": "Planificación del abastecimiento pesquero",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar cómo se planifica la disponibilidad de materia prima pesquera, qué variables condicionan la operación y cómo se priorizan decisiones de abastecimiento.",
+"questions": [
+{
+"question_id": "RP_01_Q01",
+"ai_category": "planning_constraints",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se planifica el abastecimiento de materia prima pesquera para asegurar continuidad operacional en planta.",
+"context": "La respuesta debe describir la lógica real de planificación pesquera, considerando disponibilidad de pesca, zonas, temporadas, permisos, embarcaciones, capacidad de recepción, demanda de planta y restricciones externas.",
+"tooltip": "Registre: horizonte de planificación, fuentes de información, responsables, frecuencia de revisión, variables críticas, restricciones, criterios para priorizar abastecimiento, coordinación con producción y consecuencias si la planificación falla.",
+"expected_answer_structure": [
+"Horizonte de planificación",
+"Fuentes de información utilizadas",
+"Responsables involucrados",
+"Variables críticas consideradas",
+"Restricciones operativas o externas",
+"Criterios de priorización",
+"Coordinación con planta",
+"Ejemplo real reciente"
+],
+"good_answer_example": "La planificación se revisa diariamente considerando disponibilidad de pesca reportada por flota, estimación de arribo, capacidad de descarga, requerimientos de producción y espacio disponible en cámaras. Si hay baja captura o retraso de embarcaciones, se prioriza la materia prima que permite cumplir programas críticos de producción. Un caso reciente ocurrió cuando se ajustó la recepción por demora de una embarcación y se coordinó con planificación para cambiar el programa del día siguiente.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"responsables",
+"frecuencia",
+"criterios de decisión",
+"restricciones",
+"ejemplo real",
+"consecuencias"
+]
+},
+"incomplete_if": [
+"Solo indica que se planifica según disponibilidad",
+"No menciona coordinación con planta",
+"No explica criterios de priorización",
+"No incluye ejemplo operativo"
+]
+},
+{
+"question_id": "RP_01_Q02",
+"ai_category": "external_dependencies",
+"required": true,
+"min_characters": 300,
+"question": "Describa qué dependencias externas condicionan el abastecimiento pesquero y cómo se gestionan cuando afectan la operación.",
+"context": "Busca capturar variables fuera del control directo de la empresa que influyen en disponibilidad, oportunidad o calidad de materia prima.",
+"tooltip": "Incluya: clima, vedas, permisos, autoridades, disponibilidad de flota, combustible, puertos, proveedores externos, condiciones marítimas, restricciones legales, tiempos de descarga y acciones ante contingencias.",
+"expected_answer_structure": [
+"Dependencia externa",
+"Cómo se monitorea",
+"Responsable de seguimiento",
+"Impacto operacional",
+"Acción cuando ocurre",
+"Ejemplo real"
+],
+"good_answer_example": "Las principales dependencias son condiciones climáticas, disponibilidad de embarcaciones, permisos de pesca y restricciones de puerto. Se monitorean mediante reportes diarios de flota, comunicación con capitanes y revisión de condiciones marítimas. Cuando una condición impide la llegada de pesca, se informa a planificación y producción para ajustar el programa y evitar capacidad ociosa.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"dependencias externas",
+"responsable",
+"impacto",
+"acción correctiva",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No menciona factores externos concretos",
+"No explica cómo se monitorean",
+"No indica impacto operacional",
+"No incluye acciones ante contingencia"
+]
+}
+]
+},
+{
+"block_id": "RP_02_CONTROL_MATERIA_PRIMA_PESQUERA",
+"block_name": "Control de materia prima pesquera",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 20,
+"objective": "Identificar los controles críticos aplicados sobre la materia prima pesquera desde la captura, arribo, recepción y transferencia a planta.",
+"questions": [
+{
+"question_id": "RP_02_Q01",
+"ai_category": "manual_controls",
+"required": true,
+"min_characters": 300,
+"question": "Detalle los controles que nunca pueden fallar durante la recepción y validación de materia prima pesquera.",
+"context": "La pregunta busca identificar controles operativos críticos, responsables, registros y consecuencias si estos controles fallan.",
+"tooltip": "Registre: control realizado, momento del proceso, responsable, documento o evidencia, sistema usado, criterio de aceptación, frecuencia, riesgo asociado y ejemplo de falla o desviación.",
+"expected_answer_structure": [
+"Control crítico",
+"Momento en que se ejecuta",
+"Responsable",
+"Registro o evidencia",
+"Criterio de aceptación",
+"Consecuencia si falla",
+"Ejemplo real"
+],
+"good_answer_example": "Uno de los controles críticos es validar peso recibido contra reporte de captura y documentación de descarga. Lo realiza el responsable de recepción junto con personal de calidad cuando aplica. Si existen diferencias físicas, se revisan registros, se comunica a las áreas involucradas y se bloquea la información hasta aclarar la diferencia. Si este control falla, puede afectar inventario, costos y programación de producción.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"control",
+"responsable",
+"registro",
+"criterio de aceptación",
+"consecuencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona que se revisa la materia prima",
+"No especifica responsables",
+"No menciona documentos o evidencias",
+"No explica consecuencias"
+]
+},
+{
+"question_id": "RP_02_Q02",
+"ai_category": "inventory_controls",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se controlan las cantidades de materia prima pesquera disponibles, recibidas, transferidas y pendientes.",
+"context": "Debe capturar cómo se controla el inventario pesquero operativo, incluyendo diferencias físicas, registros, conciliaciones y coordinación con otras áreas.",
+"tooltip": "Incluya: unidades controladas, frecuencia de conciliación, responsables, documentos, sistemas, diferencias comunes, tratamiento de ajustes, comunicación con producción, cámaras, costos y planificación.",
+"expected_answer_structure": [
+"Tipo de cantidad controlada",
+"Registro utilizado",
+"Responsable",
+"Frecuencia de validación",
+"Diferencias frecuentes",
+"Cómo se corrigen",
+"Áreas notificadas",
+"Ejemplo real"
+],
+"good_answer_example": "Las cantidades se controlan por recepción, descarga, transferencia a cámaras o planta y saldo pendiente. Se comparan reportes físicos con registros administrativos. Las diferencias se revisan con recepción, calidad, cámaras y costos antes de cerrar información. Un ejemplo fue una diferencia entre peso descargado y peso registrado que se corrigió después de revisar documentación de báscula y reporte de recepción.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"cantidades controladas",
+"frecuencia",
+"responsables",
+"diferencias",
+"tratamiento",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No menciona conciliación",
+"No indica cómo se tratan diferencias",
+"No relaciona el control con otras áreas",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "RP_03_CALIDAD_CONDICION_PESCA",
+"block_name": "Condición, calidad y aptitud de la pesca",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 30,
+"objective": "Capturar criterios reales de decisión sobre condición de pesca, calidad, aceptación, rechazo, segregación o uso condicionado de materia prima.",
+"questions": [
+{
+"question_id": "RP_03_Q01",
+"ai_category": "decision_rules",
+"required": true,
+"min_characters": 300,
+"question": "Describa los criterios usados para decidir si una materia prima pesquera se acepta, se condiciona, se segrega o se rechaza.",
+"context": "Busca transformar conocimiento operativo en reglas reutilizables SI → ENTONCES para decisiones sobre materia prima.",
+"tooltip": "Registre: condición observada, criterio técnico u operativo, responsable de decisión, área consultada, evidencia utilizada, acción tomada y consecuencia para producción o inventario.",
+"expected_answer_structure": [
+"Condición detectada",
+"Criterio de decisión",
+"Responsable",
+"Área consultada",
+"Acción tomada",
+"Impacto en producción",
+"Ejemplo tipo SI → ENTONCES"
+],
+"good_answer_example": "Si la pesca presenta una condición que puede afectar su uso inmediato, se consulta con calidad y se define si se procesa, se segrega o se mantiene en observación. Si calidad determina que requiere tratamiento diferenciado, entonces recursos pesqueros comunica a planificación y producción para ajustar el programa y evitar mezcla con materia prima apta sin restricciones.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterios de decisión",
+"responsable",
+"evidencia",
+"acción",
+"impacto",
+"regla SI ENTONCES"
+]
+},
+"incomplete_if": [
+"No diferencia aceptación, segregación o rechazo",
+"No menciona participación de calidad",
+"No formula criterios de decisión",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "RP_03_Q02",
+"ai_category": "cold_chain_controls",
+"required": true,
+"min_characters": 300,
+"question": "Explique qué controles se aplican para proteger la condición de la pesca antes de su uso en producción.",
+"context": "Debe capturar controles relacionados con conservación, temperatura, tiempos de espera, transferencia, almacenamiento y alertas de deterioro.",
+"tooltip": "Incluya: temperatura, tiempo, almacenamiento, cámaras, transferencias, responsable, frecuencia, alertas, evidencia documental y acción si el control se sale de rango.",
+"expected_answer_structure": [
+"Control aplicado",
+"Rango o criterio esperado",
+"Responsable",
+"Frecuencia",
+"Evidencia",
+"Alerta o desviación",
+"Acción correctiva",
+"Ejemplo real"
+],
+"good_answer_example": "Se controla que la materia prima no permanezca fuera de condiciones adecuadas más tiempo del permitido. Si se detecta demora en descarga o transferencia, se notifica a calidad, cámara y planificación para priorizar movimiento o definir tratamiento. La evidencia puede venir de registros de recepción, controles de temperatura o reportes de cámara.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"control",
+"criterio esperado",
+"responsable",
+"alerta",
+"acción correctiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona cadena de frío o conservación",
+"No indica tiempos o condiciones críticas",
+"No describe acciones ante desviación",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "RP_04_COORDINACION_CON_AREAS_CRITICAS",
+"block_name": "Coordinación con áreas críticas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 40,
+"objective": "Capturar cómo Recursos Pesqueros coordina decisiones con producción, calidad, planificación, cámaras, compras, costos y gerencias.",
+"questions": [
+{
+"question_id": "RP_04_Q01",
+"ai_category": "coordination_patterns",
+"required": true,
+"min_characters": 300,
+"question": "Describa las coordinaciones críticas que Recursos Pesqueros debe mantener con otras áreas para que la operación no se detenga.",
+"context": "La respuesta debe permitir identificar rutinas, responsables, decisiones compartidas, puntos de fricción y dependencias humanas.",
+"tooltip": "Registre: área coordinada, motivo de coordinación, frecuencia, información intercambiada, responsable de cada lado, decisión que se toma, evidencia generada y consecuencia si la coordinación falla.",
+"expected_answer_structure": [
+"Área relacionada",
+"Motivo de coordinación",
+"Frecuencia",
+"Información intercambiada",
+"Responsables",
+"Decisiones tomadas",
+"Consecuencias si falla",
+"Ejemplo real"
+],
+"good_answer_example": "Con planificación se coordina disponibilidad de materia prima y posibles cambios de programa. Con producción se revisan necesidades de uso y prioridades. Con calidad se validan condiciones de materia prima. Con cámaras se revisa espacio disponible y movimientos. Si esta coordinación falla, puede generarse reproceso, espera, saturación o cambios urgentes de programa.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"áreas involucradas",
+"frecuencia",
+"información intercambiada",
+"responsables",
+"consecuencias",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo lista áreas sin explicar coordinación",
+"No indica frecuencia",
+"No menciona información intercambiada",
+"No incluye consecuencias"
+]
+},
+{
+"question_id": "RP_04_Q02",
+"ai_category": "process_friction",
+"required": true,
+"min_characters": 300,
+"question": "Identifique las fricciones más frecuentes entre Recursos Pesqueros y otras áreas, y cómo se resuelven en la práctica.",
+"context": "Busca capturar problemas reales de coordinación que normalmente no quedan documentados.",
+"tooltip": "Incluya: área involucrada, causa de fricción, momento en que ocurre, impacto, responsable que destraba, regla no escrita usada, solución aplicada y ejemplo reciente.",
+"expected_answer_structure": [
+"Área involucrada",
+"Fricción recurrente",
+"Causa probable",
+"Impacto operacional",
+"Quién destraba",
+"Cómo se resuelve",
+"Regla no escrita",
+"Ejemplo real"
+],
+"good_answer_example": "Una fricción frecuente puede ocurrir cuando producción requiere materia prima con urgencia, pero cámaras o calidad aún no han liberado condiciones o disponibilidad. En la práctica se escala con planificación y calidad para definir prioridad, liberar parcialmente o cambiar el programa. La regla no escrita es no comprometer uso productivo sin validación mínima de condición y disponibilidad.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"fricción",
+"área",
+"causa",
+"impacto",
+"responsable",
+"solución",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No describe fricciones concretas",
+"No menciona impacto operativo",
+"No indica quién destraba",
+"No explica cómo se resuelve"
+]
+}
+]
+},
+{
+"block_id": "RP_05_ALERTAS_TEMPRANAS_Y_ESCALAMIENTO",
+"block_name": "Alertas tempranas y escalamiento",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 50,
+"objective": "Capturar señales tempranas que anticipan problemas de abastecimiento, calidad, capacidad, recepción o continuidad operacional.",
+"questions": [
+{
+"question_id": "RP_05_Q01",
+"ai_category": "early_warnings",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales tempranas permiten anticipar problemas en disponibilidad, recepción o uso de materia prima pesquera?",
+"context": "La respuesta debe permitir crear alertas operativas y reglas preventivas para el Cerebro ASY.",
+"tooltip": "Registre: señal temprana, cómo se detecta, quién la detecta, frecuencia, riesgo asociado, tiempo disponible para reaccionar, acción preventiva y ejemplo real.",
+"expected_answer_structure": [
+"Señal temprana",
+"Fuente de detección",
+"Responsable",
+"Riesgo que anticipa",
+"Tiempo de reacción",
+"Acción preventiva",
+"Ejemplo real"
+],
+"good_answer_example": "Una señal temprana es el retraso de una embarcación respecto al horario previsto de arribo. Se detecta mediante comunicación con flota o puerto. Si el retraso compromete la disponibilidad de materia prima, se avisa a planificación para ajustar el programa y a producción para evitar preparación innecesaria de recursos.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señales",
+"fuente",
+"responsable",
+"riesgo",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo menciona problemas ya ocurridos",
+"No identifica señales preventivas",
+"No indica quién detecta",
+"No menciona acción preventiva"
+]
+},
+{
+"question_id": "RP_05_Q02",
+"ai_category": "escalation_thresholds",
+"required": true,
+"min_characters": 300,
+"question": "Explique cuándo un problema de Recursos Pesqueros debe escalarse y a quién se comunica según su criticidad.",
+"context": "Busca identificar umbrales reales de escalamiento y canales formales o informales usados en operación.",
+"tooltip": "Incluya: tipo de problema, umbral de escalamiento, responsable que escala, destinatarios, canal usado, tiempo máximo de respuesta, decisión esperada y consecuencia si no se escala.",
+"expected_answer_structure": [
+"Tipo de problema",
+"Umbral de escalamiento",
+"Quién escala",
+"A quién se comunica",
+"Canal",
+"Tiempo esperado de respuesta",
+"Decisión requerida",
+"Ejemplo real"
+],
+"good_answer_example": "Si existe riesgo de no contar con materia prima suficiente para cumplir el programa de producción, se escala a planificación, producción y gerencia correspondiente. El canal puede ser llamada directa o grupo operativo. La decisión esperada es mantener, reprogramar o priorizar producción según disponibilidad real.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"umbral",
+"responsable",
+"destinatario",
+"canal",
+"decisión esperada",
+"consecuencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No define umbrales",
+"No indica a quién se escala",
+"No menciona canales",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "RP_06_REUNIONES_E_INDICADORES",
+"block_name": "Reuniones e indicadores de gestión pesquera",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 60,
+"objective": "Identificar reuniones, indicadores y rutinas que sostienen la gestión diaria y estratégica de Recursos Pesqueros.",
+"questions": [
+{
+"question_id": "RP_06_Q01",
+"ai_category": "meeting_registry",
+"required": true,
+"min_characters": 300,
+"question": "Registre las reuniones críticas donde Recursos Pesqueros participa o entrega información clave para la operación.",
+"context": "Debe capturar reuniones reales, frecuencia, participantes, decisiones, datos revisados y consecuencias si no se realizan.",
+"tooltip": "Registre: nombre de reunión, objetivo, frecuencia, duración, participantes obligatorios, líder, temas fijos, indicadores revisados, decisiones tomadas, insumos requeridos, salidas esperadas, acta o evidencia y consecuencias si no se realiza.",
+"expected_answer_structure": [
+"Nombre de la reunión",
+"Objetivo",
+"Frecuencia",
+"Participantes",
+"Líder",
+"Indicadores revisados",
+"Decisiones tomadas",
+"Evidencia generada",
+"Consecuencia si no se realiza"
+],
+"good_answer_example": "Reunión diaria de coordinación operativa. Su objetivo es revisar disponibilidad de materia prima, arribos, restricciones de recepción y necesidades de producción. Participan planificación, producción, calidad y recursos pesqueros. Si no se realiza, pueden mantenerse programas desactualizados o decisiones sin información real de abastecimiento.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"nombre de reunión",
+"frecuencia",
+"participantes",
+"indicadores",
+"decisiones",
+"consecuencias"
+]
+},
+"incomplete_if": [
+"Solo menciona reuniones sin detalle",
+"No indica frecuencia",
+"No menciona decisiones",
+"No describe salidas o evidencias"
+]
+},
+{
+"question_id": "RP_06_Q02",
+"ai_category": "critical_indicators",
+"required": true,
+"min_characters": 300,
+"question": "Indique qué indicadores monitorea Recursos Pesqueros y cómo se usan para tomar decisiones operativas o gerenciales.",
+"context": "La respuesta debe diferenciar indicadores formales, indicadores prácticos y señales usadas aunque no estén documentadas.",
+"tooltip": "Incluya: indicador, fórmula o forma de cálculo, frecuencia, fuente de datos, responsable, umbral esperado, decisión asociada, área que recibe la información y ejemplo de uso.",
+"expected_answer_structure": [
+"Indicador",
+"Cómo se calcula o interpreta",
+"Frecuencia",
+"Fuente de datos",
+"Responsable",
+"Umbral",
+"Decisión asociada",
+"Ejemplo real"
+],
+"good_answer_example": "Se monitorea disponibilidad de materia prima versus requerimiento de producción. La información se revisa diariamente y permite decidir si se mantiene el programa, se reprograma o se prioriza una línea. También se revisan diferencias de recepción, tiempos de descarga y alertas de capacidad cuando aplica.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"indicador",
+"frecuencia",
+"fuente",
+"responsable",
+"umbral",
+"decisión",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo lista indicadores",
+"No explica uso para decisiones",
+"No menciona frecuencia",
+"No incluye umbrales o criterios"
+]
+}
+]
+},
+{
+"block_id": "RP_07_REGLAS_NO_ESCRITAS_CONOCIMIENTO_TACITO",
+"block_name": "Reglas no escritas y conocimiento tácito",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 70,
+"objective": "Capturar experiencia práctica no documentada que permite operar Recursos Pesqueros de forma efectiva.",
+"questions": [
+{
+"question_id": "RP_07_Q01",
+"ai_category": "non_written_rules",
+"required": true,
+"min_characters": 300,
+"question": "Describa las reglas no escritas que se usan en Recursos Pesqueros para evitar errores, retrasos o conflictos operativos.",
+"context": "Busca capturar criterios aprendidos por experiencia que no aparecen formalmente en procedimientos.",
+"tooltip": "Registre: regla no escrita, cuándo se aplica, quién la conoce, por qué existe, qué evita, qué pasa si no se cumple y ejemplo real.",
+"expected_answer_structure": [
+"Regla no escrita",
+"Situación donde aplica",
+"Personas que la conocen",
+"Riesgo que evita",
+"Consecuencia si no se cumple",
+"Ejemplo real"
+],
+"good_answer_example": "Una regla no escrita es confirmar con planificación y calidad antes de comprometer el uso de una materia prima con condición especial. Esto evita que producción programe una línea sin tener certeza de disponibilidad o aptitud. Si no se cumple, puede generarse cambio urgente de programa o espera operativa.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"regla",
+"situación",
+"quién la conoce",
+"riesgo",
+"consecuencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No identifica reglas concretas",
+"No explica cuándo aplican",
+"No menciona riesgo evitado",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "RP_07_Q02",
+"ai_category": "tacit_knowledge",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué conocimiento crítico de Recursos Pesqueros depende de personas específicas y no está suficientemente documentado?",
+"context": "Permite detectar concentración de conocimiento y riesgos de continuidad operacional.",
+"tooltip": "Incluya: conocimiento, persona o rol que lo domina, situación donde se necesita, riesgo si esa persona no está, respaldo existente, documentación disponible y acción sugerida para capturarlo.",
+"expected_answer_structure": [
+"Conocimiento crítico",
+"Persona o rol que lo domina",
+"Cuándo se necesita",
+"Riesgo de ausencia",
+"Respaldo actual",
+"Nivel de documentación",
+"Ejemplo real"
+],
+"good_answer_example": "El conocimiento sobre disponibilidad real de flota, contactos clave y criterios prácticos para anticipar retrasos puede estar concentrado en pocos responsables. Si estas personas no están disponibles, se dificulta reaccionar rápido ante cambios de arribo o restricciones de abastecimiento.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"conocimiento",
+"persona o rol",
+"riesgo",
+"respaldo",
+"documentación",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona personas o roles",
+"No indica riesgo de ausencia",
+"No describe conocimiento específico",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "RP_08_RIESGOS_CONTINUIDAD_OPERACIONAL",
+"block_name": "Riesgos y continuidad operacional",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 80,
+"objective": "Identificar riesgos operacionales críticos que pueden afectar disponibilidad, continuidad, costos, calidad o cumplimiento del abastecimiento pesquero.",
+"questions": [
+{
+"question_id": "RP_08_Q01",
+"ai_category": "operational_risks",
+"required": true,
+"min_characters": 300,
+"question": "Identifique los riesgos operacionales más críticos de Recursos Pesqueros y cómo se controlan actualmente.",
+"context": "La respuesta debe permitir generar un mapa de riesgos operativos y controles reales del área.",
+"tooltip": "Registre: riesgo, causa, probabilidad percibida, impacto, señal temprana, control actual, responsable, plan de contingencia y ejemplo real.",
+"expected_answer_structure": [
+"Riesgo crítico",
+"Causa",
+"Impacto",
+"Señal temprana",
+"Control actual",
+"Responsable",
+"Plan de contingencia",
+"Ejemplo real"
+],
+"good_answer_example": "Un riesgo crítico es no contar con materia prima suficiente por baja captura, retraso de flota o restricción externa. Se controla con seguimiento diario de disponibilidad, comunicación con actores externos y coordinación temprana con planificación y producción. Si el riesgo se materializa, se reprograma producción o se prioriza el uso de materia prima disponible.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"riesgo",
+"causa",
+"impacto",
+"control",
+"responsable",
+"contingencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo menciona riesgos generales",
+"No explica controles actuales",
+"No indica responsables",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "RP_08_Q02",
+"ai_category": "operational_constraints",
+"required": true,
+"min_characters": 300,
+"question": "Explique qué restricciones limitan la operación de Recursos Pesqueros y qué decisiones obligan a tomar.",
+"context": "Busca capturar restricciones estructurales, temporales, legales, operativas o humanas que condicionan el funcionamiento del área.",
+"tooltip": "Incluya: restricción, origen, frecuencia, área afectada, decisión que obliga a tomar, responsable, alternativa disponible y ejemplo reciente.",
+"expected_answer_structure": [
+"Restricción",
+"Origen",
+"Frecuencia",
+"Área afectada",
+"Decisión obligada",
+"Responsable",
+"Alternativa",
+"Ejemplo real"
+],
+"good_answer_example": "Una restricción puede ser la capacidad limitada de recepción o almacenamiento cuando coinciden arribos con alta ocupación de cámaras. Esta restricción obliga a coordinar prioridades de descarga, transferencia o uso de materia prima con cámaras, producción y planificación.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"restricción",
+"origen",
+"frecuencia",
+"decisión",
+"responsable",
+"alternativa",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No describe restricciones concretas",
+"No explica decisiones asociadas",
+"No menciona alternativas",
+"No incluye ejemplo"
+]
+}
+]
+}
+]
+}

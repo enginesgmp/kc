@@ -1,0 +1,1148 @@
+{
+  "questionnaire_version": "KC_V2",
+  "industry": "industrial_atunera",
+  "source_type": "area",
+  "area": "COMEX",
+  "level": null,
+  "area_metadata": {
+    "area_id": "area_comex",
+    "display_name": "COMEX",
+    "aliases": [
+      "COMEX",
+      "Comercio Exterior",
+      "Comercio exterior",
+      "Importaciones y Exportaciones",
+      "Importaciones",
+      "Exportaciones",
+      "Aduanas",
+      "Operaciones internacionales",
+      "Foreign Trade"
+    ],
+    "macro_process": "MP-1600 COMERCIO EXTERIOR Y ABASTECIMIENTO INTERNACIONAL"
+  },
+  "blocks": [
+    {
+      "block_id": "COMEX_01_FLUJO_OPERATIVO",
+      "block_name": "Flujo operativo de comercio exterior",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 10,
+      "objective": "Capturar cómo se gestiona realmente el flujo de importaciones y exportaciones, desde la necesidad comercial u operativa hasta el cierre documental y financiero.",
+      "questions": [
+        {
+          "question_id": "COMEX_01_Q01",
+          "ai_category": "sop_alignment",
+          "required": true,
+          "min_characters": 350,
+          "question": "Describa el flujo real de trabajo de COMEX para gestionar una operación de importación o exportación, desde la solicitud inicial hasta el cierre.",
+          "context": "El objetivo es entender la operación real, los puntos de control, los documentos, responsables y decisiones que sostienen la continuidad del comercio exterior.",
+          "tooltip": "Registre: tipo de operación, disparador, etapas, responsables, documentos, sistemas usados, controles críticos, tiempos habituales, excepciones frecuentes y consecuencias si una etapa falla.",
+          "expected_answer_structure": [
+            "Tipo de operación",
+            "Disparador",
+            "Etapas",
+            "Responsables",
+            "Documentos",
+            "Sistemas",
+            "Controles críticos",
+            "Tiempos",
+            "Excepciones",
+            "Consecuencias"
+          ],
+          "good_answer_example": "Una importación inicia con requerimiento aprobado, se valida proveedor, orden, documentos de embarque, agente de carga, aduana y nacionalización. Si falta un documento crítico, el embarque se mantiene en seguimiento y se escala antes de generar costos por demora.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "tipo",
+              "disparador",
+              "etapas",
+              "responsables",
+              "documentos",
+              "sistemas",
+              "controles",
+              "consecuencias"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_01_Q02",
+          "ai_category": "operational_decisions",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué decisiones operativas toma COMEX durante una operación y qué criterios usa para tomarlas?",
+          "context": "Se busca capturar criterios reales de decisión ante rutas, agentes, documentación, tiempos, costos, permisos, urgencias, restricciones y cambios de prioridad.",
+          "tooltip": "Registre: decisión, criterio utilizado, información requerida, responsable, momento de decisión, alternativas consideradas, riesgo, evidencia y ejemplo real.",
+          "expected_answer_structure": [
+            "Decisión",
+            "Criterio",
+            "Información requerida",
+            "Responsable",
+            "Momento",
+            "Alternativas",
+            "Riesgo",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Si un embarque puede llegar por dos rutas, COMEX evalúa costo, tiempo, riesgo documental y urgencia de planta. La decisión la valida jefatura con compras o planificación cuando afecta producción.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "decisión",
+              "criterio",
+              "información",
+              "responsable",
+              "riesgo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "COMEX_02_DOCUMENTACION_ADUANAS",
+      "block_name": "Documentación, aduanas y cumplimiento normativo",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 20,
+      "objective": "Identificar documentos, validaciones aduaneras, permisos y controles regulatorios que no pueden fallar en COMEX.",
+      "questions": [
+        {
+          "question_id": "COMEX_02_Q01",
+          "ai_category": "manual_controls",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué documentos y validaciones son indispensables para evitar bloqueos, multas, demoras o costos adicionales en operaciones COMEX?",
+          "context": "La documentación puede incluir factura, packing list, BL/AWB, certificados, permisos, pólizas, declaraciones, documentos de origen, vistos buenos y registros internos.",
+          "tooltip": "Registre: documento, quién lo genera, quién lo valida, momento requerido, sistema o repositorio, control aplicado, riesgo por error, escalamiento y ejemplo reciente.",
+          "expected_answer_structure": [
+            "Documento",
+            "Generador",
+            "Validador",
+            "Momento requerido",
+            "Sistema/repositorio",
+            "Control",
+            "Riesgo",
+            "Escalamiento",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Antes del arribo se valida factura, packing list, BL y certificados aplicables. Si hay diferencia en descripción o cantidad, se solicita corrección al proveedor/agente antes de transmitir información a aduana.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "documento",
+              "generador",
+              "validador",
+              "momento",
+              "control",
+              "riesgo",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_02_Q02",
+          "ai_category": "operational_risks",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué riesgos normativos o aduaneros considera más críticos y qué controles evitan que se materialicen?",
+          "context": "Se busca identificar riesgos de clasificación arancelaria, permisos, origen, valoración, errores documentales, vencimientos, inspecciones, restricciones sanitarias o incumplimiento legal.",
+          "tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Riesgo",
+            "Causa",
+            "Impacto",
+            "Probabilidad",
+            "Control actual",
+            "Responsable",
+            "Señal temprana",
+            "Contingencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Un riesgo crítico es que la partida arancelaria no coincida con la naturaleza del producto. Se controla revisando antecedentes, ficha técnica y validación con agente aduanero antes de nacionalizar.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "riesgo",
+              "causa",
+              "impacto",
+              "control",
+              "responsable",
+              "señal",
+              "contingencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "COMEX_03_AGENTES_EXTERNOS",
+      "block_name": "Agentes, navieras, forwarders y proveedores externos",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 30,
+      "objective": "Capturar dependencias externas y criterios de coordinación con agentes de carga, aduana, navieras, transportistas, aseguradoras, bancos y proveedores.",
+      "questions": [
+        {
+          "question_id": "COMEX_03_Q01",
+          "ai_category": "external_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué proveedores o actores externos son críticos para COMEX y qué información o respuesta se espera de cada uno?",
+          "context": "La operación COMEX depende de terceros que pueden afectar tiempos, costos, documentación, trazabilidad y cumplimiento.",
+          "tooltip": "Registre: actor externo, servicio que presta, información requerida, frecuencia de interacción, responsable interno, SLA o tiempo esperado, riesgo si falla, contingencia y ejemplo real.",
+          "expected_answer_structure": [
+            "Actor externo",
+            "Servicio",
+            "Información requerida",
+            "Frecuencia",
+            "Responsable interno",
+            "SLA/tiempo esperado",
+            "Riesgo",
+            "Contingencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "El agente de aduana es crítico para nacionalización. Debe confirmar documentos, observaciones y canal de aforo. Si se retrasa, COMEX escala con jefatura y evalúa impacto en costos de almacenaje.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "actor",
+              "servicio",
+              "información",
+              "frecuencia",
+              "responsable",
+              "riesgo",
+              "contingencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_03_Q02",
+          "ai_category": "process_friction",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son las fricciones más frecuentes con agentes, forwarders, navieras, bancos o proveedores y cómo se resuelven?",
+          "context": "No se busca culpabilizar terceros; se busca entender patrones que afectan tiempos, costos, documentos, trazabilidad o cumplimiento.",
+          "tooltip": "Registre: actor, fricción, causa probable, frecuencia, impacto, solución actual, regla no escrita, evidencia y mejora sugerida.",
+          "expected_answer_structure": [
+            "Actor",
+            "Fricción",
+            "Causa probable",
+            "Frecuencia",
+            "Impacto",
+            "Solución actual",
+            "Regla no escrita",
+            "Evidencia",
+            "Mejora sugerida"
+          ],
+          "good_answer_example": "Con forwarders suele haber fricción cuando la actualización de llegada cambia tarde. Se resuelve con seguimiento directo por correo/WhatsApp y se informa a planificación para ajustar fechas internas.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "actor",
+              "fricción",
+              "causa",
+              "frecuencia",
+              "impacto",
+              "solución",
+              "regla",
+              "mejora"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "COMEX_04_COSTOS_PRESUPUESTO",
+      "block_name": "Costos, presupuestos y gastos asociados",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 40,
+      "objective": "Identificar cómo se controlan costos COMEX, gastos de nacionalización, fletes, almacenajes, demoras, seguros y provisiones.",
+      "questions": [
+        {
+          "question_id": "COMEX_04_Q01",
+          "ai_category": "critical_indicators",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué indicadores o controles usa COMEX para monitorear costos, gastos y desviaciones de una operación?",
+          "context": "Interesa capturar controles de flete, aduana, almacenaje, demoras, seguros, impuestos, gastos bancarios y variaciones frente a presupuesto.",
+          "tooltip": "Registre: indicador/control, fórmula si existe, fuente, frecuencia, responsable, meta o umbral, decisión que dispara, evidencia y ejemplo reciente.",
+          "expected_answer_structure": [
+            "Indicador/control",
+            "Fórmula",
+            "Fuente",
+            "Frecuencia",
+            "Responsable",
+            "Meta/umbral",
+            "Decisión",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Se controla costo real versus estimado por operación. Si aparecen demoras portuarias o almacenaje adicional, se informa a jefatura y se revisa causa documental u operativa.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "indicador",
+              "fuente",
+              "frecuencia",
+              "responsable",
+              "umbral",
+              "decisión",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_04_Q02",
+          "ai_category": "decision_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas se aplican cuando una operación COMEX genera costos no previstos o supera el presupuesto esperado?",
+          "context": "Se requiere extraer reglas SI → ENTONCES para decisiones ante sobrecostos, demoras, almacenajes, cambios de ruta o documentos incorrectos.",
+          "tooltip": "Registre reglas concretas: SI ocurre una condición, ENTONCES acción, responsable, evidencia, tiempo máximo, escalamiento y consecuencia si no se actúa.",
+          "expected_answer_structure": [
+            "Condición SI",
+            "Acción ENTONCES",
+            "Responsable",
+            "Evidencia",
+            "Tiempo máximo",
+            "Escalamiento",
+            "Consecuencia"
+          ],
+          "good_answer_example": "SI un embarque genera almacenaje por documentación incompleta, ENTONCES COMEX documenta la causa, escala al responsable del documento y reporta el impacto económico a jefatura.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "SI",
+              "ENTONCES",
+              "responsable",
+              "evidencia",
+              "tiempo",
+              "escalamiento",
+              "consecuencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "COMEX_05_PLANIFICACION_TIEMPOS",
+      "block_name": "Planificación, tiempos de tránsito y cumplimiento",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 50,
+      "objective": "Capturar cómo COMEX planifica tiempos, anticipa restricciones y alinea arribos, nacionalizaciones y entregas con necesidades internas.",
+      "questions": [
+        {
+          "question_id": "COMEX_05_Q01",
+          "ai_category": "planning_constraints",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué restricciones de planificación afectan las operaciones COMEX y cómo se anticipan?",
+          "context": "Pueden incluir lead time, congestión portuaria, permisos, disponibilidad de contenedores, inspecciones, documentación, producción, compras, pagos o aprobaciones.",
+          "tooltip": "Registre: restricción, causa, área relacionada, señal temprana, impacto, responsable, acción preventiva, escalamiento y ejemplo reciente.",
+          "expected_answer_structure": [
+            "Restricción",
+            "Causa",
+            "Área relacionada",
+            "Señal temprana",
+            "Impacto",
+            "Responsable",
+            "Acción preventiva",
+            "Escalamiento",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una restricción es recibir documentos originales tarde. Se anticipa solicitando borradores antes del embarque y validando con agente de aduana para evitar retrasos en nacionalización.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "restricción",
+              "causa",
+              "área",
+              "señal",
+              "impacto",
+              "responsable",
+              "acción",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_05_Q02",
+          "ai_category": "early_warnings",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué señales tempranas indican riesgo de incumplimiento en fechas de arribo, nacionalización o entrega interna?",
+          "context": "Se busca detectar alertas antes de que el retraso impacte producción, ventas, costos o servicio al cliente.",
+          "tooltip": "Registre: señal temprana, cómo se detecta, frecuencia de revisión, responsable, acción preventiva, área escalada y ejemplo real.",
+          "expected_answer_structure": [
+            "Señal temprana",
+            "Detección",
+            "Frecuencia",
+            "Responsable",
+            "Acción preventiva",
+            "Escalamiento",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una señal es que el proveedor no confirma embarque en la fecha prevista. COMEX lo detecta en seguimiento semanal y escala a compras/planificación para evaluar impacto en abastecimiento.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "señal",
+              "detección",
+              "frecuencia",
+              "responsable",
+              "acción",
+              "escalamiento",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "COMEX_06_COORDINACION_INTERNA",
+      "block_name": "Coordinación con compras, producción, planificación, finanzas y comercial",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 60,
+      "objective": "Identificar cómo COMEX coordina información, prioridades y decisiones con áreas internas críticas.",
+      "questions": [
+        {
+          "question_id": "COMEX_06_Q01",
+          "ai_category": "coordination_patterns",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo se coordina COMEX con compras, producción, planificación, finanzas, contabilidad, calidad y comercial durante una operación?",
+          "context": "La coordinación interna define prioridades, documentos, pagos, permisos, fechas, costos, disponibilidad y cumplimiento de clientes internos o externos.",
+          "tooltip": "Registre: área, información intercambiada, frecuencia, canal, responsable, decisión soportada, problema recurrente y ejemplo real.",
+          "expected_answer_structure": [
+            "Área",
+            "Información intercambiada",
+            "Frecuencia",
+            "Canal",
+            "Responsable",
+            "Decisión soportada",
+            "Problema recurrente",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Con compras se confirma proveedor y orden; con finanzas se valida pago; con planificación se revisa fecha de llegada; con calidad se validan certificados. Si cambia ETA, COMEX informa impacto a las áreas afectadas.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "área",
+              "información",
+              "frecuencia",
+              "canal",
+              "responsable",
+              "decisión",
+              "problema",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_06_Q02",
+          "ai_category": "hidden_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué datos críticos necesita COMEX de otras áreas y qué ocurre cuando llegan tarde o incompletos?",
+          "context": "Esta pregunta busca dependencias ocultas que afectan documentos, embarques, pagos, permisos, nacionalización, despacho y costos.",
+          "tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato/canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+          "expected_answer_structure": [
+            "Dato requerido",
+            "Área proveedora",
+            "Momento requerido",
+            "Formato/canal",
+            "Responsable",
+            "Consecuencia",
+            "Solución temporal",
+            "Mejora"
+          ],
+          "good_answer_example": "COMEX necesita aprobación de pago antes de liberar ciertos documentos. Si llega tarde, se puede retrasar el embarque o nacionalización, generando costos adicionales.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "dato",
+              "área",
+              "momento",
+              "canal",
+              "responsable",
+              "consecuencia",
+              "solución",
+              "mejora"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "COMEX_07_PAGOS_BANCOS_SEGUROS",
+      "block_name": "Pagos internacionales, bancos y seguros",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 70,
+      "objective": "Capturar controles y riesgos asociados a pagos internacionales, garantías, seguros, bancos, divisas y documentación financiera.",
+      "questions": [
+        {
+          "question_id": "COMEX_07_Q01",
+          "ai_category": "manual_controls",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué controles se aplican para pagos internacionales, seguros, divisas o documentos bancarios vinculados a COMEX?",
+          "context": "Interesa identificar controles reales para evitar pagos tardíos, errores de beneficiario, diferencias de monto, falta de cobertura, incumplimientos o bloqueos documentales.",
+          "tooltip": "Registre: control, responsable, documento asociado, momento, sistema o banco, validación aplicada, riesgo si falla, evidencia y ejemplo real.",
+          "expected_answer_structure": [
+            "Control",
+            "Responsable",
+            "Documento asociado",
+            "Momento",
+            "Sistema/banco",
+            "Validación",
+            "Riesgo",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Antes de pagar se valida beneficiario, factura, orden y condiciones acordadas. Si hay diferencia de monto o banco, se solicita confirmación formal al proveedor antes de procesar.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "control",
+              "responsable",
+              "documento",
+              "momento",
+              "validación",
+              "riesgo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_07_Q02",
+          "ai_category": "operational_exceptions",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué excepciones ocurren con pagos, bancos o seguros y cómo se resuelven sin afectar la operación?",
+          "context": "Se busca capturar casos como pago retenido, datos bancarios cambiados, póliza pendiente, diferencia de factura, bloqueo del banco o retraso en transferencia.",
+          "tooltip": "Registre: excepción, frecuencia, detector, decisor, criterio aplicado, registro posterior, riesgo y ejemplo real.",
+          "expected_answer_structure": [
+            "Excepción",
+            "Frecuencia",
+            "Detector",
+            "Decisor",
+            "Criterio aplicado",
+            "Registro",
+            "Riesgo",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Cuando el proveedor cambia datos bancarios, COMEX no procesa el pago hasta validar formalmente con compras y finanzas. El riesgo es fraude o pago errado.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "excepción",
+              "frecuencia",
+              "detector",
+              "decisor",
+              "criterio",
+              "registro",
+              "riesgo",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "COMEX_08_EXCEPCIONES_INCIDENTES",
+      "block_name": "Excepciones, incidentes y contingencias operativas",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 80,
+      "objective": "Identificar excepciones críticas de comercio exterior y cómo se gestionan bajo presión.",
+      "questions": [
+        {
+          "question_id": "COMEX_08_Q01",
+          "ai_category": "operational_exceptions",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué excepciones operativas son más frecuentes en COMEX y cómo se resuelven en la práctica?",
+          "context": "Incluya retrasos, documentos incorrectos, inspecciones, cambios de ruta, falta de espacio, retenciones, costos no previstos, permisos pendientes o errores de proveedor.",
+          "tooltip": "Registre: excepción, frecuencia, causa probable, detector, responsable de decisión, criterio aplicado, riesgo, evidencia y ejemplo real.",
+          "expected_answer_structure": [
+            "Excepción",
+            "Frecuencia",
+            "Causa probable",
+            "Detector",
+            "Decisor",
+            "Criterio",
+            "Riesgo",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una excepción frecuente es recibir documentos con errores de descripción. COMEX solicita corrección al proveedor, informa al agente y no avanza con trámite hasta validar que no genere observación aduanera.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "excepción",
+              "frecuencia",
+              "causa",
+              "detector",
+              "decisor",
+              "criterio",
+              "riesgo",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_08_Q02",
+          "ai_category": "critical_failures",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son las fallas críticas que pueden detener o encarecer una operación COMEX y cómo se previenen?",
+          "context": "Se busca identificar puntos donde un error documental, financiero, logístico o normativo puede generar paro, multa, demora, sobrecosto o incumplimiento.",
+          "tooltip": "Registre: falla crítica, causa, punto de detección, control preventivo, responsable, evidencia, acción correctiva y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Falla crítica",
+            "Causa",
+            "Punto de detección",
+            "Control preventivo",
+            "Responsable",
+            "Evidencia",
+            "Acción correctiva",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una falla crítica es no gestionar permisos antes del arribo. Se previene revisando requisitos desde la orden y confirmando con agente aduanero antes del embarque.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "falla",
+              "causa",
+              "detección",
+              "control",
+              "responsable",
+              "evidencia",
+              "acción",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "COMEX_09_HERRAMIENTAS_DATOS",
+      "block_name": "Herramientas, sistemas y controles paralelos",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 90,
+      "objective": "Identificar sistemas oficiales, archivos paralelos y tableros usados para controlar operaciones COMEX.",
+      "questions": [
+        {
+          "question_id": "COMEX_09_Q01",
+          "ai_category": "parallel_tools",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué sistemas, archivos, tableros o controles paralelos usa COMEX para dar seguimiento a operaciones?",
+          "context": "Se busca entender el ecosistema real: ERP, Excel, correos, carpetas Drive, portales de aduana, bancos, forwarders, trackers, WhatsApp o tableros internos.",
+          "tooltip": "Registre: herramienta, uso específico, dato capturado, responsable, frecuencia de actualización, fuente oficial, decisión soportada, riesgo de duplicidad y mejora deseada.",
+          "expected_answer_structure": [
+            "Herramienta",
+            "Uso",
+            "Dato capturado",
+            "Responsable",
+            "Frecuencia",
+            "Fuente oficial",
+            "Decisión soportada",
+            "Riesgo",
+            "Mejora deseada"
+          ],
+          "good_answer_example": "Además del ERP se usa Excel para seguimiento de embarques, ETA, documentos pendientes y costos. El riesgo es duplicidad, pero permite alertar retrasos antes de que aparezcan en el sistema.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "herramienta",
+              "uso",
+              "dato",
+              "responsable",
+              "frecuencia",
+              "fuente",
+              "decisión",
+              "riesgo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_09_Q02",
+          "ai_category": "operational_alerts",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué alertas operativas deberían verse en los sistemas o controles para evitar retrasos y sobrecostos?",
+          "context": "Interesa definir alertas accionables sobre documentos pendientes, ETA, pagos, permisos, almacenaje, vencimientos, seguros, inspecciones o nacionalización.",
+          "tooltip": "Registre: alerta, condición disparadora, detector, decisor, canal, tiempo máximo de reacción, acción inicial y consecuencia de no actuar.",
+          "expected_answer_structure": [
+            "Alerta",
+            "Condición disparadora",
+            "Detector",
+            "Decisor",
+            "Canal",
+            "Tiempo máximo",
+            "Acción inicial",
+            "Consecuencia"
+          ],
+          "good_answer_example": "Si faltan documentos a pocos días del arribo, el control debe alertar a COMEX, compras y agente para evitar almacenaje o retraso en nacionalización.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "alerta",
+              "condición",
+              "detector",
+              "decisor",
+              "canal",
+              "tiempo",
+              "acción",
+              "consecuencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "COMEX_10_REUNIONES_RUTINAS",
+      "block_name": "Reuniones, rutinas y gobierno operativo COMEX",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 100,
+      "objective": "Capturar reuniones y rutinas que sostienen el seguimiento de embarques, documentos, costos, pagos y riesgos.",
+      "questions": [
+        {
+          "question_id": "COMEX_10_Q01",
+          "ai_category": "meeting_registry",
+          "required": true,
+          "min_characters": 350,
+          "question": "Liste las reuniones o rutinas donde se revisan operaciones COMEX, embarques, documentos, pagos, costos, permisos, riesgos o prioridades.",
+          "context": "Interesa conocer reuniones formales e informales que sostienen la operación, incluyendo comités, seguimientos semanales, llamadas con agentes y grupos de coordinación.",
+          "tooltip": "Registre: nombre, objetivo, frecuencia, duración, participantes, líder, temas fijos, indicadores, decisiones, insumos, salidas, evidencia y consecuencias si no se realiza.",
+          "expected_answer_structure": [
+            "Nombre",
+            "Objetivo",
+            "Frecuencia",
+            "Duración",
+            "Participantes",
+            "Líder",
+            "Temas fijos",
+            "Indicadores",
+            "Decisiones",
+            "Insumos",
+            "Salidas",
+            "Evidencia",
+            "Consecuencia"
+          ],
+          "good_answer_example": "En la reunión semanal se revisan embarques en tránsito, documentos pendientes, pagos, permisos y riesgos de llegada. Si no se realiza, aumentan urgencias y retrasos no anticipados.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "nombre",
+              "objetivo",
+              "frecuencia",
+              "participantes",
+              "líder",
+              "indicadores",
+              "decisiones",
+              "evidencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_10_Q02",
+          "ai_category": "governance_routines",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué seguimiento diario o semanal realiza el responsable de COMEX para asegurar que las operaciones estén bajo control?",
+          "context": "Se busca capturar la rutina real de gestión: revisión de ETA, documentos, pagos, agentes, costos, permisos, alertas y pendientes críticos.",
+          "tooltip": "Registre: secuencia de revisión, horarios o frecuencia, responsables, evidencias, alertas, decisiones, cierres obligatorios y pendientes arrastrados.",
+          "expected_answer_structure": [
+            "Secuencia",
+            "Frecuencia/horarios",
+            "Responsables",
+            "Evidencias",
+            "Alertas",
+            "Decisiones",
+            "Cierres obligatorios",
+            "Pendientes arrastrados"
+          ],
+          "good_answer_example": "Cada día se revisan embarques próximos, documentos faltantes, pagos pendientes y novedades de agentes. Al cierre se actualiza tracker y se escalan riesgos con impacto en costos o producción.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "secuencia",
+              "frecuencia",
+              "responsable",
+              "evidencia",
+              "alerta",
+              "decisión",
+              "cierre"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "COMEX_11_REGLAS_ESCALAMIENTO",
+      "block_name": "Reglas no escritas, decisiones bajo presión y escalamiento",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 110,
+      "objective": "Extraer reglas tácitas y umbrales reales de escalamiento usados cuando una operación COMEX está en riesgo.",
+      "questions": [
+        {
+          "question_id": "COMEX_11_Q01",
+          "ai_category": "non_written_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas no escritas usa COMEX para priorizar operaciones, documentos, pagos o escalamiento cuando hay presión operativa?",
+          "context": "Las reglas no escritas explican cómo se opera cuando el procedimiento formal no alcanza: urgencias de planta, clientes críticos, costos crecientes, documentos pendientes o proveedores lentos.",
+          "tooltip": "Registre: regla no escrita, condición de uso, quién la valida, beneficio, riesgo, evidencia/comunicación y ejemplo real.",
+          "expected_answer_structure": [
+            "Regla no escrita",
+            "Condición de uso",
+            "Validador",
+            "Beneficio",
+            "Riesgo",
+            "Evidencia/comunicación",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Cuando un embarque afecta continuidad de producción, se prioriza seguimiento documental y pago sobre operaciones menos críticas, siempre con validación de jefatura y planificación.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "regla",
+              "condición",
+              "validador",
+              "beneficio",
+              "riesgo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_11_Q02",
+          "ai_category": "escalation_thresholds",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué situaciones obligan a escalar problemas COMEX y a quién se escala según el tipo de caso?",
+          "context": "Se busca mapear umbrales reales: retraso de documentos, sobrecostos, pagos retenidos, inspección aduanera, permisos, falta de respuesta de proveedor o riesgo de paro productivo.",
+          "tooltip": "Registre: situación, umbral, primer responsable, autoridad final, canal usado, tiempo máximo tolerado, evidencia requerida y ejemplo real.",
+          "expected_answer_structure": [
+            "Situación",
+            "Umbral",
+            "Primer responsable",
+            "Autoridad final",
+            "Canal",
+            "Tiempo máximo",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Si un documento crítico no llega antes del arribo, COMEX escala a compras, proveedor y jefatura con evidencia del ETA, documento faltante e impacto esperado.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "situación",
+              "umbral",
+              "responsable",
+              "autoridad",
+              "canal",
+              "tiempo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "COMEX_12_RIESGOS_CONOCIMIENTO",
+      "block_name": "Riesgos, continuidad operacional y conocimiento tácito",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 120,
+      "objective": "Capturar riesgos críticos y conocimiento no documentado que puede afectar continuidad de operaciones COMEX.",
+      "questions": [
+        {
+          "question_id": "COMEX_12_Q01",
+          "ai_category": "operational_risks",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son los riesgos operacionales más críticos de COMEX y qué controles evitan que se materialicen?",
+          "context": "Incluya riesgos de documentación, aduana, pagos, proveedores, agentes, costos, permisos, seguros, tiempos de tránsito, cumplimiento y dependencia humana.",
+          "tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Riesgo",
+            "Causa",
+            "Impacto",
+            "Probabilidad",
+            "Control actual",
+            "Responsable",
+            "Señal temprana",
+            "Contingencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Un riesgo crítico es que un embarque llegue sin documentos completos. Se controla con checklist previo al arribo, seguimiento al proveedor y validación con agente aduanero.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "riesgo",
+              "causa",
+              "impacto",
+              "control",
+              "responsable",
+              "señal",
+              "contingencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "COMEX_12_Q02",
+          "ai_category": "tacit_knowledge",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué conocimiento crítico de COMEX no está documentado y debería capturarse para evitar dependencia de personas específicas?",
+          "context": "Se busca identificar conocimiento que vive en la experiencia: proveedores difíciles, contactos clave, criterios aduaneros, tiempos reales, costos típicos, rutas, documentos sensibles o formas de destrabar incidentes.",
+          "tooltip": "Registre: conocimiento no documentado, persona/rol que lo domina, cuándo se usa, riesgo cubierto, consecuencia de perderlo, forma sugerida de documentarlo y prioridad.",
+          "expected_answer_structure": [
+            "Conocimiento",
+            "Persona/rol que lo domina",
+            "Uso",
+            "Riesgo cubierto",
+            "Consecuencia de pérdida",
+            "Forma de documentación",
+            "Prioridad"
+          ],
+          "good_answer_example": "El analista conoce qué proveedores suelen enviar documentos con errores y qué revisar primero. Si ese conocimiento se pierde, aumentan observaciones y retrasos en nacionalización.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "conocimiento",
+              "quién",
+              "cuándo",
+              "riesgo",
+              "consecuencia",
+              "documentarlo",
+              "prioridad"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    }
+  ]
+}

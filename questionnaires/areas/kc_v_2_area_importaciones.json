@@ -1,0 +1,1149 @@
+{
+  "questionnaire_version": "KC_V2",
+  "industry": "industrial_atunera",
+  "source_type": "area",
+  "area": "Importaciones",
+  "level": null,
+  "area_metadata": {
+    "area_id": "area_importaciones",
+    "display_name": "Importaciones",
+    "aliases": [
+      "Importaciones",
+      "Área de Importaciones",
+      "Comercio Exterior Importaciones",
+      "Importación",
+      "Import Logistics",
+      "International Procurement",
+      "Compras Internacionales",
+      "Aduana",
+      "Nacionalización",
+      "Logística Internacional"
+    ],
+    "macro_process": "MP-1400 LOGÍSTICA Y ABASTECIMIENTO"
+  },
+  "blocks": [
+    {
+      "block_id": "IMPOR_01_FLUJO_IMPORTACION",
+      "block_name": "Flujo integral de importaciones",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 10,
+      "objective": "Capturar cómo el área de Importaciones gestiona realmente el ciclo completo desde la necesidad de compra internacional hasta la nacionalización, recepción y cierre documental.",
+      "questions": [
+        {
+          "question_id": "IMPOR_01_Q01",
+          "ai_category": "sop_alignment",
+          "required": true,
+          "min_characters": 350,
+          "question": "Describa el flujo real de importaciones desde que nace la necesidad de importar hasta que la mercadería queda nacionalizada, recibida y cerrada documentalmente.",
+          "context": "El objetivo es entender la operación real del área: requerimiento, proveedor internacional, orden, embarque, documentos, agente de aduana, nacionalización, transporte interno, recepción y cierre.",
+          "tooltip": "Registre: origen de la necesidad, etapas, responsables, documentos, sistemas usados, validaciones, tiempos habituales, controles críticos, excepciones y consecuencias si una etapa falla.",
+          "expected_answer_structure": [
+            "Origen de la necesidad",
+            "Etapas",
+            "Responsables",
+            "Documentos",
+            "Sistemas",
+            "Validaciones",
+            "Tiempos",
+            "Controles críticos",
+            "Excepciones",
+            "Consecuencias"
+          ],
+          "good_answer_example": "Una importación inicia por necesidad de abastecimiento aprobada. Importaciones valida proveedor, documentos, condiciones comerciales, embarque, agente de aduana y nacionalización. Si falta factura, BL o permiso, el proceso queda detenido hasta regularización.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "origen",
+              "etapas",
+              "responsables",
+              "documentos",
+              "sistemas",
+              "validaciones",
+              "controles",
+              "consecuencias"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_01_Q02",
+          "ai_category": "operational_decisions",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué decisiones operativas toma Importaciones durante el ciclo de importación y qué criterios usa?",
+          "context": "Se busca capturar criterios reales para decidir modo de transporte, proveedor logístico, prioridad, agente de aduana, urgencia, consolidación, documentos, permisos o escalamiento.",
+          "tooltip": "Registre: decisión, criterio utilizado, información requerida, responsable, momento de decisión, alternativas consideradas, riesgo, evidencia y ejemplo real.",
+          "expected_answer_structure": [
+            "Decisión",
+            "Criterio",
+            "Información requerida",
+            "Responsable",
+            "Momento",
+            "Alternativas",
+            "Riesgo",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Si un insumo importado es crítico para producción, Importaciones evalúa transporte aéreo versus marítimo según urgencia, costo, disponibilidad, impacto operativo y autorización de jefatura.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "decisión",
+              "criterio",
+              "información",
+              "responsable",
+              "riesgo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "IMPOR_02_REQUERIMIENTOS_PLANIFICACION",
+      "block_name": "Requerimientos, planificación y abastecimiento internacional",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 20,
+      "objective": "Identificar cómo Importaciones recibe necesidades internas, valida planificación, confirma disponibilidad internacional y anticipa abastecimiento.",
+      "questions": [
+        {
+          "question_id": "IMPOR_02_Q01",
+          "ai_category": "hidden_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué información necesita Importaciones de Compras, Producción, Bodega, Planificación u otras áreas para iniciar correctamente una importación?",
+          "context": "La calidad del requerimiento afecta cotización, tiempos, permisos, embarque, costos, nacionalización, inventarios y continuidad operativa.",
+          "tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato/canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+          "expected_answer_structure": [
+            "Dato requerido",
+            "Área proveedora",
+            "Momento requerido",
+            "Formato/canal",
+            "Responsable",
+            "Consecuencia",
+            "Solución temporal",
+            "Mejora"
+          ],
+          "good_answer_example": "Importaciones necesita descripción técnica, cantidad, proveedor, urgencia, partida arancelaria si aplica y fecha requerida. Si la información llega incompleta, se retrasa la compra o se genera riesgo documental.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "dato",
+              "área",
+              "momento",
+              "canal",
+              "responsable",
+              "consecuencia",
+              "solución",
+              "mejora"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_02_Q02",
+          "ai_category": "planning_constraints",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué restricciones de planificación, lead time, stock o capacidad afectan las importaciones y cómo se manejan?",
+          "context": "Se busca identificar restricciones reales como tiempos de proveedor, tránsito internacional, aduana, permisos, congestión portuaria, disponibilidad de contenedores, presupuesto o urgencia operativa.",
+          "tooltip": "Registre: restricción, causa, área relacionada, señal temprana, impacto operativo, responsable, acción preventiva, escalamiento y ejemplo reciente.",
+          "expected_answer_structure": [
+            "Restricción",
+            "Causa",
+            "Área relacionada",
+            "Señal temprana",
+            "Impacto",
+            "Responsable",
+            "Acción preventiva",
+            "Escalamiento",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una restricción es el largo lead time de ciertos insumos importados. Se controla revisando stock, pedidos abiertos y fecha estimada de arribo para anticipar riesgos de quiebre.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "restricción",
+              "causa",
+              "área",
+              "señal",
+              "impacto",
+              "responsable",
+              "acción",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "IMPOR_03_PROVEEDORES_INTERNACIONALES",
+      "block_name": "Proveedores internacionales y condiciones comerciales",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 30,
+      "objective": "Capturar cómo se coordinan proveedores internacionales, términos de compra, confirmaciones, documentación, pagos y condiciones de entrega.",
+      "questions": [
+        {
+          "question_id": "IMPOR_03_Q01",
+          "ai_category": "external_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué proveedores internacionales, agentes o intermediarios son críticos para Importaciones y qué información o respuesta se espera de cada uno?",
+          "context": "La operación depende de proveedores, forwarders, navieras, agentes de aduana, aseguradoras, bancos y entidades que pueden afectar tiempo, costo y cumplimiento.",
+          "tooltip": "Registre: proveedor/actor, producto o servicio, información requerida, frecuencia de interacción, responsable interno, tiempo esperado de respuesta, riesgo si falla, contingencia y ejemplo real.",
+          "expected_answer_structure": [
+            "Proveedor/actor",
+            "Producto/servicio",
+            "Información requerida",
+            "Frecuencia",
+            "Responsable interno",
+            "Tiempo esperado",
+            "Riesgo",
+            "Contingencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "El proveedor internacional debe confirmar disponibilidad, precio, Incoterm, fecha de embarque y documentos. Si no responde a tiempo, se alerta al área solicitante o se evalúa alternativa.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "proveedor",
+              "producto",
+              "información",
+              "frecuencia",
+              "responsable",
+              "riesgo",
+              "contingencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_03_Q02",
+          "ai_category": "decision_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas se aplican para validar condiciones comerciales, Incoterms, pagos o aceptación de una compra internacional?",
+          "context": "Se requiere extraer reglas SI → ENTONCES relacionadas con Incoterms, anticipo, crédito, flete, seguro, documentos, proveedor nuevo, riesgo país o aprobación financiera.",
+          "tooltip": "Registre reglas concretas: SI ocurre una condición, ENTONCES acción, responsable, evidencia, autorización requerida, tiempo máximo, escalamiento y consecuencia si no se actúa.",
+          "expected_answer_structure": [
+            "Condición SI",
+            "Acción ENTONCES",
+            "Responsable",
+            "Evidencia",
+            "Autorización",
+            "Tiempo máximo",
+            "Escalamiento",
+            "Consecuencia"
+          ],
+          "good_answer_example": "SI el proveedor solicita anticipo o cambia el Incoterm, ENTONCES Importaciones valida impacto con Finanzas y jefatura antes de confirmar la orden internacional.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "SI",
+              "ENTONCES",
+              "responsable",
+              "evidencia",
+              "autorización",
+              "escalamiento",
+              "consecuencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "IMPOR_04_DOCUMENTACION_INTERNACIONAL",
+      "block_name": "Documentación internacional y control documental",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 40,
+      "objective": "Identificar documentos críticos de importación, validaciones, riesgos documentales y controles antes de embarque, nacionalización y cierre.",
+      "questions": [
+        {
+          "question_id": "IMPOR_04_Q01",
+          "ai_category": "manual_controls",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué documentos de importación son indispensables y qué controles se aplican antes de aceptar el embarque o nacionalizar?",
+          "context": "Los documentos pueden incluir factura comercial, packing list, BL/AWB, certificado de origen, póliza, permisos, registros sanitarios, documentos bancarios y autorizaciones.",
+          "tooltip": "Registre: documento, quién lo genera, quién lo valida, momento requerido, sistema o repositorio, control aplicado, riesgo por error, escalamiento y ejemplo reciente.",
+          "expected_answer_structure": [
+            "Documento",
+            "Generador",
+            "Validador",
+            "Momento requerido",
+            "Sistema/repositorio",
+            "Control",
+            "Riesgo",
+            "Escalamiento",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Antes de nacionalizar se valida factura, packing list, BL, partida arancelaria y permisos. Si la descripción o cantidad no coincide, se corrige con proveedor o agente antes de declarar.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "documento",
+              "generador",
+              "validador",
+              "momento",
+              "control",
+              "riesgo",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_04_Q02",
+          "ai_category": "critical_failures",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué fallas críticas pueden ocurrir por documentación internacional incorrecta o incompleta y cómo se previenen?",
+          "context": "Se busca identificar fallas como factura incorrecta, BL mal consignado, permisos faltantes, clasificación arancelaria errónea, diferencia de cantidad, demora documental o multas.",
+          "tooltip": "Registre: falla crítica, causa, punto de detección, control preventivo, responsable, evidencia, acción correctiva y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Falla crítica",
+            "Causa",
+            "Punto de detección",
+            "Control preventivo",
+            "Responsable",
+            "Evidencia",
+            "Acción correctiva",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una falla crítica es recibir documentos con datos distintos al embarque. Se previene revisando documentos antes del arribo y solicitando corrección al proveedor oportunamente.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "falla",
+              "causa",
+              "detección",
+              "control",
+              "responsable",
+              "evidencia",
+              "acción",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "IMPOR_05_LOGISTICA_INTERNACIONAL",
+      "block_name": "Logística internacional, embarques y transporte",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 50,
+      "objective": "Capturar cómo se gestionan embarques, seguimiento internacional, fletes, seguros, navieras, forwarders, tránsito y demoras.",
+      "questions": [
+        {
+          "question_id": "IMPOR_05_Q01",
+          "ai_category": "coordination_patterns",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo se coordina Importaciones con forwarders, navieras, agentes de carga, proveedores y transporte interno durante el embarque?",
+          "context": "La logística internacional depende de confirmación de carga, booking, documentos, tracking, flete, seguro, arribo, desconsolidación y retiro local.",
+          "tooltip": "Registre: actor involucrado, información intercambiada, frecuencia, canal, responsable, decisión soportada, problema recurrente y ejemplo real.",
+          "expected_answer_structure": [
+            "Actor",
+            "Información",
+            "Frecuencia",
+            "Canal",
+            "Responsable",
+            "Decisión soportada",
+            "Problema recurrente",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Con el forwarder se valida booking, fecha de salida, ETA y documentos; con transporte interno se coordina retiro posterior a nacionalización.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "actor",
+              "información",
+              "frecuencia",
+              "canal",
+              "responsable",
+              "decisión",
+              "problema",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_05_Q02",
+          "ai_category": "operational_alerts",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué alertas deben activarse cuando un embarque internacional puede retrasarse o afectar la operación?",
+          "context": "Interesa definir alertas sobre retraso de salida, cambio de ETA, documentos pendientes, transbordo, congestión, inspección, falta de espacio, sobrecostos o riesgo de desabastecimiento.",
+          "tooltip": "Registre: alerta, condición disparadora, detector, decisor, canal, tiempo máximo de reacción, acción inicial y consecuencia de no actuar.",
+          "expected_answer_structure": [
+            "Alerta",
+            "Condición disparadora",
+            "Detector",
+            "Decisor",
+            "Canal",
+            "Tiempo máximo",
+            "Acción inicial",
+            "Consecuencia"
+          ],
+          "good_answer_example": "Si el ETA cambia y afecta stock crítico, Importaciones alerta a Planificación y Bodega para evaluar cobertura, alternativas o priorización de retiro.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "alerta",
+              "condición",
+              "detector",
+              "decisor",
+              "canal",
+              "tiempo",
+              "acción",
+              "consecuencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "IMPOR_06_ADUANA_NACIONALIZACION",
+      "block_name": "Aduana, permisos y nacionalización",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 60,
+      "objective": "Identificar cómo se gestiona la nacionalización, clasificación arancelaria, permisos, tributos, inspecciones y coordinación con agente de aduana.",
+      "questions": [
+        {
+          "question_id": "IMPOR_06_Q01",
+          "ai_category": "sop_alignment",
+          "required": true,
+          "min_characters": 350,
+          "question": "Explique cómo se gestiona la nacionalización de mercadería importada desde el aviso de arribo hasta la liberación aduanera.",
+          "context": "El objetivo es comprender la coordinación con agente de aduana, documentos, partidas arancelarias, permisos, tributos, inspecciones, pagos y liberación.",
+          "tooltip": "Registre: origen del aviso, documentos requeridos, validaciones, responsables, sistemas, frecuencia, controles, excepciones y consecuencias de errores.",
+          "expected_answer_structure": [
+            "Origen del aviso",
+            "Documentos",
+            "Validaciones",
+            "Responsables",
+            "Sistemas",
+            "Frecuencia",
+            "Controles",
+            "Excepciones",
+            "Consecuencias"
+          ],
+          "good_answer_example": "Al recibir aviso de arribo, Importaciones envía documentos al agente, valida clasificación, tributos y permisos. Si hay canal de inspección o diferencia documental, se gestiona antes de liberar.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "origen",
+              "documentos",
+              "validaciones",
+              "responsables",
+              "sistemas",
+              "controles",
+              "excepciones"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_06_Q02",
+          "ai_category": "decision_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas se aplican para clasificar arancelariamente, gestionar permisos o decidir escalamiento ante una observación aduanera?",
+          "context": "Se requiere extraer reglas SI → ENTONCES relacionadas con partida arancelaria, permisos previos, inspección, diferencia documental, tributos, restricciones o canal de aforo.",
+          "tooltip": "Registre reglas concretas: SI ocurre una condición, ENTONCES acción, responsable, evidencia, autorización requerida, tiempo máximo, escalamiento y consecuencia si no se actúa.",
+          "expected_answer_structure": [
+            "Condición SI",
+            "Acción ENTONCES",
+            "Responsable",
+            "Evidencia",
+            "Autorización",
+            "Tiempo máximo",
+            "Escalamiento",
+            "Consecuencia"
+          ],
+          "good_answer_example": "SI el agente detecta posible diferencia de partida arancelaria, ENTONCES Importaciones valida ficha técnica y criterio antes de aprobar declaración.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "SI",
+              "ENTONCES",
+              "responsable",
+              "evidencia",
+              "autorización",
+              "escalamiento",
+              "consecuencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "IMPOR_07_COSTOS_TRIBUTOS_PAGOS",
+      "block_name": "Costos de importación, tributos y pagos",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 70,
+      "objective": "Capturar cómo se controlan costos logísticos, tributos, liquidaciones, pagos internacionales, gastos locales y provisiones.",
+      "questions": [
+        {
+          "question_id": "IMPOR_07_Q01",
+          "ai_category": "operational_decisions",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo se calculan, revisan y validan los costos de importación, tributos, fletes, seguros y gastos locales?",
+          "context": "El costo de importación puede depender de valor FOB/CIF, flete, seguro, aranceles, tasas, almacenaje, demoras, transporte interno y honorarios de agente.",
+          "tooltip": "Registre: componentes considerados, fuente de datos, responsables, frecuencia, validaciones, criterios aplicados, excepciones, evidencia y ejemplo real.",
+          "expected_answer_structure": [
+            "Componentes",
+            "Fuente de datos",
+            "Responsables",
+            "Frecuencia",
+            "Validaciones",
+            "Criterios",
+            "Excepciones",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Se valida valor de factura, flete, seguro, tributos y gastos locales contra documentos y liquidación del agente. Si hay diferencia, se revisa antes de cerrar el costo.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "componentes",
+              "fuente",
+              "responsables",
+              "frecuencia",
+              "validaciones",
+              "criterios",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_07_Q02",
+          "ai_category": "operational_risks",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué riesgos existen en costos, pagos o tributos de importación y qué controles los mitigan?",
+          "context": "Interesa identificar riesgos de sobrecostos, tributos mal calculados, demoras, pagos duplicados, tipo de cambio, costos no provisionados o liquidaciones incorrectas.",
+          "tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Riesgo",
+            "Causa",
+            "Impacto",
+            "Probabilidad",
+            "Control actual",
+            "Responsable",
+            "Señal temprana",
+            "Contingencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Un riesgo es no provisionar gastos locales de importación. Se controla con liquidación estimada, seguimiento de gastos y validación con Contabilidad o Costos.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "riesgo",
+              "causa",
+              "impacto",
+              "control",
+              "responsable",
+              "señal",
+              "contingencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "IMPOR_08_RECEPCION_CIERRE",
+      "block_name": "Recepción, ingreso a bodega y cierre de importación",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 80,
+      "objective": "Identificar cómo se coordina la recepción física, ingreso a bodega, conformidad, diferencias, reclamos y cierre documental-contable.",
+      "questions": [
+        {
+          "question_id": "IMPOR_08_Q01",
+          "ai_category": "coordination_patterns",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo se coordina Importaciones con Bodega, Calidad, Contabilidad, Costos y áreas usuarias al recibir mercadería importada?",
+          "context": "La recepción depende de liberación aduanera, transporte interno, documentos, revisión física, calidad, ingreso a sistema, diferencias y cierre de costos.",
+          "tooltip": "Registre: área involucrada, información intercambiada, frecuencia, canal, responsable, decisión soportada, problema recurrente y ejemplo real.",
+          "expected_answer_structure": [
+            "Área",
+            "Información",
+            "Frecuencia",
+            "Canal",
+            "Responsable",
+            "Decisión soportada",
+            "Problema recurrente",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Con Bodega se coordina recepción e ingreso; con Calidad inspección; con Contabilidad documentos; con Costos liquidación final. Si hay diferencia física, se documenta y escala.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "área",
+              "información",
+              "frecuencia",
+              "canal",
+              "responsable",
+              "decisión",
+              "problema",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_08_Q02",
+          "ai_category": "critical_failures",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué fallas críticas pueden ocurrir en recepción, ingreso o cierre de importación y cómo se previenen?",
+          "context": "Se busca identificar fallas como ingreso incorrecto, diferencia de cantidad, daño, documentación faltante, costo incompleto, cierre tardío o reclamo no gestionado.",
+          "tooltip": "Registre: falla crítica, causa, punto de detección, control preventivo, responsable, evidencia, acción correctiva y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Falla crítica",
+            "Causa",
+            "Punto de detección",
+            "Control preventivo",
+            "Responsable",
+            "Evidencia",
+            "Acción correctiva",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una falla crítica es ingresar cantidades distintas a lo nacionalizado. Se previene comparando documentos, recepción física y registro del sistema antes del cierre.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "falla",
+              "causa",
+              "detección",
+              "control",
+              "responsable",
+              "evidencia",
+              "acción",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "IMPOR_09_HERRAMIENTAS_DATOS",
+      "block_name": "Herramientas, datos y controles paralelos de importaciones",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 90,
+      "objective": "Identificar sistemas oficiales, archivos paralelos, trackers, reportes y datos críticos usados para controlar importaciones.",
+      "questions": [
+        {
+          "question_id": "IMPOR_09_Q01",
+          "ai_category": "parallel_tools",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué sistemas, archivos, tableros o controles paralelos usa Importaciones para gestionar pedidos, embarques, documentos, nacionalización o costos?",
+          "context": "Se busca entender el ecosistema real: ERP, Excel, portales, correos, carpetas compartidas, trackers de embarque, reportes de agente, bancos o BI.",
+          "tooltip": "Registre: herramienta, uso específico, dato capturado, responsable, frecuencia de actualización, fuente oficial, decisión soportada, riesgo de duplicidad y mejora deseada.",
+          "expected_answer_structure": [
+            "Herramienta",
+            "Uso",
+            "Dato capturado",
+            "Responsable",
+            "Frecuencia",
+            "Fuente oficial",
+            "Decisión soportada",
+            "Riesgo",
+            "Mejora deseada"
+          ],
+          "good_answer_example": "Además del ERP se usa Excel para seguimiento de embarques, ETA, documentos y costos. El riesgo es duplicidad, pero permite anticipar atrasos.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "herramienta",
+              "uso",
+              "dato",
+              "responsable",
+              "frecuencia",
+              "fuente",
+              "decisión",
+              "riesgo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_09_Q02",
+          "ai_category": "hidden_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué datos críticos necesita Importaciones de otras áreas o actores externos y qué ocurre cuando llegan tarde o incompletos?",
+          "context": "Esta pregunta busca dependencias ocultas que afectan compra internacional, embarque, nacionalización, recepción, costos y continuidad operativa.",
+          "tooltip": "Registre: dato requerido, área o actor proveedor, momento requerido, formato/canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+          "expected_answer_structure": [
+            "Dato requerido",
+            "Área/actor proveedor",
+            "Momento requerido",
+            "Formato/canal",
+            "Responsable",
+            "Consecuencia",
+            "Solución temporal",
+            "Mejora"
+          ],
+          "good_answer_example": "Importaciones necesita documentos de proveedor antes del arribo. Si llegan tarde, se retrasa la nacionalización y pueden generarse almacenajes o demoras.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "dato",
+              "área",
+              "momento",
+              "canal",
+              "responsable",
+              "consecuencia",
+              "solución",
+              "mejora"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "IMPOR_10_REUNIONES_RUTINAS",
+      "block_name": "Reuniones, rutinas y gobierno de importaciones",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 100,
+      "objective": "Capturar reuniones y rutinas que sostienen seguimiento de importaciones, embarques, documentos, costos, riesgos y abastecimiento.",
+      "questions": [
+        {
+          "question_id": "IMPOR_10_Q01",
+          "ai_category": "meeting_registry",
+          "required": true,
+          "min_characters": 350,
+          "question": "Liste las reuniones o rutinas donde se revisan importaciones abiertas, embarques, documentos, nacionalizaciones, costos, stock o riesgos de abastecimiento.",
+          "context": "Interesa conocer reuniones formales e informales que sostienen la operación de Importaciones y la coordinación con Compras, Bodega, Producción, Finanzas y Contabilidad.",
+          "tooltip": "Registre: nombre, objetivo, frecuencia, duración, participantes, líder, temas fijos, indicadores, decisiones, insumos, salidas, evidencia y consecuencias si no se realiza.",
+          "expected_answer_structure": [
+            "Nombre",
+            "Objetivo",
+            "Frecuencia",
+            "Duración",
+            "Participantes",
+            "Líder",
+            "Temas fijos",
+            "Indicadores",
+            "Decisiones",
+            "Insumos",
+            "Salidas",
+            "Evidencia",
+            "Consecuencia"
+          ],
+          "good_answer_example": "En la revisión semanal se revisan embarques en tránsito, documentos pendientes, ETA, nacionalizaciones y riesgos de stock. Si no se realiza, aumentan atrasos no anticipados.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "nombre",
+              "objetivo",
+              "frecuencia",
+              "participantes",
+              "líder",
+              "indicadores",
+              "decisiones",
+              "evidencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_10_Q02",
+          "ai_category": "critical_indicators",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué indicadores revisa Importaciones para saber si la gestión está bajo control y qué umbrales generan alerta?",
+          "context": "Interesa identificar indicadores reales: importaciones en tránsito, ETA cumplido, documentos pendientes, días de nacionalización, sobrecostos, demoras, embarques críticos y stock cubierto.",
+          "tooltip": "Registre: indicador, fórmula si existe, fuente, frecuencia, responsable, meta o umbral, decisión que dispara, reunión donde se revisa y ejemplo reciente.",
+          "expected_answer_structure": [
+            "Indicador",
+            "Fórmula",
+            "Fuente",
+            "Frecuencia",
+            "Responsable",
+            "Meta/umbral",
+            "Decisión",
+            "Reunión",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Se revisan embarques críticos y días de nacionalización. Si un embarque supera el umbral de atraso, se escala al agente o proveedor logístico.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "indicador",
+              "fuente",
+              "frecuencia",
+              "responsable",
+              "umbral",
+              "decisión",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "IMPOR_11_REGLAS_ESCALAMIENTO",
+      "block_name": "Reglas no escritas, prioridades y escalamiento de importaciones",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 110,
+      "objective": "Extraer reglas tácitas y umbrales reales de escalamiento usados cuando una importación, embarque, documento, costo o nacionalización está en riesgo.",
+      "questions": [
+        {
+          "question_id": "IMPOR_11_Q01",
+          "ai_category": "non_written_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas no escritas usa Importaciones para priorizar embarques, documentos, nacionalizaciones o urgencias bajo presión?",
+          "context": "Las reglas no escritas explican cómo se opera cuando el procedimiento formal no alcanza: insumos críticos, riesgo de desabastecimiento, vencimientos, demoras o sobrecostos.",
+          "tooltip": "Registre: regla no escrita, condición de uso, quién la valida, beneficio, riesgo, evidencia/comunicación y ejemplo real.",
+          "expected_answer_structure": [
+            "Regla no escrita",
+            "Condición de uso",
+            "Validador",
+            "Beneficio",
+            "Riesgo",
+            "Evidencia/comunicación",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Cuando una importación afecta continuidad productiva, se prioriza gestión documental y nacionalización sobre importaciones administrativas, con validación de jefatura.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "regla",
+              "condición",
+              "validador",
+              "beneficio",
+              "riesgo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_11_Q02",
+          "ai_category": "escalation_thresholds",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué situaciones obligan a Importaciones a escalar y a quién se escala según el tipo de problema?",
+          "context": "Se busca mapear umbrales reales: documento faltante, embarque atrasado, nacionalización detenida, sobrecosto, permiso pendiente, stock crítico o proveedor sin respuesta.",
+          "tooltip": "Registre: situación, umbral, primer responsable, autoridad final, canal usado, tiempo máximo tolerado, evidencia requerida y ejemplo real.",
+          "expected_answer_structure": [
+            "Situación",
+            "Umbral",
+            "Primer responsable",
+            "Autoridad final",
+            "Canal",
+            "Tiempo máximo",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Si un embarque crítico no puede nacionalizarse por documento faltante, Importaciones escala a proveedor, agente y jefatura con evidencia del riesgo operativo.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "situación",
+              "umbral",
+              "responsable",
+              "autoridad",
+              "canal",
+              "tiempo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "IMPOR_12_RIESGOS_CONOCIMIENTO",
+      "block_name": "Riesgos, continuidad y conocimiento crítico de importaciones",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 120,
+      "objective": "Capturar riesgos críticos y conocimiento no documentado que puede afectar abastecimiento internacional, costos, cumplimiento aduanero y continuidad operativa.",
+      "questions": [
+        {
+          "question_id": "IMPOR_12_Q01",
+          "ai_category": "operational_risks",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son los riesgos operacionales más críticos del área de Importaciones y qué controles evitan que se materialicen?",
+          "context": "Incluya riesgos de desabastecimiento, documentación incorrecta, retraso aduanero, sobrecostos, permisos faltantes, proveedor único, dependencia humana, errores de clasificación y demoras logísticas.",
+          "tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Riesgo",
+            "Causa",
+            "Impacto",
+            "Probabilidad",
+            "Control actual",
+            "Responsable",
+            "Señal temprana",
+            "Contingencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Un riesgo crítico es que un insumo importado llegue tarde y afecte producción. Se controla con seguimiento de ETA, stock crítico y alertas a planificación.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "riesgo",
+              "causa",
+              "impacto",
+              "control",
+              "responsable",
+              "señal",
+              "contingencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "IMPOR_12_Q02",
+          "ai_category": "tacit_knowledge",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué conocimiento crítico de Importaciones no está documentado y debería capturarse para evitar dependencia de personas específicas?",
+          "context": "Se busca identificar conocimiento que vive en la experiencia: contactos de proveedores, criterios aduaneros, partidas frecuentes, tiempos reales, documentos sensibles, agentes confiables o formas de destrabar trámites.",
+          "tooltip": "Registre: conocimiento no documentado, persona/rol que lo domina, cuándo se usa, riesgo cubierto, consecuencia de perderlo, forma sugerida de documentarlo y prioridad.",
+          "expected_answer_structure": [
+            "Conocimiento",
+            "Persona/rol que lo domina",
+            "Uso",
+            "Riesgo cubierto",
+            "Consecuencia de pérdida",
+            "Forma de documentación",
+            "Prioridad"
+          ],
+          "good_answer_example": "El responsable conoce qué documentos suelen generar observaciones y qué agente responde más rápido ante urgencias. Si ese conocimiento se pierde, aumentan demoras y reprocesos.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "conocimiento",
+              "quién",
+              "cuándo",
+              "riesgo",
+              "consecuencia",
+              "documentarlo",
+              "prioridad"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    }
+  ]
+}

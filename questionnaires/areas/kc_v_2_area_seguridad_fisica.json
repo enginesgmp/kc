@@ -1,0 +1,834 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Seguridad Física",
+"level": "",
+"metadata": {
+"area_id": "seguridad_fisica",
+"display_name": "Seguridad Física",
+"aliases": [
+"seguridad patrimonial",
+"control de accesos",
+"vigilancia",
+"seguridad BASC",
+"protección física",
+"seguridad de instalaciones",
+"seguridad de contenedores"
+],
+"macro_process": "Protección física, control de accesos y resguardo de operaciones críticas"
+},
+"blocks": [
+{
+"block_id": "SF_01_CONTROL_ACCESOS_PERSONAS",
+"block_name": "Control de accesos de personas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar cómo Seguridad Física controla, registra, autoriza y monitorea el ingreso, permanencia y salida de personas en instalaciones críticas.",
+"questions": [
+{
+"question_id": "SF_01_Q01",
+"ai_category": "basc_controls",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo se controla el ingreso, permanencia y salida de personas internas, visitantes, contratistas y terceros.",
+"context": "La respuesta debe describir el flujo real de control de accesos, validaciones, registros, responsables, excepciones y evidencias generadas.",
+"tooltip": "Registre: tipo de persona, punto de ingreso, autorización requerida, documentos validados, responsable del control, sistema o registro usado, restricciones, excepciones permitidas, evidencia generada y consecuencias si el control falla.",
+"expected_answer_structure": [
+"Tipo de persona controlada",
+"Punto de acceso",
+"Autorización requerida",
+"Documento o validación realizada",
+"Responsable del control",
+"Registro o sistema utilizado",
+"Excepciones permitidas",
+"Consecuencia si falla",
+"Ejemplo real"
+],
+"good_answer_example": "El ingreso de visitantes y contratistas se valida en garita mediante identificación, autorización del área responsable y registro de ingreso. Si una persona no tiene autorización previa, se comunica al responsable interno antes de permitir el acceso. Si el control falla, puede ingresar personal no autorizado a zonas críticas, afectando seguridad, BASC y trazabilidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"tipo de persona",
+"autorización",
+"responsable",
+"registro",
+"excepciones",
+"consecuencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo indica que se registra el ingreso",
+"No diferencia tipos de personas",
+"No menciona autorizaciones",
+"No explica consecuencias",
+"No incluye ejemplo real"
+]
+},
+{
+"question_id": "SF_01_Q02",
+"ai_category": "manual_controls",
+"required": true,
+"min_characters": 300,
+"question": "Detalle qué controles manuales se aplican cuando el sistema de acceso, cámaras o registros digitales no están disponibles.",
+"context": "Busca identificar controles alternos que sostienen la continuidad del control físico cuando fallan herramientas tecnológicas.",
+"tooltip": "Incluya: falla o contingencia, control manual aplicado, responsable, formato usado, validación posterior, riesgo cubierto, tiempo máximo tolerado y ejemplo reciente.",
+"expected_answer_structure": [
+"Tipo de contingencia",
+"Control manual aplicado",
+"Responsable",
+"Formato o evidencia",
+"Validación posterior",
+"Riesgo controlado",
+"Tiempo máximo tolerado",
+"Ejemplo real"
+],
+"good_answer_example": "Cuando el sistema digital no está disponible, se usa un registro manual de ingreso y salida con identificación, hora, motivo y persona autorizante. Luego se regulariza la información cuando el sistema se restablece. Este control evita pérdida de trazabilidad de personas dentro de la planta.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"contingencia",
+"control manual",
+"responsable",
+"evidencia",
+"validación posterior",
+"riesgo",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No describe contingencias",
+"No indica qué formato se usa",
+"No menciona validación posterior",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "SF_02_CONTROL_VEHICULOS_CARGA",
+"block_name": "Control de vehículos, carga y unidades de transporte",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 20,
+"objective": "Identificar los controles físicos, documentales y de trazabilidad aplicados a vehículos, unidades de carga, contenedores y transportistas.",
+"questions": [
+{
+"question_id": "SF_02_Q01",
+"ai_category": "basc_controls",
+"required": true,
+"min_characters": 300,
+"question": "Describa cómo se controla el ingreso y salida de vehículos, camiones, contenedores y unidades de transporte.",
+"context": "Debe capturar los controles aplicados sobre transporte, carga, documentación, autorizaciones, inspecciones y registros exigidos por seguridad física y BASC.",
+"tooltip": "Registre: tipo de vehículo, motivo de ingreso, documentos requeridos, inspección realizada, responsable, puntos de control, registros, evidencia, validación con otras áreas y acción ante irregularidades.",
+"expected_answer_structure": [
+"Tipo de vehículo o unidad",
+"Motivo de ingreso o salida",
+"Documentos requeridos",
+"Inspección realizada",
+"Responsable del control",
+"Registro generado",
+"Área que valida",
+"Acción ante irregularidad",
+"Ejemplo real"
+],
+"good_answer_example": "El ingreso de camiones se controla verificando autorización, conductor, placa, documentación de carga y motivo de ingreso. Seguridad registra hora de entrada y salida, y cuando aplica coordina con despacho, bodega o comercio exterior. Si hay inconsistencia documental, la unidad queda retenida hasta validación del área responsable.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"vehículo",
+"documentos",
+"inspección",
+"responsable",
+"registro",
+"acción ante irregularidad",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona revisión de vehículos",
+"No explica documentos requeridos",
+"No indica responsable",
+"No describe qué se hace ante irregularidades"
+]
+},
+{
+"question_id": "SF_02_Q02",
+"ai_category": "critical_failures",
+"required": true,
+"min_characters": 300,
+"question": "Explique qué fallas en el control de vehículos o carga se consideran críticas y cómo se actúa cuando ocurren.",
+"context": "Busca capturar escenarios críticos de seguridad física que pueden afectar trazabilidad, BASC, exportaciones, despacho, recepción o continuidad operacional.",
+"tooltip": "Incluya: tipo de falla, cómo se detecta, responsable que la reporta, áreas notificadas, decisión inmediata, evidencia requerida, escalamiento y consecuencia si no se actúa.",
+"expected_answer_structure": [
+"Falla crítica",
+"Cómo se detecta",
+"Responsable que reporta",
+"Áreas notificadas",
+"Acción inmediata",
+"Evidencia requerida",
+"Escalamiento",
+"Consecuencia si no se actúa",
+"Ejemplo real"
+],
+"good_answer_example": "Una falla crítica es una diferencia entre la unidad autorizada y la unidad que se presenta en garita. Se detecta al validar placa, conductor o documentación. Seguridad no permite el ingreso hasta confirmar con el área responsable. Si no se controla, puede ingresar una unidad no autorizada y comprometer la trazabilidad de la operación.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"falla crítica",
+"detección",
+"responsable",
+"acción inmediata",
+"escalamiento",
+"consecuencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No identifica fallas críticas",
+"No menciona cómo se detectan",
+"No indica acción inmediata",
+"No explica consecuencias"
+]
+}
+]
+},
+{
+"block_id": "SF_03_SEGURIDAD_CONTENEDORES_BASC",
+"block_name": "Seguridad de contenedores y controles BASC",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 30,
+"objective": "Capturar controles específicos sobre contenedores, sellos, inspecciones, trazabilidad BASC, evidencias y coordinación con áreas críticas.",
+"questions": [
+{
+"question_id": "SF_03_Q01",
+"ai_category": "basc_controls",
+"required": true,
+"min_characters": 300,
+"question": "Detalle los controles BASC aplicados a contenedores, sellos, unidades de exportación o unidades críticas.",
+"context": "La respuesta debe reflejar cómo se protege la integridad física y documental de unidades críticas para exportación, despacho o tránsito.",
+"tooltip": "Registre: punto de control, inspección realizada, responsable, documento o evidencia, validación de sello, fotografías, checklist, área coordinada, criterio de aceptación y acción ante novedad.",
+"expected_answer_structure": [
+"Control BASC aplicado",
+"Punto del proceso",
+"Responsable",
+"Evidencia generada",
+"Validación de sello o unidad",
+"Área coordinada",
+"Criterio de aceptación",
+"Acción ante novedad",
+"Ejemplo real"
+],
+"good_answer_example": "Antes de salida de un contenedor, Seguridad valida la unidad, sello, documentación y autorización del área correspondiente. Se genera evidencia mediante registro, checklist o fotografía cuando aplica. Si existe daño, sello incorrecto o inconsistencia, se detiene la salida y se escala a despacho, comercio exterior y Sistemas de Gestión.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"control BASC",
+"responsable",
+"evidencia",
+"validación de sello",
+"criterio de aceptación",
+"acción ante novedad",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No menciona BASC",
+"No describe control de sellos",
+"No indica evidencia",
+"No explica acción ante novedad"
+]
+},
+{
+"question_id": "SF_03_Q02",
+"ai_category": "sop_alignment",
+"required": true,
+"min_characters": 300,
+"question": "Explique cómo Seguridad Física asegura que los controles BASC se cumplan de acuerdo con procedimientos, auditorías y exigencias internas.",
+"context": "Busca capturar alineación entre práctica operativa, procedimientos, auditorías, Sistemas de Gestión y evidencias de cumplimiento.",
+"tooltip": "Incluya: procedimiento relacionado, control exigido, responsable, evidencia, frecuencia de revisión, auditorías, hallazgos recurrentes, acciones correctivas y coordinación con Sistemas de Gestión.",
+"expected_answer_structure": [
+"Procedimiento relacionado",
+"Control exigido",
+"Responsable",
+"Evidencia de cumplimiento",
+"Frecuencia de revisión",
+"Auditoría o revisión asociada",
+"Hallazgos recurrentes",
+"Acción correctiva",
+"Ejemplo real"
+],
+"good_answer_example": "Seguridad Física revisa que los controles de acceso, inspección de unidades, sellos y registros se ejecuten conforme a procedimientos BASC. La evidencia se conserva para auditorías internas o externas. Cuando se detectan hallazgos, se coordina con Sistemas de Gestión para documentar acciones correctivas y reforzar el control.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"procedimiento",
+"evidencia",
+"frecuencia",
+"auditoría",
+"hallazgos",
+"acción correctiva",
+"coordinación con Sistemas de Gestión"
+]
+},
+"incomplete_if": [
+"No conecta controles con procedimientos",
+"No menciona auditorías",
+"No indica evidencias",
+"No describe coordinación con Sistemas de Gestión"
+]
+}
+]
+},
+{
+"block_id": "SF_04_VIGILANCIA_MONITOREO_INSTALACIONES",
+"block_name": "Vigilancia y monitoreo de instalaciones",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 40,
+"objective": "Identificar cómo se monitorean instalaciones, zonas críticas, cámaras, rondas, eventos y novedades de seguridad.",
+"questions": [
+{
+"question_id": "SF_04_Q01",
+"ai_category": "operational_alerts",
+"required": true,
+"min_characters": 300,
+"question": "Describa cómo se monitorean zonas críticas, perímetros, cámaras, accesos y áreas sensibles de la operación.",
+"context": "La respuesta debe capturar rutinas de vigilancia, rondas, CCTV, registros, zonas críticas, responsables y reacción ante novedades.",
+"tooltip": "Registre: zona monitoreada, método de vigilancia, frecuencia, responsable, herramienta usada, señal de alerta, evidencia generada, acción inmediata y ejemplo real.",
+"expected_answer_structure": [
+"Zona crítica monitoreada",
+"Método de vigilancia",
+"Frecuencia",
+"Responsable",
+"Herramienta usada",
+"Señal de alerta",
+"Evidencia generada",
+"Acción inmediata",
+"Ejemplo real"
+],
+"good_answer_example": "Las garitas, accesos principales, zonas de despacho, patios y perímetros se monitorean mediante rondas, cámaras y registros de novedades. Si se detecta una presencia no autorizada o situación inusual, el guardia reporta al responsable de turno y se activa la revisión correspondiente.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"zonas críticas",
+"método",
+"frecuencia",
+"responsable",
+"alerta",
+"evidencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona cámaras",
+"No identifica zonas críticas",
+"No indica frecuencia",
+"No describe reacción ante novedades"
+]
+},
+{
+"question_id": "SF_04_Q02",
+"ai_category": "early_warnings",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales tempranas permiten detectar riesgos de seguridad física antes de que se conviertan en incidentes?",
+"context": "Busca transformar observaciones de vigilancia en alertas preventivas reutilizables por IA.",
+"tooltip": "Incluya: señal temprana, zona donde aparece, cómo se detecta, responsable, riesgo asociado, acción preventiva, tiempo de reacción y ejemplo real.",
+"expected_answer_structure": [
+"Señal temprana",
+"Zona o proceso afectado",
+"Forma de detección",
+"Responsable",
+"Riesgo asociado",
+"Acción preventiva",
+"Tiempo de reacción",
+"Ejemplo real"
+],
+"good_answer_example": "Una señal temprana puede ser la presencia recurrente de personas no identificadas cerca de accesos, vehículos fuera de programación o movimientos no habituales en zonas restringidas. Estas señales se detectan por rondas, CCTV o reporte de garita y deben escalarse antes de permitir ingreso o movimiento.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señales tempranas",
+"zona",
+"detección",
+"responsable",
+"riesgo",
+"acción preventiva",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo menciona incidentes ya ocurridos",
+"No identifica señales preventivas",
+"No indica cómo se detectan",
+"No incluye acción preventiva"
+]
+}
+]
+},
+{
+"block_id": "SF_05_ESCALAMIENTO_INCIDENTES_NOVEDADES",
+"block_name": "Escalamiento de incidentes y novedades",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 50,
+"objective": "Capturar criterios de escalamiento, responsables, canales, tiempos de respuesta y evidencias ante incidentes o novedades de seguridad.",
+"questions": [
+{
+"question_id": "SF_05_Q01",
+"ai_category": "escalation_thresholds",
+"required": true,
+"min_characters": 300,
+"question": "Explique qué tipos de novedades o incidentes deben escalarse de inmediato y a quién se comunican.",
+"context": "Debe identificar umbrales reales de criticidad, canales formales e informales, responsables y decisiones esperadas.",
+"tooltip": "Registre: tipo de novedad, nivel de criticidad, umbral de escalamiento, responsable que reporta, destinatarios, canal, tiempo máximo, decisión esperada, evidencia y consecuencia si no se escala.",
+"expected_answer_structure": [
+"Tipo de novedad o incidente",
+"Nivel de criticidad",
+"Umbral de escalamiento",
+"Responsable que reporta",
+"Destinatarios",
+"Canal usado",
+"Tiempo máximo de respuesta",
+"Decisión esperada",
+"Ejemplo real"
+],
+"good_answer_example": "Se escala de inmediato cualquier intento de ingreso no autorizado, diferencia en documentación de vehículos, daño en contenedores, alteración de sellos o evento que comprometa zonas críticas. El guardia reporta al supervisor y al área responsable usando llamada o grupo operativo, dejando evidencia en el registro de novedades.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"novedad",
+"criticidad",
+"umbral",
+"responsable",
+"destinatarios",
+"canal",
+"evidencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No define umbrales",
+"No indica destinatarios",
+"No menciona canal",
+"No explica consecuencias"
+]
+},
+{
+"question_id": "SF_05_Q02",
+"ai_category": "critical_failures",
+"required": true,
+"min_characters": 300,
+"question": "Describa los incidentes de seguridad física que podrían detener, bloquear o afectar significativamente la operación.",
+"context": "Busca identificar eventos críticos con impacto directo sobre producción, despacho, recepción, exportación, auditorías o continuidad operacional.",
+"tooltip": "Incluya: incidente crítico, proceso afectado, impacto, responsable inicial, áreas involucradas, acción inmediata, evidencia, escalamiento y plan de contingencia.",
+"expected_answer_structure": [
+"Incidente crítico",
+"Proceso afectado",
+"Impacto operacional",
+"Responsable inicial",
+"Áreas involucradas",
+"Acción inmediata",
+"Evidencia requerida",
+"Escalamiento",
+"Plan de contingencia"
+],
+"good_answer_example": "Un incidente crítico puede ser la detección de un sello alterado en una unidad lista para despacho. Esto puede bloquear la salida, activar revisión con despacho, comercio exterior, Sistemas de Gestión y gerencia, y requerir evidencia fotográfica, registro formal y decisión sobre liberación o retención.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"incidente crítico",
+"impacto",
+"acción inmediata",
+"áreas involucradas",
+"evidencia",
+"escalamiento",
+"contingencia"
+]
+},
+"incomplete_if": [
+"No identifica incidentes críticos",
+"No explica impacto operacional",
+"No indica plan de contingencia",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "SF_06_COORDINACION_SISTEMAS_GESTION_AREAS",
+"block_name": "Coordinación con Sistemas de Gestión y áreas críticas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 60,
+"objective": "Capturar cómo Seguridad Física coordina con Sistemas de Gestión, producción, despacho, cámaras, COMEX, recursos humanos y otras áreas críticas.",
+"questions": [
+{
+"question_id": "SF_06_Q01",
+"ai_category": "coordination_patterns",
+"required": true,
+"min_characters": 300,
+"question": "Describa las coordinaciones críticas que Seguridad Física mantiene con Sistemas de Gestión y otras áreas.",
+"context": "La respuesta debe identificar rutinas, información compartida, decisiones, evidencias y consecuencias si la coordinación falla.",
+"tooltip": "Registre: área coordinada, motivo de coordinación, frecuencia, responsable de cada lado, información intercambiada, decisión tomada, evidencia generada, fricción frecuente y consecuencia si falla.",
+"expected_answer_structure": [
+"Área coordinada",
+"Motivo de coordinación",
+"Frecuencia",
+"Responsables",
+"Información intercambiada",
+"Decisión tomada",
+"Evidencia generada",
+"Consecuencia si falla",
+"Ejemplo real"
+],
+"good_answer_example": "Con Sistemas de Gestión se coordina evidencia BASC, auditorías, hallazgos y acciones correctivas. Con despacho y COMEX se validan unidades, contenedores y documentación. Con Recursos Humanos se coordinan accesos de personal y contratistas. Si falla la coordinación, puede afectarse cumplimiento, trazabilidad o continuidad operativa.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"áreas",
+"motivo",
+"frecuencia",
+"responsables",
+"información intercambiada",
+"evidencia",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"Solo lista áreas",
+"No explica qué se coordina",
+"No menciona evidencia",
+"No indica consecuencias"
+]
+},
+{
+"question_id": "SF_06_Q02",
+"ai_category": "process_friction",
+"required": true,
+"min_characters": 300,
+"question": "Identifique fricciones frecuentes entre Seguridad Física y otras áreas, y cómo se resuelven en la práctica.",
+"context": "Busca capturar problemas reales de coordinación no siempre documentados, especialmente cuando seguridad restringe accesos, movimientos o salidas.",
+"tooltip": "Incluya: área involucrada, fricción, causa, impacto, responsable que destraba, regla aplicada, solución práctica, evidencia y ejemplo reciente.",
+"expected_answer_structure": [
+"Área involucrada",
+"Fricción recurrente",
+"Causa",
+"Impacto",
+"Quién destraba",
+"Regla aplicada",
+"Solución práctica",
+"Evidencia",
+"Ejemplo real"
+],
+"good_answer_example": "Una fricción frecuente ocurre cuando un área solicita ingreso urgente de un contratista sin autorización previa. Seguridad debe bloquear el acceso hasta validar con el responsable interno. La situación se destraba cuando el área solicitante confirma autorización y se registra la excepción.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"fricción",
+"área",
+"causa",
+"impacto",
+"responsable",
+"solución",
+"ejemplo real"
+]
+},
+"incomplete_if": [
+"No describe fricciones concretas",
+"No menciona cómo se resuelven",
+"No identifica responsables",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "SF_07_REUNIONES_INDICADORES_SEGURIDAD",
+"block_name": "Reuniones e indicadores de Seguridad Física",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 70,
+"objective": "Identificar reuniones, indicadores, reportes y rutinas de seguimiento que sostienen el control de Seguridad Física.",
+"questions": [
+{
+"question_id": "SF_07_Q01",
+"ai_category": "meeting_registry",
+"required": true,
+"min_characters": 300,
+"question": "Registre las reuniones críticas en las que Seguridad Física participa o entrega información relevante.",
+"context": "Debe capturar reuniones operativas, BASC, auditorías, seguimiento de novedades, revisión de incidentes y coordinación con áreas críticas.",
+"tooltip": "Registre: nombre de reunión, objetivo, frecuencia, duración, participantes obligatorios, quién lidera, temas fijos, indicadores revisados, decisiones tomadas, insumos requeridos, salidas esperadas, acta o evidencia generada y consecuencias si no se realiza.",
+"expected_answer_structure": [
+"Nombre de reunión",
+"Objetivo",
+"Frecuencia",
+"Participantes",
+"Líder",
+"Temas fijos",
+"Indicadores revisados",
+"Decisiones tomadas",
+"Evidencia",
+"Consecuencia si no se realiza"
+],
+"good_answer_example": "Seguridad Física participa en reuniones de seguimiento BASC y revisión de novedades. Se revisan incidentes, hallazgos, accesos críticos, controles de contenedores y acciones pendientes. Si estas reuniones no se realizan, se pueden acumular hallazgos sin cierre o perder trazabilidad de acciones correctivas.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"nombre",
+"frecuencia",
+"participantes",
+"indicadores",
+"decisiones",
+"evidencia",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"Solo menciona reuniones sin detalle",
+"No indica frecuencia",
+"No menciona decisiones",
+"No describe evidencia"
+]
+},
+{
+"question_id": "SF_07_Q02",
+"ai_category": "critical_indicators",
+"required": true,
+"min_characters": 300,
+"question": "Indique qué indicadores monitorea Seguridad Física y cómo se usan para tomar decisiones preventivas o correctivas.",
+"context": "La respuesta debe diferenciar indicadores formales, señales prácticas e información usada aunque no esté formalizada.",
+"tooltip": "Incluya: indicador, forma de cálculo o interpretación, frecuencia, fuente de datos, responsable, umbral esperado, decisión asociada, área que recibe información y ejemplo de uso.",
+"expected_answer_structure": [
+"Indicador",
+"Cómo se calcula o interpreta",
+"Frecuencia",
+"Fuente de datos",
+"Responsable",
+"Umbral o criterio",
+"Decisión asociada",
+"Ejemplo real"
+],
+"good_answer_example": "Se puede monitorear número de novedades por turno, accesos no autorizados, diferencias documentales de vehículos, incidentes en zonas críticas, cumplimiento de rondas y hallazgos BASC pendientes. Estos indicadores permiten reforzar controles, ajustar turnos o escalar acciones correctivas.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"indicador",
+"frecuencia",
+"fuente",
+"responsable",
+"criterio",
+"decisión",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo lista indicadores",
+"No explica uso para decisiones",
+"No menciona frecuencia",
+"No incluye criterios o umbrales"
+]
+}
+]
+},
+{
+"block_id": "SF_08_REGLAS_NO_ESCRITAS_CONOCIMIENTO_TACITO",
+"block_name": "Reglas no escritas y conocimiento tácito de seguridad",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 80,
+"objective": "Capturar conocimiento operativo no documentado que permite prevenir incidentes, destrabar situaciones y mantener control físico efectivo.",
+"questions": [
+{
+"question_id": "SF_08_Q01",
+"ai_category": "non_written_rules",
+"required": true,
+"min_characters": 300,
+"question": "Describa las reglas no escritas que Seguridad Física aplica para prevenir riesgos o resolver situaciones ambiguas.",
+"context": "Busca capturar criterios prácticos usados por experiencia que no siempre aparecen en procedimientos.",
+"tooltip": "Registre: regla no escrita, situación donde aplica, quién la conoce, por qué existe, qué riesgo evita, qué pasa si no se cumple y ejemplo real.",
+"expected_answer_structure": [
+"Regla no escrita",
+"Situación donde aplica",
+"Quién la conoce",
+"Riesgo que evita",
+"Consecuencia si no se cumple",
+"Ejemplo real"
+],
+"good_answer_example": "Una regla no escrita es no permitir excepciones de ingreso sin confirmación directa del responsable del área, aunque exista presión operativa. Esto evita ingresos no autorizados y protege la trazabilidad. Si no se cumple, pueden generarse hallazgos BASC o incidentes de seguridad.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"regla",
+"situación",
+"quién la conoce",
+"riesgo",
+"consecuencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No identifica reglas concretas",
+"No explica cuándo aplican",
+"No menciona riesgo evitado",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "SF_08_Q02",
+"ai_category": "tacit_knowledge",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué conocimiento crítico de Seguridad Física depende de personas específicas y no está suficientemente documentado?",
+"context": "Permite detectar concentración de conocimiento sobre accesos, turnos, excepciones, contactos, zonas críticas, BASC y manejo de incidentes.",
+"tooltip": "Incluya: conocimiento crítico, persona o rol que lo domina, situación donde se necesita, riesgo si esa persona no está, respaldo existente, nivel de documentación y acción sugerida para capturarlo.",
+"expected_answer_structure": [
+"Conocimiento crítico",
+"Persona o rol que lo domina",
+"Cuándo se necesita",
+"Riesgo de ausencia",
+"Respaldo actual",
+"Nivel de documentación",
+"Ejemplo real"
+],
+"good_answer_example": "El conocimiento sobre contactos clave, criterios para manejar excepciones de ingreso, interpretación de novedades recurrentes y coordinación ante eventos BASC puede estar concentrado en supervisores o guardias con más experiencia. Si ellos no están, se puede demorar la respuesta o aplicar criterios inconsistentes.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"conocimiento",
+"persona o rol",
+"situación",
+"riesgo",
+"respaldo",
+"documentación",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona personas o roles",
+"No indica riesgo de ausencia",
+"No describe conocimiento específico",
+"No incluye ejemplo"
+]
+}
+]
+},
+{
+"block_id": "SF_09_RIESGOS_CONTINUIDAD_OPERACIONAL",
+"block_name": "Riesgos y continuidad operacional",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 90,
+"objective": "Identificar riesgos físicos y de seguridad que pueden afectar continuidad operacional, cumplimiento BASC, despacho, producción, recepción o auditorías.",
+"questions": [
+{
+"question_id": "SF_09_Q01",
+"ai_category": "operational_risks",
+"required": true,
+"min_characters": 300,
+"question": "Identifique los riesgos operacionales más críticos de Seguridad Física y cómo se controlan actualmente.",
+"context": "La respuesta debe permitir construir reglas de prevención, controles críticos y planes de contingencia.",
+"tooltip": "Registre: riesgo, causa, probabilidad percibida, impacto, señal temprana, control actual, responsable, plan de contingencia y ejemplo real.",
+"expected_answer_structure": [
+"Riesgo crítico",
+"Causa",
+"Impacto",
+"Señal temprana",
+"Control actual",
+"Responsable",
+"Plan de contingencia",
+"Ejemplo real"
+],
+"good_answer_example": "Un riesgo crítico es el ingreso de personas o vehículos no autorizados a zonas operativas. Se controla con validación documental, autorización previa, registro en garita, rondas y CCTV. Si se detecta una anomalía, se bloquea el acceso y se escala al supervisor y área responsable.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"riesgo",
+"causa",
+"impacto",
+"control",
+"responsable",
+"contingencia",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo menciona riesgos generales",
+"No explica controles actuales",
+"No indica responsables",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "SF_09_Q02",
+"ai_category": "operational_constraints",
+"required": true,
+"min_characters": 300,
+"question": "Explique qué restricciones limitan la gestión de Seguridad Física y qué decisiones obligan a tomar.",
+"context": "Busca capturar restricciones de personal, tecnología, cobertura, infraestructura, turnos, comunicación, cámaras, puntos ciegos o dependencia de otras áreas.",
+"tooltip": "Incluya: restricción, origen, frecuencia, proceso afectado, decisión que obliga a tomar, responsable, alternativa disponible y ejemplo reciente.",
+"expected_answer_structure": [
+"Restricción",
+"Origen",
+"Frecuencia",
+"Proceso afectado",
+"Decisión obligada",
+"Responsable",
+"Alternativa",
+"Ejemplo real"
+],
+"good_answer_example": "Una restricción puede ser la cobertura limitada de ciertos puntos durante cambios de turno o fallas de cámaras. Esto obliga a reforzar rondas físicas, redistribuir personal temporalmente o priorizar zonas críticas como garitas, despacho y patios.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"restricción",
+"origen",
+"frecuencia",
+"decisión",
+"responsable",
+"alternativa",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No describe restricciones concretas",
+"No explica decisiones asociadas",
+"No menciona alternativas",
+"No incluye ejemplo"
+]
+}
+]
+}
+]
+}

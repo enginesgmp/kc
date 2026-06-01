@@ -1,0 +1,1153 @@
+{
+  "questionnaire_version": "KC_V2",
+  "industry": "industrial_atunera",
+  "source_type": "area",
+  "area": "Procesos y Mejora",
+  "level": null,
+  "area_metadata": {
+    "area_id": "area_procesos_y_mejora",
+    "display_name": "Procesos y Mejora",
+    "aliases": [
+      "Procesos y Mejora",
+      "Área de Procesos y Mejora",
+      "Procesos",
+      "Mejora Continua",
+      "Process Improvement",
+      "Continuous Improvement",
+      "Excelencia Operacional",
+      "Gestión de Procesos",
+      "Transformación de Procesos",
+      "Mejora de Procesos"
+    ],
+    "macro_process": "MP-1900 GESTIÓN DE PROCESOS, MEJORA CONTINUA Y EXCELENCIA OPERACIONAL"
+  },
+  "blocks": [
+    {
+      "block_id": "PM_01_FLUJO_MEJORA",
+      "block_name": "Flujo integral de procesos y mejora",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 10,
+      "objective": "Capturar cómo el área de Procesos y Mejora identifica oportunidades, levanta procesos, analiza brechas, diseña mejoras, acompaña implementación y controla resultados.",
+      "questions": [
+        {
+          "question_id": "PM_01_Q01",
+          "ai_category": "sop_alignment",
+          "required": true,
+          "min_characters": 350,
+          "question": "Describa el flujo real de trabajo de Procesos y Mejora desde que recibe una necesidad, problema u oportunidad hasta que entrega una mejora implementada o documentada.",
+          "context": "El objetivo es entender cómo el área gestiona levantamientos, análisis, propuestas, validaciones, implementación, documentación y seguimiento de mejoras.",
+          "tooltip": "Registre: origen de la necesidad, etapas, responsables, documentos o registros, sistemas usados, validaciones, tiempos habituales, controles críticos, excepciones frecuentes y consecuencias si una etapa falla.",
+          "expected_answer_structure": [
+            "Origen de la necesidad",
+            "Etapas",
+            "Responsables",
+            "Documentos/registros",
+            "Sistemas",
+            "Validaciones",
+            "Tiempos",
+            "Controles críticos",
+            "Excepciones",
+            "Consecuencias"
+          ],
+          "good_answer_example": "Una oportunidad puede originarse por un indicador desviado, solicitud de gerencia, auditoría o problema operativo. Procesos levanta información, analiza causa, propone mejora, valida con responsables, acompaña implementación y documenta resultados.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "origen",
+              "etapas",
+              "responsables",
+              "documentos",
+              "sistemas",
+              "validaciones",
+              "controles",
+              "consecuencias"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_01_Q02",
+          "ai_category": "operational_decisions",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué decisiones operativas toma Procesos y Mejora durante un levantamiento, análisis o implementación de mejora?",
+          "context": "Se busca capturar criterios reales para priorizar iniciativas, definir alcance, seleccionar herramientas, validar propuestas, escalar bloqueos, recomendar cambios o cerrar una mejora.",
+          "tooltip": "Registre: decisión, criterio utilizado, información requerida, responsable, momento de decisión, alternativas consideradas, riesgo, evidencia y ejemplo real.",
+          "expected_answer_structure": [
+            "Decisión",
+            "Criterio",
+            "Información requerida",
+            "Responsable",
+            "Momento",
+            "Alternativas",
+            "Riesgo",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Si existen varias oportunidades, Procesos prioriza según impacto operativo, riesgo, facilidad de implementación, ahorro, criticidad del área y disponibilidad de responsables.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "decisión",
+              "criterio",
+              "información",
+              "responsable",
+              "riesgo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "PM_02_LEVANTAMIENTO_PROCESOS",
+      "block_name": "Levantamiento, mapeo y diagnóstico de procesos",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 20,
+      "objective": "Identificar cómo se levantan procesos AS-IS, se documentan actividades, entradas, salidas, responsables, sistemas, controles y problemas.",
+      "questions": [
+        {
+          "question_id": "PM_02_Q01",
+          "ai_category": "sop_alignment",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo realiza Procesos y Mejora el levantamiento de un proceso actual, desde la preparación hasta la validación del flujo AS-IS?",
+          "context": "Interesa capturar metodología real de entrevistas, observación en piso, revisión documental, SIPOC, flujogramas, matrices, evidencias y validación con dueños del proceso.",
+          "tooltip": "Registre: preparación, fuentes de información, entrevistas, observación, herramientas usadas, responsables, validación, evidencias, problemas detectados y ejemplo real.",
+          "expected_answer_structure": [
+            "Preparación",
+            "Fuentes",
+            "Entrevistas",
+            "Observación",
+            "Herramientas",
+            "Responsables",
+            "Validación",
+            "Evidencias",
+            "Problemas detectados",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Para levantar un proceso se revisa documentación, se entrevista al responsable, se observa la operación, se construye el flujo AS-IS y se valida con el dueño del proceso.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "preparación",
+              "fuentes",
+              "entrevistas",
+              "observación",
+              "herramientas",
+              "responsables",
+              "validación",
+              "evidencias"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_02_Q02",
+          "ai_category": "hidden_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué información necesita Procesos y Mejora de las áreas usuarias para levantar correctamente un proceso?",
+          "context": "La calidad del levantamiento depende de acceso a responsables, documentos, registros, indicadores, sistemas, tiempos reales, excepciones, problemas y criterios de decisión.",
+          "tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato/canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+          "expected_answer_structure": [
+            "Dato requerido",
+            "Área proveedora",
+            "Momento requerido",
+            "Formato/canal",
+            "Responsable",
+            "Consecuencia",
+            "Solución temporal",
+            "Mejora"
+          ],
+          "good_answer_example": "Procesos necesita responsables disponibles, registros, indicadores, procedimientos, tiempos reales y ejemplos de excepciones. Si la información llega incompleta, el diagnóstico queda débil.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "dato",
+              "área",
+              "momento",
+              "canal",
+              "responsable",
+              "consecuencia",
+              "solución",
+              "mejora"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "PM_03_ANALISIS_CAUSA",
+      "block_name": "Análisis de problemas, causa raíz y brechas",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 30,
+      "objective": "Capturar cómo se analizan problemas, desperdicios, brechas, causas raíz, riesgos y oportunidades de mejora.",
+      "questions": [
+        {
+          "question_id": "PM_03_Q01",
+          "ai_category": "manual_controls",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué métodos utiliza Procesos y Mejora para analizar problemas, causas raíz, desperdicios o brechas de desempeño?",
+          "context": "Se busca conocer herramientas como 5 porqués, Ishikawa, AVA, análisis de desperdicios, Pareto, datos históricos, entrevistas, observación, indicadores y validación de causas.",
+          "tooltip": "Registre: método usado, objetivo, datos requeridos, responsables, criterio de aplicación, evidencia, resultado esperado, limitaciones y ejemplo real.",
+          "expected_answer_structure": [
+            "Método",
+            "Objetivo",
+            "Datos requeridos",
+            "Responsables",
+            "Criterio de aplicación",
+            "Evidencia",
+            "Resultado esperado",
+            "Limitaciones",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Ante un indicador desviado, se revisan datos, se entrevista al equipo, se aplica causa raíz y se valida si la causa identificada explica el problema observado.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "método",
+              "objetivo",
+              "datos",
+              "responsables",
+              "criterio",
+              "evidencia",
+              "resultado",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_03_Q02",
+          "ai_category": "decision_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas se aplican para decidir si un problema requiere análisis formal, acción rápida, rediseño de proceso o escalamiento?",
+          "context": "Se requiere extraer reglas SI → ENTONCES relacionadas con impacto, frecuencia, riesgo, criticidad, cliente, costo, cumplimiento, seguridad o complejidad del problema.",
+          "tooltip": "Registre reglas concretas: SI ocurre una condición, ENTONCES acción, responsable, evidencia, autorización requerida, tiempo máximo, escalamiento y consecuencia si no se actúa.",
+          "expected_answer_structure": [
+            "Condición SI",
+            "Acción ENTONCES",
+            "Responsable",
+            "Evidencia",
+            "Autorización",
+            "Tiempo máximo",
+            "Escalamiento",
+            "Consecuencia"
+          ],
+          "good_answer_example": "SI el problema es recurrente y afecta un indicador crítico, ENTONCES se realiza análisis causa raíz formal y se define plan de acción con responsable y fecha.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "SI",
+              "ENTONCES",
+              "responsable",
+              "evidencia",
+              "autorización",
+              "escalamiento",
+              "consecuencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "PM_04_DISENO_MEJORAS",
+      "block_name": "Diseño, evaluación y priorización de mejoras",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 40,
+      "objective": "Identificar cómo se diseñan, comparan, priorizan y validan propuestas de mejora antes de implementarlas.",
+      "questions": [
+        {
+          "question_id": "PM_04_Q01",
+          "ai_category": "operational_priorities",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo diseña y prioriza Procesos y Mejora las propuestas de mejora identificadas en un diagnóstico?",
+          "context": "Interesa capturar criterios de priorización como impacto, esfuerzo, costo, riesgo, urgencia, beneficio económico, facilidad, recursos, responsables y alineación estratégica.",
+          "tooltip": "Registre: propuesta, problema que resuelve, impacto esperado, esfuerzo, costo, riesgo, responsable, criterio de prioridad y ejemplo real.",
+          "expected_answer_structure": [
+            "Propuesta",
+            "Problema que resuelve",
+            "Impacto esperado",
+            "Esfuerzo",
+            "Costo",
+            "Riesgo",
+            "Responsable",
+            "Criterio de prioridad",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Las mejoras se priorizan según impacto y esfuerzo. Una mejora de bajo esfuerzo y alto impacto se considera quick win y se recomienda implementar primero.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "propuesta",
+              "problema",
+              "impacto",
+              "esfuerzo",
+              "costo",
+              "riesgo",
+              "responsable",
+              "criterio"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_04_Q02",
+          "ai_category": "critical_failures",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué fallas críticas pueden ocurrir al diseñar una mejora y cómo se previenen?",
+          "context": "Se busca identificar riesgos como solución sin causa validada, mejora no viable, resistencia del área, costo subestimado, falta de responsable, impacto no medido o cambio no documentado.",
+          "tooltip": "Registre: falla crítica, causa, punto de detección, control preventivo, responsable, evidencia, acción correctiva y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Falla crítica",
+            "Causa",
+            "Punto de detección",
+            "Control preventivo",
+            "Responsable",
+            "Evidencia",
+            "Acción correctiva",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una falla crítica es proponer una mejora sin validar causa raíz. Se previene revisando evidencia, datos y factibilidad con el dueño del proceso.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "falla",
+              "causa",
+              "detección",
+              "control",
+              "responsable",
+              "evidencia",
+              "acción",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "PM_05_IMPLEMENTACION_CAMBIO",
+      "block_name": "Implementación, gestión del cambio y adopción",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 50,
+      "objective": "Capturar cómo Procesos y Mejora acompaña la implementación de cambios, gestiona adopción, comunica ajustes y asegura sostenibilidad.",
+      "questions": [
+        {
+          "question_id": "PM_05_Q01",
+          "ai_category": "change_management",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo acompaña Procesos y Mejora la implementación de una mejora o cambio de proceso?",
+          "context": "Interesa conocer planificación de implementación, responsables, comunicación, capacitación, pruebas piloto, soporte, seguimiento, control de adopción y cierre.",
+          "tooltip": "Registre: mejora implementada, plan de implementación, responsables, comunicación, capacitación, piloto, evidencias, seguimiento y ejemplo real.",
+          "expected_answer_structure": [
+            "Mejora",
+            "Plan de implementación",
+            "Responsables",
+            "Comunicación",
+            "Capacitación",
+            "Piloto",
+            "Evidencias",
+            "Seguimiento",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Procesos define plan de acción, responsables y fechas, acompaña prueba piloto, ajusta según retroalimentación y valida adopción antes de cerrar la mejora.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "mejora",
+              "plan",
+              "responsables",
+              "comunicación",
+              "capacitación",
+              "piloto",
+              "evidencias",
+              "seguimiento"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_05_Q02",
+          "ai_category": "operational_alerts",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué alertas deben activarse cuando una mejora implementada no se adopta, se retrasa o no genera el resultado esperado?",
+          "context": "Interesa definir alertas sobre resistencia, falta de responsable, acciones vencidas, indicadores sin mejora, retrabajos, documentación pendiente o cambio no comunicado.",
+          "tooltip": "Registre: alerta, condición disparadora, detector, decisor, canal, tiempo máximo de reacción, acción inicial y consecuencia de no actuar.",
+          "expected_answer_structure": [
+            "Alerta",
+            "Condición disparadora",
+            "Detector",
+            "Decisor",
+            "Canal",
+            "Tiempo máximo",
+            "Acción inicial",
+            "Consecuencia"
+          ],
+          "good_answer_example": "Si una acción de mejora vence sin avance, Procesos alerta al responsable y escala si afecta el resultado esperado o el compromiso del proyecto.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "alerta",
+              "condición",
+              "detector",
+              "decisor",
+              "canal",
+              "tiempo",
+              "acción",
+              "consecuencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "PM_06_DOCUMENTACION_ESTANDARIZACION",
+      "block_name": "Documentación, estandarización y control documental",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 60,
+      "objective": "Identificar cómo se documentan procesos, procedimientos, instructivos, formatos, políticas, matrices y estándares operativos.",
+      "questions": [
+        {
+          "question_id": "PM_06_Q01",
+          "ai_category": "sop_alignment",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué documentos genera o actualiza Procesos y Mejora y cómo asegura que estén completos, aprobados y disponibles para las áreas usuarias?",
+          "context": "La documentación puede incluir mapas de proceso, SIPOC, procedimientos, instructivos, formatos, matrices de riesgo, manuales, políticas, flujogramas y estándares.",
+          "tooltip": "Registre: documento, objetivo, generador, validador, aprobador, repositorio, control de versión, comunicación y ejemplo real.",
+          "expected_answer_structure": [
+            "Documento",
+            "Objetivo",
+            "Generador",
+            "Validador",
+            "Aprobador",
+            "Repositorio",
+            "Control de versión",
+            "Comunicación",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Procesos actualiza procedimientos y flujogramas con validación del dueño del proceso, control de versión y comunicación a las áreas impactadas.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "documento",
+              "objetivo",
+              "generador",
+              "validador",
+              "aprobador",
+              "repositorio",
+              "versión",
+              "comunicación"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_06_Q02",
+          "ai_category": "critical_failures",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué fallas críticas pueden ocurrir por documentación de procesos incompleta, desactualizada o mal comunicada?",
+          "context": "Se busca identificar riesgos como uso de versión antigua, actividades no documentadas, formatos inconsistentes, responsables no claros, cambios no comunicados o pérdida de trazabilidad.",
+          "tooltip": "Registre: falla crítica, causa, punto de detección, control preventivo, responsable, evidencia, acción correctiva y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Falla crítica",
+            "Causa",
+            "Punto de detección",
+            "Control preventivo",
+            "Responsable",
+            "Evidencia",
+            "Acción correctiva",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Una falla crítica es operar con un procedimiento desactualizado. Se previene con control documental, aprobación formal y comunicación del cambio.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "falla",
+              "causa",
+              "detección",
+              "control",
+              "responsable",
+              "evidencia",
+              "acción",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "PM_07_INDICADORES_RESULTADOS",
+      "block_name": "Indicadores, beneficios y sostenibilidad de mejoras",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 70,
+      "objective": "Capturar cómo se definen indicadores, se miden beneficios, se controlan resultados y se asegura la sostenibilidad de las mejoras.",
+      "questions": [
+        {
+          "question_id": "PM_07_Q01",
+          "ai_category": "critical_indicators",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué indicadores utiliza Procesos y Mejora para medir desempeño de procesos, avance de iniciativas y resultados de mejora?",
+          "context": "Interesa identificar indicadores como cumplimiento de acciones, ahorro, reducción de tiempos, productividad, reprocesos, errores, cumplimiento documental, adopción y sostenibilidad.",
+          "tooltip": "Registre: indicador, fórmula si existe, fuente, frecuencia, responsable, meta o umbral, decisión que dispara, reunión donde se revisa y ejemplo reciente.",
+          "expected_answer_structure": [
+            "Indicador",
+            "Fórmula",
+            "Fuente",
+            "Frecuencia",
+            "Responsable",
+            "Meta/umbral",
+            "Decisión",
+            "Reunión",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Se revisa cumplimiento de acciones y beneficio esperado. Si una mejora no refleja avance en el indicador, se revisa causa y se ajusta el plan.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "indicador",
+              "fuente",
+              "frecuencia",
+              "responsable",
+              "umbral",
+              "decisión",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_07_Q02",
+          "ai_category": "governance_routines",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo verifica Procesos y Mejora que una mejora implementada se mantenga en el tiempo?",
+          "context": "Se busca capturar seguimiento post implementación, auditorías, indicadores, controles, responsables, revisión de evidencias, rutinas y acciones correctivas.",
+          "tooltip": "Registre: mejora, control de sostenibilidad, responsable, frecuencia, evidencia, indicador asociado, desviación detectada, acción correctiva y ejemplo real.",
+          "expected_answer_structure": [
+            "Mejora",
+            "Control de sostenibilidad",
+            "Responsable",
+            "Frecuencia",
+            "Evidencia",
+            "Indicador asociado",
+            "Desviación detectada",
+            "Acción correctiva",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Después de implementar una mejora se revisa el indicador y el cumplimiento del nuevo estándar durante un periodo definido para confirmar sostenibilidad.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "mejora",
+              "control",
+              "responsable",
+              "frecuencia",
+              "evidencia",
+              "indicador",
+              "desviación",
+              "acción"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "PM_08_COORDINACION_INTERNA",
+      "block_name": "Coordinación con áreas, dueños de proceso y sponsors",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 80,
+      "objective": "Identificar patrones de coordinación interna con áreas usuarias, líderes, sponsors, equipos operativos y áreas de soporte.",
+      "questions": [
+        {
+          "question_id": "PM_08_Q01",
+          "ai_category": "coordination_patterns",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo se coordina Procesos y Mejora con áreas operativas, administrativas, líderes, dueños de proceso, TI, Calidad, Finanzas y Talento Humano?",
+          "context": "La gestión de mejora depende de información, validación, recursos, sponsors, decisiones, datos, usuarios clave, soporte tecnológico y seguimiento interárea.",
+          "tooltip": "Registre: área involucrada, información intercambiada, frecuencia, canal, responsable, decisión soportada, problema recurrente y ejemplo real.",
+          "expected_answer_structure": [
+            "Área",
+            "Información",
+            "Frecuencia",
+            "Canal",
+            "Responsable",
+            "Decisión soportada",
+            "Problema recurrente",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Con el dueño de proceso se valida el flujo; con TI se evalúa automatización; con Finanzas se valida impacto económico; con Calidad se revisa cumplimiento documental.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "área",
+              "información",
+              "frecuencia",
+              "canal",
+              "responsable",
+              "decisión",
+              "problema",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_08_Q02",
+          "ai_category": "process_friction",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son las fricciones más frecuentes entre Procesos y Mejora y otras áreas, y cómo se resuelven en la práctica?",
+          "context": "No se busca culpabilizar áreas; se busca identificar patrones que afectan levantamientos, validaciones, implementación, adopción, datos o cumplimiento de compromisos.",
+          "tooltip": "Registre: área, fricción, causa probable, frecuencia, impacto, solución actual, regla no escrita, evidencia y mejora sugerida.",
+          "expected_answer_structure": [
+            "Área",
+            "Fricción",
+            "Causa probable",
+            "Frecuencia",
+            "Impacto",
+            "Solución actual",
+            "Regla no escrita",
+            "Evidencia",
+            "Mejora sugerida"
+          ],
+          "good_answer_example": "Una fricción frecuente es que los responsables no tengan disponibilidad para validar procesos. Se resuelve coordinando reuniones puntuales y escalando si afecta el cronograma.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "área",
+              "fricción",
+              "causa",
+              "frecuencia",
+              "impacto",
+              "solución",
+              "regla",
+              "mejora"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "PM_09_HERRAMIENTAS_DATOS",
+      "block_name": "Herramientas, datos y controles paralelos de mejora",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 90,
+      "objective": "Identificar sistemas oficiales, archivos paralelos, tableros, repositorios y datos críticos usados para gestionar procesos y mejoras.",
+      "questions": [
+        {
+          "question_id": "PM_09_Q01",
+          "ai_category": "parallel_tools",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué sistemas, archivos, tableros o controles paralelos usa Procesos y Mejora para gestionar levantamientos, iniciativas, documentación, indicadores o planes de acción?",
+          "context": "Se busca entender el ecosistema real: Excel, Power BI, formularios, repositorios documentales, herramientas BPM, correos, Teams, WhatsApp, tableros de seguimiento o sistemas internos.",
+          "tooltip": "Registre: herramienta, uso específico, dato capturado, responsable, frecuencia de actualización, fuente oficial, decisión soportada, riesgo de duplicidad y mejora deseada.",
+          "expected_answer_structure": [
+            "Herramienta",
+            "Uso",
+            "Dato capturado",
+            "Responsable",
+            "Frecuencia",
+            "Fuente oficial",
+            "Decisión soportada",
+            "Riesgo",
+            "Mejora deseada"
+          ],
+          "good_answer_example": "Se usa Excel para seguimiento de iniciativas, responsables, fechas y estado. El riesgo es duplicidad, pero permite visualizar el portafolio de mejoras.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "herramienta",
+              "uso",
+              "dato",
+              "responsable",
+              "frecuencia",
+              "fuente",
+              "decisión",
+              "riesgo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_09_Q02",
+          "ai_category": "hidden_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué datos críticos necesita Procesos y Mejora de otras áreas y qué ocurre cuando llegan tarde, incompletos o inconsistentes?",
+          "context": "Esta pregunta busca dependencias ocultas que afectan diagnóstico, priorización, medición de beneficios, documentación, seguimiento e implementación.",
+          "tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato/canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+          "expected_answer_structure": [
+            "Dato requerido",
+            "Área proveedora",
+            "Momento requerido",
+            "Formato/canal",
+            "Responsable",
+            "Consecuencia",
+            "Solución temporal",
+            "Mejora"
+          ],
+          "good_answer_example": "Procesos necesita indicadores, tiempos reales, registros y responsables. Si los datos llegan incompletos, se trabaja con supuestos o se retrasa el análisis.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "dato",
+              "área",
+              "momento",
+              "canal",
+              "responsable",
+              "consecuencia",
+              "solución",
+              "mejora"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "PM_10_REUNIONES_RUTINAS",
+      "block_name": "Reuniones, rutinas y gobierno de mejora",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 100,
+      "objective": "Capturar reuniones y rutinas que sostienen seguimiento de iniciativas, levantamientos, validaciones, planes de acción, indicadores y decisiones.",
+      "questions": [
+        {
+          "question_id": "PM_10_Q01",
+          "ai_category": "meeting_registry",
+          "required": true,
+          "min_characters": 350,
+          "question": "Liste las reuniones o rutinas donde se revisan iniciativas de mejora, levantamientos, diagnósticos, documentación, planes de acción, indicadores o bloqueos.",
+          "context": "Interesa conocer reuniones formales e informales que sostienen la gestión de procesos y mejora continua.",
+          "tooltip": "Registre: nombre, objetivo, frecuencia, duración, participantes, líder, temas fijos, indicadores, decisiones, insumos, salidas, evidencia y consecuencias si no se realiza.",
+          "expected_answer_structure": [
+            "Nombre",
+            "Objetivo",
+            "Frecuencia",
+            "Duración",
+            "Participantes",
+            "Líder",
+            "Temas fijos",
+            "Indicadores",
+            "Decisiones",
+            "Insumos",
+            "Salidas",
+            "Evidencia",
+            "Consecuencia"
+          ],
+          "good_answer_example": "En la reunión semanal se revisan iniciativas abiertas, responsables, avances, bloqueos, indicadores y próximos hitos. Si no se realiza, se pierden alertas de retraso.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "nombre",
+              "objetivo",
+              "frecuencia",
+              "participantes",
+              "líder",
+              "indicadores",
+              "decisiones",
+              "evidencia"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_10_Q02",
+          "ai_category": "governance_routines",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué seguimiento diario o semanal realiza el responsable de Procesos y Mejora para asegurar avance, cierre y sostenibilidad de iniciativas?",
+          "context": "Se busca capturar rutina real de gestión: revisión de avances, pendientes, responsables, bloqueos, evidencias, indicadores, comunicación y escalamiento.",
+          "tooltip": "Registre: secuencia de revisión, horarios o frecuencia, responsables, evidencias, alertas, decisiones, cierres obligatorios y pendientes arrastrados.",
+          "expected_answer_structure": [
+            "Secuencia",
+            "Frecuencia/horarios",
+            "Responsables",
+            "Evidencias",
+            "Alertas",
+            "Decisiones",
+            "Cierres obligatorios",
+            "Pendientes arrastrados"
+          ],
+          "good_answer_example": "Cada semana se revisa el portafolio de iniciativas, acciones vencidas, validaciones pendientes y resultados de indicadores. Los bloqueos críticos se escalan.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "secuencia",
+              "frecuencia",
+              "responsable",
+              "evidencia",
+              "alerta",
+              "decisión",
+              "cierre"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "PM_11_REGLAS_ESCALAMIENTO",
+      "block_name": "Reglas no escritas, prioridades y escalamiento de mejora",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 110,
+      "objective": "Extraer reglas tácitas y umbrales reales de escalamiento usados cuando una iniciativa, proceso, validación, acción o indicador está en riesgo.",
+      "questions": [
+        {
+          "question_id": "PM_11_Q01",
+          "ai_category": "non_written_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas no escritas usa Procesos y Mejora para priorizar levantamientos, iniciativas, análisis o implementaciones bajo presión?",
+          "context": "Las reglas no escritas explican cómo se opera cuando el procedimiento formal no alcanza: urgencias gerenciales, auditorías, indicadores críticos, problemas operativos, resistencia o falta de responsables.",
+          "tooltip": "Registre: regla no escrita, condición de uso, quién la valida, beneficio, riesgo, evidencia/comunicación y ejemplo real.",
+          "expected_answer_structure": [
+            "Regla no escrita",
+            "Condición de uso",
+            "Validador",
+            "Beneficio",
+            "Riesgo",
+            "Evidencia/comunicación",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Cuando una mejora afecta un indicador estratégico o una auditoría próxima, se prioriza sobre iniciativas de menor impacto, con validación de jefatura.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "regla",
+              "condición",
+              "validador",
+              "beneficio",
+              "riesgo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_11_Q02",
+          "ai_category": "escalation_thresholds",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué situaciones obligan a Procesos y Mejora a escalar y a quién se escala según el tipo de problema?",
+          "context": "Se busca mapear umbrales reales: falta de validación, bloqueo interárea, acción vencida, resistencia, indicador crítico, sponsor ausente, documentación detenida o mejora sin avance.",
+          "tooltip": "Registre: situación, umbral, primer responsable, autoridad final, canal usado, tiempo máximo tolerado, evidencia requerida y ejemplo real.",
+          "expected_answer_structure": [
+            "Situación",
+            "Umbral",
+            "Primer responsable",
+            "Autoridad final",
+            "Canal",
+            "Tiempo máximo",
+            "Evidencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Si una acción crítica está vencida y bloquea la implementación, Procesos escala al dueño del proceso o sponsor con evidencia, impacto y decisión requerida.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "situación",
+              "umbral",
+              "responsable",
+              "autoridad",
+              "canal",
+              "tiempo",
+              "evidencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    },
+    {
+      "block_id": "PM_12_RIESGOS_CONOCIMIENTO",
+      "block_name": "Riesgos, continuidad y conocimiento crítico de procesos",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 120,
+      "objective": "Capturar riesgos críticos y conocimiento no documentado que puede afectar levantamientos, mejoras, documentación, continuidad metodológica y sostenibilidad.",
+      "questions": [
+        {
+          "question_id": "PM_12_Q01",
+          "ai_category": "operational_risks",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son los riesgos operacionales más críticos del área de Procesos y Mejora y qué controles evitan que se materialicen?",
+          "context": "Incluya riesgos de diagnósticos incompletos, datos incorrectos, mejoras no sostenibles, documentación desactualizada, falta de adopción, dependencia humana, proyectos sin sponsor y beneficios no medidos.",
+          "tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+          "expected_answer_structure": [
+            "Riesgo",
+            "Causa",
+            "Impacto",
+            "Probabilidad",
+            "Control actual",
+            "Responsable",
+            "Señal temprana",
+            "Contingencia",
+            "Ejemplo"
+          ],
+          "good_answer_example": "Un riesgo crítico es implementar una mejora sin adopción real. Se controla con validación del área, seguimiento de indicadores y revisión post implementación.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "riesgo",
+              "causa",
+              "impacto",
+              "control",
+              "responsable",
+              "señal",
+              "contingencia",
+              "ejemplo"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        },
+        {
+          "question_id": "PM_12_Q02",
+          "ai_category": "tacit_knowledge",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué conocimiento crítico de Procesos y Mejora no está documentado y debería capturarse para evitar dependencia de personas específicas?",
+          "context": "Se busca identificar conocimiento que vive en la experiencia: criterios de priorización, metodologías internas, relaciones con áreas, historia de procesos, reglas de documentación, estándares de análisis o lecciones aprendidas.",
+          "tooltip": "Registre: conocimiento no documentado, persona/rol que lo domina, cuándo se usa, riesgo cubierto, consecuencia de perderlo, forma sugerida de documentarlo y prioridad.",
+          "expected_answer_structure": [
+            "Conocimiento",
+            "Persona/rol que lo domina",
+            "Uso",
+            "Riesgo cubierto",
+            "Consecuencia de pérdida",
+            "Forma de documentación",
+            "Prioridad"
+          ],
+          "good_answer_example": "El analista conoce procesos críticos, resistencias frecuentes y criterios usados para priorizar mejoras. Si ese conocimiento se pierde, aumentan reprocesos y diagnósticos incompletos.",
+          "validation_rules": {
+            "min_items": 1,
+            "requires_examples": true,
+            "incomplete_if_missing": [
+              "conocimiento",
+              "quién",
+              "cuándo",
+              "riesgo",
+              "consecuencia",
+              "documentarlo",
+              "prioridad"
+            ]
+          },
+          "incomplete_if": [
+            "La respuesta es genérica y no describe casos reales del área.",
+            "No se identifican responsables, frecuencias o consecuencias operativas.",
+            "No se incluyen ejemplos específicos recientes.",
+            "No permite extraer reglas SI → ENTONCES o criterios de decisión.",
+            "No diferencia operación normal de excepciones."
+          ]
+        }
+      ]
+    }
+  ]
+}

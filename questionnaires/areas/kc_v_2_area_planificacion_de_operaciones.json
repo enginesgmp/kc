@@ -1,0 +1,459 @@
+{
+  "questionnaire_version": "KC_V2",
+  "industry": "industrial_atunera",
+  "source_type": "area",
+  "area": "Planificación de Operaciones",
+  "level": null,
+  "area_metadata": {
+    "area_id": "area_planificacion_operaciones",
+    "display_name": "Planificación de Operaciones",
+    "aliases": ["Planificación de Operaciones", "Planificacion de Operaciones", "Planning", "Operations Planning", "Planificación Operativa", "Programación de Operaciones", "Planificación de Producción", "Programación de Producción", "Control de Plan", "Planificación y Control de Operaciones"],
+    "macro_process": "MP-1300 PLANIFICACIÓN, PRODUCCIÓN Y CONTROL OPERATIVO"
+  },
+  "blocks": [
+    {
+      "block_id": "PO_01_FLUJO_PLANIFICACION",
+      "block_name": "Flujo integral de planificación de operaciones",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 10,
+      "objective": "Capturar cómo el área de Planificación de Operaciones gestiona la demanda, capacidad, programación, coordinación, seguimiento y ajuste del plan operativo.",
+      "questions": [
+        {
+          "question_id": "PO_01_Q01",
+          "ai_category": "sop_alignment",
+          "required": true,
+          "min_characters": 350,
+          "question": "Describa el flujo real de trabajo de Planificación de Operaciones desde que recibe la demanda o necesidad operativa hasta que emite, comunica y controla el plan.",
+          "context": "El objetivo es entender cómo se convierte la demanda, pedidos, inventarios, capacidades y restricciones en un plan operativo ejecutable.",
+          "tooltip": "Registre: origen de la demanda, etapas, responsables, documentos o registros, sistemas usados, validaciones, tiempos habituales, controles críticos, excepciones frecuentes y consecuencias si una etapa falla.",
+          "expected_answer_structure": ["Origen de la demanda", "Etapas", "Responsables", "Documentos/registros", "Sistemas", "Validaciones", "Tiempos", "Controles críticos", "Excepciones", "Consecuencias"],
+          "good_answer_example": "Planificación recibe demanda comercial, stock disponible, capacidades y restricciones. Con esa información arma el plan, valida factibilidad con Operaciones y comunica prioridades. Si falta información crítica, el plan puede cambiar o quedar condicionado.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["origen", "etapas", "responsables", "documentos", "sistemas", "validaciones", "controles", "consecuencias"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_01_Q02",
+          "ai_category": "operational_decisions",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué decisiones operativas toma Planificación de Operaciones durante la elaboración, ajuste o seguimiento del plan?",
+          "context": "Se busca capturar criterios reales para priorizar pedidos, asignar capacidad, reprogramar, liberar órdenes, ajustar secuencias, escalar restricciones o activar contingencias.",
+          "tooltip": "Registre: decisión, criterio utilizado, información requerida, responsable, momento de decisión, alternativas consideradas, riesgo, evidencia y ejemplo real.",
+          "expected_answer_structure": ["Decisión", "Criterio", "Información requerida", "Responsable", "Momento", "Alternativas", "Riesgo", "Evidencia", "Ejemplo"],
+          "good_answer_example": "Si la demanda supera la capacidad disponible, Planificación prioriza según fecha compromiso, cliente, criticidad, margen, inventario y restricciones operativas.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["decisión", "criterio", "información", "responsable", "riesgo", "evidencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "PO_02_DEMANDA_PEDIDOS",
+      "block_name": "Demanda, pedidos y requerimientos operativos",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 20,
+      "objective": "Identificar cómo se recibe, valida, consolida y transforma la demanda en requerimientos planificables.",
+      "questions": [
+        {
+          "question_id": "PO_02_Q01",
+          "ai_category": "hidden_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué información necesita Planificación de Operaciones de Comercial, Producción, Bodega, Compras, Logística u otras áreas para planificar correctamente?",
+          "context": "La calidad del plan depende de datos oportunos y confiables: pedidos, forecast, inventarios, disponibilidad de materia prima, capacidades, restricciones, fechas compromiso y prioridades.",
+          "tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato/canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+          "expected_answer_structure": ["Dato requerido", "Área proveedora", "Momento requerido", "Formato/canal", "Responsable", "Consecuencia", "Solución temporal", "Mejora"],
+          "good_answer_example": "Planificación necesita pedidos confirmados, forecast, inventarios, materia prima disponible y capacidad operativa. Si la demanda llega tarde o cambia sin aviso, se reprocesa el plan.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["dato", "área", "momento", "canal", "responsable", "consecuencia", "solución", "mejora"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_02_Q02",
+          "ai_category": "manual_controls",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué controles aplica Planificación para validar que la demanda, pedidos o requerimientos estén completos y sean planificables?",
+          "context": "Interesa identificar controles sobre cantidades, fechas, cliente, producto, inventario, prioridad, restricciones, disponibilidad de insumos y confirmación de pedido.",
+          "tooltip": "Registre: control, responsable, documento asociado, momento, sistema o repositorio, validación aplicada, riesgo si falla, evidencia y ejemplo real.",
+          "expected_answer_structure": ["Control", "Responsable", "Documento asociado", "Momento", "Sistema/repositorio", "Validación", "Riesgo", "Evidencia", "Ejemplo"],
+          "good_answer_example": "Antes de planificar se valida que el pedido tenga producto, cantidad, fecha requerida, prioridad y disponibilidad preliminar de inventario o insumos.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["control", "responsable", "documento", "momento", "validación", "riesgo", "evidencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "PO_03_CAPACIDAD_RESTRICCIONES",
+      "block_name": "Capacidad operativa, restricciones y recursos",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 30,
+      "objective": "Capturar cómo se evalúa la capacidad disponible y las restricciones que condicionan el plan operativo.",
+      "questions": [
+        {
+          "question_id": "PO_03_Q01",
+          "ai_category": "planning_constraints",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo evalúa Planificación de Operaciones la capacidad disponible antes de emitir o ajustar el plan?",
+          "context": "Se busca conocer cómo se consideran líneas, turnos, personal, equipos, materias primas, tiempos de proceso, mantenimiento, calidad, inventario, logística y restricciones externas.",
+          "tooltip": "Registre: recurso o capacidad, fuente de datos, responsable, frecuencia, criterio de validación, restricción detectada, impacto y ejemplo real.",
+          "expected_answer_structure": ["Recurso/capacidad", "Fuente de datos", "Responsable", "Frecuencia", "Criterio de validación", "Restricción detectada", "Impacto", "Ejemplo"],
+          "good_answer_example": "Planificación revisa capacidad de líneas, disponibilidad de personal, inventarios y restricciones de mantenimiento. Si una línea no está disponible, reprograma o redistribuye carga.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["recurso", "fuente", "responsable", "frecuencia", "criterio", "restricción", "impacto", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_03_Q02",
+          "ai_category": "early_warnings",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué señales tempranas indican que la capacidad o los recursos no serán suficientes para cumplir el plan?",
+          "context": "Se busca detectar alertas antes de incumplimientos: saturación de línea, falta de materia prima, ausentismo, mantenimiento pendiente, inventario bajo, pedidos urgentes o atraso acumulado.",
+          "tooltip": "Registre: señal temprana, cómo se detecta, frecuencia de revisión, responsable, acción preventiva, área escalada y ejemplo real.",
+          "expected_answer_structure": ["Señal temprana", "Detección", "Frecuencia", "Responsable", "Acción preventiva", "Escalamiento", "Ejemplo"],
+          "good_answer_example": "Una señal temprana es que la carga planificada supera las horas disponibles de una línea. Se detecta al validar capacidad y se escala para ajustar prioridades o turnos.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["señal", "detección", "frecuencia", "responsable", "acción", "escalamiento", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "PO_04_PROGRAMACION_SECUENCIACION",
+      "block_name": "Programación, secuenciación y liberación del plan",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 40,
+      "objective": "Identificar cómo se arma la programación operativa, se secuencian actividades y se liberan órdenes o instrucciones de trabajo.",
+      "questions": [
+        {
+          "question_id": "PO_04_Q01",
+          "ai_category": "sop_alignment",
+          "required": true,
+          "min_characters": 350,
+          "question": "Explique cómo se programa y secuencia la operación, incluyendo criterios usados para ordenar productos, pedidos, líneas, turnos o recursos.",
+          "context": "El objetivo es comprender cómo se construye el plan diario, semanal o por campaña, y cómo se decide la secuencia más conveniente.",
+          "tooltip": "Registre: horizonte de planificación, criterios de secuencia, responsables, sistemas, documentos, validaciones, restricciones, cambios frecuentes y ejemplo real.",
+          "expected_answer_structure": ["Horizonte", "Criterios de secuencia", "Responsables", "Sistemas", "Documentos", "Validaciones", "Restricciones", "Cambios frecuentes", "Ejemplo"],
+          "good_answer_example": "El plan semanal se secuencia considerando fechas compromiso, disponibilidad de materia prima, cambios de formato, capacidad de línea y prioridades comerciales.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["horizonte", "criterios", "responsables", "sistemas", "documentos", "validaciones", "restricciones", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_04_Q02",
+          "ai_category": "decision_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas se aplican para liberar, cambiar, congelar o reprogramar un plan operativo?",
+          "context": "Se requiere extraer reglas SI → ENTONCES relacionadas con disponibilidad de insumos, capacidad, urgencias, cambios de demanda, fallas, restricciones, cliente crítico o cumplimiento de fecha.",
+          "tooltip": "Registre reglas concretas: SI ocurre una condición, ENTONCES acción, responsable, evidencia, autorización requerida, tiempo máximo, escalamiento y consecuencia si no se actúa.",
+          "expected_answer_structure": ["Condición SI", "Acción ENTONCES", "Responsable", "Evidencia", "Autorización", "Tiempo máximo", "Escalamiento", "Consecuencia"],
+          "good_answer_example": "SI un pedido crítico cambia de fecha y existe capacidad disponible, ENTONCES Planificación reprograma la secuencia y comunica el cambio a Operaciones y Logística.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["SI", "ENTONCES", "responsable", "evidencia", "autorización", "escalamiento", "consecuencia"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "PO_05_INVENTARIOS_MATERIALES",
+      "block_name": "Inventarios, materiales e insumos para operación",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 50,
+      "objective": "Capturar cómo Planificación valida disponibilidad de inventarios, materia prima, materiales e insumos antes y durante la ejecución del plan.",
+      "questions": [
+        {
+          "question_id": "PO_05_Q01",
+          "ai_category": "coordination_patterns",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo se coordina Planificación con Bodega, Compras, Importaciones, Producción y Calidad para asegurar materiales e insumos disponibles?",
+          "context": "La ejecución del plan depende de stock, liberación de calidad, abastecimiento, recepción, transferencias, inventario en proceso y materiales críticos.",
+          "tooltip": "Registre: área involucrada, información intercambiada, frecuencia, canal, responsable, decisión soportada, problema recurrente y ejemplo real.",
+          "expected_answer_structure": ["Área", "Información", "Frecuencia", "Canal", "Responsable", "Decisión soportada", "Problema recurrente", "Ejemplo"],
+          "good_answer_example": "Con Bodega se valida stock; con Compras e Importaciones se revisan arribos; con Calidad liberación de materiales; con Producción consumo esperado.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["área", "información", "frecuencia", "canal", "responsable", "decisión", "problema", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_05_Q02",
+          "ai_category": "operational_risks",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué riesgos existen por falta, error o retraso de materiales e inventarios, y qué controles los mitigan?",
+          "context": "Interesa identificar riesgos de quiebre de stock, sobreproducción, reproceso, parada de línea, pedidos incumplidos, inventario incorrecto o material no liberado.",
+          "tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+          "expected_answer_structure": ["Riesgo", "Causa", "Impacto", "Probabilidad", "Control actual", "Responsable", "Señal temprana", "Contingencia", "Ejemplo"],
+          "good_answer_example": "Un riesgo es planificar con inventario no disponible o no liberado. Se controla validando stock físico, estado de calidad y fecha de disponibilidad antes de emitir el plan.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["riesgo", "causa", "impacto", "control", "responsable", "señal", "contingencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "PO_06_SEGUIMIENTO_EJECUCION",
+      "block_name": "Seguimiento de ejecución, cumplimiento y ajustes",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 60,
+      "objective": "Identificar cómo se monitorea el cumplimiento del plan, cómo se detectan desviaciones y cómo se realizan ajustes durante la operación.",
+      "questions": [
+        {
+          "question_id": "PO_06_Q01",
+          "ai_category": "critical_indicators",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué indicadores revisa Planificación de Operaciones para controlar cumplimiento del plan y desempeño operativo?",
+          "context": "Interesa identificar indicadores reales: cumplimiento de plan, OTIF, avance diario, atraso, adherencia al programa, capacidad utilizada, inventario, pedidos pendientes y reprogramaciones.",
+          "tooltip": "Registre: indicador, fórmula si existe, fuente, frecuencia, responsable, meta o umbral, decisión que dispara, reunión donde se revisa y ejemplo reciente.",
+          "expected_answer_structure": ["Indicador", "Fórmula", "Fuente", "Frecuencia", "Responsable", "Meta/umbral", "Decisión", "Reunión", "Ejemplo"],
+          "good_answer_example": "Se revisa cumplimiento del plan diario y pedidos pendientes. Si el cumplimiento cae bajo el umbral, se analizan causas y se ajusta la programación.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["indicador", "fuente", "frecuencia", "responsable", "umbral", "decisión", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_06_Q02",
+          "ai_category": "operational_alerts",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué alertas deben activarse cuando la ejecución del plan se desvía o está en riesgo?",
+          "context": "Interesa definir alertas sobre atraso de producción, falta de materiales, falla de equipo, cambio de demanda, incumplimiento de fecha, restricción logística o pérdida de capacidad.",
+          "tooltip": "Registre: alerta, condición disparadora, detector, decisor, canal, tiempo máximo de reacción, acción inicial y consecuencia de no actuar.",
+          "expected_answer_structure": ["Alerta", "Condición disparadora", "Detector", "Decisor", "Canal", "Tiempo máximo", "Acción inicial", "Consecuencia"],
+          "good_answer_example": "Si una línea no cumple el avance esperado y afecta pedidos comprometidos, Planificación alerta a Operaciones y Comercial para ajustar prioridades o comunicar riesgo.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["alerta", "condición", "detector", "decisor", "canal", "tiempo", "acción", "consecuencia"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "PO_07_CAMBIOS_CONTINGENCIAS",
+      "block_name": "Cambios, contingencias y reprogramaciones",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 70,
+      "objective": "Capturar cómo se gestionan cambios de demanda, urgencias, fallas, restricciones y escenarios de contingencia.",
+      "questions": [
+        {
+          "question_id": "PO_07_Q01",
+          "ai_category": "decision_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas se aplican para gestionar cambios de demanda, pedidos urgentes, fallas operativas o restricciones imprevistas?",
+          "context": "Se requiere extraer reglas SI → ENTONCES relacionadas con cambios de prioridad, clientes críticos, falta de insumos, falla de equipo, atraso, capacidad limitada o restricciones logísticas.",
+          "tooltip": "Registre reglas concretas: SI ocurre una condición, ENTONCES acción, responsable, evidencia, autorización requerida, tiempo máximo, escalamiento y consecuencia si no se actúa.",
+          "expected_answer_structure": ["Condición SI", "Acción ENTONCES", "Responsable", "Evidencia", "Autorización", "Tiempo máximo", "Escalamiento", "Consecuencia"],
+          "good_answer_example": "SI se presenta un pedido urgente que desplaza producción ya programada, ENTONCES Planificación valida impacto, solicita aprobación y comunica nueva secuencia.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["SI", "ENTONCES", "responsable", "evidencia", "autorización", "escalamiento", "consecuencia"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_07_Q02",
+          "ai_category": "critical_failures",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué fallas críticas pueden afectar la planificación operativa y cómo se previenen o corrigen?",
+          "context": "Se busca identificar fallas como plan emitido con datos erróneos, capacidad sobreestimada, material no disponible, cambios no comunicados, pedidos omitidos o secuencia inviable.",
+          "tooltip": "Registre: falla crítica, causa, punto de detección, control preventivo, responsable, evidencia, acción correctiva y ejemplo histórico.",
+          "expected_answer_structure": ["Falla crítica", "Causa", "Punto de detección", "Control preventivo", "Responsable", "Evidencia", "Acción correctiva", "Ejemplo"],
+          "good_answer_example": "Una falla crítica es emitir un plan con material no disponible. Se previene validando inventario, liberación y fechas de abastecimiento antes de cerrar el programa.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["falla", "causa", "detección", "control", "responsable", "evidencia", "acción", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "PO_08_COORDINACION_INTERNA",
+      "block_name": "Coordinación con Comercial, Producción, Bodega, Compras, Calidad y Logística",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 80,
+      "objective": "Identificar patrones de coordinación interna que sostienen la planificación y ejecución operativa.",
+      "questions": [
+        {
+          "question_id": "PO_08_Q01",
+          "ai_category": "coordination_patterns",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cómo se coordina Planificación de Operaciones con Comercial, Producción, Bodega, Compras, Calidad, Logística, Mantenimiento y Finanzas?",
+          "context": "La planificación depende de información oportuna sobre demanda, capacidad, inventario, abastecimiento, liberaciones, mantenimiento, costos y fechas compromiso.",
+          "tooltip": "Registre: área involucrada, información intercambiada, frecuencia, canal, responsable, decisión soportada, problema recurrente y ejemplo real.",
+          "expected_answer_structure": ["Área", "Información", "Frecuencia", "Canal", "Responsable", "Decisión soportada", "Problema recurrente", "Ejemplo"],
+          "good_answer_example": "Con Comercial se valida demanda; con Producción capacidad; con Bodega stock; con Compras abastecimiento; con Calidad liberaciones; con Logística fechas de despacho.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["área", "información", "frecuencia", "canal", "responsable", "decisión", "problema", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_08_Q02",
+          "ai_category": "process_friction",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son las fricciones más frecuentes entre Planificación de Operaciones y otras áreas, y cómo se resuelven en la práctica?",
+          "context": "No se busca culpabilizar áreas; se busca identificar patrones reales que afectan cumplimiento, cambios de plan, disponibilidad de información, fechas compromiso o ejecución.",
+          "tooltip": "Registre: área, fricción, causa probable, frecuencia, impacto, solución actual, regla no escrita, evidencia y mejora sugerida.",
+          "expected_answer_structure": ["Área", "Fricción", "Causa probable", "Frecuencia", "Impacto", "Solución actual", "Regla no escrita", "Evidencia", "Mejora sugerida"],
+          "good_answer_example": "Una fricción frecuente es recibir cambios comerciales después de emitir el plan. Se resuelve reprogramando, pero debería formalizarse una hora de corte.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["área", "fricción", "causa", "frecuencia", "impacto", "solución", "regla", "mejora"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "PO_09_HERRAMIENTAS_DATOS",
+      "block_name": "Herramientas, sistemas y datos de planificación",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 90,
+      "objective": "Identificar sistemas oficiales, archivos paralelos, tableros y datos críticos usados para planificar, programar, controlar y reportar operaciones.",
+      "questions": [
+        {
+          "question_id": "PO_09_Q01",
+          "ai_category": "parallel_tools",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué sistemas, archivos, tableros o controles paralelos usa Planificación de Operaciones para gestionar demanda, capacidad, inventarios, programas y seguimiento?",
+          "context": "Se busca entender el ecosistema real: ERP, MRP, Excel, BI, tableros, reportes, correos, WhatsApp, carpetas compartidas o trackers.",
+          "tooltip": "Registre: herramienta, uso específico, dato capturado, responsable, frecuencia de actualización, fuente oficial, decisión soportada, riesgo de duplicidad y mejora deseada.",
+          "expected_answer_structure": ["Herramienta", "Uso", "Dato capturado", "Responsable", "Frecuencia", "Fuente oficial", "Decisión soportada", "Riesgo", "Mejora deseada"],
+          "good_answer_example": "Además del ERP se usa Excel para consolidar demanda, capacidad, inventarios y programación diaria. El riesgo es duplicidad, pero permite visualizar restricciones.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["herramienta", "uso", "dato", "responsable", "frecuencia", "fuente", "decisión", "riesgo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_09_Q02",
+          "ai_category": "hidden_dependencies",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué datos críticos necesita Planificación de Operaciones y qué ocurre cuando llegan tarde, incompletos o inconsistentes?",
+          "context": "Esta pregunta busca dependencias ocultas que afectan programación, cumplimiento, capacidad, inventarios, reprogramaciones, fechas compromiso y coordinación interárea.",
+          "tooltip": "Registre: dato requerido, área proveedora, momento requerido, formato/canal, responsable, consecuencia del retraso, solución temporal y mejora recomendada.",
+          "expected_answer_structure": ["Dato requerido", "Área proveedora", "Momento requerido", "Formato/canal", "Responsable", "Consecuencia", "Solución temporal", "Mejora"],
+          "good_answer_example": "Planificación necesita demanda confirmada, inventario actualizado y capacidad real. Si los datos llegan tarde, se genera un plan provisional o se reprocesa la programación.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["dato", "área", "momento", "canal", "responsable", "consecuencia", "solución", "mejora"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "PO_10_REUNIONES_RUTINAS",
+      "block_name": "Reuniones, rutinas e indicadores de planificación",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 100,
+      "objective": "Capturar reuniones y rutinas que sostienen seguimiento de demanda, capacidad, plan, restricciones, cumplimiento y acciones correctivas.",
+      "questions": [
+        {
+          "question_id": "PO_10_Q01",
+          "ai_category": "meeting_registry",
+          "required": true,
+          "min_characters": 350,
+          "question": "Liste las reuniones o rutinas donde se revisan demanda, programación, capacidad, inventarios, restricciones, cumplimiento del plan o pedidos críticos.",
+          "context": "Interesa conocer reuniones formales e informales que sostienen la operación de Planificación y la coordinación con áreas ejecutoras.",
+          "tooltip": "Registre: nombre, objetivo, frecuencia, duración, participantes, líder, temas fijos, indicadores, decisiones, insumos, salidas, evidencia y consecuencias si no se realiza.",
+          "expected_answer_structure": ["Nombre", "Objetivo", "Frecuencia", "Duración", "Participantes", "Líder", "Temas fijos", "Indicadores", "Decisiones", "Insumos", "Salidas", "Evidencia", "Consecuencia"],
+          "good_answer_example": "En la reunión diaria se revisa cumplimiento del plan, restricciones, pedidos críticos, inventarios y ajustes de programación. Si no se realiza, se pierden alertas tempranas.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["nombre", "objetivo", "frecuencia", "participantes", "líder", "indicadores", "decisiones", "evidencia"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_10_Q02",
+          "ai_category": "governance_routines",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué seguimiento diario o semanal realiza Planificación para asegurar que el plan se ejecute y se actualice oportunamente?",
+          "context": "Se busca capturar rutina real de gestión: revisión de avance, restricciones, cambios, responsables, pendientes, alertas, comunicación y escalamiento.",
+          "tooltip": "Registre: secuencia de revisión, horarios o frecuencia, responsables, evidencias, alertas, decisiones, cierres obligatorios y pendientes arrastrados.",
+          "expected_answer_structure": ["Secuencia", "Frecuencia/horarios", "Responsables", "Evidencias", "Alertas", "Decisiones", "Cierres obligatorios", "Pendientes arrastrados"],
+          "good_answer_example": "Cada día se revisa avance, restricciones, inventario, pedidos críticos y cambios. Al cierre se actualiza el plan y se comunican ajustes a las áreas involucradas.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["secuencia", "frecuencia", "responsable", "evidencia", "alerta", "decisión", "cierre"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "PO_11_REGLAS_ESCALAMIENTO",
+      "block_name": "Reglas no escritas, prioridades y escalamiento de planificación",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 110,
+      "objective": "Extraer reglas tácitas y umbrales reales de escalamiento usados cuando demanda, capacidad, inventario, programa o cumplimiento están en riesgo.",
+      "questions": [
+        {
+          "question_id": "PO_11_Q01",
+          "ai_category": "non_written_rules",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué reglas no escritas usa Planificación de Operaciones para priorizar pedidos, recursos, líneas o cambios bajo presión?",
+          "context": "Las reglas no escritas explican cómo se opera cuando el procedimiento formal no alcanza: urgencias comerciales, cliente crítico, falta de capacidad, riesgo de atraso o restricciones imprevistas.",
+          "tooltip": "Registre: regla no escrita, condición de uso, quién la valida, beneficio, riesgo, evidencia/comunicación y ejemplo real.",
+          "expected_answer_structure": ["Regla no escrita", "Condición de uso", "Validador", "Beneficio", "Riesgo", "Evidencia/comunicación", "Ejemplo"],
+          "good_answer_example": "Cuando un pedido afecta un cliente estratégico o cumplimiento crítico, se prioriza sobre pedidos menos urgentes, previa validación de impacto y comunicación a las áreas afectadas.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["regla", "condición", "validador", "beneficio", "riesgo", "evidencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_11_Q02",
+          "ai_category": "escalation_thresholds",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué situaciones obligan a Planificación de Operaciones a escalar y a quién se escala según el tipo de problema?",
+          "context": "Se busca mapear umbrales reales: demanda superior a capacidad, material faltante, atraso crítico, cambio comercial urgente, plan inviable, restricción operativa o incumplimiento de fecha.",
+          "tooltip": "Registre: situación, umbral, primer responsable, autoridad final, canal usado, tiempo máximo tolerado, evidencia requerida y ejemplo real.",
+          "expected_answer_structure": ["Situación", "Umbral", "Primer responsable", "Autoridad final", "Canal", "Tiempo máximo", "Evidencia", "Ejemplo"],
+          "good_answer_example": "Si un pedido crítico no puede cumplirse con la capacidad disponible, Planificación escala a jefatura con impacto, alternativas y decisión requerida.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["situación", "umbral", "responsable", "autoridad", "canal", "tiempo", "evidencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    },
+    {
+      "block_id": "PO_12_RIESGOS_CONOCIMIENTO",
+      "block_name": "Riesgos, continuidad y conocimiento crítico de planificación",
+      "source_type": "area",
+      "enabled": true,
+      "required": true,
+      "order": 120,
+      "objective": "Capturar riesgos críticos y conocimiento no documentado que puede afectar planificación, programación, cumplimiento, inventarios y continuidad operativa.",
+      "questions": [
+        {
+          "question_id": "PO_12_Q01",
+          "ai_category": "operational_risks",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Cuáles son los riesgos operacionales más críticos del área de Planificación de Operaciones y qué controles evitan que se materialicen?",
+          "context": "Incluya riesgos de plan inviable, datos incorrectos, capacidad sobreestimada, inventario no disponible, cambios no comunicados, pedidos omitidos, dependencia humana, incumplimiento de clientes y reprocesos.",
+          "tooltip": "Registre: riesgo, causa, impacto, probabilidad percibida, control actual, responsable, señal temprana, contingencia y ejemplo histórico.",
+          "expected_answer_structure": ["Riesgo", "Causa", "Impacto", "Probabilidad", "Control actual", "Responsable", "Señal temprana", "Contingencia", "Ejemplo"],
+          "good_answer_example": "Un riesgo crítico es emitir un plan con capacidad o inventario incorrecto. Se controla con validaciones previas, revisión de restricciones y reuniones de seguimiento.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["riesgo", "causa", "impacto", "control", "responsable", "señal", "contingencia", "ejemplo"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        },
+        {
+          "question_id": "PO_12_Q02",
+          "ai_category": "tacit_knowledge",
+          "required": true,
+          "min_characters": 350,
+          "question": "¿Qué conocimiento crítico de Planificación de Operaciones no está documentado y debería capturarse para evitar dependencia de personas específicas?",
+          "context": "Se busca identificar conocimiento que vive en la experiencia: criterios de priorización, tiempos reales, restricciones recurrentes, productos complejos, clientes críticos, secuencias eficientes o reglas de reprogramación.",
+          "tooltip": "Registre: conocimiento no documentado, persona/rol que lo domina, cuándo se usa, riesgo cubierto, consecuencia de perderlo, forma sugerida de documentarlo y prioridad.",
+          "expected_answer_structure": ["Conocimiento", "Persona/rol que lo domina", "Uso", "Riesgo cubierto", "Consecuencia de pérdida", "Forma de documentación", "Prioridad"],
+          "good_answer_example": "El planificador conoce qué productos generan cambios largos, qué líneas tienen restricciones recurrentes y qué pedidos suelen ser críticos. Si ese conocimiento se pierde, aumentan reprocesos y atrasos.",
+          "validation_rules": {"min_items": 1, "requires_examples": true, "incomplete_if_missing": ["conocimiento", "quién", "cuándo", "riesgo", "consecuencia", "documentarlo", "prioridad"]},
+          "incomplete_if": ["La respuesta es genérica y no describe casos reales del área.", "No se identifican responsables, frecuencias o consecuencias operativas.", "No se incluyen ejemplos específicos recientes.", "No permite extraer reglas SI → ENTONCES o criterios de decisión.", "No diferencia operación normal de excepciones."]
+        }
+      ]
+    }
+  ]
+}

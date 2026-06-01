@@ -73,7 +73,7 @@ function cargarLevels(levels) {
   });
 }
 
-function continuar() {
+async function continuar() {
 
   const personName =
     document.getElementById("person_name").value.trim();
@@ -81,27 +81,108 @@ function continuar() {
   const position =
     document.getElementById("position").value.trim();
 
+  const areaSelect =
+    document.getElementById("area_select");
+
+  const levelSelect =
+    document.getElementById("level_select");
+
   const area =
-    document.getElementById("area_select").value;
+    areaSelect.value;
 
   const level =
-    document.getElementById("level_select").value;
+    levelSelect.value;
 
   if (!personName || !position || !area || !level) {
     alert("Complete todos los campos.");
     return;
   }
 
-  console.log({
-    personName,
-    position,
-    area,
-    level
-  });
+  try {
 
-  setStatus("Datos iniciales validados.");
+    setStatus("Cargando cuestionarios...");
 
-  alert("Frontend funcionando correctamente.");
+    const areaFile =
+      areaSelect.options[areaSelect.selectedIndex].dataset.file;
+
+    const levelFile =
+      levelSelect.options[levelSelect.selectedIndex].dataset.file;
+
+    const commonUrl =
+      "./questionnaires/common/kc_v_2_common.json";
+
+    const levelUrl =
+      "./questionnaires/" + levelFile;
+
+    const areaUrl =
+      "./questionnaires/" + areaFile;
+
+    console.log("Cargando common:", commonUrl);
+    console.log("Cargando nivel:", levelUrl);
+    console.log("Cargando área:", areaUrl);
+
+    const [
+      commonResponse,
+      levelResponse,
+      areaResponse
+    ] = await Promise.all([
+      fetch(commonUrl),
+      fetch(levelUrl),
+      fetch(areaUrl)
+    ]);
+
+    if (!commonResponse.ok) {
+      throw new Error("No se pudo cargar common: " + commonUrl);
+    }
+
+    if (!levelResponse.ok) {
+      throw new Error("No se pudo cargar nivel: " + levelUrl);
+    }
+
+    if (!areaResponse.ok) {
+      throw new Error("No se pudo cargar área: " + areaUrl);
+    }
+
+    const commonData =
+      await commonResponse.json();
+
+    const levelData =
+      await levelResponse.json();
+
+    const areaData =
+      await areaResponse.json();
+
+    const allBlocks = [
+      ...(commonData.blocks || []),
+      ...(levelData.blocks || []),
+      ...(areaData.blocks || [])
+    ];
+
+    allBlocks.sort((a, b) =>
+      Number(a.order || 0) - Number(b.order || 0)
+    );
+
+    console.log("BLOQUES CONSOLIDADOS:");
+    console.log(allBlocks);
+
+    setStatus(
+      "Cuestionarios cargados correctamente. Bloques detectados: " + allBlocks.length
+    );
+
+    alert(
+      "Carga exitosa.\nBloques detectados: " + allBlocks.length
+    );
+
+  } catch (error) {
+
+    console.error(error);
+
+    setStatus("Error cargando cuestionarios: " + error.message);
+
+    alert(
+      "Ocurrió un error cargando los cuestionarios.\n\n" + error.message
+    );
+  }
 }
 
 function setStatus(message) {

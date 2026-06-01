@@ -163,6 +163,21 @@ async function continuar() {
       ...(areaData.blocks || [])
     ];
 
+const resumenConteo = {
+  area: area,
+  nivel: level,
+  bloques_common: (commonData.blocks || []).length,
+  preguntas_common: contarPreguntasDeBloques(commonData.blocks),
+  bloques_nivel: (levelData.blocks || []).length,
+  preguntas_nivel: contarPreguntasDeBloques(levelData.blocks),
+  bloques_area: (areaData.blocks || []).length,
+  preguntas_area: contarPreguntasDeBloques(areaData.blocks),
+  bloques_total: allBlocks.length,
+  preguntas_total: contarPreguntasDeBloques(allBlocks)
+};
+
+console.table(resumenConteo);    
+
     allBlocks.sort((a, b) =>
       Number(a.order || 0) - Number(b.order || 0)
     );
@@ -197,7 +212,7 @@ document.getElementById("initial_card").classList.add("hidden");
 document.getElementById("wizard").classList.remove("hidden");
 
 setStatus(
-  "Cuestionarios cargados correctamente. Bloques detectados: " + allBlocks.length
+  "Captura iniciada. Responde cada bloque y guarda para continuar."
 );
 
 renderCurrentBlock();
@@ -228,8 +243,8 @@ function renderCurrentBlock() {
   const totalBlocks = currentSession.blocks.length;
   const currentNumber = currentBlockIndex + 1;
 
-  document.getElementById("progress_text").textContent =
-    "Bloque " + currentNumber + " de " + totalBlocks;
+document.getElementById("progress_text").textContent =
+  "Avance de captura";
 
   const progressPercent =
     (currentNumber / totalBlocks) * 100;
@@ -436,4 +451,10 @@ function escapeHtml(text) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+function contarPreguntasDeBloques(blocks) {
+  return (blocks || []).reduce((total, block) => {
+    return total + ((block.questions || []).length);
+  }, 0);
 }

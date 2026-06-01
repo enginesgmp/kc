@@ -193,7 +193,7 @@ currentSession = {
 currentBlockIndex = 0;
 blockAnswers = {};
 
-document.querySelector(".card").classList.add("hidden");
+document.getElementById("initial_card").classList.add("hidden");
 document.getElementById("wizard").classList.remove("hidden");
 
 setStatus(

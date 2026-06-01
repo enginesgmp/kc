@@ -1,6 +1,11 @@
 const API_URL =
   "https://script.google.com/macros/s/AKfycbxrs0OaK7oJgbMAlWEGFD_aVRRXGxsX_gDY9qLKjEGvbfGYdJxmT3hwK4o5XlWxOv4LOA/exec";
 
+
+let currentSession = null;
+let currentBlockIndex = 0;
+let blockAnswers = {};
+
 document.addEventListener("DOMContentLoaded", async () => {
   await cargarConfiguracion();
 
@@ -162,16 +167,40 @@ async function continuar() {
       Number(a.order || 0) - Number(b.order || 0)
     );
 
-    console.log("BLOQUES CONSOLIDADOS:");
-    console.log(allBlocks);
+console.log("BLOQUES CONSOLIDADOS:");
+console.log(allBlocks);
 
-    setStatus(
-      "Cuestionarios cargados correctamente. Bloques detectados: " + allBlocks.length
-    );
+const areaOption =
+  areaSelect.options[areaSelect.selectedIndex];
 
-    alert(
-      "Carga exitosa.\nBloques detectados: " + allBlocks.length
-    );
+const levelOption =
+  levelSelect.options[levelSelect.selectedIndex];
+
+currentSession = {
+  session_id: crearSessionId(),
+  person_name: personName,
+  position: position,
+  area_id: area,
+  area_name: areaOption.textContent,
+  area_file: areaFile,
+  level_id: level,
+  level_name: levelOption.textContent,
+  level_file: levelFile,
+  session_started_at: new Date().toISOString(),
+  blocks: allBlocks
+};
+
+currentBlockIndex = 0;
+blockAnswers = {};
+
+document.querySelector(".card").classList.add("hidden");
+document.getElementById("wizard").classList.remove("hidden");
+
+setStatus(
+  "Cuestionarios cargados correctamente. Bloques detectados: " + allBlocks.length
+);
+
+renderCurrentBlock();
 
   } catch (error) {
 
@@ -187,4 +216,173 @@ async function continuar() {
 
 function setStatus(message) {
   document.getElementById("status").textContent = message;
+}
+
+function renderCurrentBlock() {
+  if (!currentSession || !currentSession.blocks.length) {
+    setStatus("No hay bloques disponibles.");
+    return;
+  }
+
+  const block = currentSession.blocks[currentBlockIndex];
+  const totalBlocks = currentSession.blocks.length;
+  const currentNumber = currentBlockIndex + 1;
+
+  document.getElementById("progress_text").textContent =
+    "Bloque " + currentNumber + " de " + totalBlocks;
+
+  const progressPercent =
+    (currentNumber / totalBlocks) * 100;
+
+  document.getElementById("progress_fill").style.width =
+    progressPercent + "%";
+
+  document.getElementById("block_title").textContent =
+    block.block_name || block.name || "Bloque sin nombre";
+
+  document.getElementById("block_objective").textContent =
+    block.objective || "";
+
+  const questionsContainer =
+    document.getElementById("questions_container");
+
+  questionsContainer.innerHTML = "";
+
+  const questions =
+    block.questions || [];
+
+  if (!questions.length) {
+    questionsContainer.innerHTML =
+      "<p>Este bloque no tiene preguntas configuradas.</p>";
+  }
+
+  questions.forEach((question, index) => {
+    const questionId =
+      question.question_id ||
+      question.id ||
+      "Q_" + index;
+
+    const questionText =
+      question.question ||
+      question.question_text ||
+      question.text ||
+      "Pregunta sin texto";
+
+    const required =
+      question.required === true ||
+      String(question.required).toUpperCase() === "TRUE";
+
+    const box = document.createElement("div");
+    box.className = "question-box";
+
+    box.innerHTML = `
+      <label>
+        ${index + 1}. ${escapeHtml(questionText)}
+        ${required ? '<span class="required">*</span>' : ''}
+      </label>
+
+      <textarea
+        data-question-id="${escapeHtml(questionId)}"
+        data-question-text="${escapeHtml(questionText)}"
+        data-required="${required}"
+        placeholder="Escriba su respuesta aquí..."
+      ></textarea>
+    `;
+
+    questionsContainer.appendChild(box);
+  });
+
+  const btn =
+    document.getElementById("btn_save_block");
+
+  btn.onclick = cerrarBloqueActual;
+}
+
+function cerrarBloqueActual() {
+  const block =
+    currentSession.blocks[currentBlockIndex];
+
+  const textareas =
+    document.querySelectorAll("#questions_container textarea");
+
+  const answers = [];
+
+  for (const textarea of textareas) {
+    const answer =
+      textarea.value.trim();
+
+    const required =
+      textarea.dataset.required === "true";
+
+    if (required && !answer) {
+      alert("Debe responder todas las preguntas obligatorias.");
+      textarea.focus();
+      return;
+    }
+
+    answers.push({
+      question_id: textarea.dataset.questionId,
+      question: textarea.dataset.questionText,
+      answer: answer
+    });
+  }
+
+  const blockId =
+    block.block_id || block.id || "BLOCK_" + (currentBlockIndex + 1);
+
+  blockAnswers[blockId] = answers;
+
+  console.log("Bloque cerrado:");
+  console.log({
+    block: block,
+    answers: answers
+  });
+
+  if (currentBlockIndex < currentSession.blocks.length - 1) {
+    currentBlockIndex++;
+    renderCurrentBlock();
+    window.scrollTo(0, 0);
+  } else {
+    finalizarCaptura();
+  }
+}
+
+function finalizarCaptura() {
+  setStatus("Captura finalizada. Todos los bloques fueron completados.");
+
+  document.getElementById("wizard").innerHTML = `
+    <div class="card">
+      <h2>Captura finalizada</h2>
+      <p>Se completaron todos los bloques de preguntas.</p>
+      <p>En el siguiente paso se activará el guardado en Drive por cada bloque cerrado.</p>
+    </div>
+  `;
+
+  console.log("RESPUESTAS COMPLETAS:");
+  console.log(blockAnswers);
+}
+
+function crearSessionId() {
+  const now = new Date();
+
+  const stamp = now
+    .toISOString()
+    .replace(/[-:T.Z]/g, "")
+    .slice(0, 14);
+
+  const random = Math.random()
+    .toString(36)
+    .substring(2, 8)
+    .toUpperCase();
+
+  return "KC_" + stamp + "_" + random;
+}
+
+function escapeHtml(text) {
+  return String(text || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }

@@ -220,9 +220,10 @@ async function continuar() {
     const sessionId =
       crearSessionId();
 
-    currentSession = {
-      session_id: sessionId,
-      person_name: personName,
+currentSession = {
+  session_id: sessionId,
+  capture_key: buildCaptureKey(personName, area, level),
+  person_name: personName,
       position: position,
       area_id: area,
       area_name: areaOption.textContent,
@@ -645,17 +646,37 @@ async function guardarAvanceYContinuar() {
   const groupId =
     group.group_id;
 
-  const alreadySaved =
-    currentSession.progress_blocks_saved &&
-    currentSession.progress_blocks_saved[groupId];
+  const payload =
+    buildQuestionBlockPayload(group);
 
-  const confirmMessage =
-    alreadySaved
-      ? "Este bloque de preguntas ya fue guardado anteriormente.\n\n¿Deseas sobrescribir la información guardada de este bloque?"
-      : "Se guardará el avance de este bloque de preguntas en Drive.\n\n¿Deseas confirmar el guardado?";
+  let exists = false;
+
+  try {
+    const checkResult =
+      await checkQuestionBlockExists(payload);
+
+    exists =
+      checkResult.ok &&
+      checkResult.data &&
+      checkResult.data.exists === true;
+
+  } catch (error) {
+    console.warn("No se pudo verificar existencia previa del bloque.", error);
+  }
 
   const confirmed =
-    confirm(confirmMessage);
+    await showSystemConfirm({
+      title: exists
+        ? "Actualizar bloque de preguntas"
+        : "Guardar bloque de preguntas",
+      message: exists
+        ? "Ya existe información guardada para este bloque. Si continúas, se actualizarán las respuestas de este bloque."
+        : "Se guardarán las respuestas de este bloque para conservar el avance de la captura.",
+      confirmText: exists
+        ? "Actualizar preguntas"
+        : "Guardar preguntas",
+      cancelText: "Cancelar"
+    });
 
   if (!confirmed) {
     return;
@@ -670,13 +691,10 @@ async function guardarAvanceYContinuar() {
   try {
     if (btn) {
       btn.disabled = true;
-      btn.textContent = "Guardando bloque...";
+      btn.textContent = "Guardando preguntas...";
     }
 
-    setStatus("Guardando avance del bloque...");
-
-    const payload =
-      buildQuestionBlockPayload(group);
+    setStatus("Guardando preguntas...");
 
     const result =
       await saveQuestionBlockProgress(payload);
@@ -684,7 +702,7 @@ async function guardarAvanceYContinuar() {
     if (!result.ok) {
       throw new Error(
         result.message ||
-        "No se pudo guardar el bloque de preguntas."
+        "No se pudieron guardar las preguntas."
       );
     }
 
@@ -719,9 +737,9 @@ async function guardarAvanceYContinuar() {
     updateAutosaveText();
 
     setStatus(
-      alreadySaved
-        ? "Bloque actualizado correctamente."
-        : "Bloque guardado correctamente."
+      exists
+        ? "Preguntas actualizadas correctamente."
+        : "Preguntas guardadas correctamente."
     );
 
     if (currentGroupIndex < currentSession.question_groups.length - 1) {
@@ -740,16 +758,18 @@ async function guardarAvanceYContinuar() {
   } catch (error) {
     console.error(error);
 
-    setStatus("Error guardando bloque: " + error.message);
+    setStatus("Error guardando preguntas: " + error.message);
 
-    alert(
-      "No se pudo guardar el bloque de preguntas.\n\n" +
-      error.message
-    );
+    await showSystemConfirm({
+      title: "No se pudieron guardar las preguntas",
+      message: "Ocurrió un inconveniente al guardar este bloque. Revisa tu conexión e inténtalo nuevamente.",
+      confirmText: "Entendido",
+      cancelText: "Cerrar"
+    });
 
     if (btn) {
       btn.disabled = false;
-      btn.textContent = originalText || "Guardar avance y continuar";
+      btn.textContent = originalText || "Guardar bloque y continuar";
     }
   }
 }
@@ -765,9 +785,10 @@ function buildQuestionBlockPayload(group) {
       answer: currentSession.answers[question.question_id] || ""
     }));
 
-  return {
-    session_id: currentSession.session_id,
-    person_name: currentSession.person_name,
+return {
+  session_id: currentSession.session_id,
+  capture_key: currentSession.capture_key,
+  person_name: currentSession.person_name,
     position: currentSession.position,
     area_id: currentSession.area_id,
     area_name: currentSession.area_name,
@@ -787,6 +808,22 @@ async function saveQuestionBlockProgress(payload) {
       body: JSON.stringify({
         action: "saveQuestionBlock",
         payload: payload
+      })
+    });
+
+  return await response.json();
+}
+
+async function checkQuestionBlockExists(payload) {
+  const response =
+    await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        action: "checkQuestionBlockExists",
+        payload: {
+          capture_key: payload.capture_key,
+          block_group_id: payload.block_group_id
+        }
       })
     });
 
@@ -1205,6 +1242,26 @@ function stopAutosaveTimer() {
   }
 }
 
+
+function buildCaptureKey(personName, areaId, levelId) {
+  return [
+    normalizeKeyText(personName),
+    normalizeKeyText(areaId),
+    normalizeKeyText(levelId)
+  ].join("__");
+}
+
+function normalizeKeyText(text) {
+  return String(text || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/ñ/g, "n")
+    .replace(/Ñ/g, "N")
+    .replace(/[^a-zA-Z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .toLowerCase();
+}
+
 function crearSessionId() {
   const now =
     new Date();
@@ -1222,6 +1279,55 @@ function crearSessionId() {
       .toUpperCase();
 
   return "KC_" + stamp + "_" + random;
+}
+
+function showSystemConfirm({ title, message, confirmText, cancelText }) {
+  return new Promise(resolve => {
+    const modal =
+      document.getElementById("system_modal");
+
+    const titleEl =
+      document.getElementById("system_modal_title");
+
+    const messageEl =
+      document.getElementById("system_modal_message");
+
+    const confirmBtn =
+      document.getElementById("system_modal_confirm");
+
+    const cancelBtn =
+      document.getElementById("system_modal_cancel");
+
+    titleEl.textContent =
+      title || "Confirmar acción";
+
+    messageEl.textContent =
+      message || "¿Deseas continuar?";
+
+    confirmBtn.textContent =
+      confirmText || "Confirmar";
+
+    cancelBtn.textContent =
+      cancelText || "Cancelar";
+
+    modal.classList.remove("hidden");
+
+    const cleanup = () => {
+      modal.classList.add("hidden");
+      confirmBtn.onclick = null;
+      cancelBtn.onclick = null;
+    };
+
+    confirmBtn.onclick = () => {
+      cleanup();
+      resolve(true);
+    };
+
+    cancelBtn.onclick = () => {
+      cleanup();
+      resolve(false);
+    };
+  });
 }
 
 function setStatus(message) {

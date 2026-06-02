@@ -330,6 +330,25 @@ button:disabled {
   background: var(--success-bg);
 }
 
+.question-item.completed .question-toggle {
+  background: #f2fbf5;
+  color: #1f2933;
+  border-bottom: 1px solid rgba(22, 128, 60, 0.18);
+}
+
+.question-item.completed .question-toggle:hover {
+  background: #eaf7ef;
+}
+
+.question-item.completed .question-label {
+  color: #1f2933;
+}
+
+.question-item.completed .question-state {
+  color: var(--success);
+  font-weight: 800;
+}
+
 .question-toggle {
   width: 100%;
   background: transparent;
@@ -340,6 +359,7 @@ button:disabled {
   gap: 10px;
   text-align: left;
   padding: 16px;
+  border-radius: 0;
 }
 
 .question-toggle:hover {

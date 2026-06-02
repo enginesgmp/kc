@@ -554,3 +554,57 @@ button:disabled {
     width: 100%;
   }
 }
+
+.system-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 9999;
+}
+
+.system-modal.hidden {
+  display: none;
+}
+
+.system-modal-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 26px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+  border: 1px solid var(--border);
+}
+
+.system-modal-card h3 {
+  margin: 0 0 12px 0;
+  color: var(--primary);
+  font-size: 22px;
+}
+
+.system-modal-card p {
+  margin: 0;
+  color: #425466;
+  line-height: 1.6;
+}
+
+.system-modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 720px) {
+  .system-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .system-modal-actions button {
+    width: 100%;
+  }
+}

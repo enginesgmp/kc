@@ -12,7 +12,7 @@
   <div class="container">
 
 <div class="hero-header">
-  <div class="hero-badge">Captura de conocimiento</div>
+  <div class="hero-badge">Knowledge Capture</div>
 
   <h1>Captura de conocimiento operativo</h1>
 
@@ -34,6 +34,25 @@
   </div>
 </div>
 
+<div id="resume_card" class="resume-card hidden">
+  <div>
+    <h3>Captura en progreso detectada</h3>
+    <p id="resume_summary">
+      Se encontró un avance guardado en este dispositivo.
+    </p>
+  </div>
+
+  <div class="resume-actions">
+    <button id="btn_resume_draft" type="button">
+      Continuar captura guardada
+    </button>
+
+    <button id="btn_discard_draft" type="button" class="secondary-button">
+      Empezar nuevamente
+    </button>
+  </div>
+</div>
+    
     <div id="initial_card" class="card">
 
       <div class="field">
@@ -60,7 +79,7 @@
         </select>
       </div>
 
-<button id="btn_continue">
+<button id="btn_continue" disabled>
   Continuar al banco de preguntas
 </button>
 

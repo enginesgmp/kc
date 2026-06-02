@@ -16,7 +16,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     .getElementById("btn_continue")
     .addEventListener("click", continuar);
 
+  document
+    .getElementById("person_name")
+    .addEventListener("input", updateInitialButtonState);
+
+  document
+    .getElementById("position")
+    .addEventListener("input", updateInitialButtonState);
+
+  document
+    .getElementById("area_select")
+    .addEventListener("change", updateInitialButtonState);
+
+  document
+    .getElementById("level_select")
+    .addEventListener("change", updateInitialButtonState);
+
+  const resumeBtn = document.getElementById("btn_resume_draft");
+  const discardBtn = document.getElementById("btn_discard_draft");
+
+  if (resumeBtn) {
+    resumeBtn.addEventListener("click", resumeDraftDirectly);
+  }
+
+  if (discardBtn) {
+    discardBtn.addEventListener("click", discardDetectedDraft);
+  }
+
   detectarBorradorInicial();
+  updateInitialButtonState();
 });
 
 async function cargarConfiguracion() {
@@ -45,13 +73,37 @@ function cargarAreas(areas) {
 
   select.innerHTML = `<option value="">Seleccione área</option>`;
 
-  areas.forEach(area => {
+   areas.forEach(area => {
     const option = document.createElement("option");
     option.value = area.area_id;
     option.textContent = area.area_name;
     option.dataset.file = area.json_file;
     select.appendChild(option);
   });
+  
+  updateInitialButtonState();
+}
+
+function updateInitialButtonState() {
+  const personName =
+    document.getElementById("person_name").value.trim();
+
+  const position =
+    document.getElementById("position").value.trim();
+
+  const area =
+    document.getElementById("area_select").value;
+
+  const level =
+    document.getElementById("level_select").value;
+
+  const btn =
+    document.getElementById("btn_continue");
+
+  if (!btn) return;
+
+  btn.disabled =
+    !(personName && position && area && level);
 }
 
 function cargarLevels(levels) {
@@ -66,6 +118,8 @@ function cargarLevels(levels) {
     option.dataset.file = level.json_file;
     select.appendChild(option);
   });
+
+  updateInitialButtonState();
 }
 
 async function continuar() {
@@ -660,6 +714,119 @@ function saveDraft() {
     "KC_LAST_DRAFT_SESSION",
     currentSession.session_id
   );
+}
+
+function detectarBorradorInicial() {
+  const draft =
+    getLastDraft();
+
+  if (!draft) return;
+
+  const resumeCard =
+    document.getElementById("resume_card");
+
+  const resumeSummary =
+    document.getElementById("resume_summary");
+
+  if (!resumeCard || !resumeSummary) return;
+
+  const dateText =
+    draft.last_saved_at
+      ? formatLocalTime(draft.last_saved_at)
+      : "sin hora registrada";
+
+  resumeSummary.textContent =
+    `Se encontró una captura guardada de ${draft.person_name || "usuario"} · ${draft.area_name || "área no definida"} · ${draft.level_name || "nivel no definido"}. Último guardado local: ${dateText}.`;
+
+  resumeCard.classList.remove("hidden");
+}
+
+function getLastDraft() {
+  const lastSessionId =
+    localStorage.getItem("KC_LAST_DRAFT_SESSION");
+
+  if (!lastSessionId) return null;
+
+  const raw =
+    localStorage.getItem(getDraftKey(lastSessionId));
+
+  if (!raw) return null;
+
+  try {
+    return JSON.parse(raw);
+  } catch (error) {
+    console.warn("No se pudo leer el borrador local.", error);
+    return null;
+  }
+}
+
+function resumeDraftDirectly() {
+  const draft =
+    getLastDraft();
+
+  if (!draft) {
+    alert("No se encontró una captura guardada.");
+    return;
+  }
+
+  currentSession = draft;
+  currentGroupIndex = draft.current_group_index || 0;
+
+  document
+    .getElementById("initial_card")
+    .classList.add("hidden");
+
+  document
+    .getElementById("resume_card")
+    .classList.add("hidden");
+
+  document
+    .getElementById("wizard")
+    .classList.remove("hidden");
+
+  document.getElementById("participant_summary").textContent =
+    `${currentSession.person_name} · ${currentSession.position} · ${currentSession.area_name} · ${currentSession.level_name}`;
+
+  startAutosaveTimer();
+  setStatus("Captura recuperada desde guardado local.");
+
+  renderQuestionGroup();
+}
+
+function discardDetectedDraft() {
+  const draft =
+    getLastDraft();
+
+  if (!draft) return;
+
+  const confirmDelete =
+    confirm("Se eliminará el avance guardado en este dispositivo. ¿Deseas continuar?");
+
+  if (!confirmDelete) return;
+
+  clearDraft(draft.session_id);
+
+  const resumeCard =
+    document.getElementById("resume_card");
+
+  if (resumeCard) {
+    resumeCard.classList.add("hidden");
+  }
+
+  setStatus("Borrador local eliminado. Puedes iniciar una nueva captura.");
+}
+
+function formatLocalTime(isoString) {
+  const date =
+    new Date(isoString);
+
+  const hh =
+    String(date.getHours()).padStart(2, "0");
+
+  const mm =
+    String(date.getMinutes()).padStart(2, "0");
+
+  return `${hh}:${mm}`;
 }
 
 function findExistingDraft(personName, areaId, levelId) {

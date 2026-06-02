@@ -520,3 +520,37 @@ button:disabled {
     flex-direction: column;
   }
 }
+
+.group-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.group-actions button {
+  flex: 1;
+}
+
+.resume-card {
+  max-width: 760px;
+  margin: 40px auto 28px auto;
+}
+
+.resume-card h3 {
+  font-size: 22px;
+}
+
+.resume-actions button {
+  min-width: 220px;
+}
+
+@media (max-width: 720px) {
+  .group-actions {
+    flex-direction: column;
+  }
+
+  .resume-actions button {
+    width: 100%;
+  }
+}

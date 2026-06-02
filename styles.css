@@ -661,3 +661,19 @@ button:disabled {
     transform: rotate(360deg);
   }
 }
+
+
+.question-toggle {
+  cursor: pointer;
+}
+
+.question-item.completed .question-toggle {
+  cursor: pointer;
+}
+
+.question-item.completed .question-label::after {
+  content: " · puede editarse";
+  font-weight: 500;
+  color: var(--success);
+  font-size: 13px;
+}

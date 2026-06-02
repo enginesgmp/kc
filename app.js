@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   document
     .getElementById("btn_continue")
     .addEventListener("click", continuar);
+
+  detectarBorradorInicial();
 });
 
 async function cargarConfiguracion() {
@@ -772,6 +774,46 @@ function stopAutosaveTimer() {
   if (autosaveTimer) {
     clearInterval(autosaveTimer);
     autosaveTimer = null;
+  }
+}
+
+function detectarBorradorInicial() {
+  const lastSessionId =
+    localStorage.getItem("KC_LAST_DRAFT_SESSION");
+
+  if (!lastSessionId) return;
+
+  const raw =
+    localStorage.getItem(getDraftKey(lastSessionId));
+
+  if (!raw) return;
+
+  try {
+    const draft =
+      JSON.parse(raw);
+
+    if (!draft || !draft.person_name) return;
+
+    setStatus(
+      "Se detectó una captura en progreso. Ingresa los mismos datos y presiona “Continuar al banco de preguntas” para retomarla."
+    );
+
+    const nameInput =
+      document.getElementById("person_name");
+
+    const positionInput =
+      document.getElementById("position");
+
+    if (nameInput && !nameInput.value) {
+      nameInput.value = draft.person_name || "";
+    }
+
+    if (positionInput && !positionInput.value) {
+      positionInput.value = draft.position || "";
+    }
+
+  } catch (error) {
+    console.warn("No se pudo leer el borrador local.", error);
   }
 }
 

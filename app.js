@@ -261,20 +261,31 @@ async function continuar() {
       saveDraft();
     }
 
-    document
-      .getElementById("initial_card")
-      .classList.add("hidden");
+document
+  .getElementById("initial_card")
+  .classList.add("hidden");
 
-    document
-      .getElementById("wizard")
-      .classList.remove("hidden");
+document
+  .getElementById("hero_header")
+  .classList.add("hidden");
+
+const resumeCard =
+  document.getElementById("resume_card");
+
+if (resumeCard) {
+  resumeCard.classList.add("hidden");
+}
+
+document
+  .getElementById("wizard")
+  .classList.remove("hidden");
 
     startAutosaveTimer();
 
     document.getElementById("participant_summary").textContent =
       `${currentSession.person_name} · ${currentSession.position} · ${currentSession.area_name} · ${currentSession.level_name}`;
 
-    setStatus("Banco de preguntas iniciado.");
+    setStatus("");
 
     renderQuestionGroup();
 
@@ -772,23 +783,27 @@ function resumeDraftDirectly() {
   currentSession = draft;
   currentGroupIndex = draft.current_group_index || 0;
 
-  document
-    .getElementById("initial_card")
-    .classList.add("hidden");
+document
+  .getElementById("initial_card")
+  .classList.add("hidden");
 
-  document
-    .getElementById("resume_card")
-    .classList.add("hidden");
+document
+  .getElementById("hero_header")
+  .classList.add("hidden");
 
-  document
-    .getElementById("wizard")
-    .classList.remove("hidden");
+document
+  .getElementById("resume_card")
+  .classList.add("hidden");
+
+document
+  .getElementById("wizard")
+  .classList.remove("hidden");
 
   document.getElementById("participant_summary").textContent =
     `${currentSession.person_name} · ${currentSession.position} · ${currentSession.area_name} · ${currentSession.level_name}`;
 
   startAutosaveTimer();
-  setStatus("Captura recuperada desde guardado local.");
+  setStatus("");
 
   renderQuestionGroup();
 }

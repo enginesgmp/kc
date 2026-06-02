@@ -827,3 +827,46 @@ button.question-toggle:active,
   background: #16803c !important;
   color: #ffffff !important;
 }
+
+/* =====================================================
+   Hover visible para preguntas desplegables
+   ===================================================== */
+
+.question-item {
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.question-item:hover {
+  border-color: rgba(31, 78, 120, 0.35) !important;
+  box-shadow: 0 8px 20px rgba(31, 78, 120, 0.10);
+  transform: translateY(-1px);
+}
+
+.question-item button.question-toggle:hover,
+.question-item.pending button.question-toggle:hover,
+.question-item.completed button.question-toggle:hover {
+  background: #eaf2f8 !important;
+}
+
+/* Indicador visual de que se puede desplegar */
+.question-state::after {
+  content: "  ▾";
+  font-size: 13px;
+  color: #7a8797;
+  margin-left: 6px;
+}
+
+.question-item.open .question-state::after {
+  content: "  ▴";
+}
+
+/* Mejora del círculo pendiente al pasar mouse */
+.question-item.pending:hover .check-icon {
+  background: #d8e6f2 !important;
+  border: 1px solid rgba(31, 78, 120, 0.25);
+}
+
+/* Mejora del círculo completado al pasar mouse */
+.question-item.completed:hover .check-icon {
+  background: #137137 !important;
+}

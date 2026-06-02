@@ -387,11 +387,11 @@ function renderQuestionGroup() {
   document.getElementById("progress_percent").textContent =
     progressPercent + "%";
 
-  document.getElementById("group_title").textContent =
-    "Grupo de preguntas";
+document.getElementById("group_title").textContent =
+  "Bloque de preguntas";
 
-  document.getElementById("group_subtitle").textContent =
-    "Responde las preguntas visibles para continuar con el siguiente grupo.";
+document.getElementById("group_subtitle").textContent =
+  "Responde las preguntas visibles para continuar con el siguiente bloque.";
 
   const questionsContainer =
     document.getElementById("questions_container");
@@ -439,12 +439,26 @@ function renderQuestionGroup() {
   document
     .querySelectorAll(".question-toggle")
     .forEach(button => {
-      button.addEventListener("click", () => {
-        const item =
-          button.closest(".question-item");
+button.addEventListener("click", () => {
+  const item =
+    button.closest(".question-item");
 
-        item.classList.toggle("open");
-      });
+  item.classList.toggle("open");
+
+  if (item.classList.contains("open")) {
+    currentSession.current_open_question_id =
+      item.dataset.questionId;
+  } else if (
+    currentSession.current_open_question_id === item.dataset.questionId
+  ) {
+    currentSession.current_open_question_id = null;
+  }
+
+  currentSession.current_group_index =
+    currentGroupIndex;
+
+  saveDraft();
+});
     });
 
   document
@@ -453,8 +467,53 @@ function renderQuestionGroup() {
       textarea.addEventListener("input", onAnswerInput);
     });
 
-  updateGroupCompletion();
-  updateAutosaveText();
+restoreOpenQuestionInCurrentGroup();
+updateGroupCompletion();
+updatePreviousGroupButton();
+updateAutosaveText();
+}
+
+function restoreOpenQuestionInCurrentGroup() {
+  const group =
+    currentSession.question_groups[currentGroupIndex];
+
+  if (!group) return;
+
+  let questionToOpen =
+    currentSession.current_open_question_id;
+
+  const belongsToCurrentGroup =
+    group.questions.some(question =>
+      question.question_id === questionToOpen
+    );
+
+  if (!questionToOpen || !belongsToCurrentGroup) {
+    const firstPending =
+      group.questions.find(question => {
+        const answer =
+          currentSession.answers[question.question_id] || "";
+
+        return answer.trim().length === 0;
+      });
+
+    questionToOpen =
+      firstPending
+        ? firstPending.question_id
+        : group.questions[0]?.question_id;
+  }
+
+  if (!questionToOpen) return;
+
+  const item =
+    document.querySelector(
+      `.question-item[data-question-id="${CSS.escape(questionToOpen)}"]`
+    );
+
+  if (item) {
+    item.classList.add("open");
+    currentSession.current_open_question_id = questionToOpen;
+    saveDraft();
+  }
 }
 
 function onAnswerInput(event) {
@@ -535,8 +594,8 @@ function updateGroupCompletion() {
       ? "Guardar avance y continuar"
       : "Complete las preguntas para continuar";
 
-  status.textContent =
-    completed ? "Grupo completo" : "Pendiente";
+status.textContent =
+  completed ? "Bloque completo" : "Pendiente";
 
   status.className =
     completed
@@ -545,6 +604,35 @@ function updateGroupCompletion() {
 
   btn.onclick =
     completed ? guardarAvanceYContinuar : null;
+}
+
+function updatePreviousGroupButton() {
+  const btn =
+    document.getElementById("btn_prev_group");
+
+  if (!btn) return;
+
+  btn.disabled =
+    currentGroupIndex === 0;
+
+  btn.onclick =
+    currentGroupIndex > 0 ? volverBloqueAnterior : null;
+}
+
+function volverBloqueAnterior() {
+  if (currentGroupIndex <= 0) return;
+
+  currentGroupIndex--;
+
+  currentSession.current_group_index =
+    currentGroupIndex;
+
+  currentSession.last_saved_at =
+    new Date().toISOString();
+
+  saveDraft();
+  renderQuestionGroup();
+  window.scrollTo(0, 0);
 }
 
 function guardarAvanceYContinuar() {
@@ -747,9 +835,23 @@ function detectarBorradorInicial() {
       : "sin hora registrada";
 
   resumeSummary.textContent =
-    `Se encontró una captura guardada de ${draft.person_name || "usuario"} · ${draft.area_name || "área no definida"} · ${draft.level_name || "nivel no definido"}. Último guardado local: ${dateText}.`;
+    `Se encontró una captura guardada de ${draft.person_name || "usuario"} · ${draft.position || "cargo no definido"} · ${draft.area_name || "área no definida"} · ${draft.level_name || "nivel no definido"}. Último guardado local: ${dateText}.`;
+
+  document
+    .getElementById("hero_header")
+    .classList.add("hidden");
+
+  document
+    .getElementById("initial_card")
+    .classList.add("hidden");
+
+  document
+    .getElementById("wizard")
+    .classList.add("hidden");
 
   resumeCard.classList.remove("hidden");
+
+  setStatus("");
 }
 
 function getLastDraft() {
@@ -806,29 +908,45 @@ document
   setStatus("");
 
   renderQuestionGroup();
+  window.scrollTo(0, 0);
 }
 
 function discardDetectedDraft() {
   const draft =
     getLastDraft();
 
-  if (!draft) return;
-
-  const confirmDelete =
-    confirm("Se eliminará el avance guardado en este dispositivo. ¿Deseas continuar?");
-
-  if (!confirmDelete) return;
-
-  clearDraft(draft.session_id);
-
-  const resumeCard =
-    document.getElementById("resume_card");
-
-  if (resumeCard) {
-    resumeCard.classList.add("hidden");
+  if (draft) {
+    clearDraft(draft.session_id);
   }
 
-  setStatus("Borrador local eliminado. Puedes iniciar una nueva captura.");
+  currentSession = null;
+  currentGroupIndex = 0;
+  stopAutosaveTimer();
+
+  document
+    .getElementById("resume_card")
+    .classList.add("hidden");
+
+  document
+    .getElementById("hero_header")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("initial_card")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("wizard")
+    .classList.add("hidden");
+
+  document.getElementById("person_name").value = "";
+  document.getElementById("position").value = "";
+  document.getElementById("area_select").value = "";
+  document.getElementById("level_select").value = "";
+
+  updateInitialButtonState();
+
+  setStatus("Inicio limpio. Puedes comenzar una nueva captura.");
 }
 
 function formatLocalTime(isoString) {
@@ -956,46 +1074,6 @@ function stopAutosaveTimer() {
   if (autosaveTimer) {
     clearInterval(autosaveTimer);
     autosaveTimer = null;
-  }
-}
-
-function detectarBorradorInicial() {
-  const lastSessionId =
-    localStorage.getItem("KC_LAST_DRAFT_SESSION");
-
-  if (!lastSessionId) return;
-
-  const raw =
-    localStorage.getItem(getDraftKey(lastSessionId));
-
-  if (!raw) return;
-
-  try {
-    const draft =
-      JSON.parse(raw);
-
-    if (!draft || !draft.person_name) return;
-
-    setStatus(
-      "Se detectó una captura en progreso. Ingresa los mismos datos y presiona “Continuar al banco de preguntas” para retomarla."
-    );
-
-    const nameInput =
-      document.getElementById("person_name");
-
-    const positionInput =
-      document.getElementById("position");
-
-    if (nameInput && !nameInput.value) {
-      nameInput.value = draft.person_name || "";
-    }
-
-    if (positionInput && !positionInput.value) {
-      positionInput.value = draft.position || "";
-    }
-
-  } catch (error) {
-    console.warn("No se pudo leer el borrador local.", error);
   }
 }
 

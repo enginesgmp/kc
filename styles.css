@@ -691,13 +691,6 @@ button:disabled {
   cursor: pointer;
 }
 
-.question-item.completed .question-label::after {
-  content: " · puede editarse";
-  font-weight: 500;
-  color: var(--success);
-  font-size: 13px;
-}
-
 /* Suavizar encabezado de preguntas */
 .question-item .question-toggle {
   background: #ffffff !important;
@@ -760,4 +753,77 @@ button:disabled {
 .question-item.completed .check-icon {
   background: var(--success);
   color: #ffffff;
+}
+
+/* =====================================================
+   Ajuste final: encabezado de preguntas más suave
+   ===================================================== */
+
+button.question-toggle,
+button.question-toggle:hover,
+button.question-toggle:focus,
+button.question-toggle:active,
+.question-item button.question-toggle,
+.question-item button.question-toggle:hover,
+.question-item button.question-toggle:focus,
+.question-item button.question-toggle:active {
+  background: #f8fbfd !important;
+  color: #1f2933 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Pregunta pendiente */
+.question-item.pending {
+  background: #ffffff !important;
+  border-color: #d8e0ea !important;
+}
+
+.question-item.pending button.question-toggle {
+  background: #f8fbfd !important;
+}
+
+.question-item.pending button.question-toggle:hover {
+  background: #eef3f8 !important;
+}
+
+.question-item.pending .question-label {
+  color: #1f2933 !important;
+}
+
+.question-item.pending .question-state {
+  color: #687386 !important;
+}
+
+/* Pregunta completada */
+.question-item.completed {
+  background: #f6fcf8 !important;
+  border-color: rgba(22, 128, 60, 0.28) !important;
+}
+
+.question-item.completed button.question-toggle {
+  background: #f6fcf8 !important;
+}
+
+.question-item.completed button.question-toggle:hover {
+  background: #eef8f2 !important;
+}
+
+.question-item.completed .question-label {
+  color: #1f2933 !important;
+}
+
+.question-item.completed .question-state {
+  color: #16803c !important;
+  font-weight: 700;
+}
+
+/* Icono pendiente y completado */
+.question-item.pending .check-icon {
+  background: #e5ebf2 !important;
+}
+
+.question-item.completed .check-icon {
+  background: #16803c !important;
+  color: #ffffff !important;
 }

@@ -439,30 +439,44 @@ document.getElementById("group_subtitle").textContent =
     questionsContainer.appendChild(item);
   });
 
-  document
-    .querySelectorAll(".question-toggle")
-    .forEach(button => {
-button.addEventListener("click", () => {
-  const item =
-    button.closest(".question-item");
+document
+  .querySelectorAll(".question-toggle")
+  .forEach(button => {
+    button.addEventListener("click", () => {
+      if (isBusy) return;
 
-  item.classList.toggle("open");
+      const item =
+        button.closest(".question-item");
 
-  if (item.classList.contains("open")) {
-    currentSession.current_open_question_id =
-      item.dataset.questionId;
-  } else if (
-    currentSession.current_open_question_id === item.dataset.questionId
-  ) {
-    currentSession.current_open_question_id = null;
-  }
+      if (!item) return;
 
-  currentSession.current_group_index =
-    currentGroupIndex;
+      const questionId =
+        item.dataset.questionId;
 
-  saveDraft();
-});
+      const isOpen =
+        item.classList.contains("open");
+
+      item.classList.toggle("open", !isOpen);
+
+      if (!isOpen) {
+        currentSession.current_open_question_id =
+          questionId;
+      } else if (
+        currentSession.current_open_question_id === questionId
+      ) {
+        currentSession.current_open_question_id = null;
+      }
+
+      currentSession.current_group_index =
+        currentGroupIndex;
+
+      currentSession.last_saved_at =
+        new Date().toISOString();
+
+      saveDraft();
+      updateAutosaveText();
     });
+  });
 
   document
     .querySelectorAll("#questions_container textarea")

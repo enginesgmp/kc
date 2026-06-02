@@ -697,3 +697,67 @@ button:disabled {
   color: var(--success);
   font-size: 13px;
 }
+
+/* Suavizar encabezado de preguntas */
+.question-item .question-toggle {
+  background: #ffffff !important;
+  color: var(--text) !important;
+  border-radius: 0;
+}
+
+.question-item .question-toggle:hover {
+  background: #f6f9fc !important;
+}
+
+/* Pregunta pendiente */
+.question-item.pending {
+  background: #ffffff;
+  border-color: var(--border);
+}
+
+.question-item.pending .question-toggle {
+  background: #ffffff !important;
+}
+
+.question-item.pending .question-label {
+  color: #1f2933;
+}
+
+.question-item.pending .question-state {
+  color: #687386;
+}
+
+/* Pregunta completada */
+.question-item.completed {
+  background: #f6fcf8;
+  border-color: rgba(22, 128, 60, 0.28);
+}
+
+.question-item.completed .question-toggle {
+  background: #f6fcf8 !important;
+  color: #1f2933 !important;
+}
+
+.question-item.completed .question-toggle:hover {
+  background: #eef8f2 !important;
+}
+
+.question-item.completed .question-label {
+  color: #1f2933;
+}
+
+.question-item.completed .question-state {
+  color: var(--success);
+  font-weight: 700;
+}
+
+/* Iconos más suaves */
+.check-icon {
+  background: #eef3f8;
+  color: #ffffff;
+}
+
+.question-item.completed .check-icon {
+  background: var(--success);
+  color: #ffffff;
+}

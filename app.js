@@ -8,6 +8,7 @@ const AUTOSAVE_INTERVAL_MS = 60000;
 let currentSession = null;
 let currentGroupIndex = 0;
 let autosaveTimer = null;
+let isBusy = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
   await cargarConfiguracion();
@@ -622,6 +623,7 @@ function updatePreviousGroupButton() {
 }
 
 function volverBloqueAnterior() {
+ if (isBusy) return;
   if (currentGroupIndex <= 0) return;
 
   currentGroupIndex--;
@@ -638,6 +640,8 @@ function volverBloqueAnterior() {
 }
 
 async function guardarAvanceYContinuar() {
+  if (isBusy) return;
+
   const group =
     currentSession.question_groups[currentGroupIndex];
 
@@ -682,19 +686,11 @@ async function guardarAvanceYContinuar() {
     return;
   }
 
-  const btn =
-    document.getElementById("btn_save_block");
-
-  const originalText =
-    btn ? btn.textContent : "";
-
   try {
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = "Guardando preguntas...";
-    }
-
-    setStatus("Guardando preguntas...");
+    setBusy(
+      "Guardando preguntas",
+      "Estamos guardando las respuestas de este bloque. Por favor espera."
+    );
 
     const result =
       await saveQuestionBlockProgress(payload);
@@ -755,8 +751,12 @@ async function guardarAvanceYContinuar() {
       renderFinalScreen();
     }
 
+    clearBusy();
+
   } catch (error) {
     console.error(error);
+
+    clearBusy();
 
     setStatus("Error guardando preguntas: " + error.message);
 
@@ -766,11 +766,6 @@ async function guardarAvanceYContinuar() {
       confirmText: "Entendido",
       cancelText: "Cerrar"
     });
-
-    if (btn) {
-      btn.disabled = false;
-      btn.textContent = originalText || "Guardar bloque y continuar";
-    }
   }
 }
 
@@ -831,6 +826,37 @@ async function checkQuestionBlockExists(payload) {
 }
 
 function renderFinalScreen() {
+    const totalQuestionsCheck =
+    currentSession.questions.length;
+
+  const answeredQuestionsCheck =
+    countAnsweredQuestions();
+
+  if (answeredQuestionsCheck < totalQuestionsCheck) {
+    const firstPendingIndex =
+      currentSession.question_groups.findIndex(group =>
+        group.questions.some(question => {
+          const answer =
+            currentSession.answers[question.question_id] || "";
+
+          return answer.trim().length === 0;
+        })
+      );
+
+    if (firstPendingIndex >= 0) {
+      currentGroupIndex =
+        firstPendingIndex;
+
+      currentSession.current_group_index =
+        currentGroupIndex;
+
+      saveDraft();
+      renderQuestionGroup();
+      setStatus("Aún existen preguntas pendientes. Revisa el bloque señalado.");
+      window.scrollTo(0, 0);
+      return;
+    }
+  }
   const totalQuestions =
     currentSession.questions.length;
 
@@ -871,6 +897,7 @@ function renderFinalScreen() {
 }
 
 async function submitFinalResponse() {
+  if (isBusy) return;
   try {
     const totalQuestions =
       currentSession.questions.length;
@@ -878,12 +905,43 @@ async function submitFinalResponse() {
     const answeredQuestions =
       countAnsweredQuestions();
 
-    if (answeredQuestions < totalQuestions) {
-      alert("Aún existen preguntas pendientes.");
-      return;
-    }
+if (answeredQuestions < totalQuestions) {
+  await showSystemConfirm({
+    title: "Preguntas pendientes",
+    message: "Aún existen preguntas sin responder. Revisa los bloques pendientes antes de enviar la captura final.",
+    confirmText: "Revisar preguntas",
+    cancelText: "Cerrar"
+  });
 
-    setStatus("Enviando respuestas finales...");
+  const firstPendingIndex =
+    currentSession.question_groups.findIndex(group =>
+      group.questions.some(question => {
+        const answer =
+          currentSession.answers[question.question_id] || "";
+
+        return answer.trim().length === 0;
+      })
+    );
+
+  if (firstPendingIndex >= 0) {
+    currentGroupIndex =
+      firstPendingIndex;
+
+    currentSession.current_group_index =
+      currentGroupIndex;
+
+    saveDraft();
+    renderQuestionGroup();
+    window.scrollTo(0, 0);
+  }
+
+  return;
+}
+
+setBusy(
+  "Enviando respuestas",
+  "Estamos registrando la captura final. Por favor espera."
+);
 
     const payload =
       buildFinalPayload();
@@ -906,10 +964,12 @@ async function submitFinalResponse() {
       );
     }
 
-    clearDraft(currentSession.session_id);
-    stopAutosaveTimer();
+clearDraft(currentSession.session_id);
+stopAutosaveTimer();
 
-    setStatus("Respuestas enviadas correctamente.");
+clearBusy();
+
+setStatus("Respuestas enviadas correctamente.");
 
     document.getElementById("wizard").innerHTML = `
       <div class="card final-card success">
@@ -919,16 +979,20 @@ async function submitFinalResponse() {
       </div>
     `;
 
-  } catch (error) {
-    console.error(error);
+} catch (error) {
+  console.error(error);
 
-    setStatus("Error enviando respuestas: " + error.message);
+  clearBusy();
 
-    alert(
-      "No se pudo enviar la captura final.\n\n" +
-      error.message
-    );
-  }
+  setStatus("Error enviando respuestas: " + error.message);
+
+  await showSystemConfirm({
+    title: "No se pudo enviar la captura",
+    message: "Ocurrió un inconveniente al enviar las respuestas. Revisa tu conexión e inténtalo nuevamente.",
+    confirmText: "Entendido",
+    cancelText: "Cerrar"
+  });
+}
 }
 
 function buildFinalPayload() {
@@ -1329,6 +1393,66 @@ function showSystemConfirm({ title, message, confirmText, cancelText }) {
     };
   });
 }
+
+function setBusy(title, message) {
+  isBusy = true;
+
+  const overlay =
+    document.getElementById("loading_overlay");
+
+  const titleEl =
+    document.getElementById("loading_title");
+
+  const messageEl =
+    document.getElementById("loading_message");
+
+  if (titleEl) {
+    titleEl.textContent = title || "Procesando";
+  }
+
+  if (messageEl) {
+    messageEl.textContent = message || "Por favor espera un momento.";
+  }
+
+  if (overlay) {
+    overlay.classList.remove("hidden");
+  }
+
+  disableActionButtons(true);
+}
+
+function clearBusy() {
+  isBusy = false;
+
+  const overlay =
+    document.getElementById("loading_overlay");
+
+  if (overlay) {
+    overlay.classList.add("hidden");
+  }
+
+  disableActionButtons(false);
+  updateGroupCompletion();
+  updatePreviousGroupButton();
+}
+
+function disableActionButtons(disabled) {
+  [
+    "btn_save_block",
+    "btn_prev_group",
+    "btn_submit_final",
+    "btn_continue",
+    "btn_resume_draft",
+    "btn_discard_draft"
+  ].forEach(id => {
+    const btn = document.getElementById(id);
+
+    if (btn) {
+      btn.disabled = disabled;
+    }
+  });
+}
+
 
 function setStatus(message) {
   document.getElementById("status").textContent =

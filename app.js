@@ -246,23 +246,14 @@ progress_blocks_saved: {}
     const existingDraft =
       findExistingDraft(personName, area, level);
 
-    if (existingDraft) {
-      const resume = confirm(
-        "Tienes una captura en progreso en este dispositivo.\n\n¿Deseas continuar desde el último avance guardado?"
-      );
-
-      if (resume) {
-        currentSession = existingDraft;
-        currentGroupIndex =
-          existingDraft.current_group_index || 0;
-      } else {
-        clearDraft(existingDraft.session_id);
-        currentGroupIndex = 0;
-        saveDraft();
-      }
-    } else {
-      currentGroupIndex = 0;
-      saveDraft();
+if (existingDraft) {
+  currentSession = existingDraft;
+  currentGroupIndex =
+    existingDraft.current_group_index || 0;
+} else {
+  currentGroupIndex = 0;
+  saveDraft();
+}
     }
 
 document
@@ -1135,14 +1126,20 @@ function getLastDraft() {
   }
 }
 
-function resumeDraftDirectly() {
+async function resumeDraftDirectly() {
   const draft =
     getLastDraft();
 
-  if (!draft) {
-    alert("No se encontró una captura guardada.");
-    return;
-  }
+if (!draft) {
+  await showSystemConfirm({
+    title: "Captura no encontrada",
+    message: "No se encontró una captura guardada en este dispositivo.",
+    confirmText: "Entendido",
+    cancelText: "Cerrar"
+  });
+
+  return;
+}
 
   currentSession = draft;
   currentGroupIndex = draft.current_group_index || 0;

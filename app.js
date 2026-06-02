@@ -144,7 +144,12 @@ async function continuar() {
     levelSelect.value;
 
   if (!personName || !position || !area || !level) {
-    alert("Complete nombre, cargo, área y nivel.");
+    await showSystemConfirm({
+      title: "Datos incompletos",
+      message: "Completa nombre, cargo, área y nivel para continuar.",
+      confirmText: "Entendido",
+      cancelText: "Cerrar"
+    });
     return;
   }
 
@@ -222,10 +227,10 @@ async function continuar() {
     const sessionId =
       crearSessionId();
 
-currentSession = {
-  session_id: sessionId,
-  capture_key: buildCaptureKey(personName, area, level),
-  person_name: personName,
+    currentSession = {
+      session_id: sessionId,
+      capture_key: buildCaptureKey(personName, area, level),
+      person_name: personName,
       position: position,
       area_id: area,
       area_name: areaOption.textContent,
@@ -238,42 +243,41 @@ currentSession = {
       current_group_index: 0,
       questions: flatQuestions,
       question_groups: questionGroups,
-answers: {},
-completed_groups: [],
-progress_blocks_saved: {}
+      answers: {},
+      completed_groups: [],
+      progress_blocks_saved: {}
     };
 
     const existingDraft =
       findExistingDraft(personName, area, level);
 
-if (existingDraft) {
-  currentSession = existingDraft;
-  currentGroupIndex =
-    existingDraft.current_group_index || 0;
-} else {
-  currentGroupIndex = 0;
-  saveDraft();
-}
+    if (existingDraft) {
+      currentSession = existingDraft;
+      currentGroupIndex =
+        existingDraft.current_group_index || 0;
+    } else {
+      currentGroupIndex = 0;
+      saveDraft();
     }
 
-document
-  .getElementById("initial_card")
-  .classList.add("hidden");
+    document
+      .getElementById("initial_card")
+      .classList.add("hidden");
 
-document
-  .getElementById("hero_header")
-  .classList.add("hidden");
+    document
+      .getElementById("hero_header")
+      .classList.add("hidden");
 
-const resumeCard =
-  document.getElementById("resume_card");
+    const resumeCard =
+      document.getElementById("resume_card");
 
-if (resumeCard) {
-  resumeCard.classList.add("hidden");
-}
+    if (resumeCard) {
+      resumeCard.classList.add("hidden");
+    }
 
-document
-  .getElementById("wizard")
-  .classList.remove("hidden");
+    document
+      .getElementById("wizard")
+      .classList.remove("hidden");
 
     startAutosaveTimer();
 
@@ -289,13 +293,14 @@ document
 
     setStatus("Error cargando cuestionarios: " + error.message);
 
-    alert(
-      "Ocurrió un error cargando el banco de preguntas.\n\n" +
-      error.message
-    );
+    await showSystemConfirm({
+      title: "No se pudo cargar el banco de preguntas",
+      message: "Ocurrió un inconveniente cargando los cuestionarios. Revisa la conexión o la configuración e inténtalo nuevamente.",
+      confirmText: "Entendido",
+      cancelText: "Cerrar"
+    });
   }
 }
-
 function flattenQuestions(blocks) {
   const result = [];
 

@@ -235,8 +235,9 @@ async function continuar() {
       current_group_index: 0,
       questions: flatQuestions,
       question_groups: questionGroups,
-      answers: {},
-      completed_groups: []
+answers: {},
+completed_groups: [],
+progress_blocks_saved: {}
     };
 
     const existingDraft =
@@ -589,10 +590,10 @@ function updateGroupCompletion() {
   btn.disabled =
     !completed;
 
-  btn.textContent =
-    completed
-      ? "Guardar avance y continuar"
-      : "Complete las preguntas para continuar";
+btn.textContent =
+  completed
+    ? "Guardar bloque y continuar"
+    : "Complete las preguntas para continuar";
 
 status.textContent =
   completed ? "Bloque completo" : "Pendiente";
@@ -635,34 +636,161 @@ function volverBloqueAnterior() {
   window.scrollTo(0, 0);
 }
 
-function guardarAvanceYContinuar() {
-  const groupId =
-    currentSession.question_groups[currentGroupIndex].group_id;
+async function guardarAvanceYContinuar() {
+  const group =
+    currentSession.question_groups[currentGroupIndex];
 
-  if (!currentSession.completed_groups.includes(groupId)) {
-    currentSession.completed_groups.push(groupId);
+  if (!group) return;
+
+  const groupId =
+    group.group_id;
+
+  const alreadySaved =
+    currentSession.progress_blocks_saved &&
+    currentSession.progress_blocks_saved[groupId];
+
+  const confirmMessage =
+    alreadySaved
+      ? "Este bloque de preguntas ya fue guardado anteriormente.\n\n¿Deseas sobrescribir la información guardada de este bloque?"
+      : "Se guardará el avance de este bloque de preguntas en Drive.\n\n¿Deseas confirmar el guardado?";
+
+  const confirmed =
+    confirm(confirmMessage);
+
+  if (!confirmed) {
+    return;
   }
 
-  currentSession.current_group_index =
-    currentGroupIndex;
+  const btn =
+    document.getElementById("btn_save_block");
 
-  currentSession.last_saved_at =
-    new Date().toISOString();
+  const originalText =
+    btn ? btn.textContent : "";
 
-  saveDraft();
-  updateAutosaveText();
+  try {
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = "Guardando bloque...";
+    }
 
-  if (currentGroupIndex < currentSession.question_groups.length - 1) {
-    currentGroupIndex++;
+    setStatus("Guardando avance del bloque...");
+
+    const payload =
+      buildQuestionBlockPayload(group);
+
+    const result =
+      await saveQuestionBlockProgress(payload);
+
+    if (!result.ok) {
+      throw new Error(
+        result.message ||
+        "No se pudo guardar el bloque de preguntas."
+      );
+    }
+
+    if (!currentSession.progress_blocks_saved) {
+      currentSession.progress_blocks_saved = {};
+    }
+
+    currentSession.progress_blocks_saved[groupId] = {
+      saved_at: new Date().toISOString(),
+      operation: result.data && result.data.operation
+        ? result.data.operation
+        : "",
+      drive_file_id: result.data && result.data.drive_file_id
+        ? result.data.drive_file_id
+        : "",
+      drive_file_url: result.data && result.data.drive_file_url
+        ? result.data.drive_file_url
+        : ""
+    };
+
+    if (!currentSession.completed_groups.includes(groupId)) {
+      currentSession.completed_groups.push(groupId);
+    }
+
     currentSession.current_group_index =
       currentGroupIndex;
 
+    currentSession.last_saved_at =
+      new Date().toISOString();
+
     saveDraft();
-    renderQuestionGroup();
-    window.scrollTo(0, 0);
-  } else {
-    renderFinalScreen();
+    updateAutosaveText();
+
+    setStatus(
+      alreadySaved
+        ? "Bloque actualizado correctamente."
+        : "Bloque guardado correctamente."
+    );
+
+    if (currentGroupIndex < currentSession.question_groups.length - 1) {
+      currentGroupIndex++;
+
+      currentSession.current_group_index =
+        currentGroupIndex;
+
+      saveDraft();
+      renderQuestionGroup();
+      window.scrollTo(0, 0);
+    } else {
+      renderFinalScreen();
+    }
+
+  } catch (error) {
+    console.error(error);
+
+    setStatus("Error guardando bloque: " + error.message);
+
+    alert(
+      "No se pudo guardar el bloque de preguntas.\n\n" +
+      error.message
+    );
+
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = originalText || "Guardar avance y continuar";
+    }
   }
+}
+
+function buildQuestionBlockPayload(group) {
+  const answers =
+    group.questions.map(question => ({
+      question_id: question.question_id,
+      source_type: question.source_type,
+      original_block_id: question.original_block_id,
+      original_block_name: question.original_block_name,
+      question: question.question,
+      answer: currentSession.answers[question.question_id] || ""
+    }));
+
+  return {
+    session_id: currentSession.session_id,
+    person_name: currentSession.person_name,
+    position: currentSession.position,
+    area_id: currentSession.area_id,
+    area_name: currentSession.area_name,
+    level_id: currentSession.level_id,
+    level_name: currentSession.level_name,
+    block_group_id: group.group_id,
+    block_number: group.group_number,
+    questions_count: group.questions.length,
+    answers: answers
+  };
+}
+
+async function saveQuestionBlockProgress(payload) {
+  const response =
+    await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        action: "saveQuestionBlock",
+        payload: payload
+      })
+    });
+
+  return await response.json();
 }
 
 function renderFinalScreen() {

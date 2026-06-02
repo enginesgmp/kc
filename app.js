@@ -656,10 +656,16 @@ function volverBloqueAnterior() {
 async function guardarAvanceYContinuar() {
   if (isBusy) return;
 
+  isBusy = true;
+  disableActionButtons(true);
+
   const group =
     currentSession.question_groups[currentGroupIndex];
 
-  if (!group) return;
+  if (!group) {
+    clearBusy();
+    return;
+  }
 
   const groupId =
     group.group_id;
@@ -697,6 +703,7 @@ async function guardarAvanceYContinuar() {
     });
 
   if (!confirmed) {
+    clearBusy();
     return;
   }
 

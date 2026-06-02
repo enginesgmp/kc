@@ -9,6 +9,7 @@ let currentSession = null;
 let currentGroupIndex = 0;
 let autosaveTimer = null;
 let isBusy = false;
+let isModalOpen = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
   await cargarConfiguracion();
@@ -654,7 +655,7 @@ function volverBloqueAnterior() {
 }
 
 async function guardarAvanceYContinuar() {
-  if (isBusy) return;
+  if (isBusy || isModalOpen) return;
 
   isBusy = true;
   disableActionButtons(true);
@@ -676,6 +677,11 @@ async function guardarAvanceYContinuar() {
   let exists = false;
 
   try {
+    setBusy(
+      "Verificando bloque",
+      "Estamos preparando el guardado de las preguntas. Por favor espera."
+    );
+
     const checkResult =
       await checkQuestionBlockExists(payload);
 
@@ -684,9 +690,15 @@ async function guardarAvanceYContinuar() {
       checkResult.data &&
       checkResult.data.exists === true;
 
+    clearBusy();
+
   } catch (error) {
     console.warn("No se pudo verificar existencia previa del bloque.", error);
+    clearBusy();
   }
+
+  isBusy = true;
+  disableActionButtons(true);
 
   const confirmed =
     await showSystemConfirm({
@@ -709,8 +721,8 @@ async function guardarAvanceYContinuar() {
 
   try {
     setBusy(
-      "Guardando preguntas",
-      "Estamos guardando las respuestas de este bloque. Por favor espera."
+      exists ? "Actualizando preguntas" : "Guardando preguntas",
+      "Estamos procesando las respuestas de este bloque. Por favor espera."
     );
 
     const result =
@@ -1367,6 +1379,12 @@ function crearSessionId() {
 }
 
 function showSystemConfirm({ title, message, confirmText, cancelText }) {
+  if (isModalOpen) {
+    return Promise.resolve(false);
+  }
+
+  isModalOpen = true;
+
   return new Promise(resolve => {
     const modal =
       document.getElementById("system_modal");
@@ -1395,15 +1413,23 @@ function showSystemConfirm({ title, message, confirmText, cancelText }) {
     cancelBtn.textContent =
       cancelText || "Cancelar";
 
+    confirmBtn.disabled = false;
+    cancelBtn.disabled = false;
+
     modal.classList.remove("hidden");
 
     const cleanup = () => {
       modal.classList.add("hidden");
       confirmBtn.onclick = null;
       cancelBtn.onclick = null;
+      confirmBtn.disabled = false;
+      cancelBtn.disabled = false;
+      isModalOpen = false;
     };
 
     confirmBtn.onclick = () => {
+      confirmBtn.disabled = true;
+      cancelBtn.disabled = true;
       cleanup();
       resolve(true);
     };
@@ -1453,8 +1479,11 @@ function clearBusy() {
   }
 
   disableActionButtons(false);
+  
+if (currentSession && document.getElementById("btn_save_block")) {
   updateGroupCompletion();
   updatePreviousGroupButton();
+}
 }
 
 function disableActionButtons(disabled) {

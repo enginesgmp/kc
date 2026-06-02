@@ -430,3 +430,69 @@ button:disabled {
     grid-column: 2;
   }
 }
+
+.hero-subtitle,
+.hero-info p,
+.hero-info li,
+.intro-note,
+.progress-help,
+.question-text {
+  text-align: justify;
+}
+
+.resume-card {
+  background: #ffffff;
+  border: 1px solid rgba(22, 128, 60, 0.28);
+  border-left: 5px solid var(--success);
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+}
+
+.resume-card.hidden {
+  display: none;
+}
+
+.resume-card h3 {
+  margin: 0 0 8px 0;
+  color: var(--success);
+}
+
+.resume-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.resume-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.secondary-button {
+  background: #ffffff;
+  color: var(--primary);
+  border: 1px solid var(--border);
+}
+
+.secondary-button:hover:not(:disabled) {
+  background: #f4f7fa;
+  color: var(--primary-dark);
+}
+
+@media (max-width: 720px) {
+  .resume-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .resume-actions {
+    flex-direction: column;
+  }
+}

@@ -39,9 +39,9 @@
         </select>
       </div>
 
-      <button id="btn_continue">
-        Continuar
-      </button>
+<button id="btn_continue">
+  Continuar al banco de preguntas
+</button>
 
     </div>
 
@@ -49,21 +49,49 @@
 
 <div id="wizard" class="wizard hidden">
 
-  <div class="progress-box">
-    <div id="progress_text">Bloque 1 de 1</div>
-    <div class="progress-bar">
-      <div id="progress_fill"></div>
+  <div class="capture-header">
+    <div>
+      <h2>Banco de preguntas</h2>
+      <p id="participant_summary"></p>
+    </div>
+
+    <div class="autosave-pill">
+      <span class="dot"></span>
+      <span id="autosave_text">Guardado local activo</span>
     </div>
   </div>
 
-  <div class="card block-card">
-    <h2 id="block_title"></h2>
-    <p id="block_objective"></p>
+  <div class="progress-box">
+    <div class="progress-top">
+      <strong>Avance de captura</strong>
+      <span id="progress_percent">0%</span>
+    </div>
+
+    <div class="progress-bar">
+      <div id="progress_fill"></div>
+    </div>
+
+    <p class="progress-help">
+      Responde las preguntas visibles. Tus respuestas se guardan automáticamente en este dispositivo.
+    </p>
+  </div>
+
+  <div class="card question-group-card">
+    <div class="group-head">
+      <div>
+        <h2 id="group_title">Grupo de preguntas</h2>
+        <p id="group_subtitle"></p>
+      </div>
+
+      <div id="group_status" class="group-status pending">
+        Pendiente
+      </div>
+    </div>
 
     <div id="questions_container"></div>
 
-    <button id="btn_save_block">
-      Guardar y cerrar bloque
+    <button id="btn_save_block" disabled>
+      Complete las preguntas para continuar
     </button>
   </div>
 

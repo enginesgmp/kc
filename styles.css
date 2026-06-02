@@ -33,19 +33,35 @@ body {
 }
 
 .hero-header {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-.hero-badge {
-  display: inline-block;
-  background: rgba(31, 78, 120, 0.10);
+.hero-title-main {
+  margin: 0 0 6px 0;
+  font-size: 48px;
+  line-height: 1.05;
+  font-weight: 800;
   color: var(--primary);
-  border: 1px solid rgba(31, 78, 120, 0.18);
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.hero-title-sub {
+  margin: 0 0 18px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #5b6b7f;
+}
+
+.hero-subtitle {
+  font-size: 17px;
+  color: #425466;
+  max-width: 760px;
+  line-height: 1.7;
+  margin-top: 0;
+  margin-bottom: 18px;
 }
 
 .hero-subtitle {
@@ -61,10 +77,10 @@ body {
   background: linear-gradient(135deg, #ffffff 0%, #f6f9fc 100%);
   border: 1px solid var(--border);
   border-left: 5px solid var(--primary);
-  border-radius: 16px;
-  padding: 20px 22px;
+  border-radius: 18px;
+  padding: 24px 26px;
   box-shadow: 0 8px 24px rgba(31, 78, 120, 0.08);
-  max-width: 840px;
+  max-width: 100%;
 }
 
 .hero-info h3 {
@@ -429,6 +445,14 @@ button:disabled {
   .question-state {
     grid-column: 2;
   }
+}
+
+.hero-title-main {
+  font-size: 36px;
+}
+
+.hero-title-sub {
+  font-size: 18px;
 }
 
 .hero-subtitle,

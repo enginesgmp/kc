@@ -1,0 +1,195 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"generation_type": "LEVEL",
+"area": "",
+"level": "Coordinación",
+"blocks": [
+{
+"block_id": "LEVEL_COORD_OPERATIONAL_CONTROL",
+"block_name": "Coordinación práctica, seguimiento y continuidad operativa",
+"source_type": "level",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales tempranas, validaciones no escritas, formas reales de coordinación y aprendizajes que permiten a la coordinación sostener continuidad, evitar bloqueos y reducir reprocesos entre áreas.",
+"questions": [
+{
+"question_id": "COORD_001",
+"ai_category": "seguimiento_real_sin_reportes_formales",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales, datos o comportamientos revisa en la práctica para saber si una coordinación avanza correctamente, más allá de lo que indiquen los reportes formales?",
+"context": "Busca capturar cómo la coordinación hace seguimiento real usando señales operativas, confirmaciones, comportamientos repetidos o información informal que ayuda a anticipar desvíos.",
+"tooltip": "Mencione qué revisa, dónde lo detecta, qué señales le generan duda, cómo confirma el avance real y qué riesgo evita al no depender solo del reporte formal.",
+"expected_answer_structure": [
+"Señales o datos que revisa",
+"Fuente donde los detecta",
+"Cómo confirma el avance real",
+"Riesgo que anticipa",
+"Acción que toma"
+],
+"good_answer_example": "Además del reporte, reviso si las áreas ya confirmaron disponibilidad, si los responsables responden a tiempo y si no hay cambios recientes por chat o llamada. Si una actividad aparece como avanzada pero nadie confirma el siguiente paso, la trato como pendiente hasta validar con el área responsable.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señales o datos",
+"fuente",
+"confirmación",
+"riesgo",
+"acción"
+]
+},
+"incomplete_if": [
+"Respuesta demasiado corta",
+"Solo menciona reportes formales",
+"No incluye señales prácticas",
+"No explica cómo confirma el avance real",
+"No permite extraer reglas SI -> ENTONCES"
+]
+},
+{
+"question_id": "COORD_002",
+"ai_category": "deteccion_temprana_de_bloqueos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales le permiten identificar que una coordinación puede bloquearse antes de que el problema escale a jefatura o afecte a otras áreas?",
+"context": "Permite capturar alertas tempranas que la coordinación reconoce por experiencia antes de que se conviertan en atraso, reproceso o urgencia formal.",
+"tooltip": "Incluya señales como respuestas tardías, responsables no claros, cambios de versión, datos incompletos, áreas que no confirman, solicitudes repetidas o decisiones pendientes.",
+"expected_answer_structure": [
+"Señal temprana de bloqueo",
+"Qué problema anticipa",
+"Área o rol donde suele aparecer",
+"Acción preventiva",
+"Ejemplo práctico"
+],
+"good_answer_example": "Cuando una misma solicitud cambia varias veces o nadie confirma quién debe responder, normalmente se bloquea. En esos casos pido una versión final, identifico al responsable directo y aviso el riesgo antes de que el atraso llegue a jefatura.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal temprana",
+"problema anticipado",
+"área o rol",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No identifica señales tempranas",
+"No explica qué problema anticipan",
+"No menciona áreas o roles involucrados",
+"No incluye acción preventiva",
+"Respuesta genérica"
+]
+},
+{
+"question_id": "COORD_003",
+"ai_category": "manejo_de_informacion_incompleta_entre_areas",
+"required": true,
+"min_characters": 300,
+"question": "¿Cómo maneja en la práctica la información incompleta, contradictoria o desactualizada cuando debe coordinar entre varias áreas?",
+"context": "Busca capturar criterios reales para validar datos, elegir fuentes confiables y evitar que una coordinación avance con información incorrecta.",
+"tooltip": "Explique qué tipo de información suele llegar incompleta, cómo la verifica, qué fuente considera más confiable, cuándo avanza con reserva y cuándo detiene la coordinación.",
+"expected_answer_structure": [
+"Tipo de información incompleta o contradictoria",
+"Forma de verificación",
+"Fuente o persona confiable",
+"Criterio para avanzar o detener",
+"Riesgo que evita"
+],
+"good_answer_example": "Si planificación indica una fecha pero producción informa otra condición real, no avanzo solo con la primera versión. Valido con el responsable operativo, reviso el último cambio comunicado y dejo claro qué dato será tomado como vigente para evitar reproceso entre áreas.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"tipo de información",
+"verificación",
+"fuente confiable",
+"criterio para avanzar o detener",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo dice que pide información",
+"No explica cómo valida",
+"No identifica fuente confiable",
+"No diferencia cuándo avanza o cuándo detiene",
+"No incluye ejemplo real"
+]
+},
+{
+"question_id": "COORD_004",
+"ai_category": "coordinacion_para_evitar_reprocesos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué prácticas de coordinación le ayudan a evitar reprocesos cuando intervienen varias áreas, cambios de prioridad o información que puede modificarse durante el día?",
+"context": "Permite identificar prácticas no escritas que ayudan a mantener alineadas a las áreas y reducir doble trabajo, confusiones o correcciones posteriores.",
+"tooltip": "Mencione cómo confirma prioridades, cómo comunica cambios, qué datos deja claros, qué canales usa, qué acuerdos valida y qué hace cuando una decisión afecta a varias áreas.",
+"expected_answer_structure": [
+"Situación que suele generar reproceso",
+"Práctica de coordinación aplicada",
+"Dato o acuerdo que confirma",
+"Canal utilizado",
+"Error que evita"
+],
+"good_answer_example": "Cuando hay cambio de prioridad durante el día, confirmo primero la versión final con el área solicitante y luego aviso a las áreas afectadas por el mismo canal. También dejo claro qué pedido queda desplazado para evitar que dos equipos trabajen con instrucciones distintas.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación de reproceso",
+"práctica de coordinación",
+"dato o acuerdo",
+"canal",
+"error evitado"
+]
+},
+"incomplete_if": [
+"No identifica situaciones de reproceso",
+"No menciona prácticas concretas",
+"No explica qué dato o acuerdo confirma",
+"No indica el canal usado",
+"Respuesta superficial"
+]
+},
+{
+"question_id": "COORD_005",
+"ai_category": "practicas_aprendidas_para_continuidad_y_comunicacion",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué prácticas aprendidas por experiencia le ayudan a sostener la continuidad y mantener una comunicación clara cuando hay presión, cambios o dependencias entre áreas?",
+"context": "Busca transformar aprendizajes prácticos del nivel de coordinación en recomendaciones útiles para mantener flujo, claridad y continuidad operativa.",
+"tooltip": "Incluya prácticas sobre seguimiento, comunicación de cambios, confirmación de responsables, anticipación de bloqueos, manejo de presión y cierre de pendientes críticos.",
+"expected_answer_structure": [
+"Práctica aprendida",
+"Situación donde aplica",
+"Señal que conviene observar",
+"Recomendación para otra coordinación",
+"Error o bloqueo que ayuda a evitar"
+],
+"good_answer_example": "Aprendí que cuando hay presión no basta con avisar por un grupo general. Conviene confirmar responsable, prioridad y hora límite directamente con quien debe ejecutar. Esto evita que todos crean que alguien más se encargará y que el pendiente quede sin dueño.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica aprendida",
+"situación",
+"señal",
+"recomendación",
+"error o bloqueo evitado"
+]
+},
+"incomplete_if": [
+"Da consejos demasiado generales",
+"No conecta con experiencia práctica",
+"No menciona una situación concreta",
+"No incluye recomendación aplicable",
+"No explica qué error o bloqueo evita"
+]
+}
+]
+}
+]
+}

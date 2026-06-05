@@ -1,0 +1,195 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"generation_type": "LEVEL",
+"area": "",
+"level": "Jefatura",
+"blocks": [
+{
+"block_id": "LVL_JEF_01_GESTION_DIARIA",
+"block_name": "Criterios prácticos de jefatura",
+"source_type": "level",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales tempranas, formas reales de coordinación, validaciones no escritas y aprendizajes de experiencia que ayudan a la jefatura a sostener la operación bajo presión, destrabar situaciones y evitar reprocesos.",
+"questions": [
+{
+"question_id": "LVL_JEF_01_Q01",
+"ai_category": "priorizacion_bajo_presion_recursos_limitados",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué criterios usa para ordenar prioridades cuando hay presión operativa, recursos limitados o varias áreas solicitando atención al mismo tiempo?",
+"context": "Busca capturar cómo la jefatura decide en la práctica qué atender primero cuando no todo puede resolverse al mismo tiempo y existen restricciones reales de personas, tiempo, información, equipos, cámaras, insumos o capacidad.",
+"tooltip": "Registre criterios como impacto en continuidad operativa, inocuidad, cadena de frío, compromisos comerciales, disponibilidad de recursos, dependencia entre áreas, riesgo de atraso, costo de esperar o posibilidad de destrabar a varios equipos.",
+"expected_answer_structure": [
+"Situación de presión o restricción",
+"Criterios usados para priorizar",
+"Información que revisa antes de decidir",
+"Regla práctica SI -> ENTONCES",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Cuando producción, cámaras y despacho tienen urgencias al mismo tiempo, priorizo primero lo que puede afectar inocuidad, cadena de frío o compromiso de exportación. Si una decisión puede detener a varias áreas, la atiendo antes que un pendiente aislado. Si el impacto supera la capacidad del turno, escalo con escenarios claros.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación de presión",
+"criterios de priorización",
+"información revisada",
+"regla SI -> ENTONCES",
+"riesgo"
+]
+},
+"incomplete_if": [
+"respuesta demasiado corta o genérica",
+"solo menciona funciones formales de jefatura",
+"no incluye criterios prácticos",
+"no explica qué información revisa",
+"no permite extraer reglas SI -> ENTONCES"
+]
+},
+{
+"question_id": "LVL_JEF_01_Q02",
+"ai_category": "deteccion_temprana_de_atrasos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales le permiten detectar que una actividad, entrega o coordinación puede atrasarse antes de que el atraso sea evidente?",
+"context": "Busca identificar señales tempranas que la jefatura reconoce por experiencia antes de que aparezca un incumplimiento formal, una urgencia mayor o una escalada desde otra área.",
+"tooltip": "Mencione señales como cambios repetidos de programa, respuestas tardías, falta de responsable claro, acumulación de pendientes, baja disponibilidad de recursos, datos incompletos, alertas informales de supervisores o presión creciente de áreas usuarias.",
+"expected_answer_structure": [
+"Señal temprana detectada",
+"Qué atraso o riesgo anticipa",
+"Dónde o por quién suele aparecer la señal",
+"Acción preventiva de jefatura",
+"Ejemplo práctico"
+],
+"good_answer_example": "Cuando una misma coordinación cambia varias veces de versión o nadie confirma responsable, normalmente se aproxima un atraso o reproceso. En esos casos pido una versión final, confirmo quién decide y valido disponibilidad real antes de que el problema llegue a gerencia.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal temprana",
+"riesgo anticipado",
+"fuente de la señal",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"respuesta demasiado corta o genérica",
+"solo menciona indicadores formales",
+"no identifica señales tempranas",
+"no explica qué riesgo anticipan",
+"no incluye acción preventiva"
+]
+},
+{
+"question_id": "LVL_JEF_01_Q03",
+"ai_category": "coordinacion_presion_y_escalamiento_para_destrabar",
+"required": true,
+"min_characters": 300,
+"question": "¿Cómo actúa en la práctica cuando debe coordinar, presionar o escalar para destrabar una situación que depende de otra área, una decisión pendiente o información que no llega a tiempo?",
+"context": "Permite capturar mecanismos reales de coordinación, presión operativa, negociación y escalamiento que usa la jefatura para recuperar avance sin saltarse controles ni generar más reproceso.",
+"tooltip": "Indique qué tipo de situaciones se bloquean, con qué áreas coordina, qué datos necesita para destrabar, qué canal funciona mejor, cómo presiona sin romper la coordinación y cuándo decide escalar.",
+"expected_answer_structure": [
+"Situación que se bloquea",
+"Área, rol o persona que interviene",
+"Dato o decisión necesaria",
+"Forma de coordinar, presionar o escalar",
+"Criterio para decidir el siguiente paso"
+],
+"good_answer_example": "Cuando un despacho queda detenido por información incompleta, coordino primero con el responsable operativo y luego con calidad o comercio exterior según el caso. Si falta una decisión que afecta cliente, costo o cumplimiento, no lo dejo solo en mensajes; escalo con el dato faltante, el impacto y la hora límite para decidir.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"área o persona de apoyo",
+"dato o decisión necesaria",
+"forma de coordinación o escalamiento",
+"criterio"
+]
+},
+"incomplete_if": [
+"respuesta demasiado corta o genérica",
+"no identifica situaciones bloqueadas",
+"no menciona áreas o roles concretos",
+"no explica cómo destraba",
+"no diferencia coordinación, presión y escalamiento"
+]
+},
+{
+"question_id": "LVL_JEF_01_Q04",
+"ai_category": "validacion_de_control_real",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales, datos o confirmaciones usa para validar que una situación está realmente bajo control y no solo aparentemente resuelta?",
+"context": "Busca capturar validaciones no escritas que la jefatura aplica antes de considerar cerrado un riesgo, atraso, novedad, desviación o coordinación crítica.",
+"tooltip": "Incluya cruces de información, confirmación con responsables, revisión de evidencias, estabilidad del plan, ausencia de nuevos bloqueos, cierre del siguiente paso o señales de que la solución ya fue ejecutada.",
+"expected_answer_structure": [
+"Situación que necesita validar",
+"Señales de control real",
+"Datos o evidencias que revisa",
+"Persona o área que confirma",
+"Riesgo que evita al validar"
+],
+"good_answer_example": "No considero controlado un atraso solo porque alguien dice que ya está revisado. Confirmo si la acción fue ejecutada, si el área siguiente ya puede avanzar y si no quedó un pendiente oculto. Si todavía depende de una aprobación o dato externo, lo mantengo como riesgo abierto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación validada",
+"señales de control",
+"datos o evidencias",
+"confirmación",
+"riesgo evitado"
+]
+},
+"incomplete_if": [
+"respuesta demasiado corta o genérica",
+"solo menciona controles documentados",
+"no explica cómo valida control real",
+"no menciona evidencia o confirmación",
+"no identifica el riesgo que evita"
+]
+},
+{
+"question_id": "LVL_JEF_01_Q05",
+"ai_category": "aprendizajes_practicos_de_liderazgo",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué aprendizajes prácticos le han servido para liderar mejor al equipo, anticipar problemas y evitar reprocesos como jefatura?",
+"context": "Permite transformar experiencia acumulada de liderazgo en recomendaciones útiles para otras jefaturas o personas que asuman ese nivel de responsabilidad.",
+"tooltip": "Mencione aprendizajes sobre comunicación, seguimiento, manejo de presión, lectura del equipo, coordinación con otras áreas, delegación, escalamiento oportuno, cierre de pendientes o prevención de reprocesos.",
+"expected_answer_structure": [
+"Aprendizaje práctico",
+"Situación donde aplica",
+"Señal que conviene observar",
+"Recomendación para otra jefatura",
+"Error o reproceso que ayuda a evitar"
+],
+"good_answer_example": "Aprendí que bajo presión no basta con pedir rapidez; hay que aclarar prioridad, responsable y hora límite. También conviene escuchar al supervisor que está cerca de la operación, porque suele detectar antes los bloqueos reales. Esto evita dar instrucciones generales que después generan reproceso.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal",
+"recomendación",
+"error o reproceso evitado"
+]
+},
+"incomplete_if": [
+"respuesta demasiado corta o genérica",
+"da consejos abstractos sin experiencia práctica",
+"no menciona una situación concreta",
+"no incluye recomendación aplicable",
+"no explica qué error o reproceso evita"
+]
+}
+]
+}
+]
+}

@@ -1,0 +1,188 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"generation_type": "LEVEL",
+"area": "",
+"level": "Operativo",
+"blocks": [
+{
+"block_id": "LEVEL_OPER_EXECUTION_REALITY",
+"block_name": "Criterios prácticos de ejecución operativa",
+"source_type": "level",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales, validaciones no escritas, manejo de excepciones y aprendizajes de experiencia que ayudan al personal operativo a ejecutar correctamente, evitar fallas y sostener la continuidad diaria.",
+"questions": [
+{
+"question_id": "OPER_001",
+"ai_category": "revision_previa_antes_de_iniciar",
+"required": true,
+"min_characters": 250,
+"question": "¿Qué revisa en la práctica antes de iniciar una tarea para evitar fallas, reprocesos o problemas durante la ejecución?",
+"context": "Busca capturar verificaciones prácticas que el personal operativo realiza por experiencia antes de comenzar una actividad, más allá de lo indicado formalmente.",
+"tooltip": "Mencione qué datos, materiales, condiciones, herramientas, equipos, permisos, instrucciones o señales revisa antes de iniciar, y qué puede pasar si no lo valida.",
+"expected_answer_structure": [
+"Tarea o situación antes de iniciar",
+"Aspectos que revisa",
+"Señal de que algo no está listo",
+"Acción antes de continuar",
+"Falla que evita"
+],
+"good_answer_example": "Antes de iniciar reviso que la información coincida con lo solicitado, que el material esté disponible, que el equipo esté en condiciones y que no haya una instrucción reciente diferente. Si falta un dato o la orden no está clara, consulto antes de avanzar porque después puede tocar repetir el trabajo.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspectos revisados",
+"señal de alerta",
+"acción previa",
+"falla evitada"
+]
+},
+"incomplete_if": [
+"Respuesta demasiado corta",
+"Solo menciona pasos formales",
+"No incluye revisiones prácticas",
+"No explica qué falla evita"
+]
+},
+{
+"question_id": "OPER_002",
+"ai_category": "senales_de_ejecucion_incorrecta",
+"required": true,
+"min_characters": 250,
+"question": "¿Qué señales le indican durante la tarea que algo no está saliendo bien, aunque todavía no se haya generado una falla evidente?",
+"context": "Permite identificar alertas tempranas visibles desde la ejecución diaria que ayudan a prevenir errores, atrasos o reprocesos.",
+"tooltip": "Incluya señales visuales, sonidos, demoras, acumulaciones, cambios de ritmo, instrucciones contradictorias, materiales fuera de lugar, datos que no cuadran o comportamientos inusuales.",
+"expected_answer_structure": [
+"Señal detectada",
+"Dónde o cuándo aparece",
+"Qué problema puede anticipar",
+"Acción que toma",
+"Ejemplo práctico"
+],
+"good_answer_example": "Cuando el material empieza a acumularse, cuando una orden cambia varias veces o cuando el equipo no trabaja al ritmo normal, lo tomo como señal de que algo puede fallar. En ese momento aviso al responsable, reviso la instrucción vigente y evito seguir produciendo con una condición dudosa.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"acción tomada",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No incluye señales reales",
+"Confunde señal con falla final",
+"No explica qué problema anticipa",
+"No menciona qué hace al detectarla"
+]
+},
+{
+"question_id": "OPER_003",
+"ai_category": "manejo_de_tareas_fuera_de_lo_normal",
+"required": true,
+"min_characters": 250,
+"question": "¿Qué hace cuando una tarea no sigue lo normal por cambios, falta de información, condiciones distintas o una situación que no estaba prevista?",
+"context": "Busca capturar cómo el personal operativo maneja excepciones reales sin improvisar, saltarse controles ni avanzar con dudas críticas.",
+"tooltip": "Explique qué casos se salen de lo normal, qué revisa primero, a quién consulta, cuándo se detiene, cuándo continúa y qué cuidado aplica para no generar errores.",
+"expected_answer_structure": [
+"Situación fuera de lo normal",
+"Qué revisa primero",
+"A quién consulta o informa",
+"Criterio para detenerse o continuar",
+"Riesgo que evita"
+],
+"good_answer_example": "Si la tarea llega con una indicación diferente a la habitual, primero reviso si el cambio fue confirmado por el responsable. Si no está claro, me detengo y consulto antes de seguir. Prefiero esperar una confirmación a ejecutar algo que después pueda afectar calidad, trazabilidad o generar reproceso.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación fuera de lo normal",
+"revisión inicial",
+"consulta o aviso",
+"criterio para continuar",
+"riesgo evitado"
+]
+},
+"incomplete_if": [
+"Respuesta superficial",
+"Solo dice que informa al jefe",
+"No explica qué revisa",
+"No diferencia cuándo detenerse o continuar"
+]
+},
+{
+"question_id": "OPER_004",
+"ai_category": "validacion_del_resultado_correcto",
+"required": true,
+"min_characters": 250,
+"question": "¿Cómo valida en la práctica que el resultado de una tarea quedó correctamente realizado antes de entregarlo, cerrarlo o pasarlo a otra persona o área?",
+"context": "Permite capturar validaciones finales no escritas que el personal operativo usa para asegurar que el trabajo quedó bien hecho y no generará reprocesos.",
+"tooltip": "Mencione qué compara, qué revisa visualmente, qué dato confirma, qué señal le indica que está correcto, qué evidencia deja y qué error evita antes de entregar.",
+"expected_answer_structure": [
+"Resultado que debe validar",
+"Revisión o comparación que realiza",
+"Señal de que quedó correcto",
+"Evidencia o confirmación usada",
+"Error que evita"
+],
+"good_answer_example": "Antes de entregar reviso que la cantidad, identificación, condición del producto y datos registrados coincidan con lo solicitado. También verifico si hubo algún cambio durante la tarea. Si algo no cuadra, lo aviso antes de pasarlo a la siguiente área para evitar reproceso o confusión.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"resultado validado",
+"revisión realizada",
+"señal de conformidad",
+"evidencia",
+"error evitado"
+]
+},
+"incomplete_if": [
+"No explica cómo valida",
+"Solo menciona que revisa",
+"No indica señal de resultado correcto",
+"No menciona qué error evita"
+]
+},
+{
+"question_id": "OPER_005",
+"ai_category": "recomendaciones_para_persona_nueva_en_ejecucion",
+"required": true,
+"min_characters": 250,
+"question": "¿Qué recomendaciones prácticas le daría a una persona nueva para ejecutar bien el trabajo diario, evitar errores y reconocer cuándo debe pedir apoyo?",
+"context": "Busca convertir la experiencia operativa acumulada en orientación útil para inducción, aprendizaje y transferencia de conocimiento práctico.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debería asumir, a quién debe acudir, cuándo pedir ayuda y qué errores comunes debería evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Cuándo debe pedir apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no asumir que una instrucción está completa si falta un dato o si hay versiones diferentes. Debe revisar primero la información, confirmar con el responsable cuando tenga duda y avisar apenas vea algo fuera de lo normal. Eso evita errores que después afectan a otras áreas.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"cuándo pedir apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da consejos demasiado generales",
+"No conecta con experiencia práctica",
+"No menciona señales a observar",
+"No explica cuándo pedir apoyo"
+]
+}
+]
+}
+]
+}

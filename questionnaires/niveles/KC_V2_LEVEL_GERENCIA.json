@@ -1,0 +1,195 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"generation_type": "LEVEL",
+"area": "",
+"level": "Gerencia",
+"blocks": [
+{
+"block_id": "LVL_GER_01_VISION_ESTRATEGICA",
+"block_name": "Criterios gerenciales, alertas estratégicas y decisiones críticas",
+"source_type": "level",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales débiles, decisiones implícitas, formas reales de priorización, intervención, escalamiento y aprendizajes estratégicos que utiliza la gerencia para sostener continuidad, control y alineación entre áreas.",
+"questions": [
+{
+"question_id": "LVL_GER_01_Q01",
+"ai_category": "senales_de_atencion_gerencial",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales le indican que un tema ya requiere atención gerencial, aunque todavía no haya sido escalado formalmente por las áreas?",
+"context": "Busca capturar señales débiles o patrones que la gerencia reconoce por experiencia antes de que un tema se convierta en crisis, incumplimiento o conflicto mayor.",
+"tooltip": "Incluya señales como cambios repetidos de prioridad, áreas que no se alinean, retrasos acumulados, datos inconsistentes, presión comercial, riesgo de inocuidad, impacto financiero, clientes sensibles o decisiones que nadie asume.",
+"expected_answer_structure": [
+"Señal que activa atención gerencial",
+"Dónde o cómo aparece",
+"Riesgo que anticipa",
+"Información que valida antes de actuar",
+"Acción gerencial inicial"
+],
+"good_answer_example": "Cuando varias áreas reportan versiones distintas sobre el mismo compromiso o nadie asume la decisión final, lo tomo como señal gerencial. Antes de intervenir valido impacto en cliente, producción, calidad, costo y fecha límite. Si el riesgo afecta exportación, inocuidad o continuidad, convoco a las áreas clave y cierro una decisión con responsable y plazo.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"riesgo anticipado",
+"información validada",
+"acción gerencial",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"responde solo con problemas evidentes",
+"no identifica señales tempranas",
+"no explica por qué requiere atención gerencial",
+"no menciona información que valida",
+"no permite extraer reglas SI -> ENTONCES"
+]
+},
+{
+"question_id": "LVL_GER_01_Q02",
+"ai_category": "priorizacion_critica_entre_areas",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué criterios usa para priorizar temas críticos cuando existe conflicto entre áreas y no todas las necesidades pueden atenderse al mismo tiempo?",
+"context": "Permite capturar la lógica real de arbitraje gerencial cuando compiten producción, calidad, comercial, exportaciones, planificación, finanzas, cámaras, compras u otras áreas.",
+"tooltip": "Mencione criterios como inocuidad, continuidad operacional, compromiso con cliente, impacto financiero, riesgo regulatorio, capacidad disponible, margen, urgencia real, efecto en cadena o costo de no decidir.",
+"expected_answer_structure": [
+"Tipo de conflicto entre áreas",
+"Criterios gerenciales de priorización",
+"Datos que revisa antes de decidir",
+"Regla práctica SI -> ENTONCES",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si comercial solicita un despacho urgente pero producción y calidad advierten restricciones, priorizo según inocuidad, compromiso contractual, disponibilidad real, impacto económico y riesgo de incumplimiento. Si la decisión puede afectar cadena de frío o trazabilidad, ese criterio pesa más que la urgencia comercial.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"conflicto",
+"criterios",
+"datos revisados",
+"regla SI -> ENTONCES",
+"riesgo"
+]
+},
+"incomplete_if": [
+"solo menciona que decide por prioridad",
+"no identifica criterios gerenciales",
+"no menciona datos usados para decidir",
+"no explica el riesgo de decidir mal",
+"no incluye ejemplo real o aplicable"
+]
+},
+{
+"question_id": "LVL_GER_01_Q03",
+"ai_category": "riesgos_no_visibles_desde_operacion",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué riesgos no siempre son visibles desde la operación diaria, pero desde gerencia deben vigilarse porque pueden afectar continuidad, costos, clientes o cumplimiento?",
+"context": "Busca identificar riesgos sistémicos o estratégicos que no aparecen claramente en la ejecución diaria, pero que requieren lectura gerencial y anticipación.",
+"tooltip": "Incluya riesgos relacionados con capacidad, flujo financiero, clientes críticos, exportaciones, documentación, permisos, proveedores, dependencia de personas clave, datos poco confiables, sobrecostos ocultos o deterioro de coordinación.",
+"expected_answer_structure": [
+"Riesgo no visible desde la operación",
+"Señal o dato que lo anticipa",
+"Áreas que podrían verse afectadas",
+"Impacto potencial",
+"Acción preventiva gerencial"
+],
+"good_answer_example": "Un riesgo poco visible es que los cambios frecuentes de programa parezcan ajustes normales, pero acumulen sobrecostos, reprocesos y tensión entre áreas. La señal es el aumento de excepciones, urgencias fuera de canal y decisiones manuales. Desde gerencia conviene revisar la causa sistémica y no solo resolver cada urgencia por separado.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"riesgo no visible",
+"señal",
+"áreas afectadas",
+"impacto",
+"acción preventiva"
+]
+},
+"incomplete_if": [
+"solo enumera problemas operativos evidentes",
+"no identifica riesgo sistémico",
+"no menciona señales de anticipación",
+"no explica impacto gerencial",
+"no propone acción preventiva"
+]
+},
+{
+"question_id": "LVL_GER_01_Q04",
+"ai_category": "intervencion_escalamiento_y_autonomia",
+"required": true,
+"min_characters": 300,
+"question": "¿Cómo decide cuándo intervenir directamente, cuándo escalar a una instancia superior o externa, y cuándo dejar que el equipo resuelva dentro de su autonomía?",
+"context": "Permite capturar límites prácticos de intervención gerencial, criterios de autonomía, escalamiento y contención sin sustituir innecesariamente al equipo.",
+"tooltip": "Explique qué señales activan intervención directa, qué casos se escalan, qué temas debe resolver el equipo, qué información exige antes de intervenir y qué riesgo existe si la gerencia actúa tarde o demasiado pronto.",
+"expected_answer_structure": [
+"Situación o decisión en evaluación",
+"Criterio para intervenir directamente",
+"Criterio para escalar",
+"Criterio para dejar resolver al equipo",
+"Riesgo de intervenir tarde o antes de tiempo"
+],
+"good_answer_example": "Intervengo directamente cuando el tema afecta cliente crítico, inocuidad, costo relevante o continuidad. Escalo si supera la autoridad interna o requiere decisión corporativa, legal, financiera o contractual. Dejo que el equipo resuelva cuando el impacto está dentro de su margen de acción y existe responsable claro con plazo definido.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio de intervención",
+"criterio de escalamiento",
+"criterio de autonomía",
+"riesgo",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"no diferencia intervenir, escalar y delegar",
+"no menciona criterios prácticos",
+"no explica límites de autonomía",
+"no identifica riesgos",
+"respuesta demasiado general"
+]
+},
+{
+"question_id": "LVL_GER_01_Q05",
+"ai_category": "aprendizajes_estrategicos_transferibles",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué aprendizajes estratégicos por experiencia considera que deberían transferirse a otra persona para que pueda tomar mejores decisiones gerenciales en esta empresa?",
+"context": "Busca convertir experiencia gerencial acumulada en conocimiento transferible sobre lectura del negocio, manejo de conflictos, señales críticas, priorización y toma de decisiones bajo incertidumbre.",
+"tooltip": "Incluya aprendizajes sobre lectura de señales débiles, manejo de presión entre áreas, clientes críticos, costos ocultos, personas clave, datos confiables, decisiones no negociables o errores típicos de una gerencia sin contexto.",
+"expected_answer_structure": [
+"Aprendizaje estratégico",
+"Situación donde aplica",
+"Señales que conviene observar",
+"Criterio práctico recomendado",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje clave es no decidir solo con la urgencia visible. En esta operación hay que validar capacidad real, calidad, documentación, costo y efecto en cadena antes de comprometer una respuesta. El error típico es resolver la presión inmediata y crear un problema mayor en producción, cámaras o exportación.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señales",
+"criterio práctico",
+"error evitado"
+]
+},
+"incomplete_if": [
+"da recomendaciones genéricas",
+"no conecta con experiencia gerencial",
+"no menciona señales o criterios",
+"no explica el error que evita",
+"no permite transferir conocimiento a otra persona"
+]
+}
+]
+}
+]
+}

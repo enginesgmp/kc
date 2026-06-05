@@ -1,0 +1,340 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"generation_type": "COMMON",
+"area": "",
+"level": "",
+"blocks": [
+{
+"block_id": "COMMON_001_CONOCIMIENTO_TACITO_TRANSVERSAL",
+"block_name": "Conocimiento tácito transversal",
+"source_type": "common",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales, validaciones, excepciones, formas de coordinación y aprendizajes no escritos que ayudan a trabajar mejor en cualquier área de la empresa.",
+"questions": [
+{
+"question_id": "COMMON_001_Q001",
+"ai_category": "informacion_minima_para_iniciar",
+"required": true,
+"min_characters": 200,
+"question": "¿Qué información mínima necesita confirmar antes de iniciar bien una solicitud, tarea o coordinación, aunque no siempre esté indicada de forma completa?",
+"context": "Busca identificar los datos prácticos que una persona valida por experiencia antes de comenzar, para evitar errores desde el inicio.",
+"tooltip": "Mencione qué datos revisa primero, cómo confirma que están completos, de dónde suelen venir y qué puede pasar si se inicia sin esa validación.",
+"expected_answer_structure": [
+"Información mínima que confirma",
+"Fuente habitual de esa información",
+"Señal de que falta algo importante",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de avanzar confirmo quién solicita, qué se necesita exactamente, fecha requerida, prioridad real y si existe alguna restricción especial. Si la solicitud llega solo con una instrucción general, prefiero aclarar primero porque después puede cambiar el alcance o generar reproceso.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"información mínima",
+"fuente",
+"señal de falta de información",
+"riesgo o consecuencia"
+]
+},
+"incomplete_if": [
+"Responde con actividades generales",
+"No identifica información concreta",
+"No menciona cómo detecta que falta algo",
+"No explica el riesgo de iniciar sin confirmar"
+]
+},
+{
+"question_id": "COMMON_001_Q002",
+"ai_category": "criterios_practicos_de_priorizacion",
+"required": true,
+"min_characters": 200,
+"question": "¿Qué criterios prácticos usa para priorizar cuando tiene varias solicitudes, pendientes o temas abiertos al mismo tiempo?",
+"context": "Permite capturar reglas reales de priorización que suelen depender de impacto, oportunidad, riesgo, dependencia y experiencia.",
+"tooltip": "Incluya criterios como impacto operativo, fecha límite, cliente interno o externo, riesgo de atraso, dependencia de otras áreas, facilidad para destrabar o costo de esperar.",
+"expected_answer_structure": [
+"Criterios que utiliza",
+"Orden práctico de prioridad",
+"Información que revisa antes de decidir",
+"Ejemplo donde aplicó ese criterio"
+],
+"good_answer_example": "Primero reviso si algo puede detener a otra área o afectar una entrega cercana. Luego miro fecha límite, impacto y si tengo información completa. Si una respuesta rápida permite destrabar a varias personas, la priorizo aunque no sea el pendiente más antiguo.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterios",
+"orden de prioridad",
+"información revisada",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"Solo dice que prioriza por urgencia",
+"No explica criterios prácticos",
+"No indica cómo decide el orden",
+"No incluye un ejemplo concreto"
+]
+},
+{
+"question_id": "COMMON_001_Q003",
+"ai_category": "senales_no_formales_de_urgencia",
+"required": true,
+"min_characters": 200,
+"question": "¿Qué señales le indican que una situación debe atenderse rápido, aunque no venga marcada formalmente como urgente?",
+"context": "Busca capturar señales informales de urgencia que se reconocen por experiencia y que no siempre aparecen en sistemas, correos o formatos.",
+"tooltip": "Mencione señales en el tono del pedido, repetición de mensajes, personas involucradas, cercanía de fechas, dependencia operativa, riesgo de bloqueo o cambios de último momento.",
+"expected_answer_structure": [
+"Señales no formales de urgencia",
+"Dónde suelen aparecer",
+"Qué riesgo anticipan",
+"Acción que toma al detectarlas"
+],
+"good_answer_example": "Cuando varias personas preguntan por el mismo tema, cuando aparece una fecha cercana o cuando alguien insiste por un canal directo, lo tomo como señal de posible bloqueo. En esos casos valido rápido el estado real antes de esperar el recorrido normal.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señales",
+"lugar donde aparecen",
+"riesgo anticipado",
+"acción"
+]
+},
+"incomplete_if": [
+"Solo menciona urgencias formales",
+"No identifica señales observables",
+"No explica qué riesgo anticipan",
+"No indica qué hace al detectarlas"
+]
+},
+{
+"question_id": "COMMON_001_Q004",
+"ai_category": "casos_fuera_del_flujo_habitual",
+"required": true,
+"min_characters": 200,
+"question": "¿Qué casos suelen salirse del flujo habitual y requieren manejarse con criterio práctico, coordinación adicional o una validación especial?",
+"context": "Permite identificar excepciones reales que no siempre están documentadas y que requieren experiencia para ser manejadas correctamente.",
+"tooltip": "Describa qué casos son diferentes, qué los vuelve especiales, a quién consulta, qué cuidado adicional aplica y cómo evita confusiones.",
+"expected_answer_structure": [
+"Caso que se sale del flujo habitual",
+"Qué lo hace diferente",
+"Validación o coordinación adicional",
+"Cuidado práctico que aplica"
+],
+"good_answer_example": "Cuando una solicitud llega con poco tiempo y depende de otra área, no sigo el flujo normal sin confirmar disponibilidad. Primero valido si la otra área puede responder, si los datos están completos y si se necesita una autorización antes de avanzar.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso concreto",
+"condición especial",
+"validación adicional",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente el flujo normal",
+"No menciona casos concretos",
+"No identifica una validación adicional",
+"No explica cómo maneja la excepción"
+]
+},
+{
+"question_id": "COMMON_001_Q005",
+"ai_category": "manejo_de_informacion_incompleta_o_contradictoria",
+"required": true,
+"min_characters": 200,
+"question": "¿Cómo maneja una solicitud cuando la información llega incompleta, confusa, contradictoria o por un canal que no le da suficiente confianza?",
+"context": "Busca capturar prácticas reales para validar información antes de actuar y evitar errores por datos incompletos o versiones distintas.",
+"tooltip": "Indique cómo verifica, qué datos no acepta incompletos, a quién consulta, qué fuente considera más confiable y cuándo decide avanzar o esperar.",
+"expected_answer_structure": [
+"Tipo de información incompleta o contradictoria",
+"Forma de verificación",
+"Fuente o persona de apoyo",
+"Criterio para avanzar o esperar"
+],
+"good_answer_example": "Si recibo dos versiones distintas, primero reviso si existe respaldo en sistema, correo o una confirmación reciente. Si el dato puede cambiar la decisión, no avanzo hasta aclararlo con quien originó la solicitud o con la persona que maneja la información actualizada.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"tipo de información",
+"verificación",
+"fuente de apoyo",
+"criterio para avanzar o esperar"
+]
+},
+"incomplete_if": [
+"Solo dice que pide información",
+"No explica cómo valida",
+"No menciona una fuente confiable",
+"No incluye criterio para avanzar o detenerse"
+]
+},
+{
+"question_id": "COMMON_001_Q006",
+"ai_category": "revision_final_antes_de_cerrar",
+"required": true,
+"min_characters": 200,
+"question": "¿Qué revisión final realiza antes de entregar, confirmar, enviar o cerrar algo para asegurarse de que no quede un error, vacío o malentendido?",
+"context": "Permite capturar validaciones prácticas de cierre que previenen reprocesos, reclamos, demoras o correcciones posteriores.",
+"tooltip": "Mencione cruces de información, revisión de datos sensibles, confirmaciones rápidas, consistencia entre versiones, cambios recientes o detalles que revisa antes de cerrar.",
+"expected_answer_structure": [
+"Revisión final que realiza",
+"Momento en que la aplica",
+"Dato o señal que confirma",
+"Error o reproceso que evita"
+],
+"good_answer_example": "Antes de confirmar, reviso que la fecha, responsable, datos de soporte y última instrucción coincidan. También valido si hubo cambios recientes por chat o correo, porque a veces la coordinación real cambia antes de que se actualice el registro formal.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"revisión final",
+"momento",
+"dato confirmado",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Describe controles formales únicamente",
+"No identifica revisiones prácticas",
+"No explica qué confirma",
+"No menciona qué error evita"
+]
+},
+{
+"question_id": "COMMON_001_Q007",
+"ai_category": "senales_tempranas_de_atraso_riesgo_o_reproceso",
+"required": true,
+"min_characters": 200,
+"question": "¿Qué señales tempranas le ayudan a identificar que algo puede atrasarse, generar reproceso o convertirse en un problema mayor?",
+"context": "Busca construir un radar preventivo basado en experiencia diaria, antes de que el problema sea evidente o formalmente reportado.",
+"tooltip": "Incluya señales como respuestas demoradas, datos que cambian, responsables no claros, versiones distintas, mensajes repetidos, dependencia de una sola persona o falta de confirmación.",
+"expected_answer_structure": [
+"Señal temprana detectada",
+"Problema que puede anticipar",
+"Dónde suele aparecer",
+"Acción preventiva que toma"
+],
+"good_answer_example": "Cuando una solicitud cambia varias veces de versión o nadie confirma quién la lidera, normalmente termina en reproceso. En esos casos pido una versión final, confirmo responsable y dejo claro qué información se usará antes de continuar.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal temprana",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas",
+"No explica qué problema anticipan",
+"No indica una acción preventiva",
+"No incluye ejemplo concreto"
+]
+},
+{
+"question_id": "COMMON_001_Q008",
+"ai_category": "personas_areas_datos_o_canales_que_destraban",
+"required": true,
+"min_characters": 200,
+"question": "¿Qué personas, áreas, datos o canales le ayudan realmente a destrabar una situación cuando el avance se queda detenido?",
+"context": "Permite identificar redes reales de coordinación, datos clave y canales prácticos que facilitan resolver bloqueos sin saltarse controles.",
+"tooltip": "Indique qué tipo de situación se detiene, a quién consulta, qué dato suele destrabar, qué canal funciona mejor y cuándo conviene escalar o coordinar directamente.",
+"expected_answer_structure": [
+"Situación que suele detenerse",
+"Persona o área que ayuda a destrabar",
+"Dato clave que permite avanzar",
+"Canal más efectivo"
+],
+"good_answer_example": "Cuando el avance depende de una confirmación que no llega, suele ayudar contactar al responsable operativo directo y no solo dejar el mensaje en el canal general. El dato que destraba normalmente es la disponibilidad real, la fecha posible o quién debe tomar la decisión final.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación detenida",
+"persona o área",
+"dato clave",
+"canal"
+]
+},
+"incomplete_if": [
+"No identifica apoyos concretos",
+"No menciona datos que destraban",
+"No explica cuándo coordina o escala",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "COMMON_001_Q009",
+"ai_category": "detalles_no_escritos_que_hacen_diferencia",
+"required": true,
+"min_characters": 200,
+"question": "¿Qué detalles no escritos hacen diferencia para que una solicitud, coordinación o tarea salga bien desde la primera vez?",
+"context": "Busca capturar aprendizajes pequeños pero críticos que normalmente no aparecen en manuales, formatos o procedimientos.",
+"tooltip": "Mencione detalles de tiempos, forma de pedir o responder, personas clave, datos sensibles, validaciones previas, secuencia conveniente o cuidados aprendidos con experiencia.",
+"expected_answer_structure": [
+"Detalle no escrito",
+"Por qué hace diferencia",
+"Cuándo aplica",
+"Qué error o dificultad evita"
+],
+"good_answer_example": "Un detalle importante es confirmar primero con la persona que maneja la información diaria antes de enviar una respuesta formal. Eso evita comunicar datos que después cambian por una novedad reciente que todavía no está registrada.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"detalle no escrito",
+"importancia",
+"situación donde aplica",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas",
+"No menciona detalles concretos",
+"No explica por qué importan",
+"No indica qué evitan"
+]
+},
+{
+"question_id": "COMMON_001_Q010",
+"ai_category": "recomendacion_practica_para_persona_nueva",
+"required": true,
+"min_characters": 200,
+"question": "¿Qué recomendación práctica le daría a una persona nueva para evitar errores, entender mejor el contexto real y trabajar con mayor seguridad desde el inicio?",
+"context": "Permite transformar experiencia acumulada en orientación útil para aprendizaje organizacional, inducción y transferencia de conocimiento.",
+"tooltip": "Incluya qué debe validar, a quién debería preguntar, qué señales conviene observar, qué no debería asumir y qué práctica le ayudaría a adaptarse mejor.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Persona, área o fuente de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no asumir que la primera información recibida está completa. Antes de avanzar, debe confirmar responsable, fecha real, prioridad y si hubo cambios recientes. También conviene identificar rápido quién conoce la situación operativa actual.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"fuente de apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da consejos demasiado generales",
+"No conecta con experiencia práctica",
+"No menciona qué debe validar",
+"No explica qué error evita"
+]
+}
+]
+}
+]
+}

@@ -1,0 +1,600 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Investigación y Desarrollo",
+"level": null,
+"area_metadata": {
+"area_id": "area_investigacion_desarrollo",
+"display_name": "Investigación y Desarrollo",
+"aliases": [
+"Investigación y Desarrollo",
+"Investigacion y Desarrollo",
+"I+D",
+"ID",
+"R&D",
+"Research and Development",
+"Desarrollo de Productos",
+"Desarrollo de Procesos",
+"Innovación",
+"Investigación Técnica",
+"Desarrollo Técnico"
+],
+"macro_process": "MP-1800 DESARROLLO, INNOVACIÓN Y MEJORA TÉCNICA"
+},
+"blocks": [
+{
+"block_id": "ID_01_FLUJO_ID",
+"block_name": "Conocimiento tácito crítico de Investigación y Desarrollo",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Investigación y Desarrollo que ayudan a gestionar iniciativas, requerimientos técnicos, pruebas, prototipos, validaciones, especificaciones, transferencia operativa y coordinación interárea sin afectar calidad, inocuidad, costo, cliente ni continuidad operativa.",
+"questions": [
+{
+"question_id": "ID_01_Q01",
+"ai_category": "inicio_correcto_caso_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una investigación, prueba, prototipo, validación técnica o desarrollo solicitado al área?",
+"context": "Busca capturar los datos y condiciones críticas que I+D valida por experiencia antes de invertir tiempo, muestras, materiales, análisis, pruebas piloto o coordinación con otras áreas.",
+"tooltip": "Mencione qué dato confirma primero, qué condición técnica u operativa revisa, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso de I+D a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de iniciar una prueba confirmo objetivo técnico, necesidad real, área solicitante, especificación esperada, criterio de aceptación, muestra o material disponible, restricción de costo, fecha requerida y área validadora. Si el requerimiento llega como una idea general sin criterio de éxito, no conviene iniciar una prueba formal porque puede terminar en reproceso o resultado no utilizable.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de I+D",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Investigación y Desarrollo.",
+"No identifica información crítica antes de iniciar.",
+"No menciona objetivo, especificación, criterio de aceptación, muestra, material, costo, fecha o área validadora.",
+"No explica el riesgo técnico u operativo de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "ID_01_Q02",
+"ai_category": "priorizacion_casos_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa I+D para priorizar iniciativas cuando coinciden requerimientos comerciales, problemas técnicos, pruebas pendientes, prototipos, validaciones de Calidad o restricciones de recursos?",
+"context": "Permite capturar cómo I+D decide qué atender primero cuando hay varias iniciativas simultáneas, presión de clientes, recursos limitados, disponibilidad de línea, materiales críticos o riesgo operativo.",
+"tooltip": "Incluya criterios como impacto en cliente, continuidad operativa, riesgo de calidad o inocuidad, factibilidad técnica, disponibilidad de materiales, ahorro esperado, fecha comprometida, costo, validación pendiente o urgencia real.",
+"expected_answer_structure": [
+"Situación de múltiples iniciativas",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden una solicitud comercial, una prueba de mejora interna y un problema técnico que afecta producción, priorizo según impacto en cliente, riesgo de calidad, continuidad operativa, factibilidad y recursos disponibles. Una prueba que evita reclamo o desbloquea producción va antes que una mejora sin fecha crítica.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Investigación y Desarrollo.",
+"No menciona cliente, calidad, inocuidad, factibilidad, materiales, producción, costo o fecha.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "ID_02_Q01",
+"ai_category": "excepciones_flujo_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de I+D suelen salirse del manejo habitual y requieren criterio adicional antes de probar, ajustar, documentar, validar, liberar o escalar una solución?",
+"context": "Busca identificar excepciones reales donde no basta seguir la secuencia normal porque existen requisitos incompletos, resultados ambiguos, muestras insuficientes, materiales alternativos, cambios de cliente o presión por liberar.",
+"tooltip": "Describa casos como cambio de especificación, muestra no representativa, resultado contradictorio, proveedor sin ficha completa, cliente urgente, prueba fallida, material alternativo o validación pendiente de Calidad.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es probar un material alternativo porque el proveedor habitual no tiene stock, pero la ficha técnica no coincide totalmente con la especificación. Antes de continuar se valida con Calidad, Producción y el proveedor si el material puede ensayarse sin comprometer inocuidad, desempeño o requisitos del cliente.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de Investigación y Desarrollo.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "ID_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza I+D para evitar errores importantes en requerimientos, muestras, parámetros, pruebas, prototipos, resultados, especificaciones o liberación de cambios?",
+"context": "Permite capturar revisiones no escritas que previenen pruebas mal diseñadas, resultados no confiables, cambios no aprobados, especificaciones incompletas, sobrecostos o reprocesos con Producción, Calidad, Comercial o proveedores.",
+"tooltip": "Mencione qué compara, qué fuente consulta, qué cruces realiza entre requerimiento, prueba, ficha técnica, resultado y área usuaria, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de aceptar un resultado reviso si la muestra fue representativa, si las condiciones de prueba fueron controladas, si el resultado cumple el criterio definido y si Calidad o Producción validaron el impacto. Si el resultado salió bien pero las condiciones no representan la operación real, no lo trato como validación final.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a I+D."
+]
+},
+{
+"question_id": "ID_03_Q01",
+"ai_category": "senales_tempranas_riesgo_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso, prueba fallida, resultado no confiable, reproceso, sobrecosto, rechazo de Calidad o implementación incompleta en I+D?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte cronogramas, liberaciones, producción, calidad, costos, cliente o compromisos técnicos.",
+"tooltip": "Incluya señales como requerimiento ambiguo, muestra insuficiente, material pendiente, proveedor sin respuesta, resultados variables, cambios repetidos, falta de validación, costo fuera de rango o áreas con criterios distintos.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando una prueba depende de un material nuevo y el proveedor no entrega ficha técnica completa, es señal de posible atraso o validación débil. Antes de ejecutar, se solicita información técnica, se revisa alternativa y se alerta al área solicitante sobre el impacto en fecha.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "ID_03_Q02",
+"ai_category": "dependencias_reales_destrabe_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, proveedores, datos o canales destraban realmente el trabajo cuando hay dudas sobre requisitos, materiales, muestras, pruebas, costos, parámetros, validación o transferencia?",
+"context": "Permite identificar dependencias reales de I+D para resolver bloqueos sin avanzar con supuestos técnicos, comerciales u operativos.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona, área o proveedor que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando no está claro si una alternativa cumple el requisito del cliente, se destraba con Comercial y Calidad revisando especificación, restricción del cliente, historial y criterio de aceptación. Si además afecta costo o proceso, se consulta con Producción y Costos antes de liberar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona, área o proveedor",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Investigación y Desarrollo.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "ID_04_Q01",
+"ai_category": "casos_delicados_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de I+D considera delicados y requieren más experiencia para manejarlos correctamente sin afectar calidad, inocuidad, cliente, costo, producción o cumplimiento técnico?",
+"context": "Busca capturar situaciones donde se necesita criterio técnico-práctico, lectura de riesgo y coordinación fina, no solo aplicación mecánica de una prueba, ficha técnica o protocolo.",
+"tooltip": "Mencione casos como material sustituto, cambio de especificación, producto sensible, resultado ambiguo, validación de vida útil, requisito de cliente, cambio de parámetro, prueba piloto o liberación bajo presión.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es liberar un cambio de material de empaque o insumo técnico. Requiere revisar compatibilidad, especificación, desempeño en línea, costo, aprobación de Calidad y aceptación del cliente si aplica, porque una sustitución mal validada puede generar reclamo, rechazo o reproceso.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "ID_04_Q02",
+"ai_category": "errores_frecuentes_evitar_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en I+D se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten pruebas, especificaciones, costos, calidad, transferencia o implementación?",
+"context": "Permite identificar errores que el personal experimentado previene, como iniciar con requerimiento ambiguo, probar sin criterio de aceptación, usar muestra no representativa, no controlar condiciones, no documentar resultados o liberar cambios sin comunicación suficiente.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es ejecutar una prueba sin acordar primero qué resultado será aceptable. La señal aparece cuando Comercial, Calidad y Producción interpretan el éxito de forma distinta. Para evitarlo, se define criterio de aceptación antes del ensayo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a pruebas, especificaciones, costos, calidad o implementación.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "ID_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar requerimientos, pruebas, prototipos, validaciones, documentación o transferencia a operación sin saltarse controles técnicos, de calidad y de evidencia?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo criterio de aceptación, trazabilidad de pruebas, validación interárea, control de versiones, evidencia suficiente y comunicación a áreas impactadas.",
+"tooltip": "Mencione prácticas como prevalidar alcance, confirmar materiales antes de programar, usar ficha corta de prueba, acordar criterios de aceptación, documentar resultados en el momento o revisar impacto con áreas clave.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es preparar una ficha corta de prueba con objetivo, material, variable, responsable, fecha y criterio de aceptación antes del ensayo. Esto agiliza la ejecución, pero no reemplaza la validación de Calidad ni la documentación del resultado real.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "ID_05_Q02",
+"ai_category": "criterios_no_escritos_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa I+D para decidir si una prueba, prototipo, material alternativo, resultado, especificación, documentación o implementación puede avanzar, ajustarse, repetirse, bloquearse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el procedimiento, resultado, ficha técnica o información disponible no da una respuesta completa ante una condición real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si una prueba cumple técnicamente pero no fue realizada con condiciones representativas de producción, entonces no se libera como validación final; se repite o se programa piloto controlado. Esto evita implementar un cambio que después falle en operación real.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "ID_06_Q01",
+"ai_category": "apoyo_escalamiento_id",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de I+D conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar cliente, calidad, inocuidad, producción, costos, proveedores, documentación o cumplimiento técnico.",
+"tooltip": "Incluya situaciones como prueba fallida, resultado contradictorio, cambio con impacto en cliente, material sustituto, sobrecosto, falta de validación, riesgo de inocuidad, fecha comprometida o proveedor sin respuesta.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona, área o proveedor a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si un cambio mejora el rendimiento pero puede afectar una especificación del cliente, conviene escalar antes de implementarlo. Se debe presentar resultado de prueba, evidencia, impacto técnico, costo, riesgo de calidad y áreas que deben aprobar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área, persona o proveedor",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "ID_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de I+D suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación industrial atunera?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como interpretar resultados de prueba, reconocer muestras representativas, entender productos sensibles, leer restricciones operativas, evaluar requisitos de cliente o coordinar validaciones reales.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en entender cuándo una prueba de laboratorio o escritorio no representa la operación real. Debe aprender a revisar variabilidad del producto, condiciones de línea, parámetros, criterio de Calidad y restricciones de Producción. El error típico es asumir que un resultado pequeño ya sirve para liberar un cambio.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Investigación y Desarrollo.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "ID_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que un requerimiento, prueba, prototipo, resultado, especificación, cambio o transferencia de I+D está listo para avanzar, liberarse, cerrarse o entregarse a otra área?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que una solución de I+D quedó correctamente validada y lista para ser usada por Calidad, Producción, Comercial, Compras u otra área.",
+"tooltip": "Incluya confirmaciones de resultado, criterio de aceptación, evidencia, aprobación de Calidad, validación operativa, costo, documentación actualizada, comunicación a áreas afectadas o ausencia de pendientes críticos.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación técnica, documental u operativa",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una prueba está lista para cerrarse cuando el resultado cumple el criterio de aceptación, las condiciones fueron representativas, la evidencia está documentada, Calidad validó si aplica y las áreas impactadas recibieron la versión actualizada. Si falta aprobación o comunicación, no debería liberarse como cambio final.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando la prueba sale bien.",
+"No menciona evidencia, criterio de aceptación, validación, documentación o comunicación.",
+"No identifica validación interna o del área usuaria.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Investigación y Desarrollo."
+]
+},
+{
+"question_id": "ID_07_Q02",
+"ai_category": "aprendizajes_conservar_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de I+D deberían conservarse porque ayudan a evitar pruebas mal diseñadas, resultados no reproducibles, cambios no validados, reprocesos, atrasos, sobrecostos o problemas de calidad?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes.",
+"tooltip": "Mencione aprendizajes sobre productos sensibles, parámetros críticos, proveedores, criterios de aceptación, muestras representativas, pruebas piloto, documentación, implementación, comunicación con áreas o validaciones previas.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no ejecutar pruebas sin definir primero el criterio de aceptación con el área que usará el resultado. Cuando el criterio se acuerda antes, se evitan discusiones posteriores, repetición de ensayos y retrasos en implementación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "ID_08_Q01",
+"ai_category": "recomendacion_persona_nueva_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en I+D para trabajar con seguridad, evitar errores y aprender más rápido el manejo real de investigaciones, pruebas, prototipos y cambios?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en requerimientos, factibilidad, pruebas, materiales, proveedores, validaciones, documentación, especificaciones e implementación.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona, área o proveedor de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no iniciar una prueba solo porque la solicitud parece urgente. Debe confirmar objetivo, especificación, criterio de aceptación, muestra, materiales, costo, área validadora y evidencia requerida. Si algo no está claro, debe detenerse y validar antes de gastar tiempo o recursos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona investigaciones, pruebas, prototipos, especificaciones, materiales, validación, documentación o implementación.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de I+D."
+]
+},
+{
+"question_id": "ID_08_Q02",
+"ai_category": "riesgos_calidad_inocuidad_cliente_id",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o criterios revisa I+D para detectar si una solución, material, fórmula, parámetro, empaque o cambio técnico puede afectar calidad, inocuidad, cliente, normativa o desempeño en operación?",
+"context": "Busca capturar conocimiento práctico sobre riesgos técnicos que deben revisarse antes de liberar o transferir una solución, especialmente cuando el cambio parece menor pero puede tener impacto en producto, proceso o cliente.",
+"tooltip": "Mencione señales técnicas, antecedentes, requisitos de cliente, validaciones con Calidad, pruebas adicionales, documentación necesaria y criterio para detener o escalar.",
+"expected_answer_structure": [
+"Solución o cambio evaluado",
+"Señales o criterios de riesgo",
+"Validación requerida",
+"Área o persona que confirma",
+"Decisión práctica",
+"Riesgo que se evita"
+],
+"good_answer_example": "Si un material alternativo cambia contacto con producto, apariencia, resistencia, vida útil o requisito del cliente, I+D no lo libera solo por disponibilidad. Primero revisa ficha, antecedentes, prueba representativa, validación de Calidad y aprobación del área usuaria para evitar rechazo o incumplimiento.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"solución o cambio",
+"señales o criterios",
+"validación",
+"área o persona",
+"decisión",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo menciona que revisa Calidad de forma general.",
+"No identifica señales o criterios técnicos concretos.",
+"No menciona cliente, inocuidad, normativa, desempeño o calidad.",
+"No indica cuándo detener o escalar.",
+"No explica el riesgo evitado."
+]
+}
+]
+}
+]
+}

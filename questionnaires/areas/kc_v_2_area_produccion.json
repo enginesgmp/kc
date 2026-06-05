@@ -1,0 +1,599 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Producción",
+"level": null,
+"area_metadata": {
+"area_id": "area_produccion",
+"display_name": "Producción",
+"aliases": [
+"Producción",
+"Produccion",
+"Área de Producción",
+"Production",
+"Operaciones de Planta",
+"Manufactura",
+"Proceso Productivo",
+"Planta",
+"Líneas de Producción",
+"Ejecución Productiva"
+],
+"macro_process": "MP-1300 PLANIFICACIÓN, PRODUCCIÓN Y CONTROL OPERATIVO"
+},
+"blocks": [
+{
+"block_id": "PROD_01_FLUJO_PRODUCCION",
+"block_name": "Conocimiento tácito crítico de Producción",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Producción que ayudan a ejecutar el plan, sostener continuidad operativa, controlar calidad e inocuidad, coordinar recursos, manejar desviaciones y cerrar correctamente la operación.",
+"questions": [
+{
+"question_id": "PROD_01_Q01",
+"ai_category": "inicio_correcto_caso_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una jornada, línea, lote, turno, cambio de producto o ejecución del plan de producción?",
+"context": "Busca capturar los datos y condiciones críticas que Producción valida por experiencia antes de arrancar una operación, asignar recursos, usar materiales o comprometer cumplimiento del plan.",
+"tooltip": "Mencione qué dato confirma primero, qué condición operativa o de calidad revisa, qué señal le indica que no debe iniciar y qué riesgo existe si arranca con información incompleta.",
+"expected_answer_structure": [
+"Caso de producción a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de iniciar una línea confirmo plan vigente, producto, lote, materia prima, materiales, personal, equipo disponible, limpieza, liberación de Calidad, capacidad de cámaras y prioridad del turno. Si el material aparece disponible pero no está liberado o identificado, no conviene iniciar porque puede generar reproceso, pérdida de trazabilidad o producto no conforme.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de producción",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Producción.",
+"No identifica información crítica antes de iniciar.",
+"No menciona plan, lote, materiales, personal, equipo, calidad, cámaras o limpieza.",
+"No explica el riesgo operativo, de calidad o trazabilidad de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "PROD_01_Q02",
+"ai_category": "priorizacion_casos_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Producción para priorizar líneas, lotes, pedidos, turnos, personal o recursos cuando existen restricciones, atrasos o varias necesidades al mismo tiempo?",
+"context": "Permite capturar cómo Producción decide qué atender primero cuando hay presión por cumplimiento del plan, falta de personal, equipos detenidos, materiales limitados, cámaras saturadas o pedidos críticos.",
+"tooltip": "Incluya criterios como fecha compromiso, cliente, criticidad del pedido, disponibilidad de materia prima, capacidad de línea, ocupación de cámaras, calidad, eficiencia, seguridad o impacto en despacho.",
+"expected_answer_structure": [
+"Situación de múltiples necesidades",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden dos líneas con recursos limitados, priorizo según plan, fecha compromiso, materia prima liberada, capacidad de cámaras, pedido crítico y disponibilidad de personal. Si una urgencia comercial no tiene materiales listos, no desplazo una producción ejecutable sin validar con Planificación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Producción.",
+"No menciona plan, línea, material, cámaras, calidad, despacho, personal o fecha compromiso.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "PROD_02_Q01",
+"ai_category": "excepciones_flujo_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Producción suelen salirse del manejo habitual y requieren criterio adicional antes de arrancar, continuar, detener, reprocesar, segregar, cambiar secuencia o escalar?",
+"context": "Busca identificar excepciones reales donde no basta seguir el programa porque existen materiales no liberados, cámaras saturadas, fallas de equipo, personal incompleto, desviaciones de calidad o cambios urgentes.",
+"tooltip": "Describa casos como lote dudoso, línea con falla intermitente, material incompleto, liberación pendiente, producto fuera de especificación, cambio de último momento o restricción de cámara.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es cuando el plan indica producir, pero la materia prima no está liberada por Calidad o la cámara no tiene capacidad. Antes de continuar se valida estado, alternativa de secuencia y riesgo con Planificación, Calidad y Cámaras para evitar reproceso o bloqueo posterior.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de Producción.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "PROD_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Producción para evitar errores importantes en lote, material, línea, equipo, limpieza, personal, cámara, trazabilidad, calidad o cierre del turno?",
+"context": "Permite capturar revisiones no escritas que previenen producto no conforme, mezcla de lotes, paradas evitables, pérdida de trazabilidad, reprocesos, demoras o cierres operativos incompletos.",
+"tooltip": "Mencione qué compara, qué revisa físicamente, qué dato valida con otra área, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de arrancar comparo plan, etiqueta del lote, estado de calidad, materiales físicos, limpieza de línea, personal asignado y disponibilidad de cámara. Si el dato del sistema no coincide con lo físico o con Calidad, se detiene la preparación hasta aclarar para evitar mezcla o uso indebido.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara o revisa.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Producción."
+]
+},
+{
+"question_id": "PROD_03_Q01",
+"ai_category": "senales_tempranas_riesgo_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso, baja eficiencia, merma elevada, falla de línea, saturación de cámaras, riesgo de calidad o incumplimiento del plan?",
+"context": "Busca construir un radar de alertas específicas de Producción antes de que el problema afecte rendimiento, continuidad, calidad, despacho, costos o cumplimiento operativo.",
+"tooltip": "Incluya señales como avance menor al esperado, paradas repetidas, material incompleto, cámaras sin espacio, personal insuficiente, producto con variación, equipo inestable, merma fuera de patrón o plan con cambios constantes.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando el avance del turno queda por debajo del plan horario y empiezan paradas menores repetidas, es señal de posible incumplimiento. Antes de esperar el cierre, se revisa causa, personal, equipo, materiales y se coordina soporte con Mantenimiento o Planificación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "PROD_03_Q02",
+"ai_category": "dependencias_reales_destrabe_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, datos o canales destraban realmente el trabajo cuando hay dudas sobre plan, lote, materia prima, calidad, cámaras, equipos, mantenimiento, personal, materiales o despacho?",
+"context": "Permite identificar dependencias reales de Producción para resolver bloqueos sin avanzar con información incompleta ni comprometer calidad, trazabilidad o continuidad operativa.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando un lote aparece disponible pero no está claro si puede usarse, se destraba con Calidad, Bodega y Cámaras revisando estado, ubicación, cantidad y liberación. Si afecta cumplimiento del plan, se valida con Planificación antes de cambiar la secuencia.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Producción.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "PROD_04_Q01",
+"ai_category": "casos_delicados_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Producción considera delicados y requieren más experiencia para manejarlos correctamente sin afectar seguridad, calidad, inocuidad, trazabilidad, continuidad, despacho o costos?",
+"context": "Busca capturar situaciones donde se necesita criterio operativo, lectura de riesgo y coordinación fina, no solo ejecución mecánica del plan o de una instrucción de turno.",
+"tooltip": "Mencione casos como producto dudoso, mezcla potencial de lotes, línea crítica detenida, material sin liberación, reproceso, cámara saturada, falta de personal clave, desviación de calidad o presión por entregar.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es decidir si continuar o detener una línea cuando hay desviación leve pero repetida en producto. Requiere revisar tendencia, lote afectado, criterio de Calidad, impacto en plan y riesgo de reproceso, porque seguir sin validar puede ampliar el problema.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "PROD_04_Q02",
+"ai_category": "errores_frecuentes_evitar_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Producción se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten calidad, trazabilidad, eficiencia, seguridad, cámaras o cumplimiento del plan?",
+"context": "Permite identificar errores que el personal experimentado previene, como iniciar sin validar liberación, mezclar lotes, registrar tarde, no comunicar restricciones, subestimar una falla menor o cerrar turno sin pendientes claros.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es confiar solo en el programa sin verificar estado físico y liberación del material. La señal aparece cuando el sistema muestra disponibilidad pero Bodega o Calidad no confirman. Para evitarlo, se valida antes del arranque y se deja evidencia.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a calidad, trazabilidad, eficiencia, seguridad o plan.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "PROD_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar arranque, cambios de línea, asignación de personal, control en proceso, coordinación con soporte o cierre de turno sin saltarse controles críticos?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo liberación de Calidad, trazabilidad, limpieza, seguridad, registros, validación de materiales, comunicación de cambios y cierre correcto.",
+"tooltip": "Mencione prácticas como prevalidar materiales, revisar restricciones antes del turno, preparar personal clave, confirmar cámaras, usar checklist, registrar desviaciones en el momento o validar cambios con áreas soporte.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es validar materiales, limpieza, personal y cámara antes del arranque del turno. Esto reduce esperas, pero no reemplaza la liberación de Calidad ni la confirmación de lote y trazabilidad antes de producir.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "PROD_05_Q02",
+"ai_category": "criterios_no_escritos_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Producción para decidir si una línea, lote, material, desviación, cambio de plan, reproceso, segregación o cierre puede avanzar, detenerse, ajustarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el procedimiento, el sistema, el plan o la información disponible no da una respuesta completa ante una condición real de planta.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si un lote tiene identificación dudosa o liberación no confirmada, entonces no se usa aunque el plan lo requiera; se detiene y se valida con Calidad y Bodega. Esto evita pérdida de trazabilidad o producto no conforme.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "PROD_06_Q01",
+"ai_category": "apoyo_escalamiento_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Producción conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el turno o la línea?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar seguridad, calidad, inocuidad, trazabilidad, cumplimiento del plan, cámaras, despacho, costos o relación con otras áreas.",
+"tooltip": "Incluya situaciones como desviación de calidad, lote dudoso, equipo crítico detenido, cámara saturada, personal insuficiente, falta de material, riesgo de seguridad, atraso relevante o cambio urgente no validado.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si una desviación puede afectar trazabilidad o calidad del producto, conviene escalar antes de continuar. Se debe presentar lote, línea, hora, cantidad afectada, evidencia, acción tomada y decisión requerida de Calidad o jefatura.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "PROD_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Producción suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria de planta?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como reconocer señales de atraso, interpretar variaciones del producto, coordinar con soporte, leer prioridades reales o manejar excepciones de línea.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en distinguir cuándo una variación del proceso es normal y cuándo anticipa reproceso o atraso. Eso requiere observar turnos, comparar con indicadores, escuchar al operador experto y validar con Calidad o jefatura antes de decidir.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Producción.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "PROD_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una línea, lote, turno, reproceso, segregación, entrega a cámara, cierre de producción o pase de turno está listo para avanzar, liberarse o cerrarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que una operación quedó correctamente ejecutada, registrada, comunicada y segura para la siguiente etapa.",
+"tooltip": "Incluya confirmaciones de cantidad, lote, calidad, registros, limpieza, cámara, trazabilidad, responsable, pendientes, desviaciones, conformidad del área receptora o evidencia de cierre.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación operativa, documental o de calidad",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Un lote está listo para entregarse cuando cantidad, identificación, estado de Calidad, registros, ubicación de cámara, trazabilidad y comunicación al área receptora están confirmados. Si falta registro o estado de liberación, no debería tratarse como cierre completo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando se termina de producir.",
+"No menciona lote, calidad, registros, trazabilidad, cámaras, pendientes o comunicación.",
+"No identifica validación interna o del área receptora.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Producción."
+]
+},
+{
+"question_id": "PROD_07_Q02",
+"ai_category": "aprendizajes_conservar_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Producción deberían conservarse porque ayudan a evitar atrasos, mermas, reprocesos, paradas, errores de lote, fallas de coordinación o pérdida de continuidad entre turnos?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes en planta.",
+"tooltip": "Mencione aprendizajes sobre líneas críticas, cambios de producto, cámaras, materiales, personal clave, señales de merma, coordinación con Calidad, cierre de turno, fallas frecuentes o comunicación de restricciones.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no dejar restricciones pendientes solo en conversación verbal al cierre del turno. Conviene registrar lote, línea, causa, acción tomada y responsable siguiente para evitar que el problema se repita o se pierda la trazabilidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "PROD_08_Q01",
+"ai_category": "recomendacion_persona_nueva_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Producción para trabajar con seguridad, evitar errores y aprender más rápido el manejo real de líneas, turnos, lotes, materiales y coordinación operativa?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en arranque, ejecución, controles, calidad, trazabilidad, cámaras, cierre de turno y manejo de desviaciones.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no iniciar ni cerrar una operación solo porque el plan lo indica. Debe confirmar material físico, liberación, lote, limpieza, equipo, personal, registros y cámara disponible. Si algo no cuadra, debe detenerse y consultar antes de producir o entregar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona líneas, turnos, lotes, materiales, calidad, cámaras, registros o coordinación.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Producción."
+]
+},
+{
+"question_id": "PROD_08_Q02",
+"ai_category": "restricciones_criticas_continuidad_produccion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué líneas, productos, equipos, materiales, cámaras, roles o condiciones requieren seguimiento especial porque una variación podría afectar directamente continuidad, calidad, inocuidad, despacho o rendimiento?",
+"context": "Busca capturar conocimiento específico sobre puntos críticos de Producción que deben vigilarse por experiencia, aunque no siempre aparezcan como urgencia formal en el plan.",
+"tooltip": "Mencione elementos críticos, señales que observa, frecuencia práctica de revisión, área relacionada, contingencia posible y qué impacto se evita.",
+"expected_answer_structure": [
+"Elemento crítico",
+"Motivo de criticidad",
+"Señal que debe vigilarse",
+"Responsable o área relacionada",
+"Contingencia o acción preventiva",
+"Impacto que se evita"
+],
+"good_answer_example": "Las cámaras con ocupación alta requieren seguimiento especial porque pueden bloquear continuidad y entrega de producto. Una señal es que el plan aumenta salida hacia cámara sin confirmar capacidad. Se debe validar antes con Cámaras y Planificación para evitar paradas o cambios urgentes.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"elemento crítico",
+"motivo",
+"señal",
+"responsable",
+"contingencia",
+"impacto"
+]
+},
+"incomplete_if": [
+"Solo enumera elementos sin explicar criticidad.",
+"No menciona señales observables.",
+"No identifica responsable o área relacionada.",
+"No indica acción preventiva o contingencia.",
+"No conecta el caso con continuidad, calidad, inocuidad, despacho o rendimiento."
+]
+}
+]
+}
+]
+}

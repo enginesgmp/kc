@@ -1,0 +1,599 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Infraestructura",
+"level": null,
+"area_metadata": {
+"area_id": "area_infraestructura",
+"display_name": "Infraestructura",
+"aliases": [
+"Infraestructura",
+"Área de Infraestructura",
+"Servicios Generales",
+"Facilities",
+"Facility Management",
+"Mantenimiento de Instalaciones",
+"Obras Civiles",
+"Adecuaciones",
+"Instalaciones",
+"Soporte de Infraestructura"
+],
+"macro_process": "MP-1600 INFRAESTRUCTURA, SERVICIOS Y SOPORTE OPERATIVO"
+},
+"blocks": [
+{
+"block_id": "INFRA_01_FLUJO_INFRAESTRUCTURA",
+"block_name": "Conocimiento tácito crítico de Infraestructura",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Infraestructura que ayudan a sostener instalaciones, servicios generales, espacios físicos, adecuaciones, continuidad operativa, seguridad y soporte oportuno a las áreas usuarias.",
+"questions": [
+{
+"question_id": "INFRA_01_Q01",
+"ai_category": "inicio_correcto_caso_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una atención, reparación, adecuación, inspección, intervención o coordinación de Infraestructura?",
+"context": "Busca capturar los datos y condiciones críticas que Infraestructura valida por experiencia antes de diagnosticar, asignar recursos, coordinar proveedores, intervenir espacios o comprometer una solución.",
+"tooltip": "Mencione qué dato confirma primero, qué condición física o de seguridad revisa, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso de infraestructura a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de atender una filtración confirmo ubicación exacta, área afectada, nivel de urgencia, riesgo para personas, equipos o producción, disponibilidad de acceso, evidencia visual y si requiere proveedor. Si no está claro el origen o el área no puede liberar el espacio, no conviene iniciar una intervención completa porque puede quedar mal resuelta o generar reproceso.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de infraestructura",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Infraestructura.",
+"No identifica información crítica antes de iniciar.",
+"No menciona ubicación, riesgo, acceso, evidencia, área afectada o condición física.",
+"No explica el riesgo operativo o de seguridad de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "INFRA_01_Q02",
+"ai_category": "priorizacion_casos_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Infraestructura para priorizar solicitudes cuando coinciden incidencias, adecuaciones, mantenimientos, servicios generales, proveedores pendientes o emergencias en varias áreas?",
+"context": "Permite capturar cómo Infraestructura decide qué atender primero cuando hay presión operativa, recursos limitados, riesgos de seguridad, impacto en producción, áreas críticas o restricciones de acceso.",
+"tooltip": "Incluya criterios como seguridad, inocuidad, continuidad operativa, área crítica, impacto en producción, daño progresivo, costo, disponibilidad de materiales, acceso al área, proveedor requerido o urgencia real.",
+"expected_answer_structure": [
+"Situación de múltiples solicitudes",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden una reparación en oficina y una fuga cerca de un área productiva, priorizo la condición que puede afectar seguridad, inocuidad o continuidad. Antes de mover recursos reviso impacto, acceso, evidencia y si el trabajo puede esperar sin generar daño mayor.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Infraestructura.",
+"No menciona seguridad, continuidad, área crítica, daño, proveedor o recursos.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "INFRA_02_Q01",
+"ai_category": "excepciones_flujo_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Infraestructura suelen salirse del manejo habitual y requieren criterio adicional antes de intervenir, reparar, contratar, reprogramar, cerrar o escalar?",
+"context": "Busca identificar excepciones reales donde no basta seguir la secuencia normal porque existen riesgos físicos, restricciones operativas, proveedores externos, permisos, materiales no disponibles o impacto en áreas críticas.",
+"tooltip": "Describa casos como filtración en zona sensible, falla recurrente, área sin acceso, intervención con producción activa, proveedor sin disponibilidad, daño estructural, trabajo urgente sin materiales o adecuación que afecta seguridad.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es una reparación que debe hacerse dentro de un área operativa en funcionamiento. Antes de intervenir, Infraestructura valida ventana disponible, riesgos, limpieza posterior, autorización del área y necesidad de proveedor para evitar afectar seguridad o continuidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la atención normal.",
+"No identifica excepciones propias de Infraestructura.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "INFRA_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Infraestructura para evitar errores importantes en diagnóstico, materiales, proveedor, acceso, seguridad, alcance, costo, evidencia o cierre de una intervención?",
+"context": "Permite capturar revisiones no escritas que previenen reparaciones incompletas, gastos innecesarios, daños mayores, reprocesos, trabajos inseguros o cierres sin conformidad del área usuaria.",
+"tooltip": "Mencione qué compara, qué revisa físicamente, qué consulta antes de ejecutar, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de coordinar un proveedor reviso si el problema fue correctamente diagnosticado, si el área afectada confirmó el alcance, si hay acceso, si se requiere permiso o parada y si el material corresponde. Si solo se atiende el síntoma, puede repetirse la falla y duplicarse el costo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara o revisa.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Infraestructura."
+]
+},
+{
+"question_id": "INFRA_03_Q01",
+"ai_category": "senales_tempranas_riesgo_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso, falla mayor, saturación de solicitudes, riesgo de seguridad, daño progresivo o reproceso en Infraestructura?",
+"context": "Busca construir un radar de alertas específicas del área antes de que una condición física o de servicio afecte operación, seguridad, inocuidad, costos, continuidad o satisfacción de áreas usuarias.",
+"tooltip": "Incluya señales como humedad recurrente, grietas, malos olores, drenajes lentos, quejas repetidas, fallas que reaparecen, proveedor demorado, materiales pendientes, áreas sin liberar o solicitudes acumuladas.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando aparece humedad repetida en la misma zona después de una reparación, es señal de que no se corrigió la causa raíz. Antes de cerrar el caso, conviene revisar origen, recorrido del agua, zona superior o tubería cercana para evitar daño mayor.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "INFRA_03_Q02",
+"ai_category": "dependencias_reales_destrabe_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, proveedores, datos o canales destraban realmente el trabajo cuando hay dudas sobre acceso, alcance, materiales, presupuesto, proveedor, permisos, seguridad o continuidad operativa?",
+"context": "Permite identificar dependencias reales de Infraestructura para resolver bloqueos sin intervenir con información incompleta ni comprometer recursos de forma incorrecta.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona, área o proveedor que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando una reparación requiere detener acceso a una zona operativa, se destraba con el jefe del área afectada, Seguridad y el proveedor, revisando ventana de intervención, riesgos y recursos. Si no hay acuerdo y afecta producción, se escala con impacto y alternativas.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona, área o proveedor",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Infraestructura.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "INFRA_04_Q01",
+"ai_category": "casos_delicados_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Infraestructura considera delicados y requieren más experiencia para manejarlos correctamente sin afectar seguridad, operación, inocuidad, costos, instalaciones o relación con áreas usuarias?",
+"context": "Busca capturar situaciones donde se necesita criterio físico-operativo, lectura de riesgo y coordinación fina, no solo ejecución mecánica de una solicitud.",
+"tooltip": "Mencione casos como daño estructural, filtración sobre equipos, drenaje colapsado, intervención en área productiva, falla de servicio crítico, proveedor especializado, obra con personal en sitio o reparación temporal.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es una filtración cerca de equipos eléctricos o área productiva. Requiere revisar origen, riesgo de seguridad, continuidad del área, necesidad de aislamiento, proveedor especializado y limpieza posterior. Manejarlo mal puede generar accidente, parada o daño mayor.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "INFRA_04_Q02",
+"ai_category": "errores_frecuentes_evitar_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Infraestructura se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten seguridad, costos, continuidad, instalaciones o satisfacción del área usuaria?",
+"context": "Permite identificar errores que el personal experimentado previene, como atender solo el síntoma, cerrar sin conformidad, elegir material inadecuado, no coordinar acceso, no medir impacto o no dejar evidencia.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es cerrar una reparación solo porque visualmente se ve resuelta. La señal de riesgo aparece cuando la causa no fue identificada o el área no validó el resultado. Para evitarlo, se revisa funcionamiento, evidencia y conformidad antes de cerrar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a seguridad, costos, continuidad o instalaciones.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "INFRA_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar diagnósticos, reparaciones, inspecciones, adecuaciones, atención de solicitudes o coordinación con proveedores sin saltarse controles de seguridad, calidad y evidencia?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo validación del alcance, autorización, control de riesgos, conformidad del área usuaria, evidencia y trazabilidad del cierre.",
+"tooltip": "Mencione prácticas como solicitar fotos previas, agrupar trabajos por zona, revisar materiales antes de ingresar, confirmar ventana de acceso, usar checklist, prevalidar proveedor o cerrar con evidencia.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es pedir evidencia fotográfica, ubicación exacta y disponibilidad del área antes de enviar personal o proveedor. Esto agiliza el diagnóstico, pero no reemplaza la revisión en sitio cuando hay riesgo de seguridad o posible daño mayor.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "INFRA_05_Q02",
+"ai_category": "criterios_no_escritos_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Infraestructura para decidir si una solicitud, reparación, adecuación, inspección, contratación, cierre o contingencia puede avanzar, detenerse, reprogramarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, solicitud, procedimiento o información del área usuaria no da una respuesta completa ante una condición real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si una falla afecta seguridad o continuidad operativa, entonces se atiende antes que trabajos estéticos o administrativos, aunque hayan sido solicitados primero. Se valida impacto con el área afectada y se comunica la reprogramación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "INFRA_06_Q01",
+"ai_category": "apoyo_escalamiento_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Infraestructura conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar seguridad, continuidad operativa, presupuesto, cumplimiento, proveedores, acceso a áreas críticas o integridad de instalaciones.",
+"tooltip": "Incluya situaciones como riesgo eléctrico, daño estructural, filtración crítica, presupuesto no aprobado, proveedor especializado, intervención en producción, cierre de acceso o contingencia sin recursos.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona, área o proveedor a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si una intervención puede detener un área crítica o requiere cerrar accesos, conviene escalar antes de iniciar. Se debe presentar ubicación, riesgo, impacto, tiempo estimado, proveedor requerido y alternativas para que el área afectada y jefatura definan la ventana de trabajo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área, persona o proveedor",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "INFRA_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Infraestructura suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria de la planta?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como reconocer zonas críticas, estimar riesgo, coordinar ventanas de acceso, distinguir reparaciones temporales de definitivas o manejar proveedores.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en entender qué zonas requieren mayor cuidado antes de intervenir. No basta ver la falla; debe considerar seguridad, producción, limpieza, acceso, permisos y equipos cercanos. El error típico es iniciar una reparación sin coordinar la ventana adecuada.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Infraestructura.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "INFRA_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una reparación, inspección, adecuación, servicio, contratación, contingencia o solicitud de Infraestructura está lista para avanzar, cerrarse o entregarse al área usuaria?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que una intervención quedó correctamente atendida.",
+"tooltip": "Incluya confirmaciones físicas, funcionales, de seguridad, limpieza, evidencia, conformidad del área usuaria, registro, garantía del proveedor o ausencia de pendientes críticos.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación física, funcional o documental",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una reparación está lista para cerrarse cuando la causa fue atendida, el área funciona sin riesgo, existe evidencia del antes y después, el usuario confirma conformidad y no quedan materiales o condiciones inseguras en sitio. Si solo se corrigió visualmente, no debería cerrarse.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando se terminó el trabajo.",
+"No menciona evidencia, seguridad, funcionalidad, conformidad o registro.",
+"No identifica validación del área usuaria.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Infraestructura."
+]
+},
+{
+"question_id": "INFRA_07_Q02",
+"ai_category": "aprendizajes_conservar_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Infraestructura deberían conservarse porque ayudan a evitar daños mayores, interrupciones, reprocesos, sobrecostos, trabajos inseguros o pérdida de continuidad operativa?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de fallas recurrentes.",
+"tooltip": "Mencione aprendizajes sobre zonas críticas, proveedores, materiales, inspecciones, señales de deterioro, reparaciones temporales, ventanas de trabajo, permisos, seguridad o coordinación con áreas usuarias.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no tratar una humedad recurrente como reparación menor sin revisar origen. Cuando la misma señal aparece varias veces, conviene investigar causa raíz y no solo pintar o sellar la zona, porque puede ocultar un daño mayor.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "INFRA_08_Q01",
+"ai_category": "recomendacion_persona_nueva_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Infraestructura para trabajar con seguridad, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en atención de solicitudes, inspecciones, reparaciones, proveedores, adecuaciones, servicios críticos, seguridad y cierre de trabajos.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona, área o proveedor de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no intervenir solo por la descripción inicial de la solicitud. Debe verificar en sitio, confirmar riesgo, acceso, impacto en el área, materiales necesarios y conformidad esperada. Si hay duda de seguridad, continuidad o alcance, debe detenerse y consultar antes de ejecutar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona solicitudes, inspecciones, reparaciones, proveedores, seguridad, acceso o cierre.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Infraestructura."
+]
+},
+{
+"question_id": "INFRA_08_Q02",
+"ai_category": "servicios_criticos_continuidad_infraestructura",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué servicios, instalaciones o recursos físicos requieren seguimiento especial porque una falla podría afectar directamente la continuidad, seguridad, inocuidad o funcionamiento de la planta?",
+"context": "Busca capturar conocimiento específico sobre puntos críticos de infraestructura que deben vigilarse por experiencia, aunque no siempre estén visibles en una solicitud formal.",
+"tooltip": "Mencione servicios o zonas críticas, señales que observa, frecuencia práctica de revisión, responsable real, contingencia posible y qué impacto se evita.",
+"expected_answer_structure": [
+"Servicio, instalación o recurso crítico",
+"Motivo de criticidad",
+"Señal que debe vigilarse",
+"Responsable o área relacionada",
+"Contingencia o acción preventiva",
+"Impacto que se evita"
+],
+"good_answer_example": "Los drenajes de zonas operativas requieren seguimiento especial porque una obstrucción puede afectar limpieza, seguridad e inocuidad. Una señal es flujo lento, olor o acumulación recurrente. Si aparece, conviene revisar antes de que se convierta en emergencia.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"servicio o instalación crítica",
+"motivo",
+"señal",
+"responsable",
+"contingencia",
+"impacto"
+]
+},
+"incomplete_if": [
+"Solo enumera servicios sin explicar criticidad.",
+"No menciona señales observables.",
+"No identifica responsable o área relacionada.",
+"No indica acción preventiva o contingencia.",
+"No conecta el caso con continuidad, seguridad, inocuidad o funcionamiento."
+]
+}
+]
+}
+]
+}

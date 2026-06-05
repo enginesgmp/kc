@@ -1,0 +1,633 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Seguridad Física",
+"level": "",
+"metadata": {
+"area_id": "seguridad_fisica",
+"display_name": "Seguridad Física",
+"aliases": [
+"seguridad patrimonial",
+"control de accesos",
+"vigilancia",
+"seguridad BASC",
+"protección física",
+"seguridad de instalaciones",
+"seguridad de contenedores"
+],
+"macro_process": "Protección física, control de accesos y resguardo de operaciones críticas"
+},
+"blocks": [
+{
+"block_id": "SF_01_CONTROL_ACCESOS_PERSONAS",
+"block_name": "Conocimiento tácito crítico de Seguridad Física",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Seguridad Física que ayudan a proteger accesos, instalaciones, personas, vehículos, contenedores, evidencias BASC, trazabilidad, continuidad operacional y respuesta ante novedades críticas.",
+"questions": [
+{
+"question_id": "SF_01_Q01",
+"ai_category": "inicio_correcto_caso_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de autorizar un ingreso, salida, visita, contratista, vehículo, contenedor, movimiento interno o novedad de Seguridad Física?",
+"context": "Busca capturar los datos y condiciones críticas que Seguridad Física valida por experiencia antes de permitir accesos, movimientos o salidas que puedan afectar trazabilidad, BASC, continuidad o protección de instalaciones.",
+"tooltip": "Mencione qué dato confirma primero, qué autorización revisa, qué señal le indica que no debe permitir el acceso o movimiento, qué fuente usa para validar y qué riesgo existe si avanza con información incompleta.",
+"expected_answer_structure": [
+"Caso de Seguridad Física a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de permitir el ingreso de un contratista confirmo identidad, autorización del área responsable, motivo de ingreso, zona a visitar, horario permitido, documentos requeridos y responsable interno. Si no existe autorización directa o los datos no coinciden, no conviene permitir el acceso porque puede afectarse seguridad, BASC y trazabilidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de Seguridad Física",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Seguridad Física.",
+"No identifica información crítica antes de autorizar.",
+"No menciona autorización, identidad, documento, área responsable, zona, vehículo, contenedor o motivo.",
+"No explica el riesgo operativo, patrimonial o BASC de avanzar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "SF_01_Q02",
+"ai_category": "priorizacion_casos_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Seguridad Física para priorizar accesos, rondas, novedades, revisiones de vehículos, contenedores, alertas o requerimientos cuando ocurren varias situaciones al mismo tiempo?",
+"context": "Permite capturar cómo Seguridad Física decide qué atender primero cuando hay presión operativa, accesos simultáneos, movimientos críticos, novedades BASC, zonas sensibles o recursos limitados de vigilancia.",
+"tooltip": "Incluya criterios como criticidad BASC, zona restringida, riesgo para personas, impacto en despacho, exportación, producción, recepción, evidencia disponible, tiempo de reacción o historial de novedades.",
+"expected_answer_structure": [
+"Situación de múltiples necesidades",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden una revisión de contenedor, ingreso de contratistas y una novedad en zona restringida, priorizo según criticidad, riesgo BASC, impacto en despacho y posibilidad de acceso no autorizado. Una alerta en contenedor o zona crítica se atiende antes que un trámite rutinario de menor riesgo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Seguridad Física.",
+"No menciona BASC, accesos, zonas críticas, vehículos, contenedores, despacho o vigilancia.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "SF_02_Q01",
+"ai_category": "excepciones_flujo_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Seguridad Física suelen salirse del manejo habitual y requieren criterio adicional antes de permitir acceso, retener, registrar, liberar, bloquear, comunicar o escalar?",
+"context": "Busca identificar excepciones reales donde no basta aplicar el control normal porque existen autorizaciones incompletas, presión operativa, datos contradictorios, novedades de contenedores, fallas de sistema o situaciones sensibles.",
+"tooltip": "Describa casos como ingreso urgente sin autorización previa, vehículo con datos diferentes, visitante no esperado, sello con novedad, cámara fuera de servicio, zona crítica sin cobertura o contratista con documentación incompleta.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona, área o tercero consultado",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es cuando un área solicita ingreso urgente de un proveedor que no estaba autorizado. Antes de permitir el acceso, Seguridad valida identidad, responsable interno, motivo, zona, horario y evidencia de autorización, porque la presión operativa no reemplaza el control de trazabilidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente el flujo normal.",
+"No identifica excepciones propias de Seguridad Física.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "SF_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Seguridad Física para evitar errores importantes en accesos, registros, vehículos, sellos, contenedores, rondas, evidencias o salidas de unidades?",
+"context": "Permite capturar revisiones no escritas que previenen ingresos no autorizados, pérdida de trazabilidad, hallazgos BASC, salidas indebidas, errores documentales o respuesta tardía ante novedades críticas.",
+"tooltip": "Mencione qué compara, qué revisa físicamente, qué dato valida con otra área, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de liberar la salida de un contenedor comparo placa, conductor, documentación, autorización, sello, evidencia fotográfica y confirmación del área responsable. Si algún dato no coincide, detengo la salida hasta validar, porque un error puede afectar exportación, BASC y trazabilidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara o revisa.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Seguridad Física."
+]
+},
+{
+"question_id": "SF_03_Q01",
+"ai_category": "senales_tempranas_riesgo_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse un ingreso no autorizado, pérdida de trazabilidad, novedad BASC, falla de vigilancia, incidente físico o reproceso de control?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema se convierta en incidente, hallazgo, acceso indebido, salida bloqueada o afectación a la continuidad operativa.",
+"tooltip": "Incluya señales como persona sin identificación clara, vehículo fuera de programación, documentación inconsistente, sello dudoso, rondas omitidas, cámaras sin visualización, movimientos inusuales o presión para omitir controles.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando un vehículo llega fuera de programación y el conductor presenta datos que no coinciden con la autorización, es señal de posible riesgo de trazabilidad. Antes de permitir ingreso, se bloquea temporalmente, se valida con el área responsable y se deja evidencia en el registro.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el incidente final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "SF_03_Q02",
+"ai_category": "dependencias_reales_destrabe_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, datos, sistemas o canales destraban realmente el trabajo cuando hay dudas sobre autorizaciones, accesos, vehículos, sellos, contenedores, visitantes, contratistas o novedades?",
+"context": "Permite identificar dependencias reales de Seguridad Física para resolver bloqueos sin permitir accesos o movimientos con información incompleta, informal o no trazable.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona, área o tercero que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando un contratista llega sin autorización visible, se destraba con el responsable interno y el área solicitante confirmando identidad, motivo, zona, horario y acompañamiento. Si no hay confirmación directa, no se permite el ingreso y se escala al supervisor.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona, área o tercero",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Seguridad Física.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "SF_04_Q01",
+"ai_category": "casos_delicados_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Seguridad Física considera delicados y requieren más experiencia para manejarlos correctamente sin afectar BASC, personas, operación, exportación, evidencia o relación con otras áreas?",
+"context": "Busca capturar situaciones donde se necesita criterio operativo, lectura de riesgo y manejo firme de controles, no solo aplicación mecánica de una instrucción de garita o ronda.",
+"tooltip": "Mencione casos como sello alterado, ingreso bajo presión, persona no autorizada, vehículo con documentos inconsistentes, incidente en zona crítica, falla de cámaras, novedad con contenedor o contratista sin autorización.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es detectar una novedad en sello o contenedor cuando ya existe presión por despacho. Requiere detener salida, conservar evidencia, validar con Despacho, COMEX y Sistemas de Gestión, y escalar antes de liberar, porque una mala decisión puede afectar BASC y exportación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "SF_04_Q02",
+"ai_category": "errores_frecuentes_evitar_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Seguridad Física se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten accesos, trazabilidad, BASC, rondas, vehículos, contenedores o evidencias?",
+"context": "Permite identificar errores que el personal experimentado previene, como permitir ingresos con autorización incompleta, registrar tarde, no verificar placas o sellos, no dejar evidencia, omitir rondas o asumir que una novedad es menor.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es permitir el ingreso porque el área dice que la persona ya estaba autorizada, pero sin confirmación verificable. La señal aparece cuando no hay registro, correo, llamada directa o responsable claro. Para evitarlo, se detiene el acceso hasta validar y registrar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a accesos, trazabilidad, BASC, rondas, vehículos o evidencias.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "SF_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar accesos, inspecciones, rondas, revisiones de vehículos, control de contenedores, registro de novedades o coordinación con áreas sin saltarse controles críticos?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo autorización, evidencia, trazabilidad, validación documental, control BASC, comunicación con áreas responsables y registro oportuno.",
+"tooltip": "Mencione prácticas como prevalidar listados, separar ingresos programados, confirmar unidades antes de llegada, usar formatos de contingencia, documentar novedades en el momento o preparar evidencias BASC con anticipación.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es recibir listados autorizados de visitantes, contratistas o unidades antes del turno. Esto agiliza garita, pero no reemplaza la verificación de identidad, placa, motivo, zona autorizada y registro de ingreso o salida.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "SF_05_Q02",
+"ai_category": "criterios_no_escritos_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Seguridad Física para decidir si un acceso, vehículo, contenedor, visita, contratista, salida, novedad o excepción puede avanzar, detenerse, ajustarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el procedimiento, sistema, autorización o información disponible no da una respuesta completa ante una situación real de seguridad.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si una persona, vehículo o unidad no coincide con la autorización registrada, entonces no se permite ingreso o salida hasta confirmar con el responsable interno y dejar evidencia. Esto evita accesos no autorizados, hallazgos BASC y pérdida de trazabilidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "SF_06_Q01",
+"ai_category": "apoyo_escalamiento_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Seguridad Física conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde garita, ronda o supervisión?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar BASC, exportación, acceso a zonas críticas, integridad de personas, evidencia, cumplimiento o continuidad operativa.",
+"tooltip": "Incluya situaciones como ingreso no autorizado, sello alterado, documentación inconsistente, vehículo no programado, falla de cámaras, incidente en zona crítica, presión para omitir control o novedad con contenedor.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona, área o tercero a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si se detecta sello alterado o daño en una unidad crítica, conviene escalar antes de liberar. Se debe presentar evidencia fotográfica, hora, unidad, conductor, documento, responsable del área y acción aplicada para que Despacho, COMEX, Sistemas de Gestión o jefatura decidan.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área, persona o tercero",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "SF_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Seguridad Física suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como reconocer señales sospechosas, manejar presión operativa, interpretar excepciones, priorizar zonas críticas o conservar evidencia útil.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en reconocer cuándo una solicitud urgente es válida y cuándo puede estar presionando para saltarse un control. Debe aprender a revisar autorización, contexto, zona, responsable y evidencia antes de permitir acceso o salida.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Seguridad Física.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "SF_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que un acceso, salida, inspección, ronda, revisión de vehículo, control de contenedor, novedad o incidente está listo para avanzar, liberarse o cerrarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un control de Seguridad Física quedó correctamente validado, evidenciado y comunicado.",
+"tooltip": "Incluya confirmaciones de autorización, identidad, documento, registro, sello, evidencia, área responsable, supervisor, ausencia de pendientes críticos y comunicación a quienes corresponda.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación documental, física o sistémica",
+"Persona, área o tercero que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una salida de contenedor está lista cuando placa, conductor, documentación, sello, autorización, evidencia fotográfica, registro y validación del área responsable coinciden. Si falta evidencia o existe una diferencia, no debería liberarse como control cerrado.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando se terminó el control.",
+"No menciona autorización, documento, registro, sello, evidencia o validación.",
+"No identifica validación interna o del área responsable.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Seguridad Física."
+]
+},
+{
+"question_id": "SF_07_Q02",
+"ai_category": "aprendizajes_conservar_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Seguridad Física deberían conservarse porque ayudan a evitar accesos indebidos, hallazgos BASC, pérdida de evidencia, incidentes, fricciones con áreas o reprocesos de control?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes en protección física.",
+"tooltip": "Mencione aprendizajes sobre garitas, rondas, cámaras, sellos, contenedores, accesos, contratistas, evidencias, zonas críticas, presión operativa, comunicación con áreas o manejo de novedades.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no tratar una excepción de ingreso como trámite menor. Aunque el área tenga urgencia, conviene confirmar responsable, motivo, zona y evidencia antes de permitir acceso, porque después es difícil reconstruir trazabilidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "SF_08_Q01",
+"ai_category": "recomendacion_persona_nueva_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Seguridad Física para trabajar con criterio, evitar errores y aprender más rápido el manejo real de accesos, vigilancia, BASC y novedades?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en accesos, garitas, rondas, cámaras, vehículos, contenedores, sellos, evidencias, comunicación con áreas y escalamiento.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona, área o tercero de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no asumir que una autorización verbal es suficiente cuando se trata de accesos, unidades o zonas críticas. Debe validar identidad, autorización, documento, zona, motivo, responsable y evidencia. Si algo no coincide, debe detenerse y consultar antes de permitir el movimiento.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona accesos, garitas, rondas, cámaras, vehículos, contenedores, BASC o evidencias.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Seguridad Física."
+]
+},
+{
+"question_id": "SF_08_Q02",
+"ai_category": "restricciones_criticas_continuidad_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué accesos, zonas, turnos, cámaras, puntos ciegos, vehículos, contenedores, sellos o eventos requieren seguimiento especial porque una variación podría afectar seguridad, BASC, despacho o continuidad?",
+"context": "Busca capturar conocimiento específico sobre puntos críticos de Seguridad Física que deben vigilarse por experiencia, aunque no siempre aparezcan como urgencia formal.",
+"tooltip": "Mencione elementos críticos, señales que observa, frecuencia práctica de revisión, área relacionada, contingencia posible y qué impacto se evita.",
+"expected_answer_structure": [
+"Elemento crítico",
+"Motivo de criticidad",
+"Señal que debe vigilarse",
+"Responsable, área o tercero relacionado",
+"Contingencia o acción preventiva",
+"Impacto que se evita"
+],
+"good_answer_example": "Los accesos a despacho y los controles de contenedores requieren seguimiento especial porque una diferencia de sello, placa o documentación puede bloquear salida y generar hallazgos BASC. Una señal es que la unidad llega fuera de programación o con datos distintos a la autorización.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"elemento crítico",
+"motivo",
+"señal",
+"responsable, área o tercero",
+"contingencia",
+"impacto"
+]
+},
+"incomplete_if": [
+"Solo enumera elementos sin explicar criticidad.",
+"No menciona señales observables.",
+"No identifica responsable, área o tercero relacionado.",
+"No indica acción preventiva o contingencia.",
+"No conecta el caso con seguridad, BASC, despacho o continuidad."
+]
+},
+{
+"question_id": "SF_09_Q01",
+"ai_category": "manejo_evidencia_basc_seguridad_fisica",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Seguridad Física para decidir qué evidencia debe conservarse ante accesos, novedades, inspecciones, incidentes, rondas, contenedores o hallazgos BASC?",
+"context": "Busca capturar conocimiento tácito sobre evidencia útil, suficiente y trazable, especialmente cuando una situación puede requerir revisión posterior, auditoría, investigación o respaldo ante otra área.",
+"tooltip": "Explique qué evidencia toma, cuándo la genera, quién la valida, dónde se conserva, qué detalle no debe faltar y qué riesgo evita al documentar correctamente.",
+"expected_answer_structure": [
+"Caso que requiere evidencia",
+"Evidencia mínima necesaria",
+"Momento en que se genera",
+"Responsable que la valida",
+"Lugar o medio de resguardo",
+"Riesgo que evita"
+],
+"good_answer_example": "Ante una novedad de contenedor o sello, la evidencia mínima incluye fotografía, hora, unidad, placa, conductor, documento, nombre del guardia, área notificada y decisión tomada. Si se documenta incompleto, después puede perderse trazabilidad o quedar débil el respaldo BASC.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso",
+"evidencia mínima",
+"momento",
+"responsable",
+"resguardo",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No identifica qué evidencia debe conservarse.",
+"No menciona momento, responsable o resguardo.",
+"No conecta la evidencia con BASC, auditoría o investigación.",
+"No explica el riesgo de documentar mal.",
+"No incluye ejemplo aplicable."
+]
+}
+]
+}
+]
+}

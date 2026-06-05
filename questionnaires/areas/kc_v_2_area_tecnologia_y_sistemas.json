@@ -1,0 +1,636 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Tecnología y Sistemas",
+"level": "",
+"metadata": {
+"area_id": "tecnologia_y_sistemas",
+"display_name": "Tecnología y Sistemas",
+"aliases": [
+"tecnología",
+"sistemas",
+"TI",
+"IT",
+"soporte tecnológico",
+"infraestructura tecnológica",
+"sistemas informáticos",
+"soporte de usuarios",
+"ciberseguridad",
+"aplicaciones empresariales"
+],
+"macro_process": "Gestión de infraestructura tecnológica, soporte de sistemas, continuidad digital y seguridad de la información"
+},
+"blocks": [
+{
+"block_id": "TYS_01_CONTINUIDAD_TECNOLOGICA_OPERACIONAL",
+"block_name": "Conocimiento tácito crítico de Tecnología y Sistemas",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Tecnología y Sistemas que ayudan a sostener continuidad digital, soporte oportuno, seguridad de la información, infraestructura, aplicaciones, respaldos, proveedores y servicios tecnológicos críticos para la operación.",
+"questions": [
+{
+"question_id": "TYS_01_Q01",
+"ai_category": "inicio_correcto_caso_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una atención de soporte, cambio de sistema, revisión de falla, habilitación de acceso, reposición de equipo o intervención tecnológica?",
+"context": "Busca capturar los datos y condiciones críticas que Tecnología y Sistemas valida por experiencia antes de intervenir servicios, equipos, usuarios, redes, sistemas o información que puede afectar continuidad operativa.",
+"tooltip": "Mencione qué dato confirma primero, qué condición técnica u operativa revisa, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso tecnológico a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de atender una falla confirmo usuario, área, sistema afectado, alcance del problema, criticidad operativa, hora de inicio, equipos involucrados y si afecta a más usuarios. Si no está claro si es falla local o caída general, no conviene aplicar cambios aislados porque se puede perder tiempo o agravar el incidente.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso tecnológico",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Tecnología y Sistemas.",
+"No identifica información crítica antes de iniciar.",
+"No menciona usuario, sistema, red, equipo, acceso, criticidad, alcance o área afectada.",
+"No explica el riesgo operativo o de seguridad de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "TYS_01_Q02",
+"ai_category": "priorizacion_casos_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Tecnología y Sistemas para priorizar incidentes, requerimientos, accesos, cambios, equipos, proveedores o usuarios cuando existen varias solicitudes al mismo tiempo?",
+"context": "Permite capturar cómo el área decide qué atender primero cuando hay fallas simultáneas, usuarios críticos, sistemas caídos, recursos limitados, proveedores pendientes o presión operativa.",
+"tooltip": "Incluya criterios como impacto en operación, cantidad de usuarios afectados, sistema crítico, riesgo de seguridad, urgencia real, área afectada, disponibilidad de contingencia, proveedor involucrado o tiempo de interrupción.",
+"expected_answer_structure": [
+"Situación de múltiples solicitudes",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden una solicitud de equipo, un problema de impresora y una caída de red que afecta producción o facturación, priorizo por impacto operativo, usuarios afectados, criticidad del sistema y tiempo de interrupción. Una falla que detiene registros o despacho va antes que una atención individual de bajo impacto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Tecnología y Sistemas.",
+"No menciona sistema crítico, red, usuario, operación, seguridad, proveedor o tiempo de interrupción.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "TYS_02_Q01",
+"ai_category": "excepciones_flujo_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Tecnología y Sistemas suelen salirse del manejo habitual y requieren criterio adicional antes de resolver, cambiar, habilitar, escalar, restaurar, bloquear o cerrar?",
+"context": "Busca identificar excepciones reales donde no basta seguir la atención normal porque existen accesos urgentes, fallas intermitentes, cambios sin prueba, usuarios críticos, proveedores lentos, datos sensibles o sistemas heredados.",
+"tooltip": "Describa casos como caída parcial, usuario sin autorización clara, equipo crítico sin repuesto, error recurrente, cambio solicitado sin validación, restauración urgente, licencia vencida o proveedor que no responde.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona, área o proveedor consultado",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es habilitar acceso urgente a un sistema crítico cuando el jefe no está disponible. Antes de hacerlo, se valida necesidad, nivel de permiso, riesgo, autorización alternativa y evidencia mínima para no entregar accesos indebidos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente el flujo normal de soporte.",
+"No identifica excepciones propias de Tecnología y Sistemas.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "TYS_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Tecnología y Sistemas para evitar errores importantes en accesos, permisos, cambios de sistema, respaldos, equipos, red, licencias, proveedores o cierre de tickets?",
+"context": "Permite capturar revisiones no escritas que previenen accesos indebidos, pérdida de información, cambios mal aplicados, fallas repetidas, equipos mal asignados, cierres falsos o interrupciones no previstas.",
+"tooltip": "Mencione qué compara, qué prueba realiza, qué dato valida con el usuario o responsable, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de cambiar permisos reviso solicitud, aprobación del jefe, rol requerido, usuario correcto, sistema afectado y si el permiso coincide con sus funciones. Si el acceso solicitado es más amplio de lo necesario, se valida antes de habilitar para evitar permisos indebidos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara, prueba o revisa.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Tecnología y Sistemas."
+]
+},
+{
+"question_id": "TYS_03_Q01",
+"ai_category": "senales_tempranas_riesgo_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse caída de servicio, lentitud crítica, saturación de red, falla de equipo, pérdida de información, incidente de seguridad o reproceso de soporte?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte continuidad digital, operación, usuarios críticos, seguridad de información o disponibilidad de sistemas.",
+"tooltip": "Incluya señales como tickets repetidos, lentitud intermitente, almacenamiento lleno, equipos con fallas recurrentes, usuarios bloqueados, alertas de respaldo, intentos sospechosos o proveedor con respuesta tardía.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando varios usuarios de una misma zona reportan lentitud intermitente, es señal de posible saturación, falla de red o equipo de comunicación. Antes de que caiga el servicio, se revisa alcance, tráfico, equipo, enlace y se prepara contingencia o escalamiento.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con la falla final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "TYS_03_Q02",
+"ai_category": "dependencias_reales_destrabe_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, proveedores, datos, accesos o canales destraban realmente el trabajo cuando hay dudas sobre sistemas, red, usuarios, permisos, equipos, respaldos, licencias o incidentes?",
+"context": "Permite identificar dependencias reales de Tecnología y Sistemas para resolver bloqueos sin avanzar con supuestos débiles, permisos incompletos, configuraciones no confirmadas o información no trazable.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona, área o proveedor que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando un acceso está bloqueado porque no se sabe qué perfil corresponde, se destraba con el jefe del área, el usuario clave del sistema y el historial de permisos similares. Si el acceso impacta información sensible, se escala antes de habilitar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona, área o proveedor",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos, accesos o canales que destraban.",
+"No aterriza el bloqueo a Tecnología y Sistemas.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "TYS_04_Q01",
+"ai_category": "casos_delicados_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Tecnología y Sistemas considera delicados y requieren más experiencia para manejarlos correctamente sin afectar operación, seguridad de información, usuarios críticos, datos, proveedores o continuidad?",
+"context": "Busca capturar situaciones donde se necesita criterio técnico, lectura de impacto y manejo cuidadoso de riesgos, no solo ejecución mecánica de soporte o configuración.",
+"tooltip": "Mencione casos como caída de sistema crítico, sospecha de phishing, acceso sensible, restauración de datos, cambio en sistema productivo, equipo sin respaldo, usuario crítico bloqueado o proveedor sin respuesta.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es restaurar información eliminada en una carpeta compartida. Requiere confirmar usuario, fecha probable, ubicación, respaldo disponible, impacto y autorización, porque restaurar mal puede sobrescribir información vigente o no recuperar lo necesario.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "TYS_04_Q02",
+"ai_category": "errores_frecuentes_evitar_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Tecnología y Sistemas se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten usuarios, sistemas, accesos, equipos, datos, proveedores o continuidad?",
+"context": "Permite identificar errores que el personal experimentado previene, como cerrar tickets sin confirmar, dar permisos excesivos, cambiar configuraciones sin respaldo, no registrar evidencias, no escalar al proveedor o subestimar fallas recurrentes.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es cerrar un ticket cuando el equipo responde una vez, sin confirmar con el usuario si el problema se resolvió. La señal aparece cuando el mismo caso se repite. Para evitarlo, se valida funcionamiento y se registra causa o acción aplicada.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a usuarios, sistemas, accesos, equipos, datos o continuidad.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "TYS_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar soporte, cambios de sistemas, reposición de equipos, validación de accesos, atención a usuarios críticos o coordinación con proveedores sin saltarse controles técnicos y de seguridad?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo autorización, trazabilidad, respaldo, pruebas, validación del usuario, control de permisos, evidencia y comunicación de cierre.",
+"tooltip": "Mencione prácticas como preclasificar tickets, usar checklist de accesos, probar cambios en ambiente controlado, documentar soluciones repetidas, confirmar impacto antes de escalar o validar cierre con usuario.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es usar una lista rápida para altas de usuario con datos mínimos, aprobación, rol y sistema requerido. Esto acelera la atención, pero no reemplaza la autorización del responsable ni la validación de permisos mínimos necesarios.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "TYS_05_Q02",
+"ai_category": "criterios_no_escritos_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Tecnología y Sistemas para decidir si un incidente, acceso, cambio, equipo, respaldo, proveedor, licencia o cierre puede avanzar, detenerse, ajustarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el ticket, sistema, procedimiento o información disponible no da una respuesta completa ante una condición real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si un cambio afecta un sistema usado por varias áreas, entonces no se aplica solo por solicitud de un usuario; se valida impacto, horario, respaldo, prueba y aprobación del responsable funcional. Esto evita afectar operación por un cambio no controlado.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "TYS_06_Q01",
+"ai_category": "apoyo_escalamiento_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Tecnología y Sistemas conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar continuidad, seguridad de información, datos críticos, proveedores, costos, usuarios clave, sistemas empresariales o cumplimiento.",
+"tooltip": "Incluya situaciones como caída general, acceso sensible, sospecha de ciberincidente, pérdida de información, cambio de alto impacto, proveedor incumplido, licencia crítica vencida o equipo crítico sin respaldo.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona, área o proveedor a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si existe sospecha de phishing o acceso indebido, conviene escalar antes de tratarlo como soporte común. Se debe presentar usuario afectado, correo o evidencia, hora, sistema involucrado, alcance posible y acción preventiva aplicada para definir bloqueo, revisión o comunicación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área, persona o proveedor",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "TYS_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Tecnología y Sistemas suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria de la empresa?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como reconocer criticidad real, manejar usuarios bajo presión, entender sistemas heredados, priorizar fallas o interpretar señales de seguridad.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en distinguir si una falla es del equipo, del usuario, de red, del sistema o del proveedor. El error típico es resolver solo el síntoma sin revisar alcance, recurrencia e impacto. Se aprende mejor acompañando incidentes reales y revisando cierres anteriores.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Tecnología y Sistemas.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "TYS_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que un soporte, cambio de sistema, habilitación de acceso, restauración, reposición de equipo, atención de proveedor o incidente está listo para avanzar, liberarse o cerrarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que una atención tecnológica quedó correctamente validada, comunicada y trazable.",
+"tooltip": "Incluya confirmaciones de usuario, prueba funcional, evidencia, aprobación, registro actualizado, permisos correctos, respaldo, comunicación de cierre y ausencia de pendientes críticos.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación técnica, documental o de usuario",
+"Persona, área o proveedor que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Un soporte está listo para cerrarse cuando el usuario confirma funcionamiento, la causa o acción queda registrada, no hay impacto adicional, se adjunta evidencia si aplica y se deja indicado si requiere seguimiento. Si solo se aplicó una acción sin prueba, no debería cerrarse.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando se terminó la atención.",
+"No menciona prueba, usuario, evidencia, registro, aprobación, respaldo o comunicación.",
+"No identifica validación interna, del usuario o del proveedor.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Tecnología y Sistemas."
+]
+},
+{
+"question_id": "TYS_07_Q02",
+"ai_category": "aprendizajes_conservar_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Tecnología y Sistemas deberían conservarse porque ayudan a evitar caídas repetidas, accesos indebidos, pérdida de datos, atención tardía, cambios riesgosos o dependencia excesiva de personas clave?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes en soporte, infraestructura, seguridad y sistemas.",
+"tooltip": "Mencione aprendizajes sobre incidentes anteriores, sistemas críticos, usuarios clave, proveedores, respaldos, configuraciones, permisos, tickets repetidos, equipos obsoletos o cambios con impacto operativo.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es documentar soluciones a fallas repetidas y no dejarlas solo en la memoria del técnico. Cuando se registra causa, acción y validación, otra persona puede resolver más rápido y se reduce la dependencia de un solo responsable.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "TYS_08_Q01",
+"ai_category": "recomendacion_persona_nueva_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Tecnología y Sistemas para trabajar con criterio, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en soporte, infraestructura, sistemas, accesos, respaldos, proveedores, usuarios críticos y seguridad de información.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona, área o proveedor de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no asumir que todo requerimiento urgente debe resolverse saltando validaciones. Debe confirmar usuario, área, impacto, autorización, sistema afectado y riesgo. Si involucra permisos, datos o sistemas críticos, debe detenerse y validar antes de ejecutar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona soporte, infraestructura, sistemas, accesos, respaldos, proveedores o seguridad de información.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Tecnología y Sistemas."
+]
+},
+{
+"question_id": "TYS_08_Q02",
+"ai_category": "restricciones_criticas_continuidad_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué sistemas, equipos, redes, licencias, proveedores, accesos, respaldos, usuarios o configuraciones requieren seguimiento especial porque una variación podría afectar continuidad, seguridad, datos u operación?",
+"context": "Busca capturar conocimiento específico sobre puntos críticos de Tecnología y Sistemas que deben vigilarse por experiencia, aunque no siempre aparezcan como urgencia formal.",
+"tooltip": "Mencione elementos críticos, señales que observa, frecuencia práctica de revisión, área relacionada, contingencia posible y qué impacto se evita.",
+"expected_answer_structure": [
+"Elemento crítico",
+"Motivo de criticidad",
+"Señal que debe vigilarse",
+"Responsable, área o proveedor relacionado",
+"Contingencia o acción preventiva",
+"Impacto que se evita"
+],
+"good_answer_example": "Los enlaces de internet, servidores, sistemas empresariales, respaldos y usuarios administrativos críticos requieren seguimiento especial porque una falla puede detener registros, comunicación o toma de decisiones. Una señal es lentitud recurrente, alertas o tickets repetidos del mismo servicio.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"elemento crítico",
+"motivo",
+"señal",
+"responsable, área o proveedor",
+"contingencia",
+"impacto"
+]
+},
+"incomplete_if": [
+"Solo enumera elementos sin explicar criticidad.",
+"No menciona señales observables.",
+"No identifica responsable, área o proveedor relacionado.",
+"No indica acción preventiva o contingencia.",
+"No conecta el caso con continuidad, seguridad, datos u operación."
+]
+},
+{
+"question_id": "TYS_09_Q01",
+"ai_category": "manejo_respaldo_recuperacion_datos_tecnologia_sistemas",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Tecnología y Sistemas para saber si un respaldo, restauración o recuperación de información es confiable antes de considerarlo disponible para el usuario o la operación?",
+"context": "Busca capturar conocimiento tácito sobre verificación de respaldos, recuperación real, consistencia de archivos, prioridad de datos críticos y prevención de falsa seguridad ante pérdida de información.",
+"tooltip": "Explique qué respaldo revisa, qué señal confirma que sirve, quién valida la recuperación, qué prueba realiza, cuándo se escala y qué riesgo evita.",
+"expected_answer_structure": [
+"Información o sistema respaldado",
+"Criterio de confiabilidad",
+"Prueba o verificación realizada",
+"Responsable que valida",
+"Decisión si el respaldo no cumple",
+"Riesgo que evita"
+],
+"good_answer_example": "Para considerar confiable una restauración reviso fecha del respaldo, ubicación, integridad del archivo, prueba de apertura, confirmación del usuario y evidencia de recuperación. Si el respaldo existe pero no abre o no corresponde a la fecha requerida, se informa la limitación y se escala si afecta información crítica.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"información o sistema",
+"criterio de confiabilidad",
+"prueba",
+"responsable",
+"decisión",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo menciona que se hacen respaldos.",
+"No identifica criterios de confiabilidad.",
+"No menciona prueba de restauración o verificación.",
+"No indica quién valida.",
+"No explica qué hacer si el respaldo no cumple."
+]
+}
+]
+}
+]
+}

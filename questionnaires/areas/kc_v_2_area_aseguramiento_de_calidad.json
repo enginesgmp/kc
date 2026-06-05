@@ -1,0 +1,559 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"generation_type": "AREA",
+"area": {
+"area_id": "AREA_ASEGURAMIENTO_CALIDAD",
+"display_name": "Aseguramiento de Calidad",
+"aliases": [
+"Calidad",
+"QA",
+"Control de Calidad",
+"Aseguramiento Calidad",
+"Inocuidad",
+"Calidad e Inocuidad",
+"Observados de calidad",
+"Liberación de producto"
+],
+"macro_process": "Gestión de Operaciones"
+},
+"level": "",
+"blocks": [
+{
+"block_id": "AREA_AC_001_LIBERACION_PRODUCTO",
+"block_name": "Conocimiento tácito crítico de Aseguramiento de Calidad",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, decisiones implícitas, dependencias reales y aprendizajes específicos de Aseguramiento de Calidad que ayudan a proteger inocuidad, trazabilidad, liberación de producto, cumplimiento documental y continuidad operativa.",
+"questions": [
+{
+"question_id": "AREA_AC_001_Q001",
+"ai_category": "inicio_correcto_caso_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una evaluación, liberación, retención, investigación o decisión de calidad sobre un producto, lote o materia prima?",
+"context": "Busca capturar los datos mínimos y señales críticas que Calidad valida por experiencia antes de tomar una decisión que pueda afectar inocuidad, trazabilidad, despacho, producción o cumplimiento.",
+"tooltip": "Mencione qué dato revisa primero, qué evidencia mínima necesita, qué condición le impide avanzar, qué fuente considera confiable y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso de calidad a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de evaluar una liberación confirmo lote, producto, estado documental, resultados pendientes, condición de temperatura, trazabilidad y destino previsto. Si falta un resultado crítico o la información de lote no cuadra, no trato el producto como liberable hasta validar con laboratorio, cámaras o producción.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de calidad",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo menciona que revisa el procedimiento",
+"No identifica información crítica propia de Calidad",
+"No menciona evidencia, lote, resultado, temperatura, trazabilidad o estado documental",
+"No explica el riesgo de iniciar sin confirmar",
+"No permite extraer criterios prácticos"
+]
+},
+{
+"question_id": "AREA_AC_001_Q002",
+"ai_category": "priorizacion_casos_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué criterios prácticos usa Calidad para priorizar casos cuando coinciden liberaciones pendientes, productos observados, despachos urgentes, reclamos, resultados críticos o solicitudes de producción?",
+"context": "Permite capturar cómo Calidad decide qué revisar primero cuando hay presión operativa, compromisos de despacho, riesgo sanitario, producto retenido o varias áreas esperando una decisión.",
+"tooltip": "Incluya criterios como riesgo de inocuidad, compromiso de exportación, tiempo acumulado observado, impacto en cámara, criticidad del cliente, resultados pendientes, trazabilidad o presión de producción.",
+"expected_answer_structure": [
+"Situación de múltiples casos",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si hay varios lotes pendientes, priorizo primero los que pueden afectar inocuidad, despacho de exportación o saturación de cámaras. Un producto observado con despacho cercano se revisa antes que una validación rutinaria, pero no se libera sin evidencia mínima suficiente.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo dice que prioriza por urgencia",
+"No aterriza la priorización a Calidad",
+"No menciona inocuidad, despacho, observados, resultados o trazabilidad",
+"No explica el riesgo de priorizar mal",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_AC_001_Q003",
+"ai_category": "excepciones_flujo_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué casos de Calidad suelen salirse del manejo habitual y requieren criterio adicional antes de liberar, retener, observar, reprocesar, rechazar o escalar un producto?",
+"context": "Busca identificar excepciones reales del área donde no basta seguir una ruta estándar y se necesita interpretación técnica, validación adicional o coordinación con varias áreas.",
+"tooltip": "Describa casos como resultado pendiente, diferencia documental, lote con trazabilidad dudosa, temperatura fuera de rango, despacho urgente, reclamo sensible, cámara externa o producto observado acumulado.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es un lote con despacho urgente y documentación parcialmente pendiente. Calidad puede priorizar la revisión, pero antes de liberar valida si el pendiente es crítico, si la trazabilidad está completa y si existe evidencia suficiente para respaldar la decisión.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe solo el flujo normal",
+"No identifica excepciones propias de Calidad",
+"No menciona validaciones adicionales",
+"No indica a quién consulta",
+"No diferencia operación normal de excepción"
+]
+},
+{
+"question_id": "AREA_AC_001_Q004",
+"ai_category": "validaciones_practicas_error_critico_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué validaciones prácticas realiza Calidad para evitar errores importantes en liberación, observación, trazabilidad, documentación, cadena de frío, resultados o despacho?",
+"context": "Permite capturar revisiones no escritas que previenen liberaciones indebidas, bloqueos de despacho, reclamos, reprocesos, errores documentales o riesgos de inocuidad.",
+"tooltip": "Mencione qué compara, qué evidencia revisa, qué cruces hace entre sistema, registros y físico, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de liberar un lote comparo resultado analítico, trazabilidad, documento de cámara, estado de observación, destino y registros de temperatura. Si el lote aparece disponible pero tiene una novedad abierta, no se libera hasta cerrar la inconsistencia.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales",
+"No identifica validaciones prácticas de Calidad",
+"No explica qué compara",
+"No menciona errores específicos que evita",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_AC_001_Q005",
+"ai_category": "senales_tempranas_riesgo_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales tempranas le indican a Calidad que puede generarse atraso de liberación, falla de inocuidad, problema de trazabilidad, observados acumulados, reclamo o reproceso documental?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte producción, cámaras, despacho, exportación, cliente o cumplimiento.",
+"tooltip": "Incluya señales como resultados pendientes cerca de despacho, aumento de observados, registros incompletos, lotes con documentación inconsistente, temperatura dudosa, cambios de destino o presión repetida de otras áreas.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando se acumulan lotes observados en cámara y varios tienen despacho próximo, es señal de riesgo de atraso y presión por excepción. En ese caso Calidad revisa prioridad, evidencia faltante y comunica a planificación, cámaras y despacho antes de que el problema escale.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas",
+"Confunde la señal con el problema final",
+"No explica qué riesgo anticipa",
+"No indica acción preventiva",
+"No permite extraer reglas SI → ENTONCES"
+]
+},
+{
+"question_id": "AREA_AC_001_Q006",
+"ai_category": "dependencias_reales_destrabe_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué personas, áreas, datos o canales destraban realmente el trabajo de Calidad cuando hay dudas sobre liberación, observados, resultados, trazabilidad, reclamos, documentación o despacho?",
+"context": "Permite identificar dependencias reales del área para resolver bloqueos sin improvisar ni liberar sin sustento, incluyendo producción, cámaras, despacho, laboratorio, planificación, COMEX, sistemas de gestión o comercial.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando un lote observado afecta un despacho, normalmente se destraba validando con laboratorio el resultado pendiente, con cámaras la ubicación y con despacho la hora límite. Si falta evidencia crítica o el despacho es de exportación, se escala con el riesgo y la decisión requerida.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas",
+"No menciona datos que destraban",
+"No aterriza el bloqueo a Calidad",
+"No diferencia coordinación de escalamiento",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "AREA_AC_001_Q007",
+"ai_category": "casos_delicados_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué casos de Aseguramiento de Calidad considera delicados y requieren más experiencia para manejarlos correctamente sin afectar inocuidad, cliente, exportación, producción o trazabilidad?",
+"context": "Busca capturar situaciones donde se necesita criterio técnico-práctico y lectura de riesgo, no solo aplicación mecánica de un formato o procedimiento.",
+"tooltip": "Mencione casos como liberaciones bajo presión, observados cerca de despacho, resultados dudosos, documentación incompleta, reclamos de cliente, producto con desviación de temperatura o hallazgos repetitivos.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es decidir sobre un producto con temperatura fuera de rango durante un tiempo no totalmente claro. Requiere revisar registros, tipo de producto, exposición, condición física, destino y criterio técnico antes de definir retención, evaluación o liberación.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general",
+"No identifica casos delicados del área",
+"No explica por qué requieren experiencia",
+"No menciona señales o validaciones",
+"No explica el impacto de manejarlo mal"
+]
+},
+{
+"question_id": "AREA_AC_001_Q008",
+"ai_category": "errores_frecuentes_evitar_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué errores frecuentes en Calidad se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten liberación, trazabilidad, documentación, reclamos o despacho?",
+"context": "Permite identificar errores que el personal experimentado previene, como liberar sin evidencia completa, no comunicar observados, interpretar mal una desviación, cerrar acciones sin efectividad o pasar por alto documentos críticos.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es considerar cerrado un observado solo porque ya se envió un correo, sin confirmar que cámaras, planificación y despacho actualizaron el estado. La señal es que distintas áreas manejan versiones diferentes del lote. Para evitarlo, se confirma el cierre con evidencia y comunicación al área afectada.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos",
+"No explica cómo se detectan antes",
+"No indica práctica preventiva",
+"No aterriza el impacto a Calidad",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_AC_001_Q009",
+"ai_category": "practicas_agiles_sin_saltar_controles_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué prácticas ayudan a agilizar liberaciones, revisión de observados, validaciones documentales, investigaciones o respuestas a otras áreas sin saltarse controles de inocuidad, trazabilidad y evidencia?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo criterios técnicos, evidencia mínima, comunicación efectiva y trazabilidad de decisiones.",
+"tooltip": "Mencione prácticas como preclasificar observados, revisar despachos críticos primero, usar matrices de prioridad, anticipar resultados pendientes, preparar evidencias mínimas o coordinar con cámaras y despacho antes de la hora límite.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es revisar desde temprano los lotes observados con despacho próximo y separar cuáles dependen de resultado, documento o decisión técnica. Eso agiliza prioridades, pero no se debe saltar la evidencia mínima de liberación ni la comunicación formal del estado.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles",
+"No identifica prácticas concretas de Calidad",
+"No menciona qué control se mantiene",
+"No explica beneficio operativo",
+"No advierte el riesgo de aplicarlo mal"
+]
+},
+{
+"question_id": "AREA_AC_001_Q010",
+"ai_category": "criterios_no_escritos_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué criterios no escritos usa Calidad para decidir si un producto puede liberarse, mantenerse observado, retenerse, reprocesarse, investigarse, rechazarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, documento, resultado o procedimiento no da una respuesta completa ante una condición real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si un lote tiene despacho urgente pero mantiene un resultado crítico pendiente, entonces no se libera hasta tener evidencia técnica suficiente. Si el pendiente es documental no crítico y la trazabilidad está completa, se puede priorizar la revisión formal antes de liberar.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos",
+"No usa lógica SI → ENTONCES",
+"No identifica decisión tomada",
+"No menciona responsable o validador",
+"No explica el riesgo evitado"
+]
+},
+{
+"question_id": "AREA_AC_001_Q011",
+"ai_category": "apoyo_escalamiento_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿En qué situaciones de Calidad conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar inocuidad, despacho, exportación, cliente, producción, cumplimiento regulatorio o reputación de la empresa.",
+"tooltip": "Incluya situaciones como riesgo sanitario, despacho comprometido, presión comercial, resultado crítico pendiente, reclamo sensible, desviación de temperatura, documentación incompleta o conflicto entre áreas.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si un lote observado bloquea un despacho de exportación y falta una evidencia crítica, conviene escalar antes de decidir. Se debe presentar lote, cliente, hora límite, evidencia disponible, pendiente específico y riesgo técnico para que la decisión quede sustentada.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe",
+"No identifica situaciones específicas de Calidad",
+"No explica riesgo de no escalar",
+"No menciona información necesaria para escalar",
+"No define criterio para continuar"
+]
+},
+{
+"question_id": "AREA_AC_001_Q012",
+"ai_category": "aprendizaje_lento_persona_nueva_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué aspectos de Aseguramiento de Calidad suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación atunera?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como interpretar riesgos, priorizar observados, reconocer señales de desviación, reconstruir trazabilidad o manejar presión operativa.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en diferenciar cuándo una novedad documental es menor y cuándo puede bloquear exportación o trazabilidad. Eso requiere conocer clientes, lotes, documentos, estados de producto y casos anteriores. El error típico es tratar todos los pendientes con la misma prioridad.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación",
+"No menciona aspectos propios de Calidad",
+"No explica por qué requiere práctica",
+"No identifica errores típicos de una persona nueva",
+"No propone forma concreta de aprendizaje"
+]
+},
+{
+"question_id": "AREA_AC_001_Q013",
+"ai_category": "senal_listo_para_avanzar_liberar_cerrar_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales o confirmaciones indican que un lote, producto observado, investigación, acción correctiva, liberación o documento de Calidad está listo para avanzar, cerrarse, liberarse o entregarse a otra área?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un caso de Calidad quedó correctamente resuelto.",
+"tooltip": "Incluya confirmaciones técnicas, documentales, sistémicas, de trazabilidad, resultados, evidencia de inspección, comunicación a áreas afectadas o validación del responsable.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación documental o técnica",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Un observado está listo para cerrarse cuando la causa fue aclarada, la evidencia está completa, el estado fue actualizado, las áreas afectadas fueron notificadas y no queda restricción técnica pendiente. Si falta comunicación a cámaras o despacho, puede seguir tratándose como bloqueado o disponible por error.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando el sistema lo indica",
+"No menciona evidencia técnica o documental",
+"No identifica validación del responsable o área afectada",
+"No explica qué error evita",
+"No aterriza la respuesta a Calidad"
+]
+},
+{
+"question_id": "AREA_AC_001_Q014",
+"ai_category": "aprendizajes_conservar_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué aprendizajes de Aseguramiento de Calidad deberían conservarse porque ayudan a evitar liberaciones indebidas, reclamos, hallazgos recurrentes, pérdida de trazabilidad o presión por decisiones sin evidencia?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores críticos.",
+"tooltip": "Mencione aprendizajes sobre observados, liberaciones, documentación, cadena de frío, auditorías, reclamos, coordinación con cámaras, presión comercial o interpretación de evidencia.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no esperar a que un observado bloquee el despacho para revisarlo. Si un lote observado tiene destino cercano, debe priorizarse antes de la hora límite y comunicarse claramente su estado para evitar presión de último momento.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales",
+"No conecta con errores o riesgos de Calidad",
+"No menciona señales o criterios",
+"No indica práctica recomendada",
+"No permite transferir conocimiento a otra persona"
+]
+},
+{
+"question_id": "AREA_AC_001_Q015",
+"ai_category": "recomendacion_persona_nueva_calidad",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Aseguramiento de Calidad para trabajar con criterio, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en liberaciones, observados, trazabilidad, inocuidad, documentación, reclamos y coordinación operativa.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no liberar, cerrar o comunicar un estado solo por presión de otra área. Debe revisar evidencia mínima, trazabilidad, resultado, estado documental y áreas afectadas. Si tiene duda, debe consultar antes de decidir porque un error pequeño puede afectar despacho, cliente o inocuidad.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área",
+"No menciona liberación, observados, trazabilidad, evidencia, inocuidad o documentación",
+"No indica cuándo pedir apoyo",
+"No explica qué error evita",
+"No conecta con aprendizaje práctico de Calidad"
+]
+}
+]
+}
+]
+}

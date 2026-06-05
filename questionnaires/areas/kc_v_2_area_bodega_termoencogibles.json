@@ -1,0 +1,561 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Bodega de Termoencogibles",
+"level": null,
+"area_metadata": {
+"area_id": "area_bodega_termoencogibles",
+"display_name": "Bodega de Termoencogibles",
+"aliases": [
+"BTE",
+"Termoencogibles",
+"Bodega Termoencogibles",
+"Bodega de Termoencogibles",
+"Bodega de Termo",
+"Insumos Termoencogibles",
+"Material Termoencogible",
+"Control Termoencogibles",
+"Abastecimiento Termoencogibles"
+],
+"macro_process": "MP-1400 LOGÍSTICA Y ABASTECIMIENTO"
+},
+"blocks": [
+{
+"block_id": "BTE_01_INVENTARIO_EXISTENCIAS",
+"block_name": "Conocimiento tácito crítico de Bodega de Termoencogibles",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Bodega de Termoencogibles que ayudan a asegurar disponibilidad, exactitud de inventario, conservación, identificación correcta y abastecimiento oportuno a producción.",
+"questions": [
+{
+"question_id": "BTE_01_Q01",
+"ai_category": "inicio_correcto_caso_termoencogible",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una recepción, conteo, ubicación, reserva o despacho de termoencogibles?",
+"context": "Busca capturar los datos y condiciones críticas que Bodega de Termoencogibles valida por experiencia antes de mover, registrar, almacenar o entregar material a producción.",
+"tooltip": "Mencione qué dato confirma primero, qué condición física revisa, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso o movimiento a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de despachar termoencogible confirmo referencia, medida, cantidad, programa vigente, solicitud de producción y saldo físico. Si producción solicita de palabra pero la referencia no coincide con el programa o el saldo real, no entrego hasta validar porque se puede abastecer material equivocado y detener la línea.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso o movimiento",
+"información mínima",
+"condición o señal crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales del área.",
+"No identifica información crítica antes de iniciar.",
+"No menciona referencia, medida, cantidad, programa, saldo físico o solicitud.",
+"No explica el riesgo operativo de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "BTE_01_Q02",
+"ai_category": "priorizacion_casos_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa para priorizar solicitudes o casos de termoencogibles cuando coinciden necesidades de producción, recepción, conteo, ajuste o reposición?",
+"context": "Permite capturar cómo el área decide qué atender primero cuando hay presión operativa, líneas esperando, cambios de formato, referencias críticas o material limitado.",
+"tooltip": "Incluya criterios como línea detenida, cambio de presentación, referencia crítica, saldo bajo, programa confirmado, pedido urgente, riesgo de quiebre, capacidad de producción o disponibilidad física.",
+"expected_answer_structure": [
+"Situación de múltiples casos",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si varias líneas solicitan termoencogible al mismo tiempo, priorizo la línea detenida o el cambio de formato confirmado, siempre que la referencia esté validada en el programa. También reviso saldo físico y criticidad. Si priorizo solo por insistencia, puedo dejar sin material a la línea que sostiene el cumplimiento del turno.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a termoencogibles.",
+"No menciona línea, formato, referencia, programa o saldo físico.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "BTE_01_Q03",
+"ai_category": "excepciones_flujo_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de termoencogibles suelen salirse del manejo habitual y requieren criterio adicional antes de recibir, ubicar, reservar, ajustar o entregar el material?",
+"context": "Busca identificar excepciones reales del área donde no basta seguir una instrucción general porque existen diferencias de referencia, cantidad, documentación, estado físico o urgencia productiva.",
+"tooltip": "Describa casos como referencia nueva, material sin identificación clara, diferencia físico-sistema, recepción parcial, empaque dañado, cambio urgente de formato o solicitud fuera de programa.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es recibir una referencia nueva sin ubicación definida o con descripción distinta a la orden. Antes de ingresarla como disponible, valido código, medida y uso con compras o planificación, y la separo hasta asegurar que no se mezcle con referencias parecidas.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de termoencogibles.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "BTE_01_Q04",
+"ai_category": "validaciones_practicas_error_critico_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza para evitar errores importantes de referencia, medida, cantidad, ubicación, estado físico, proveedor o entrega de termoencogibles?",
+"context": "Permite capturar revisiones no escritas que previenen mezcla de referencias, entrega incorrecta, diferencias de inventario, uso de material dañado o desabastecimiento en producción.",
+"tooltip": "Mencione qué compara, qué revisa físicamente, qué cruces hace entre sistema, documento y material, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de entregar comparo código, medida, descripción, cantidad física y solicitud de producción. Si hay dos referencias parecidas o la etiqueta no está clara, pido confirmación antes de sacar el rollo para evitar que producción use material de otra presentación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a termoencogibles."
+]
+},
+{
+"question_id": "BTE_01_Q05",
+"ai_category": "senales_tempranas_riesgo_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso, quiebre, saturación, diferencia de inventario, daño de material o reproceso en termoencogibles?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte producción, presentación del producto, inventario, compras o cumplimiento del programa.",
+"tooltip": "Incluya señales como saldo bajo de referencia crítica, aumento de solicitudes urgentes, rollos fuera de ubicación, diferencias físico-sistema, material sin etiqueta, daño de empaque o cambios frecuentes de programa.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando una referencia crítica aparece con saldo bajo y producción anuncia cambio de formato, es señal de riesgo de quiebre. Antes de esperar la solicitud formal, confirmo físico, reviso si hay material en otra ubicación y aviso a planificación o compras.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "BTE_01_Q06",
+"ai_category": "dependencias_reales_destrabe_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, datos o canales destraban realmente el trabajo cuando hay dudas sobre referencias, saldos, recepción, ubicación, compras pendientes o abastecimiento de termoencogibles?",
+"context": "Permite identificar dependencias reales del área para resolver bloqueos sin improvisar ni entregar material con información incompleta.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando hay duda entre dos referencias parecidas, normalmente se destraba con planificación o producción, revisando el programa vigente y la presentación que se va a correr. Si el dato no coincide con sistema o documento, se escala antes de entregar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a termoencogibles.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "BTE_01_Q07",
+"ai_category": "casos_delicados_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de termoencogibles considera delicados y requieren más experiencia para manejarlos correctamente sin afectar inventario, producción, compras o calidad del empaque?",
+"context": "Busca capturar situaciones donde se necesita criterio operativo y lectura de riesgo, no solo aplicación mecánica de una solicitud o registro.",
+"tooltip": "Mencione casos como referencia parecida, material con daño, diferencia físico-sistema, recepción incompleta, saldo crítico, solicitud urgente sin respaldo, material retenido o cambio inmediato de formato.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es tener material físicamente disponible pero con identificación dudosa o empaque dañado. Una persona con experiencia revisa código, medida, proveedor, condición y uso programado antes de liberarlo, porque podría ser material incorrecto o no apto para producción.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "BTE_01_Q08",
+"ai_category": "errores_frecuentes_evitar_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Bodega de Termoencogibles se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten producción o inventario?",
+"context": "Permite identificar errores que el personal experimentado previene, como confundir referencias, despachar cantidad incorrecta, ubicar mal rollos, registrar tarde, mezclar materiales o confiar solo en el saldo del sistema.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es entregar una referencia parecida por no revisar medida y código completo. Suele pasar en cambios rápidos de formato. La señal es una solicitud verbal o incompleta. Para evitarlo, se cruza con programa y etiqueta física antes de sacar el rollo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a producción o inventario.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "BTE_01_Q09",
+"ai_category": "practicas_agiles_sin_saltar_controles_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar recepción, ubicación, conteo, reserva o abastecimiento de termoencogibles sin saltarse controles de inventario, identificación, estado físico y registro?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo trazabilidad, exactitud, validación física, orden de ubicación y coordinación con producción.",
+"tooltip": "Mencione prácticas como preparar referencias críticas según programa, separar material por rotación, anticipar cambios de formato, validar antes del turno, usar listados internos o confirmar solicitudes por canal confiable.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es revisar el programa antes del turno y ubicar cerca las referencias que se usarán en cambios de formato. Esto agiliza el abastecimiento, pero no se debe saltar la validación de código, cantidad, estado físico y solicitud vigente antes de entregar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "BTE_01_Q10",
+"ai_category": "criterios_no_escritos_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa el área para decidir si un termoencogible puede recibirse, almacenarse, moverse, reservarse, entregarse, bloquearse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, documento, solicitud o procedimiento no da una respuesta completa ante condiciones reales de bodega.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si un rollo tiene identificación incompleta o no coincide con la referencia solicitada, entonces no se entrega aunque exista presión de producción. Se valida con supervisor, planificación o compras para evitar uso incorrecto y reproceso.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "BTE_01_Q11",
+"ai_category": "apoyo_escalamiento_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de termoencogibles conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente en bodega?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar producción, inventario, compras, planificación, calidad del empaque o cumplimiento del programa.",
+"tooltip": "Incluya situaciones como referencia no confirmada, saldo crítico, material dañado, recepción sin documentos completos, diferencia importante de inventario, cambio urgente de formato o solicitud sin respaldo.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si el sistema muestra saldo pero físicamente no aparece una referencia crítica, conviene escalar antes de prometer entrega a producción. Se debe presentar código, saldo sistema, conteo físico, ubicaciones revisadas y urgencia de la línea para decidir búsqueda, ajuste o reposición.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "BTE_01_Q12",
+"ai_category": "aprendizaje_lento_persona_nueva_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Bodega de Termoencogibles suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como diferencias entre referencias, ubicaciones reales, cambios de formato, señales de daño, criticidad y coordinación con producción.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en diferenciar referencias parecidas porque los códigos, medidas o usos pueden ser similares. La práctica ayuda a revisar etiqueta, ubicación, programa y presentación antes de entregar. El error típico es confiar solo en el nombre común del material.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de termoencogibles.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "BTE_01_Q13",
+"ai_category": "senal_listo_para_avanzar_cerrar_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una recepción, ubicación, conteo, reserva, ajuste o entrega de termoencogibles está lista para avanzar, cerrarse o entregarse a producción?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un movimiento o caso de Bodega de Termoencogibles quedó correctamente resuelto.",
+"tooltip": "Incluya confirmaciones físicas, documentales, sistémicas, de referencia, cantidad, medida, estado del material, ubicación, registro, aceptación de producción o validación del responsable.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación física o documental",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una entrega está lista cuando la referencia coincide con el programa, la cantidad fue contada físicamente, el rollo está identificado y en buen estado, el movimiento queda registrado y producción confirma que corresponde al formato requerido.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando el sistema lo indica.",
+"No menciona confirmación física o documental.",
+"No identifica validación del responsable o área receptora.",
+"No explica qué error evita.",
+"No aterriza la respuesta a termoencogibles."
+]
+},
+{
+"question_id": "BTE_01_Q14",
+"ai_category": "aprendizajes_conservar_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Bodega de Termoencogibles deberían conservarse porque ayudan a evitar quiebres, errores de entrega, diferencias de inventario, daños de material o reprocesos?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes.",
+"tooltip": "Mencione aprendizajes sobre referencias críticas, cambios de formato, conservación, ubicación, comunicación con producción, conteos, recepción, proveedores, documentación o control físico.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no confiar solo en el saldo del sistema cuando se trata de referencias críticas. Conviene confirmar físicamente antes del cambio de formato, especialmente si hubo movimientos urgentes o ajustes recientes.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "BTE_01_Q15",
+"ai_category": "recomendacion_persona_nueva_termoencogibles",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Bodega de Termoencogibles para trabajar con seguridad, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en recepción, almacenamiento, identificación, control, conteo y abastecimiento de termoencogibles.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no entregar termoencogible solo por nombre común o por urgencia verbal. Debe revisar código, medida, cantidad, programa y estado físico del rollo. Si tiene duda entre dos referencias, debe consultar antes de sacar el material.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona termoencogibles, referencias, programa, cantidad o estado físico.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico del área."
+]
+}
+]
+}
+]
+}

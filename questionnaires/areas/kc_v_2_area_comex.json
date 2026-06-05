@@ -1,0 +1,561 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "COMEX",
+"level": null,
+"area_metadata": {
+"area_id": "area_comex",
+"display_name": "COMEX",
+"aliases": [
+"COMEX",
+"Comercio Exterior",
+"Comercio exterior",
+"Importaciones y Exportaciones",
+"Importaciones",
+"Exportaciones",
+"Aduanas",
+"Operaciones internacionales",
+"Foreign Trade"
+],
+"macro_process": "MP-1600 COMERCIO EXTERIOR Y ABASTECIMIENTO INTERNACIONAL"
+},
+"blocks": [
+{
+"block_id": "COMEX_01_FLUJO_OPERATIVO",
+"block_name": "Conocimiento tácito crítico de COMEX",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de COMEX que ayudan a gestionar importaciones, exportaciones, documentación, aduanas, agentes, pagos, costos, tiempos y contingencias sin afectar cumplimiento, costos ni continuidad operativa.",
+"questions": [
+{
+"question_id": "COMEX_01_Q01",
+"ai_category": "inicio_correcto_caso_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una importación, exportación, nacionalización, embarque, trámite documental o coordinación con agente externo?",
+"context": "Busca capturar los datos y condiciones críticas que COMEX valida por experiencia antes de activar una operación, coordinar documentos, comprometer fechas o avanzar con terceros.",
+"tooltip": "Mencione qué dato confirma primero, qué condición documental, logística, aduanera o financiera revisa, qué señal le indica que no debe avanzar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso COMEX a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de iniciar una importación confirmo orden aprobada, proveedor, Incoterm, documentos requeridos, partida arancelaria, permisos, forma de pago, fecha estimada de embarque y agente asignado. Si falta un permiso o el documento del proveedor viene incompleto, no avanzo como operación lista porque puede generar demora, multa o sobrecosto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso COMEX",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de COMEX.",
+"No identifica información crítica antes de iniciar.",
+"No menciona documentos, agente, proveedor, permisos, aduana, pago, embarque o fechas.",
+"No explica el riesgo operativo, documental o aduanero de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "COMEX_01_Q02",
+"ai_category": "priorizacion_casos_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa COMEX para priorizar operaciones cuando coinciden embarques, documentos pendientes, pagos, permisos, nacionalizaciones, inspecciones o urgencias internas?",
+"context": "Permite capturar cómo COMEX decide qué atender primero cuando hay presión por tiempos, costos crecientes, producción esperando, clientes internos o externos afectados, documentos críticos o terceros sin respuesta.",
+"tooltip": "Incluya criterios como ETA, riesgo de almacenaje, impacto en producción, cliente afectado, vencimiento documental, permisos, pagos, inspecciones, costo de demora o criticidad del insumo/producto.",
+"expected_answer_structure": [
+"Situación de múltiples casos",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o actor con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden un pago pendiente, un documento faltante y una nacionalización próxima, priorizo según ETA, riesgo de almacenaje, impacto en producción y criticidad del material. Si el embarque llega en pocos días y falta un certificado, se atiende antes que una operación con mayor holgura.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a COMEX.",
+"No menciona ETA, documentos, pagos, permisos, nacionalización, costos o producción.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "COMEX_01_Q03",
+"ai_category": "excepciones_flujo_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de COMEX suelen salirse del manejo habitual y requieren criterio adicional antes de embarcar, nacionalizar, liberar documentos, pagar, corregir o escalar una operación?",
+"context": "Busca identificar excepciones reales del área donde no basta seguir la secuencia normal porque existen errores documentales, cambios de ruta, retrasos, sobrecostos, inspecciones, pagos retenidos o permisos pendientes.",
+"tooltip": "Describa casos como documentos con diferencias, proveedor que no responde, cambio de ETA, inspección aduanera, permiso vencido, pago bloqueado, sobrecosto inesperado, cambio de ruta o error en clasificación.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona, área o tercero consultado",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es recibir documentos con descripción distinta entre factura y packing list. Antes de transmitir información al agente, COMEX valida con proveedor y agente aduanero si requiere corrección, porque una diferencia menor puede generar observación o demora en nacionalización.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de COMEX.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "COMEX_01_Q04",
+"ai_category": "validaciones_practicas_error_critico_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza COMEX para evitar errores importantes en documentos, partidas arancelarias, permisos, valores, fechas, proveedor, agente, pago, seguro o nacionalización?",
+"context": "Permite capturar revisiones no escritas que previenen bloqueos aduaneros, multas, demoras, sobrecostos, pagos errados, observaciones documentales o afectación de producción y clientes.",
+"tooltip": "Mencione qué compara, qué fuente consulta, qué cruces realiza entre documentos, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de nacionalizar comparo factura, packing list, BL, partida arancelaria, descripción, cantidades, proveedor y permisos aplicables. Si la descripción comercial no coincide con la ficha o el antecedente usado, valido con agente antes de transmitir para evitar observaciones o correcciones tardías.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a COMEX."
+]
+},
+{
+"question_id": "COMEX_01_Q05",
+"ai_category": "senales_tempranas_riesgo_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso, sobrecosto, bloqueo aduanero, problema documental, pago tardío, inspección compleja o reproceso en una operación COMEX?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte costos, producción, clientes, nacionalización, embarque o cumplimiento regulatorio.",
+"tooltip": "Incluya señales como proveedor sin respuesta, documentos incompletos, ETA cercana, cambio de ruta, pago no confirmado, agente con observaciones, permiso pendiente, diferencia de valores o incremento de almacenaje.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando el ETA está próximo y el proveedor aún no envía documentos corregidos, es señal de riesgo de almacenaje y demora en nacionalización. En ese caso se insiste con proveedor, se alerta al agente y se escala internamente con el impacto esperado.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "COMEX_01_Q06",
+"ai_category": "dependencias_reales_destrabe_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, terceros, datos o canales destraban realmente el trabajo cuando hay dudas sobre documentos, aduana, permisos, pagos, costos, ETA, proveedor, agente o nacionalización?",
+"context": "Permite identificar dependencias reales del área para resolver bloqueos sin asumir datos incompletos ni avanzar con información no confirmada.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona, área o tercero que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando existe duda sobre un requisito aduanero, se destraba con el agente revisando partida, ficha técnica, antecedente y documento de soporte. Si la respuesta puede generar costo o retraso relevante, COMEX escala con jefatura, compras o planificación según el impacto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona, área o tercero",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a COMEX.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "COMEX_01_Q07",
+"ai_category": "casos_delicados_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de COMEX considera delicados y requieren más experiencia para manejarlos correctamente sin afectar costos, cumplimiento, aduana, producción, cliente o relación con terceros?",
+"context": "Busca capturar situaciones donde se necesita criterio operativo y lectura de riesgo, no solo aplicación mecánica de un trámite, documento o checklist.",
+"tooltip": "Mencione casos como cambio de datos bancarios, error documental crítico, permiso pendiente, inspección aduanera, sobrecosto por demora, proveedor sensible, embarque urgente o partida arancelaria dudosa.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es un cambio de cuenta bancaria del proveedor antes de un pago internacional. Requiere validar formalmente con compras, finanzas y proveedor por canales seguros, porque si se maneja mal puede generar fraude, pago errado o bloqueo de embarque.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "COMEX_01_Q08",
+"ai_category": "errores_frecuentes_evitar_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en COMEX se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten nacionalización, embarque, costos, pagos o cumplimiento?",
+"context": "Permite identificar errores que el personal experimentado previene, como aceptar documentos incompletos, no validar permisos, usar datos bancarios no confirmados, perder vencimientos, asumir ETA fija o no alertar sobrecostos.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es confiar en el ETA inicial sin revisar actualizaciones del forwarder. La señal aparece cuando no llegan avisos de embarque o el tracking no se mueve. Para evitarlo, se hace seguimiento antes del arribo y se alerta a planificación si cambia la fecha.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a COMEX.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "COMEX_01_Q09",
+"ai_category": "practicas_agiles_sin_saltar_controles_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar embarques, nacionalizaciones, correcciones documentales, pagos, coordinación con agentes o seguimiento de ETA sin saltarse controles críticos?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo validación documental, evidencia, control aduanero, autorización financiera, trazabilidad y comunicación con áreas afectadas.",
+"tooltip": "Mencione prácticas como prevalidar borradores, usar checklist por operación, anticipar permisos, separar operaciones críticas, confirmar pagos antes del corte bancario o mantener tracker actualizado.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es revisar borradores de factura, packing list y BL antes del embarque. Esto agiliza correcciones, pero no reemplaza la validación final con documentos definitivos y agente aduanero antes de nacionalizar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "COMEX_01_Q10",
+"ai_category": "criterios_no_escritos_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa COMEX para decidir si una operación, documento, pago, corrección, nacionalización, cambio de ruta, permiso o sobrecosto puede avanzar, detenerse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, documento, proveedor, agente o procedimiento no da una respuesta completa ante una condición real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si un documento crítico llega con diferencia de descripción o cantidad, entonces no se transmite a aduana hasta validar corrección con proveedor y agente. Se puede avanzar con revisión interna, pero no cerrar trámite porque puede generar observación o multa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "COMEX_01_Q11",
+"ai_category": "apoyo_escalamiento_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de COMEX conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar cumplimiento legal, costos, pagos, producción, clientes, proveedores, aduana, seguros o reputación.",
+"tooltip": "Incluya situaciones como sobrecosto relevante, documento crítico faltante, pago retenido, inspección compleja, permiso pendiente, cambio de datos bancarios, riesgo de multa o impacto en producción.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona, área o tercero a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si un embarque está por generar almacenaje por documentos incompletos, conviene escalar antes de esperar la fecha límite. Se debe presentar ETA, documento faltante, proveedor responsable, costo estimado, alternativa y riesgo para producción o cliente interno.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área, persona o tercero",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "COMEX_01_Q12",
+"ai_category": "aprendizaje_lento_persona_nueva_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de COMEX suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación internacional de la empresa?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como lectura de documentos, requisitos por operación, tiempos reales, señales de riesgo, comportamiento de agentes o coordinación con áreas internas.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en reconocer qué diferencia documental es menor y cuál puede bloquear aduana. Eso requiere revisar casos anteriores, hablar con el agente y entender producto, partida, permisos y requisitos. El error típico es aceptar el documento solo porque parece completo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de COMEX.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "COMEX_01_Q13",
+"ai_category": "senal_listo_para_avanzar_cerrar_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una operación, documento, pago, embarque, nacionalización, permiso, reclamo a tercero o cierre COMEX está listo para avanzar, cerrarse o entregarse a otra área?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un caso COMEX quedó correctamente resuelto y puede pasar a compras, finanzas, contabilidad, planificación, producción o comercial.",
+"tooltip": "Incluya confirmaciones documentales, aduaneras, financieras, logísticas, de agente, proveedor, banco, sistema, archivo soporte, aprobación interna o aceptación del área receptora.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación documental, logística o financiera",
+"Persona, área o tercero que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una nacionalización está lista para cerrarse cuando documentos, declaración, pagos, agente, costos, ingreso físico y soporte contable coinciden. Si falta factura de gasto o confirmación de recepción interna, no debería cerrarse como operación completa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando el sistema lo indica.",
+"No menciona confirmación documental, logística, financiera o aduanera.",
+"No identifica validación interna o de tercero.",
+"No explica qué error evita.",
+"No aterriza la respuesta a COMEX."
+]
+},
+{
+"question_id": "COMEX_01_Q14",
+"ai_category": "aprendizajes_conservar_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de COMEX deberían conservarse porque ayudan a evitar bloqueos, multas, demoras, sobrecostos, pagos errados, problemas con agentes o reprocesos documentales?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes.",
+"tooltip": "Mencione aprendizajes sobre proveedores, agentes, documentos sensibles, tiempos reales, permisos, pagos, bancos, aduana, rutas, costos, inspecciones, certificados o coordinación interna.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no esperar al arribo para revisar documentos críticos. Conviene validar borradores antes del embarque y confirmar requisitos con el agente, porque corregir tarde puede generar almacenaje, observaciones o retraso en producción.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "COMEX_01_Q15",
+"ai_category": "recomendacion_persona_nueva_comex",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en COMEX para trabajar con seguridad, evitar errores y aprender más rápido el manejo real de operaciones internacionales?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en documentos, agentes, aduana, proveedores, pagos, permisos, costos, tiempos, nacionalizaciones y coordinación interna.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona, área o tercero de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no asumir que una operación está lista solo porque el proveedor envió documentos. Debe revisar descripción, cantidades, permisos, partida, fechas, pagos y validación del agente. Si algo no cuadra, debe detenerse y consultar antes de transmitir o prometer una fecha.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona documentos, agentes, aduana, pagos, permisos, fechas o costos.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de COMEX."
+]
+}
+]
+}
+]
+}

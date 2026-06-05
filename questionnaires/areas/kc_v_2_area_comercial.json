@@ -1,0 +1,561 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Comercial",
+"level": null,
+"area_metadata": {
+"area_id": "area_comercial",
+"display_name": "Comercial",
+"aliases": [
+"Comercial",
+"Ventas",
+"Área Comercial",
+"Gestion Comercial",
+"Gestión Comercial",
+"Ventas y Clientes",
+"Servicio Comercial",
+"Clientes",
+"Sales"
+],
+"macro_process": "MP-1500 GESTIÓN COMERCIAL Y SERVICIO AL CLIENTE"
+},
+"blocks": [
+{
+"block_id": "COM_01_GESTION_COMERCIAL",
+"block_name": "Conocimiento tácito crítico de Comercial",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Comercial que ayudan a gestionar clientes, pedidos, precios, disponibilidad, promesas de entrega, reclamos y coordinación interna sin comprometer rentabilidad ni cumplimiento.",
+"questions": [
+{
+"question_id": "COM_01_Q01",
+"ai_category": "inicio_correcto_caso_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una cotización, pedido, negociación, reclamo o compromiso comercial con un cliente?",
+"context": "Busca capturar los datos y condiciones críticas que Comercial valida por experiencia antes de responder, prometer, cotizar o confirmar algo al cliente.",
+"tooltip": "Mencione qué dato confirma primero, qué condición comercial u operativa revisa, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso comercial a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de confirmar un pedido reviso cliente, producto, cantidad, precio vigente, disponibilidad real, condición de pago, fecha requerida y restricciones de despacho. Si falta confirmación de stock o crédito, no prometo fecha al cliente porque puede generarse incumplimiento o reclamo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso comercial",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Comercial.",
+"No identifica información crítica antes de iniciar.",
+"No menciona cliente, producto, precio, disponibilidad, crédito, fecha o condición comercial.",
+"No explica el riesgo comercial de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "COM_01_Q02",
+"ai_category": "priorizacion_casos_comerciales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Comercial para priorizar clientes, pedidos, reclamos, cotizaciones o urgencias cuando coinciden varias necesidades al mismo tiempo?",
+"context": "Permite capturar cómo Comercial decide qué atender primero cuando existen clientes críticos, pedidos sensibles, disponibilidad limitada, presión de entrega, cartera, reclamos o riesgo de pérdida de venta.",
+"tooltip": "Incluya criterios como cliente estratégico, compromiso previo, margen, fecha de entrega, disponibilidad, riesgo de incumplimiento, reclamo abierto, volumen, cartera o impacto en relación comercial.",
+"expected_answer_structure": [
+"Situación de múltiples casos",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden un pedido de cliente clave, una cotización nueva y un reclamo abierto, priorizo según compromiso previo, impacto en cliente, margen, disponibilidad y riesgo de incumplimiento. Si un cliente estratégico tiene despacho cercano, valido primero stock y crédito antes de atender solicitudes menos críticas.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Comercial.",
+"No menciona cliente, pedido, margen, disponibilidad, reclamo, cartera o fecha.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "COM_01_Q03",
+"ai_category": "excepciones_flujo_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos comerciales suelen salirse del manejo habitual y requieren criterio adicional antes de cotizar, confirmar, modificar, cancelar o escalar un pedido?",
+"context": "Busca identificar excepciones reales del área donde no basta seguir la secuencia normal porque existen restricciones de disponibilidad, precio, crédito, cliente, fecha, calidad, logística o documentación.",
+"tooltip": "Describa casos como pedido urgente, cliente con cartera vencida, descuento fuera de política, cambio de producto, falta de stock, reclamo sensible, entrega parcial, sustitución o cambio de fecha comprometida.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es un cliente estratégico que pide adelantar entrega sin stock confirmado. Antes de aceptar, valido con planificación, bodega, despacho y finanzas si existe disponibilidad, transporte y condición de crédito. Si no hay respaldo, no confirmo como promesa cerrada.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de Comercial.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "COM_01_Q04",
+"ai_category": "validaciones_practicas_error_critico_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Comercial para evitar errores importantes en precio, margen, disponibilidad, condición de pago, pedido, cliente, fecha o promesa de entrega?",
+"context": "Permite capturar revisiones no escritas que previenen promesas incumplidas, ventas con margen incorrecto, pedidos bloqueados, reclamos, reprocesos internos o conflictos con clientes.",
+"tooltip": "Mencione qué compara, qué fuente consulta, qué dato cruza con otras áreas, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de confirmar una venta reviso lista de precios vigente, margen esperado, stock disponible, condición de crédito y fecha posible de despacho. Si la disponibilidad viene solo por mensaje informal, valido con planificación o bodega antes de prometer al cliente.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Comercial."
+]
+},
+{
+"question_id": "COM_01_Q05",
+"ai_category": "senales_tempranas_riesgo_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse incumplimiento comercial, reclamo, atraso de entrega, pérdida de venta, bloqueo por cartera o reproceso de pedido?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte al cliente, la venta, la rentabilidad, la programación, el despacho o la relación comercial.",
+"tooltip": "Incluya señales como pedidos pendientes acumulados, stock no confirmado, cliente insistente, cambios repetidos, cartera vencida, transporte no definido, precio dudoso, reclamo sin cierre o falta de respuesta de otra área.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando un cliente pregunta varias veces por el mismo despacho y planificación aún no confirma disponibilidad, lo tomo como señal de riesgo de incumplimiento. Antes de esperar el reclamo, valido fecha real, alternativa de producto y comunicación preventiva con el cliente.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "COM_01_Q06",
+"ai_category": "dependencias_reales_destrabe_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, datos o canales destraban realmente el trabajo cuando hay dudas sobre disponibilidad, precio, crédito, despacho, reclamo, documentación o condiciones comerciales?",
+"context": "Permite identificar dependencias reales del área para resolver bloqueos sin prometer al cliente información que todavía no está confirmada.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando un pedido está bloqueado por falta de disponibilidad confirmada, se destraba con planificación y bodega revisando producto, lote, cantidad y fecha real. Si además el cliente es crítico o hay cartera pendiente, Comercial valida con finanzas y escala con jefatura antes de confirmar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Comercial.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "COM_01_Q07",
+"ai_category": "casos_delicados_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos comerciales considera delicados y requieren más experiencia para manejarlos correctamente sin afectar cliente, margen, crédito, cumplimiento o relación comercial?",
+"context": "Busca capturar situaciones donde se necesita criterio comercial y lectura de riesgo, no solo aplicación mecánica de una lista de precios, pedido o política.",
+"tooltip": "Mencione casos como cliente clave molesto, descuento excepcional, falta de stock, cartera vencida con pedido urgente, reclamo sensible, cambio de fecha prometida, entrega parcial o sustitución de producto.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es ofrecer una alternativa de producto a un cliente que tiene especificaciones estrictas. Requiere conocer historial del cliente, tolerancias, aprobación necesaria, margen y disponibilidad. Si se maneja mal, puede generar rechazo, reclamo o pérdida de confianza.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "COM_01_Q08",
+"ai_category": "errores_frecuentes_evitar_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Comercial se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten pedidos, clientes, margen, cartera o cumplimiento?",
+"context": "Permite identificar errores que el personal experimentado previene, como confirmar sin stock, usar precio desactualizado, no validar crédito, prometer fechas irreales, omitir condiciones del cliente o no registrar cambios.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es confirmar una fecha de entrega solo por presión del cliente sin validar disponibilidad ni transporte. La señal aparece cuando la información viene incompleta o por canal informal. Para evitarlo, se confirma con planificación, despacho o bodega antes de responder.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a clientes, pedidos, margen o cartera.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "COM_01_Q09",
+"ai_category": "practicas_agiles_sin_saltar_controles_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar cotizaciones, confirmación de pedidos, seguimiento a clientes, reclamos o coordinación interna sin saltarse validaciones de precio, crédito, disponibilidad y registro?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo respaldo comercial, control de margen, coordinación interna, trazabilidad de cambios y promesas sostenibles al cliente.",
+"tooltip": "Mencione prácticas como prevalidar stock, mantener fichas de clientes, usar listas vigentes, confirmar cartera antes de prometer, registrar cambios críticos o agrupar consultas por cliente o pedido.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es revisar clientes críticos y pedidos próximos al inicio del día, validando stock, crédito y despacho antes de que el cliente pregunte. Esto agiliza respuestas, pero no reemplaza la confirmación formal de disponibilidad ni el registro del cambio.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "COM_01_Q10",
+"ai_category": "criterios_no_escritos_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Comercial para decidir si una cotización, pedido, descuento, condición especial, reclamo, promesa de entrega o excepción puede avanzar, detenerse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando la política, el sistema o la información disponible no dan una respuesta completa ante una situación comercial real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si un descuento reduce el margen esperado o está fuera de política, entonces no se confirma al cliente sin autorización. Se presenta volumen, precio, margen, cliente e impacto esperado para decidir si se aprueba, se ajusta o se rechaza.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "COM_01_Q11",
+"ai_category": "apoyo_escalamiento_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Comercial conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente con el cliente?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar margen, crédito, disponibilidad, cliente clave, cumplimiento, reclamo, reputación o coordinación interna.",
+"tooltip": "Incluya situaciones como descuento fuera de política, cartera vencida, cliente crítico molesto, pedido sin stock, promesa de fecha incierta, reclamo sensible, cambio de condición o riesgo de incumplimiento.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si un cliente clave exige una fecha que planificación no confirma, conviene escalar antes de prometer. Se debe presentar cliente, pedido, fecha solicitada, disponibilidad, impacto comercial y alternativas para decidir qué responder sin comprometer una promesa falsa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "COM_01_Q12",
+"ai_category": "aprendizaje_lento_persona_nueva_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Comercial suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la relación con clientes y la operación interna?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo políticas, como historial de clientes, condiciones especiales, lectura de urgencias reales, coordinación interna, márgenes, cartera o manejo de reclamos.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en aprender qué clientes aceptan cambios y cuáles requieren aprobación previa. No basta ver el pedido; debe conocer historial, condiciones comerciales, sensibilidad a precio y nivel de exigencia. El error típico es confirmar algo sin revisar antecedentes del cliente.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Comercial.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "COM_01_Q13",
+"ai_category": "senal_listo_para_avanzar_cerrar_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una cotización, pedido, negociación, reclamo, cambio comercial o promesa al cliente está lista para avanzar, cerrarse o entregarse a otra área?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un caso comercial quedó correctamente confirmado y puede pasar a planificación, despacho, finanzas, calidad o cliente.",
+"tooltip": "Incluya confirmaciones de precio, margen, crédito, disponibilidad, fecha, cliente, producto, cantidad, documentación, aceptación del cliente, aprobación interna o registro del acuerdo.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación comercial u operativa",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Un pedido está listo para avanzar cuando cliente, producto, cantidad, precio, condición de pago, disponibilidad, fecha, transporte y aprobación interna están confirmados. Si falta crédito o disponibilidad real, no debería pasarse como pedido firme.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando el cliente acepta.",
+"No menciona precio, crédito, disponibilidad, fecha, producto o registro.",
+"No identifica validación interna o del cliente.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Comercial."
+]
+},
+{
+"question_id": "COM_01_Q14",
+"ai_category": "aprendizajes_conservar_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Comercial deberían conservarse porque ayudan a evitar promesas incumplidas, pérdida de clientes, precios mal aplicados, reclamos, bloqueos de cartera o reprocesos de pedido?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes.",
+"tooltip": "Mencione aprendizajes sobre clientes críticos, historial de negociación, condiciones especiales, precios, cartera, disponibilidad, reclamos, coordinación con planificación, despacho, finanzas o calidad.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no confirmar fechas solo por presión del cliente. Conviene validar disponibilidad, transporte y crédito antes de responder, especialmente con clientes críticos o pedidos grandes. Esto evita promesas incumplidas y reclamos posteriores.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "COM_01_Q15",
+"ai_category": "recomendacion_persona_nueva_comercial",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Comercial para trabajar con seguridad, evitar errores y aprender más rápido el manejo real de clientes, pedidos y coordinación interna?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en gestión de clientes, cotizaciones, pedidos, precios, crédito, disponibilidad, reclamos y promesas comerciales.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no prometer precio, fecha o disponibilidad solo por presión del cliente. Debe validar lista vigente, stock real, crédito, margen y restricciones de despacho. Si un dato no está confirmado, debe consultar antes de responder como compromiso cerrado.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona clientes, pedidos, precio, crédito, disponibilidad o promesa comercial.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico del área."
+]
+}
+]
+}
+]
+}

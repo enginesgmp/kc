@@ -1,0 +1,559 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"generation_type": "AREA",
+"area": {
+"area_id": "AREA_BODEGA_INSUMOS",
+"display_name": "Bodega de Insumos",
+"aliases": [
+"Insumos",
+"Bodega Insumos",
+"Almacén de Insumos",
+"Materiales",
+"Abastecimiento a Producción",
+"Inventario de Insumos",
+"Despacho de Insumos",
+"Recepción de Insumos"
+],
+"macro_process": "Logística y Abastecimiento"
+},
+"level": "",
+"blocks": [
+{
+"block_id": "AREA_BI_INS_001_INVENTARIO",
+"block_name": "Conocimiento tácito crítico de Bodega de Insumos",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Bodega de Insumos que ayudan a asegurar disponibilidad real, control de inventario, abastecimiento oportuno, trazabilidad y continuidad operativa.",
+"questions": [
+{
+"question_id": "AREA_BI_INS_001_Q001",
+"ai_category": "inicio_correcto_caso_bodega_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una recepción, almacenamiento, despacho, devolución, ajuste o reserva de insumos?",
+"context": "Busca capturar los datos y condiciones críticas que Bodega de Insumos valida por experiencia antes de mover, registrar, entregar o comprometer materiales, para evitar errores de inventario, disponibilidad o abastecimiento.",
+"tooltip": "Mencione qué dato confirma primero, qué condición física revisa, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso o movimiento a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de despachar un insumo confirmo código, cantidad, solicitud, área usuaria, disponibilidad física, estado del material y si existe alguna reserva o prioridad de producción. Si el sistema indica saldo pero físicamente el material está comprometido o incompleto, no lo trato como disponible hasta validar con el responsable.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso o movimiento",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo menciona que revisa el sistema",
+"No identifica información crítica antes de iniciar",
+"No menciona disponibilidad física, código, cantidad, estado o solicitud",
+"No explica el riesgo de iniciar sin validar",
+"No incluye ejemplo aplicable a Bodega de Insumos"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q002",
+"ai_category": "priorizacion_casos_bodega_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué criterios prácticos usa para priorizar casos de Bodega de Insumos cuando coinciden solicitudes de producción, recepciones urgentes, conteos, devoluciones, diferencias o materiales críticos?",
+"context": "Permite capturar cómo el área decide qué atender primero cuando hay presión operativa, insumos limitados, solicitudes simultáneas, riesgo de quiebre o impacto en continuidad de producción.",
+"tooltip": "Incluya criterios como línea detenida, insumo crítico, programa de producción, stock real, urgencia del área usuaria, riesgo de vencimiento, material no conforme, impacto en inocuidad o dependencia de compras.",
+"expected_answer_structure": [
+"Situación de múltiples casos",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si producción solicita varios insumos al mismo tiempo, priorizo los que pueden detener una línea o afectar una orden confirmada. Antes de entregar reviso stock físico, solicitud vigente y criticidad del material. Si priorizo solo por quien insiste más, puedo dejar sin material a un proceso más crítico.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia",
+"No aterriza la priorización a insumos",
+"No menciona producción, criticidad, stock físico o programa",
+"No explica el riesgo de priorizar mal",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q003",
+"ai_category": "excepciones_flujo_bodega_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué casos de Bodega de Insumos suelen salirse del manejo habitual y requieren criterio adicional antes de recibir, despachar, devolver, ajustar, reservar o bloquear un material?",
+"context": "Busca identificar excepciones reales del área donde no basta seguir una instrucción general porque existen diferencias de cantidad, documentación incompleta, urgencia operativa, material dañado o disponibilidad dudosa.",
+"tooltip": "Describa casos como recepción sin documento completo, despacho urgente fuera de programa, insumo dañado, devolución parcial, diferencia físico-sistema, proveedor no programado, material equivalente o reserva no registrada.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es recibir un insumo urgente sin documentación completa. Antes de ingresarlo como disponible, se valida con compras y el área usuaria si puede recibirse condicionado, se deja evidencia y se evita despacharlo sin respaldo porque después puede generar problemas de control o costos.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe solo el flujo normal",
+"No identifica excepciones propias de Bodega de Insumos",
+"No menciona validaciones adicionales",
+"No indica a quién consulta",
+"No diferencia operación normal de excepción"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q004",
+"ai_category": "validaciones_practicas_error_critico_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué validaciones prácticas realiza para evitar errores importantes de código, cantidad, ubicación, estado del material, lote, registro, devolución o despacho de insumos?",
+"context": "Permite capturar revisiones no escritas que previenen diferencias de inventario, entrega de material incorrecto, uso de insumos no aptos, consumos sin registro o reprocesos con producción, compras y costos.",
+"tooltip": "Mencione qué compara, qué revisa físicamente, qué cruces hace entre sistema, documento y material, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de despachar comparo código, descripción, cantidad solicitada, unidad de medida y estado físico del insumo. Si el empaque está abierto o la cantidad no coincide con el sistema, valido antes de entregar porque puede generar consumo incorrecto o diferencia de inventario.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales",
+"No identifica validaciones prácticas del área",
+"No explica qué compara",
+"No menciona errores específicos que evita",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q005",
+"ai_category": "senales_tempranas_riesgo_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales tempranas le indican que puede generarse desabastecimiento, atraso, diferencia de inventario, material no disponible, saturación, deterioro o reproceso en Bodega de Insumos?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte producción, compras, planificación, costos o continuidad operativa.",
+"tooltip": "Incluya señales como consumo acelerado, pedidos pendientes, stock físico bajo, devoluciones sin registrar, ubicaciones desordenadas, materiales sin identificación, solicitudes repetidas o diferencias entre sistema y realidad.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando un insumo crítico empieza a moverse más rápido de lo normal y compras aún no confirma reposición, es señal de posible quiebre. En ese caso reviso físico, pedidos pendientes y programa de producción para alertar antes de que la línea se quede sin material.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas",
+"Confunde la señal con el problema final",
+"No explica qué riesgo anticipa",
+"No indica acción preventiva",
+"No permite extraer reglas SI → ENTONCES"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q006",
+"ai_category": "dependencias_reales_destrabe_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué personas, áreas, datos o canales destraban realmente el trabajo cuando hay dudas sobre stock, compras pendientes, solicitudes de producción, materiales críticos, devoluciones, diferencias o documentación de insumos?",
+"context": "Permite identificar dependencias reales del área para resolver bloqueos sin improvisar ni comprometer materiales que no están confirmados como disponibles.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando el sistema muestra saldo pero el material no aparece físicamente, se destraba revisando con el bodeguero de turno, producción y el último movimiento registrado. Si el insumo es crítico para una orden, se escala con planificación y compras para definir alternativa o reposición urgente.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas",
+"No menciona datos que destraban",
+"No aterriza el bloqueo a Bodega de Insumos",
+"No diferencia coordinación de escalamiento",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q007",
+"ai_category": "casos_delicados_bodega_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué casos de Bodega de Insumos considera delicados y requieren más experiencia para manejarlos correctamente sin afectar producción, inventario, calidad, costos o compras?",
+"context": "Busca capturar situaciones donde se necesita criterio operativo y lectura de riesgo, no solo aplicación mecánica de una solicitud o registro.",
+"tooltip": "Mencione casos como insumo crítico con stock bajo, material dañado, recepción condicionada, diferencia física importante, devolución parcial, insumo equivalente, consumo urgente sin registro o pedido pendiente de proveedor.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es entregar un insumo equivalente cuando el solicitado no está disponible. Requiere validar con producción, calidad o el área usuaria si realmente puede reemplazarlo, porque una equivalencia mal asumida puede afectar especificaciones, inocuidad o reproceso.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general",
+"No identifica casos delicados del área",
+"No explica por qué requieren experiencia",
+"No menciona señales o validaciones",
+"No explica el impacto de manejarlo mal"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q008",
+"ai_category": "errores_frecuentes_evitar_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué errores frecuentes en Bodega de Insumos se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten producción, inventario, compras o costos?",
+"context": "Permite identificar errores que el personal experimentado previene, como despachar material incorrecto, no registrar consumos, reincorporar devoluciones no aptas, ubicar mal insumos o confiar solo en el sistema.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es despachar un insumo parecido por no revisar código completo y unidad de medida. La señal aparece cuando la solicitud llega incompleta o con nombre común. Para evitarlo, se compara código, presentación y solicitud antes de entregar.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos",
+"No explica cómo se detectan antes",
+"No indica práctica preventiva",
+"No aterriza el impacto a inventario, producción, compras o costos",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q009",
+"ai_category": "practicas_agiles_sin_saltar_controles_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué prácticas ayudan a agilizar recepciones, ubicaciones, despachos, devoluciones, conteos o alertas de insumos sin saltarse controles de inventario, trazabilidad, calidad y registro?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo validación física, evidencia documental, actualización de sistema, orden de ubicación y coordinación con áreas usuarias.",
+"tooltip": "Mencione prácticas como preparar insumos críticos según programa, separar materiales por rotación, validar pedidos antes del turno, usar listados internos, anticipar compras pendientes o confirmar devoluciones antes de reincorporarlas.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es revisar el programa de producción y preparar los insumos críticos antes del turno. Esto agiliza el despacho, pero no se debe saltar la validación de código, cantidad, estado físico y registro de consumo antes de entregar.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles",
+"No identifica prácticas concretas de Bodega de Insumos",
+"No menciona qué control se mantiene",
+"No explica beneficio operativo",
+"No advierte el riesgo de aplicarlo mal"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q010",
+"ai_category": "criterios_no_escritos_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué criterios no escritos usa Bodega de Insumos para decidir si un material puede recibirse, almacenarse, reservarse, despacharse, devolverse, bloquearse, ajustarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, documento, solicitud o procedimiento no da una respuesta completa ante condiciones reales de bodega.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si un insumo crítico está por debajo del stock mínimo real y existe producción programada, entonces no se despacha para usos secundarios sin validar con planificación o jefatura. Esto evita dejar sin material a una orden prioritaria.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos",
+"No usa lógica SI → ENTONCES",
+"No identifica decisión tomada",
+"No menciona responsable o validador",
+"No explica el riesgo evitado"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q011",
+"ai_category": "apoyo_escalamiento_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿En qué situaciones de Bodega de Insumos conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde bodega?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar producción, compras, costos, calidad, inventario, abastecimiento o cumplimiento del programa.",
+"tooltip": "Incluya situaciones como insumo crítico sin stock, recepción con documentos incompletos, material dañado, solicitud urgente sin respaldo, diferencia importante de inventario, devolución dudosa o uso de material equivalente.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si producción solicita un insumo crítico que físicamente no aparece aunque el sistema tenga saldo, conviene escalar antes de confirmar entrega. Se debe presentar código, saldo sistema, conteo físico, ubicaciones revisadas y urgencia del programa para decidir búsqueda, ajuste o compra urgente.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe",
+"No identifica situaciones específicas de Bodega de Insumos",
+"No explica riesgo de no escalar",
+"No menciona información necesaria para escalar",
+"No define criterio para continuar"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q012",
+"ai_category": "aprendizaje_lento_persona_nueva_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué aspectos de Bodega de Insumos suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como reconocer insumos parecidos, ubicaciones reales, criticidad, equivalencias, devoluciones aprovechables o señales de quiebre.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en diferenciar insumos parecidos porque el nombre común puede no coincidir con el código o presentación exacta. El error típico es confiar solo en la descripción verbal de producción. Se aprende mejor revisando códigos, ubicaciones, usos y ejemplos reales con personal experimentado.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación",
+"No menciona aspectos propios de Bodega de Insumos",
+"No explica por qué requiere práctica",
+"No identifica errores típicos de una persona nueva",
+"No propone forma concreta de aprendizaje"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q013",
+"ai_category": "senal_listo_para_avanzar_cerrar_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales o confirmaciones indican que una recepción, ubicación, despacho, devolución, conteo, ajuste o reserva de insumos está lista para avanzar, cerrarse o entregarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un movimiento o caso de Bodega de Insumos quedó correctamente resuelto.",
+"tooltip": "Incluya confirmaciones físicas, documentales, sistémicas, de cantidad, código, estado del material, ubicación, registro, aceptación del área usuaria o validación del responsable.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación física o documental",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Un despacho está listo cuando el insumo coincide en código, cantidad y estado físico, existe solicitud válida, el consumo queda registrado y el área usuaria recibe lo correcto. Si falta registro o confirmación de cantidad, puede aparecer diferencia después del turno.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando el sistema lo indica",
+"No menciona confirmación física, documental o de registro",
+"No identifica validación del responsable o área usuaria",
+"No explica qué error evita",
+"No aterriza la respuesta a Bodega de Insumos"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q014",
+"ai_category": "aprendizajes_conservar_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué aprendizajes de Bodega de Insumos deberían conservarse porque ayudan a evitar quiebres, diferencias de inventario, despachos incorrectos, compras urgentes, materiales deteriorados o reprocesos?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes.",
+"tooltip": "Mencione aprendizajes sobre insumos críticos, ubicaciones, rotación, proveedores, devoluciones, solicitudes urgentes, registros, diferencias físico-sistema, coordinación con producción o compras.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no confiar solo en el saldo del sistema para insumos críticos. Antes de una producción cercana conviene confirmar físico, ubicación y pedidos pendientes, porque pequeñas diferencias pueden terminar en compras urgentes o cambio de programa.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales",
+"No conecta con errores o riesgos de Bodega de Insumos",
+"No menciona señales o criterios",
+"No indica práctica recomendada",
+"No permite transferir conocimiento a otra persona"
+]
+},
+{
+"question_id": "AREA_BI_INS_001_Q015",
+"ai_category": "recomendacion_persona_nueva_insumos",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Bodega de Insumos para trabajar con seguridad, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en recepción, almacenamiento, despacho, devoluciones, inventario, materiales críticos y coordinación con áreas usuarias.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no entregar ni registrar un insumo solo por nombre común o por urgencia. Debe revisar código, cantidad, unidad, estado físico, solicitud y disponibilidad real. Si tiene duda entre materiales parecidos o devoluciones parciales, debe consultar antes de moverlos.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área",
+"No menciona insumos, código, cantidad, ubicación, disponibilidad o despacho",
+"No indica cuándo pedir apoyo",
+"No explica qué error evita",
+"No conecta con aprendizaje práctico de Bodega de Insumos"
+]
+}
+]
+}
+]
+}

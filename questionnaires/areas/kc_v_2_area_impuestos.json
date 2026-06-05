@@ -1,0 +1,561 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Impuestos",
+"level": null,
+"area_metadata": {
+"area_id": "area_impuestos",
+"display_name": "Impuestos",
+"aliases": [
+"Impuestos",
+"Área de Impuestos",
+"Tributario",
+"Gestión Tributaria",
+"Tax",
+"Tax Compliance",
+"Cumplimiento Tributario",
+"Declaraciones Tributarias",
+"Fiscal"
+],
+"macro_process": "MP-1700 FINANZAS, CONTABILIDAD Y CONTROL"
+},
+"blocks": [
+{
+"block_id": "IMP_01_FLUJO_TRIBUTARIO",
+"block_name": "Conocimiento tácito crítico de Impuestos",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Impuestos que ayudan a asegurar cumplimiento tributario, declaraciones oportunas, conciliaciones confiables, control documental, pagos correctos y prevención de contingencias fiscales.",
+"questions": [
+{
+"question_id": "IMP_01_Q01",
+"ai_category": "inicio_correcto_caso_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una declaración, conciliación tributaria, revisión de retenciones, cálculo de impuestos o atención de requerimiento fiscal?",
+"context": "Busca capturar los datos y condiciones críticas que Impuestos valida por experiencia antes de calcular, revisar, declarar, pagar, responder o cerrar una obligación tributaria.",
+"tooltip": "Mencione qué dato confirma primero, qué soporte mínimo revisa, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso tributario a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de preparar una declaración confirmo que la contabilidad del periodo esté cerrada, que existan soportes de facturas, retenciones, anexos, conciliaciones y pagos previos. Si una base no cuadra con contabilidad o falta soporte de una cuenta sensible, no avanzo como declaración lista porque puede generar multa, rectificatoria o contingencia fiscal.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso tributario",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Impuestos.",
+"No identifica información crítica antes de iniciar.",
+"No menciona soportes, bases, retenciones, anexos, conciliaciones, vencimientos o pagos.",
+"No explica el riesgo tributario de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "IMP_01_Q02",
+"ai_category": "priorizacion_casos_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Impuestos para priorizar obligaciones, diferencias, declaraciones, requerimientos, pagos o revisiones cuando coinciden varios temas tributarios al mismo tiempo?",
+"context": "Permite capturar cómo Impuestos decide qué atender primero cuando hay vencimientos cercanos, diferencias materiales, información pendiente, presión de cierre, requerimientos externos o riesgo de multa.",
+"tooltip": "Incluya criterios como vencimiento, materialidad, riesgo de multa, impacto en declaración, pago programado, requerimiento de autoridad, dependencia de otra área, diferencia no conciliada o criterio tributario sensible.",
+"expected_answer_structure": [
+"Situación de múltiples casos",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden una declaración próxima a vencer, una conciliación con diferencia y una revisión de soporte menor, priorizo por vencimiento, materialidad e impacto fiscal. Una diferencia que afecta IVA o retenciones se atiende antes que una revisión sin efecto en la obligación inmediata.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Impuestos.",
+"No menciona vencimientos, materialidad, multas, declaraciones, pagos o diferencias.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "IMP_02_Q01",
+"ai_category": "excepciones_flujo_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Impuestos suelen salirse del manejo habitual y requieren criterio adicional antes de declarar, ajustar, rectificar, pagar, responder o escalar?",
+"context": "Busca identificar excepciones reales donde no basta seguir la rutina tributaria porque existen diferencias, soportes incompletos, criterios dudosos, vencimientos cercanos, cambios normativos o requerimientos externos.",
+"tooltip": "Describa casos como base imponible que no cuadra, retención mal aplicada, comprobante inválido, diferencia entre anexo y mayor contable, pago no programado, criterio tributario incierto o requerimiento con plazo corto.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es encontrar una diferencia entre el anexo y el mayor contable a pocos días del vencimiento. Antes de declarar se valida origen de la diferencia, cuenta afectada, soporte y materialidad con Contabilidad para decidir si se corrige, se documenta o se escala.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de Impuestos.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "IMP_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Impuestos para evitar errores importantes en bases imponibles, IVA, retenciones, anexos, comprobantes, pagos, provisiones o declaraciones?",
+"context": "Permite capturar revisiones no escritas que previenen multas, rectificatorias, pagos incorrectos, diferencias tributarias, soportes inválidos, auditorías desfavorables o contingencias fiscales.",
+"tooltip": "Mencione qué compara, qué fuente consulta, qué cruces realiza entre sistema, contabilidad, anexos, comprobantes y portal tributario, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de declarar comparo bases de IVA, retenciones, anexos, mayores contables, comprobantes y pagos previos. Si el anexo no coincide con la cuenta contable o aparece una retención con porcentaje inusual, detengo la revisión para identificar el origen antes de presentar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Impuestos."
+]
+},
+{
+"question_id": "IMP_03_Q01",
+"ai_category": "senales_tempranas_riesgo_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso, multa, rectificatoria, diferencia tributaria, pago tardío, soporte insuficiente o reproceso en Impuestos?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte declaraciones, pagos, anexos, cierres, auditorías, requerimientos o cumplimiento tributario.",
+"tooltip": "Incluya señales como información contable pendiente, vencimiento cercano, anexos que no cuadran, comprobantes sin soporte, retenciones inusuales, cambios normativos no aplicados, pagos no programados o áreas sin respuesta.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando faltan soportes de una cuenta sensible y el vencimiento está cerca, es señal de riesgo de declarar con información incompleta. En ese caso se alerta a Contabilidad o al área origen, se revisa materialidad y se define si se corrige, documenta o escala.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "IMP_03_Q02",
+"ai_category": "dependencias_reales_destrabe_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, datos, sistemas o canales destraban realmente el trabajo cuando hay dudas sobre bases, comprobantes, retenciones, anexos, pagos, conciliaciones, criterios tributarios o requerimientos?",
+"context": "Permite identificar dependencias reales de Impuestos para resolver bloqueos sin declarar, pagar, responder o cerrar con información incompleta.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando una diferencia de retenciones no cuadra con el mayor contable, se destraba con Contabilidad revisando comprobantes, cuenta, periodo y anexo. Si la diferencia afecta una declaración próxima a vencer, se escala con monto, causa probable y alternativa recomendada.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Impuestos.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "IMP_04_Q01",
+"ai_category": "casos_delicados_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Impuestos considera delicados y requieren más experiencia para manejarlos correctamente sin afectar cumplimiento, pagos, declaraciones, auditorías, estados financieros o relación con la autoridad tributaria?",
+"context": "Busca capturar situaciones donde se necesita criterio tributario-práctico, lectura de riesgo y validación adicional, no solo aplicación mecánica de una fórmula, anexo o calendario.",
+"tooltip": "Mencione casos como diferencia material, criterio tributario dudoso, requerimiento de autoridad, cambio normativo reciente, rectificatoria, soporte insuficiente, provisión fiscal, impuesto a la renta o saldo a favor.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es decidir si una partida con soporte incompleto puede considerarse deducible. Requiere revisar materialidad, normativa, antecedentes, evidencia disponible y validación de jefatura o asesor externo porque un criterio débil puede generar contingencia en auditoría.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "IMP_04_Q02",
+"ai_category": "errores_frecuentes_evitar_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Impuestos se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten declaraciones, pagos, anexos, conciliaciones o auditorías?",
+"context": "Permite identificar errores que el personal experimentado previene, como aplicar porcentajes incorrectos, declarar con bases incompletas, no conciliar anexos, omitir soportes, perder vencimientos o usar criterios desactualizados.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es aceptar una retención con porcentaje incorrecto porque el comprobante parece válido. La señal aparece cuando el porcentaje no coincide con el tipo de transacción o proveedor. Para evitarlo, se revisa base, concepto, normativa y registro antes de declarar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a declaraciones, pagos, anexos o auditorías.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "IMP_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar declaraciones, conciliaciones, revisiones de comprobantes, atención de requerimientos, pagos o cierres tributarios sin saltarse controles importantes?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo soporte, trazabilidad, revisión de bases, control de vencimientos, validación normativa, evidencia y aprobación cuando aplique.",
+"tooltip": "Mencione prácticas como prevalidar soportes, usar checklist de vencimientos, revisar diferencias antes del cierre, separar cuentas sensibles, mantener histórico de criterios o confirmar pagos con anticipación.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es revisar anexos y cuentas tributarias antes de la semana del vencimiento. Esto agiliza la declaración, pero no se debe saltar la conciliación final contra contabilidad ni la validación de soportes relevantes.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "IMP_05_Q02",
+"ai_category": "criterios_no_escritos_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Impuestos para decidir si una diferencia, comprobante, retención, anexo, declaración, pago, criterio fiscal o requerimiento puede avanzar, corregirse, detenerse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, documento, procedimiento o área origen no da una respuesta completa ante una condición tributaria real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si una diferencia supera la materialidad o afecta una declaración próxima, entonces no se declara sin investigar origen y documentar criterio. Se revisa con Contabilidad o jefatura antes de presentar para evitar rectificatorias o contingencias.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "IMP_06_Q01",
+"ai_category": "apoyo_escalamiento_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Impuestos conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar cumplimiento, multas, declaraciones, pagos, auditorías, estados financieros, requerimientos externos o criterios fiscales sensibles.",
+"tooltip": "Incluya situaciones como diferencia material, vencimiento en riesgo, criterio tributario incierto, soporte faltante, pago no programado, requerimiento de autoridad, rectificatoria o cambio normativo con impacto.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si una diferencia tributaria material no se resuelve antes del vencimiento, conviene escalar con monto, cuenta afectada, origen probable, impacto, soporte revisado y alternativa recomendada. Resolverlo sin escalar puede generar declaración incorrecta o rectificatoria.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "IMP_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Impuestos suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación tributaria de la empresa?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo normativa o procedimientos, como criterios históricos, cuentas sensibles, revisión de anexos, señales de diferencia, uso de portales o manejo de vencimientos.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en reconocer qué diferencias tributarias son menores y cuáles pueden afectar una declaración. Eso requiere revisar casos anteriores, cuentas sensibles, materialidad, anexos y criterios usados históricamente. El error típico es corregir o aceptar diferencias sin entender su impacto fiscal.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Impuestos.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "IMP_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una declaración, conciliación, anexo, pago, requerimiento, revisión documental o criterio tributario está listo para avanzar, presentarse, cerrarse o entregarse a otra área?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un caso tributario quedó correctamente validado.",
+"tooltip": "Incluya confirmaciones de soporte, conciliación, base, impuesto, retención, anexo, pago, aprobación, evidencia, validación del área origen o ausencia de diferencias críticas.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación documental, sistémica o tributaria",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una declaración está lista cuando bases, anexos, mayores contables, comprobantes, retenciones, pagos y soportes coinciden, y no quedan diferencias materiales sin explicación. Si falta conciliación o evidencia de una cuenta sensible, no debería presentarse como cerrada.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando el sistema lo indica.",
+"No menciona soporte, conciliación, anexos, retenciones, pagos, aprobación o evidencia.",
+"No identifica validación interna o del área origen.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Impuestos."
+]
+},
+{
+"question_id": "IMP_07_Q02",
+"ai_category": "aprendizajes_conservar_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Impuestos deberían conservarse porque ayudan a evitar declaraciones tardías, diferencias tributarias, multas, rectificatorias, pagos incorrectos, requerimientos mal atendidos o reprocesos?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores tributarios recurrentes.",
+"tooltip": "Mencione aprendizajes sobre vencimientos, cuentas sensibles, soportes, anexos, retenciones, IVA, renta, conciliaciones, portales, asesores, auditorías, cambios normativos o criterios históricos.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no esperar al vencimiento para revisar anexos y cuentas sensibles. Cuando las diferencias se detectan antes del cierre, se reducen declaraciones apresuradas, rectificatorias y dependencias de última hora con otras áreas.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "IMP_08_Q01",
+"ai_category": "recomendacion_persona_nueva_impuestos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Impuestos para trabajar con seguridad, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en declaraciones, conciliaciones, anexos, retenciones, soportes, pagos, vencimientos, requerimientos y criterios fiscales.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no declarar ni cerrar una revisión solo porque los archivos parecen completos. Debe validar bases, anexos, mayores contables, soportes, vencimientos, pagos y criterios aplicados. Si algo no cuadra con el histórico o con la normativa, debe detenerse y consultar antes de avanzar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona declaraciones, anexos, retenciones, soportes, pagos, vencimientos o criterios fiscales.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Impuestos."
+]
+}
+]
+}
+]
+}

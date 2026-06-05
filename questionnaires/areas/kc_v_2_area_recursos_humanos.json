@@ -1,0 +1,636 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Recursos Humanos",
+"level": null,
+"area_metadata": {
+"area_id": "area_recursos_humanos",
+"display_name": "Recursos Humanos",
+"aliases": [
+"Recursos Humanos",
+"RRHH",
+"Talento Humano",
+"Gestión Humana",
+"Capital Humano",
+"Human Resources",
+"HR",
+"Administración de Personal",
+"Relaciones Laborales",
+"Gestión de Personas"
+],
+"macro_process": "MP-2100 GESTIÓN HUMANA, TALENTO Y RELACIONES LABORALES"
+},
+"blocks": [
+{
+"block_id": "RRHH_01_FLUJO_RECURSOS_HUMANOS",
+"block_name": "Conocimiento tácito crítico de Recursos Humanos",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Recursos Humanos que ayudan a gestionar dotación, selección, nómina, asistencia, relaciones laborales, documentación, capacitación, desvinculaciones y continuidad operativa sin afectar cumplimiento, clima, pagos, trazabilidad ni soporte a la operación.",
+"questions": [
+{
+"question_id": "RRHH_01_Q01",
+"ai_category": "inicio_correcto_caso_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente un requerimiento de personal, novedad laboral, contratación, desvinculación, caso disciplinario o trámite de Recursos Humanos?",
+"context": "Busca capturar los datos y condiciones críticas que Recursos Humanos valida por experiencia antes de activar un trámite, comprometer plazos, coordinar con jefaturas o tomar una decisión laboral.",
+"tooltip": "Mencione qué dato confirma primero, qué condición legal, documental, presupuestaria u operativa revisa, qué señal le indica que no debe avanzar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso de Recursos Humanos a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de iniciar una contratación confirmo perfil aprobado, motivo de la vacante, presupuesto, centro de costo, turno, fecha requerida, jefatura solicitante, documentos necesarios y criticidad operativa. Si falta aprobación o el perfil no está claro, no conviene avanzar porque puede generar reproceso, contratación incorrecta o retraso en cobertura.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de Recursos Humanos",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Recursos Humanos.",
+"No identifica información crítica antes de iniciar.",
+"No menciona aprobación, perfil, presupuesto, documentos, jefatura, novedad, plazo o criticidad.",
+"No explica el riesgo laboral, operativo, legal o documental de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "RRHH_01_Q02",
+"ai_category": "priorizacion_casos_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Recursos Humanos para priorizar vacantes, novedades, reclamos, casos laborales, capacitaciones, pagos o trámites cuando existen varias necesidades al mismo tiempo?",
+"context": "Permite capturar cómo Recursos Humanos decide qué atender primero cuando hay presión operativa, fechas de corte, casos sensibles, ausentismo, vacantes críticas, riesgo legal o dependencias de otras áreas.",
+"tooltip": "Incluya criterios como continuidad operativa, criticidad del puesto, fecha de corte de nómina, riesgo legal, impacto en clima, urgencia real, documentación pendiente, aprobación disponible o afectación al colaborador.",
+"expected_answer_structure": [
+"Situación de múltiples necesidades",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden una vacante crítica, una novedad de nómina y un caso laboral sensible, priorizo según continuidad operativa, fecha de corte, riesgo legal, impacto en el colaborador y nivel de aprobación requerido. Una novedad que afecta pago dentro del corte se atiende antes que un trámite sin vencimiento inmediato.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Recursos Humanos.",
+"No menciona nómina, vacantes, casos laborales, fechas de corte, riesgo legal o continuidad.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "RRHH_02_Q01",
+"ai_category": "excepciones_flujo_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Recursos Humanos suelen salirse del manejo habitual y requieren criterio adicional antes de contratar, pagar, sancionar, regularizar, desvincular, responder o escalar?",
+"context": "Busca identificar excepciones reales donde no basta seguir el trámite normal porque existen documentos incompletos, riesgo laboral, urgencia operativa, información contradictoria, conflicto sensible o aprobación pendiente.",
+"tooltip": "Describa casos como novedad fuera de corte, candidato con documentos incompletos, vacante urgente sin aprobación, reclamo laboral sensible, ausencia recurrente, desvinculación delicada o movimiento interno no formalizado.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es una novedad de nómina que llega después del corte, pero afecta el pago de un colaborador. Antes de procesarla o diferirla, se valida aprobación, soporte, impacto económico y antecedente para evitar reclamos o pagos incorrectos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de Recursos Humanos.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "RRHH_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Recursos Humanos para evitar errores importantes en contratos, expedientes, novedades de nómina, asistencia, movimientos internos, liquidaciones o casos laborales?",
+"context": "Permite capturar revisiones no escritas que previenen pagos incorrectos, expedientes incompletos, reclamos, incumplimientos legales, movimientos no aprobados, datos inconsistentes o reprocesos administrativos.",
+"tooltip": "Mencione qué compara, qué soporte revisa, qué dato valida con jefatura o sistema, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de cerrar una novedad de nómina comparo asistencia, aprobación de jefatura, soporte documental, fecha de corte, sistema y cálculo esperado. Si el dato no coincide con el registro o falta autorización, no lo proceso como definitivo porque puede generar pago incorrecto o reclamo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Recursos Humanos."
+]
+},
+{
+"question_id": "RRHH_03_Q01",
+"ai_category": "senales_tempranas_riesgo_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso, reclamo, error de pago, falta de cobertura, conflicto laboral, rotación crítica o reproceso en Recursos Humanos?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte nómina, clima laboral, continuidad operativa, cumplimiento legal, dotación o atención al colaborador.",
+"tooltip": "Incluya señales como novedades repetidas fuera de corte, ausencias recurrentes, jefaturas sin respuesta, documentos incompletos, candidatos que no avanzan, reclamos similares, vencimientos próximos o datos inconsistentes.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando una jefatura envía novedades incompletas varios periodos seguidos, es señal de riesgo de error de nómina y reclamos. Antes del cierre, conviene alertar, pedir validación consolidada y dejar evidencia del pendiente para evitar reprocesos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "RRHH_03_Q02",
+"ai_category": "dependencias_reales_destrabe_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, datos o canales destraban realmente el trabajo cuando hay dudas sobre vacantes, documentos, novedades, asistencia, casos laborales, pagos, aprobaciones o desvinculaciones?",
+"context": "Permite identificar dependencias reales de Recursos Humanos para resolver bloqueos sin avanzar con supuestos débiles, información incompleta o decisiones sin respaldo.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando una contratación está detenida por falta de aprobación o definición de perfil, se destraba con la jefatura solicitante, Finanzas y gerencia según el caso, revisando centro de costo, fecha requerida, criticidad y autorización. Si afecta operación, se escala con impacto y alternativa temporal.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Recursos Humanos.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "RRHH_04_Q01",
+"ai_category": "casos_delicados_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Recursos Humanos considera delicados y requieren más experiencia para manejarlos correctamente sin afectar clima, cumplimiento legal, confidencialidad, pagos, continuidad o relación con las áreas?",
+"context": "Busca capturar situaciones donde se necesita criterio laboral, manejo confidencial, lectura organizacional y coordinación fina, no solo aplicación mecánica de un trámite o procedimiento.",
+"tooltip": "Mencione casos como conflicto entre colaboradores, desvinculación sensible, reclamo de pago, ausencia recurrente, sanción, caso médico, denuncia, cambio salarial, error de nómina o vacante crítica con presión operativa.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es una desvinculación con antecedentes de conflicto o reclamo. Requiere revisar documentación, historial, causal, comunicación, respaldo legal, liquidación y responsables presentes, porque un manejo inadecuado puede generar reclamo, tensión laboral o contingencia legal.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "RRHH_04_Q02",
+"ai_category": "errores_frecuentes_evitar_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Recursos Humanos se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten pagos, contratos, expedientes, cobertura, clima o cumplimiento?",
+"context": "Permite identificar errores que el personal experimentado previene, como procesar novedades sin aprobación, contratar con documentos incompletos, registrar datos incorrectos, no anticipar vencimientos o tratar tarde casos sensibles.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es asumir que una novedad está aprobada porque llegó por mensaje informal. La señal aparece cuando no existe soporte o la jefatura no confirma. Para evitarlo, se valida autorización y evidencia antes de cargarla al corte de nómina.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a pagos, contratos, expedientes, cobertura, clima o cumplimiento.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "RRHH_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar contrataciones, novedades, expedientes, atención de colaboradores, capacitación, casos laborales o cierres de nómina sin saltarse controles críticos?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo aprobación, evidencia, confidencialidad, control documental, validación de jefaturas, fechas de corte y trazabilidad de decisiones.",
+"tooltip": "Mencione prácticas como prevalidar documentos, usar checklist por ingreso, confirmar novedades antes del corte, separar casos sensibles, mantener alertas de vencimiento o registrar acuerdos en el momento.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es revisar documentos de ingreso antes de la fecha de contratación y avisar faltantes con anticipación. Esto agiliza el ingreso, pero no reemplaza la validación final de contrato, datos personales, cargo, sueldo y aprobación antes de activar nómina.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "RRHH_05_Q02",
+"ai_category": "criterios_no_escritos_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Recursos Humanos para decidir si una vacante, novedad, reclamo, sanción, permiso, movimiento, capacitación o desvinculación puede avanzar, detenerse, ajustarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el procedimiento, sistema, solicitud o información disponible no da una respuesta completa ante una situación laboral real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si una novedad impacta el pago y llega sin aprobación antes del corte, entonces no se procesa como definitiva hasta confirmar soporte con la jefatura; si el impacto al colaborador es alto, se escala con evidencia y alternativa de regularización.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "RRHH_06_Q01",
+"ai_category": "apoyo_escalamiento_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Recursos Humanos conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar cumplimiento legal, clima laboral, pagos, continuidad operativa, confidencialidad, relación con jefaturas o derechos del colaborador.",
+"tooltip": "Incluya situaciones como reclamo sensible, error de pago material, desvinculación delicada, conflicto grave, ausencia crítica, caso médico, sanción, denuncia, vacante crítica o decisión sin aprobación suficiente.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si existe un reclamo laboral con posible impacto legal o económico, conviene escalar antes de responder. Se debe presentar antecedente, evidencia, versiones, monto o impacto, plazo y alternativa recomendada para que jefatura, gerencia o asesoría legal definan el curso de acción.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "RRHH_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Recursos Humanos suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria de la empresa?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como manejar casos sensibles, interpretar excepciones de nómina, leer señales de clima, coordinar con jefaturas o anticipar riesgos laborales.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en reconocer qué casos parecen administrativos, pero pueden volverse sensibles por impacto en pago, clima o cumplimiento. El error típico es tratarlos como trámite simple sin revisar antecedentes, evidencia, aprobaciones y área involucrada.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Recursos Humanos.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "RRHH_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una contratación, novedad de nómina, expediente, caso laboral, capacitación, movimiento interno o desvinculación está lista para avanzar, liberarse o cerrarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un trámite de Recursos Humanos quedó correctamente validado, registrado y comunicado.",
+"tooltip": "Incluya confirmaciones de aprobación, soporte, sistema actualizado, documento firmado, evidencia, validación de jefatura, comunicación al colaborador, registro completo o ausencia de pendientes críticos.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación documental, sistémica o laboral",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una novedad de nómina está lista para cerrarse cuando tiene soporte, aprobación de jefatura, cálculo revisado, carga en sistema, validación contra corte y evidencia archivada. Si falta aprobación o el dato no coincide con asistencia, no debería cerrarse como definitiva.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando se terminó el trámite.",
+"No menciona aprobación, soporte, sistema, documento, evidencia, validación o comunicación.",
+"No identifica validación interna o del área solicitante.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Recursos Humanos."
+]
+},
+{
+"question_id": "RRHH_07_Q02",
+"ai_category": "aprendizajes_conservar_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Recursos Humanos deberían conservarse porque ayudan a evitar errores de nómina, reclamos, desvinculaciones mal gestionadas, rotación, expedientes incompletos o falta de cobertura?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes en gestión humana.",
+"tooltip": "Mencione aprendizajes sobre fechas de corte, jefaturas, perfiles críticos, casos laborales, nómina, documentos, asistencia, capacitación, comunicación, desvinculación o manejo de información sensible.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no esperar al cierre de nómina para revisar novedades sensibles. Cuando se validan antes con jefaturas y soporte completo, se evitan pagos incorrectos, reclamos y reprocesos en periodos posteriores.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "RRHH_08_Q01",
+"ai_category": "recomendacion_persona_nueva_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Recursos Humanos para trabajar con criterio, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en contrataciones, nómina, expedientes, asistencia, casos laborales, capacitación, desvinculaciones y coordinación con jefaturas.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no avanzar un trámite solo porque llegó una solicitud verbal o por mensaje. Debe confirmar aprobación, soporte, impacto en nómina o contrato, responsable, plazo y evidencia. Si algo no está claro, debe detenerse y validar antes de registrar, pagar, contratar o responder.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona contrataciones, nómina, expedientes, asistencia, casos laborales, capacitación o desvinculaciones.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Recursos Humanos."
+]
+},
+{
+"question_id": "RRHH_08_Q02",
+"ai_category": "restricciones_criticas_continuidad_recursos_humanos",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué cargos, turnos, casos, fechas de corte, documentos, aprobaciones o datos requieren seguimiento especial porque una variación podría afectar pagos, cobertura, cumplimiento, clima o continuidad operativa?",
+"context": "Busca capturar conocimiento específico sobre puntos críticos de Recursos Humanos que deben vigilarse por experiencia, aunque no siempre aparezcan como urgencia formal.",
+"tooltip": "Mencione elementos críticos, señales que observa, frecuencia práctica de revisión, área relacionada, contingencia posible y qué impacto se evita.",
+"expected_answer_structure": [
+"Elemento crítico",
+"Motivo de criticidad",
+"Señal que debe vigilarse",
+"Responsable o área relacionada",
+"Contingencia o acción preventiva",
+"Impacto que se evita"
+],
+"good_answer_example": "Las fechas de corte de nómina y las vacantes operativas críticas requieren seguimiento especial porque cualquier retraso puede generar reclamos o falta de cobertura. Una señal es que la jefatura no envía aprobación o soporte completo. Se debe alertar antes del cierre y dejar evidencia.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"elemento crítico",
+"motivo",
+"señal",
+"responsable",
+"contingencia",
+"impacto"
+]
+},
+"incomplete_if": [
+"Solo enumera elementos sin explicar criticidad.",
+"No menciona señales observables.",
+"No identifica responsable o área relacionada.",
+"No indica acción preventiva o contingencia.",
+"No conecta el caso con pagos, cobertura, cumplimiento, clima o continuidad operativa."
+]
+},
+{
+"question_id": "RRHH_09_Q01",
+"ai_category": "manejo_confidencialidad_casos_laborales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Recursos Humanos para manejar información sensible o confidencial en reclamos, casos disciplinarios, situaciones personales, desvinculaciones o conflictos laborales?",
+"context": "Busca capturar cómo el área protege información sensible, define quién debe conocer el caso, qué evidencia puede compartirse y cuándo conviene limitar la comunicación para evitar rumores, exposición innecesaria o riesgos legales.",
+"tooltip": "Explique qué tipo de información considera sensible, cómo decide con quién compartirla, qué evidencia conserva, qué canal usa, cuándo escala y qué riesgo evita.",
+"expected_answer_structure": [
+"Tipo de caso o información sensible",
+"Criterio de confidencialidad",
+"Personas autorizadas para conocer",
+"Evidencia que se conserva",
+"Canal o forma de comunicación",
+"Riesgo que evita"
+],
+"good_answer_example": "En un conflicto laboral sensible, RRHH limita la información a jefatura directa, gerencia o asesoría legal según gravedad. Se documentan versiones y evidencia sin exponer detalles innecesarios, porque compartir información fuera del círculo autorizado puede afectar clima, confianza o defensa del caso.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"tipo de caso",
+"criterio de confidencialidad",
+"personas autorizadas",
+"evidencia",
+"canal",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No identifica información sensible o confidencial.",
+"No explica criterios para compartir información.",
+"No menciona evidencia que se conserva.",
+"No indica canal o forma de comunicación.",
+"No explica el riesgo de manejar mal la confidencialidad."
+]
+}
+]
+}
+]
+}

@@ -1,0 +1,637 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Sistemas de Gestión",
+"level": "",
+"metadata": {
+"area_id": "sistemas_de_gestion",
+"display_name": "Sistemas de Gestión",
+"aliases": [
+"sistemas de gestión",
+"gestión documental",
+"certificaciones",
+"auditorías",
+"cumplimiento",
+"BASC",
+"calidad documental",
+"gestión integrada",
+"acciones correctivas"
+],
+"macro_process": "Gestión integrada de certificaciones, auditorías, cumplimiento documental y mejora del sistema de gestión"
+},
+"blocks": [
+{
+"block_id": "SDG_01_GESTION_CERTIFICACIONES_CUMPLIMIENTO",
+"block_name": "Conocimiento tácito crítico de Sistemas de Gestión",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Sistemas de Gestión que ayudan a sostener certificaciones, auditorías, cumplimiento documental, evidencias, acciones correctivas, trazabilidad y mejora del sistema de gestión.",
+"questions": [
+{
+"question_id": "SDG_01_Q01",
+"ai_category": "inicio_correcto_caso_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una auditoría, actualización documental, revisión de requisito, seguimiento de acción correctiva o preparación de evidencia?",
+"context": "Busca capturar los datos y condiciones críticas que Sistemas de Gestión valida por experiencia antes de activar trabajos que pueden impactar certificaciones, cumplimiento, auditorías o trazabilidad documental.",
+"tooltip": "Mencione qué dato confirma primero, qué requisito o documento revisa, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso de Sistemas de Gestión a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de iniciar una revisión documental confirmo requisito aplicable, proceso afectado, versión vigente, responsable del documento, evidencia relacionada, fecha de auditoría si aplica y área que debe validar. Si el requisito no está claro o el dueño del proceso no está definido, no conviene avanzar porque se puede actualizar un documento que no resuelve la brecha real.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de Sistemas de Gestión",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Sistemas de Gestión.",
+"No identifica información crítica antes de iniciar.",
+"No menciona requisito, documento, versión, evidencia, auditoría, responsable o proceso afectado.",
+"No explica el riesgo de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "SDG_01_Q02",
+"ai_category": "priorizacion_casos_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Sistemas de Gestión para priorizar auditorías, hallazgos, acciones correctivas, documentos, evidencias o requisitos cuando existen varios pendientes al mismo tiempo?",
+"context": "Permite capturar cómo el área decide qué atender primero cuando hay vencimientos, auditorías próximas, hallazgos críticos, áreas retrasadas, requisitos sensibles o riesgos de incumplimiento.",
+"tooltip": "Incluya criterios como criticidad del requisito, riesgo de incumplimiento, fecha de auditoría, impacto en certificación, reincidencia, área responsable, evidencia disponible, vencimiento o trazabilidad comprometida.",
+"expected_answer_structure": [
+"Situación de múltiples pendientes",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden una actualización documental, una acción correctiva vencida y una evidencia BASC pendiente, priorizo según riesgo de auditoría, criticidad del requisito, vencimiento, reincidencia y área responsable. Una evidencia crítica para auditoría externa se atiende antes que una mejora documental sin vencimiento cercano.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Sistemas de Gestión.",
+"No menciona auditoría, certificación, hallazgo, acción correctiva, evidencia, vencimiento o requisito.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "SDG_02_Q01",
+"ai_category": "excepciones_flujo_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Sistemas de Gestión suelen salirse del manejo habitual y requieren criterio adicional antes de documentar, aprobar, cerrar, auditar, aceptar evidencia, reprogramar o escalar?",
+"context": "Busca identificar excepciones reales donde no basta seguir el flujo normal porque existen evidencias incompletas, requisitos interpretables, áreas que no responden, documentos obsoletos, hallazgos sensibles o auditorías próximas.",
+"tooltip": "Describa casos como evidencia crítica faltante, documento usado fuera de versión, hallazgo repetido, acción vencida, requisito BASC ambiguo, área sin responsable claro o cierre solicitado sin eficacia comprobada.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es cuando un área pide cerrar una acción correctiva con evidencia parcial antes de auditoría. Antes de aceptar el cierre, se revisa causa, evidencia, riesgo de reincidencia, responsable y eficacia mínima para evitar cerrar algo que el auditor podría observar nuevamente.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente el flujo normal del sistema de gestión.",
+"No identifica excepciones propias de Sistemas de Gestión.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "SDG_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Sistemas de Gestión para evitar errores importantes en documentos, versiones, requisitos, evidencias, auditorías, hallazgos o acciones correctivas?",
+"context": "Permite capturar revisiones no escritas que previenen uso de documentos obsoletos, evidencias débiles, cierres incorrectos, hallazgos repetidos, incumplimientos en auditoría o pérdida de trazabilidad.",
+"tooltip": "Mencione qué compara, qué evidencia revisa, qué dato valida con el área responsable, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de liberar un documento reviso versión vigente, cambios solicitados, requisito aplicable, aprobador, área impactada, registros asociados y retiro de versiones anteriores. Si existe una versión impresa antigua en uso, no basta aprobar la nueva; se debe asegurar difusión y retiro para evitar uso incorrecto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara o revisa.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Sistemas de Gestión."
+]
+},
+{
+"question_id": "SDG_03_Q01",
+"ai_category": "senales_tempranas_riesgo_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse un hallazgo, incumplimiento, atraso de auditoría, pérdida de evidencia, acción vencida, documento obsoleto o reproceso documental?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte certificaciones, cumplimiento, auditorías, trazabilidad o credibilidad del sistema de gestión.",
+"tooltip": "Incluya señales como evidencias que no llegan, acciones próximas a vencer, versiones no retiradas, responsables sin respuesta, registros incompletos, hallazgos repetidos o documentos que no reflejan la práctica real.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando un área no entrega evidencia antes del plazo y además la acción ya fue reprogramada, es señal de riesgo de incumplimiento o hallazgo repetido. Antes de esperar el vencimiento, se valida el bloqueo real, se pide evidencia mínima y se escala si afecta auditoría.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "SDG_03_Q02",
+"ai_category": "dependencias_reales_destrabe_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, datos, registros, evidencias o canales destraban realmente el trabajo cuando hay dudas sobre requisitos, documentos, auditorías, hallazgos, BASC o acciones correctivas?",
+"context": "Permite identificar dependencias reales de Sistemas de Gestión para resolver bloqueos sin avanzar con supuestos débiles, evidencias incompletas o decisiones no validadas por los dueños de proceso.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando no está claro si una evidencia BASC cumple, se destraba con Seguridad Física, el responsable del proceso y el criterio del requisito revisando registro, fotografía, frecuencia, responsable y trazabilidad. Si la evidencia impacta auditoría externa, se escala con el riesgo y la alternativa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos o evidencias que destraban.",
+"No aterriza el bloqueo a Sistemas de Gestión.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "SDG_04_Q01",
+"ai_category": "casos_delicados_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Sistemas de Gestión considera delicados y requieren más experiencia para manejarlos correctamente sin afectar certificaciones, auditorías, áreas responsables, cumplimiento o credibilidad del sistema?",
+"context": "Busca capturar situaciones donde se necesita criterio técnico, lectura organizacional y manejo cuidadoso de evidencia, no solo aplicación mecánica de requisitos o formatos.",
+"tooltip": "Mencione casos como hallazgo repetido, incumplimiento BASC, documento crítico obsoleto, evidencia faltante antes de auditoría, acción correctiva vencida, área resistente o requisito con interpretación sensible.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es detectar que un proceso sigue usando una versión obsoleta antes de auditoría. Requiere confirmar alcance, registros afectados, comunicación, retiro de versión anterior y acción correctiva, porque manejarlo mal puede generar no conformidad y pérdida de confianza en el control documental.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "SDG_04_Q02",
+"ai_category": "errores_frecuentes_evitar_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Sistemas de Gestión se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten auditorías, documentos, evidencias, hallazgos o acciones correctivas?",
+"context": "Permite identificar errores que el personal experimentado previene, como aceptar evidencias débiles, cerrar acciones sin eficacia, aprobar documentos sin retirar obsoletos, no escalar vencimientos o confiar solo en respuestas por correo.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es cerrar una acción correctiva solo porque el responsable envió una foto o mensaje. La señal aparece cuando no se evidencia causa corregida ni eficacia. Para evitarlo, se revisa si la acción eliminó la causa y si el riesgo de repetición bajó.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a auditorías, documentos, evidencias, hallazgos o acciones.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "SDG_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar auditorías, revisión documental, solicitud de evidencias, seguimiento de acciones, preparación BASC o cierre de hallazgos sin saltarse controles críticos?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo trazabilidad, control de versiones, evidencia suficiente, validación del dueño de proceso, análisis de causa y eficacia de acciones.",
+"tooltip": "Mencione prácticas como prevalidar evidencias, revisar por bloques, usar matrices de vencimiento, confirmar responsables antes de auditoría, validar documentos con áreas usuarias o escalar pendientes críticos temprano.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es prevalidar evidencias críticas antes de auditoría directamente con el responsable del proceso. Esto agiliza preparación, pero no reemplaza revisar suficiencia, fecha, trazabilidad y correspondencia con el requisito aplicable.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "SDG_05_Q02",
+"ai_category": "criterios_no_escritos_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Sistemas de Gestión para decidir si una evidencia, documento, hallazgo, acción correctiva, requisito, auditoría o cierre puede avanzar, detenerse, ajustarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el procedimiento, matriz, sistema o información disponible no da una respuesta completa ante una situación real de cumplimiento.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si una evidencia no demuestra fecha, responsable, actividad y trazabilidad del requisito, entonces no se acepta como soporte completo aunque el área indique que la actividad fue realizada. Esto evita hallazgos por evidencia débil o no verificable.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "SDG_06_Q01",
+"ai_category": "apoyo_escalamiento_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Sistemas de Gestión conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar certificaciones, auditorías, cumplimiento legal, BASC, reputación, responsables de proceso o continuidad del sistema de gestión.",
+"tooltip": "Incluya situaciones como acción correctiva crítica vencida, evidencia faltante antes de auditoría, incumplimiento repetido, conflicto de interpretación, documento crítico sin dueño o área que no responde.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si una acción correctiva crítica está vencida y el área no entrega evidencia, conviene escalar antes de auditoría. Se debe presentar requisito afectado, responsable, plazo vencido, riesgo, evidencia faltante y decisión requerida para asegurar cierre o plan alterno.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "SDG_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Sistemas de Gestión suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de auditorías, gestión documental, evidencias y seguimiento de requisitos?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como interpretar requisitos, evaluar evidencia suficiente, anticipar hallazgos, manejar áreas resistentes o distinguir cierre documental de cierre eficaz.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en reconocer cuándo una evidencia parece completa, pero no demuestra cumplimiento real. Eso requiere revisar requisitos, historial de auditoría, trazabilidad y contexto del proceso. El error típico es aceptar archivos sin validar suficiencia ni fecha.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Sistemas de Gestión.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "SDG_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que un documento, evidencia, auditoría, hallazgo, acción correctiva, revisión BASC o requisito está listo para avanzar, liberarse o cerrarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un control del sistema de gestión quedó correctamente validado, comunicado y trazable.",
+"tooltip": "Incluya confirmaciones de aprobación, versión vigente, evidencia suficiente, responsable, eficacia, comunicación, trazabilidad, registro actualizado y ausencia de pendientes críticos.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación documental, operativa o sistémica",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una acción correctiva está lista para cerrarse cuando existe evidencia suficiente, el responsable valida la ejecución, la causa fue tratada, la eficacia fue revisada y el registro queda actualizado. Si solo existe evidencia de actividad, pero no de eficacia, no debería cerrarse como completa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando se terminó la tarea.",
+"No menciona aprobación, versión, evidencia, eficacia, comunicación, trazabilidad o registro.",
+"No identifica validación interna o del área responsable.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Sistemas de Gestión."
+]
+},
+{
+"question_id": "SDG_07_Q02",
+"ai_category": "aprendizajes_conservar_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Sistemas de Gestión deberían conservarse porque ayudan a evitar hallazgos repetidos, evidencias débiles, documentos obsoletos, acciones vencidas o pérdida de trazabilidad?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes en certificaciones, auditorías y gestión documental.",
+"tooltip": "Mencione aprendizajes sobre auditorías pasadas, BASC, evidencias críticas, versiones documentales, acciones correctivas, responsables de área, vencimientos, matrices paralelas, escalamiento o interpretación de requisitos.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es revisar evidencias críticas antes de auditoría con el responsable del proceso, no solo pedirlas por correo. Cuando se valida suficiencia y trazabilidad a tiempo, se evitan hallazgos por soportes incompletos o desactualizados.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "SDG_08_Q01",
+"ai_category": "recomendacion_persona_nueva_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Sistemas de Gestión para trabajar con criterio, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en certificaciones, auditorías, documentos, evidencias, hallazgos, acciones correctivas, BASC y coordinación con áreas.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no asumir que una evidencia sirve solo porque existe un archivo. Debe revisar si responde al requisito, tiene fecha, responsable, trazabilidad, versión correcta y validación del área. Si algo no demuestra cumplimiento, debe pedir ajuste antes de aceptarlo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona certificaciones, auditorías, documentos, evidencias, hallazgos, acciones correctivas o BASC.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Sistemas de Gestión."
+]
+},
+{
+"question_id": "SDG_08_Q02",
+"ai_category": "restricciones_criticas_continuidad_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué requisitos, certificaciones, evidencias, documentos, acciones, responsables, auditorías o herramientas requieren seguimiento especial porque una variación podría afectar cumplimiento, certificación o continuidad del sistema?",
+"context": "Busca capturar conocimiento específico sobre puntos críticos de Sistemas de Gestión que deben vigilarse por experiencia, aunque no siempre aparezcan como urgencia formal.",
+"tooltip": "Mencione elementos críticos, señales que observa, frecuencia práctica de revisión, área relacionada, contingencia posible y qué impacto se evita.",
+"expected_answer_structure": [
+"Elemento crítico",
+"Motivo de criticidad",
+"Señal que debe vigilarse",
+"Responsable o área relacionada",
+"Contingencia o acción preventiva",
+"Impacto que se evita"
+],
+"good_answer_example": "Las evidencias BASC, acciones correctivas vencidas y documentos críticos requieren seguimiento especial porque pueden afectar auditorías y certificaciones. Una señal es que el área responsable no actualiza evidencia o responde solo verbalmente. Se debe revisar matriz, pedir soporte y escalar antes del vencimiento.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"elemento crítico",
+"motivo",
+"señal",
+"responsable",
+"contingencia",
+"impacto"
+]
+},
+"incomplete_if": [
+"Solo enumera elementos sin explicar criticidad.",
+"No menciona señales observables.",
+"No identifica responsable o área relacionada.",
+"No indica acción preventiva o contingencia.",
+"No conecta el caso con cumplimiento, certificación o continuidad del sistema."
+]
+},
+{
+"question_id": "SDG_09_Q01",
+"ai_category": "manejo_evidencia_auditoria_sistemas_gestion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Sistemas de Gestión para decidir qué evidencia es suficiente, útil y trazable ante auditorías, requisitos BASC, hallazgos, acciones correctivas o revisiones de cumplimiento?",
+"context": "Busca capturar conocimiento tácito sobre calidad de evidencia, suficiencia documental, trazabilidad, validez frente a auditorías y prevención de soportes débiles o no verificables.",
+"tooltip": "Explique qué evidencia acepta, qué detalle no debe faltar, quién la valida, cómo se conserva, cuándo se rechaza o corrige y qué riesgo evita.",
+"expected_answer_structure": [
+"Caso o requisito que requiere evidencia",
+"Criterio de suficiencia",
+"Detalle que no debe faltar",
+"Responsable que valida",
+"Forma de resguardo",
+"Decisión si la evidencia no cumple",
+"Riesgo que evita"
+],
+"good_answer_example": "Para aceptar una evidencia reviso que tenga fecha, responsable, actividad ejecutada, requisito asociado, soporte verificable y trazabilidad con el proceso. Si la evidencia es una foto sin contexto o un registro incompleto, se devuelve para corrección porque puede ser débil frente a auditoría.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso o requisito",
+"criterio de suficiencia",
+"detalle obligatorio",
+"responsable",
+"resguardo",
+"decisión",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No identifica criterios de evidencia suficiente.",
+"No menciona trazabilidad, fecha, responsable o requisito.",
+"No indica quién valida o cómo se resguarda.",
+"No explica qué hacer si la evidencia no cumple.",
+"No conecta la respuesta con auditoría, BASC, hallazgos o cumplimiento."
+]
+}
+]
+}
+]
+}

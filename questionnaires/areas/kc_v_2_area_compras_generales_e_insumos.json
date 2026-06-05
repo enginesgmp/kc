@@ -1,0 +1,561 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Compras Generales e Insumos",
+"level": null,
+"area_metadata": {
+"area_id": "area_compras_generales_insumos",
+"display_name": "Compras Generales e Insumos",
+"aliases": [
+"Compras Generales e Insumos",
+"Compras Generales",
+"Compras de Insumos",
+"Compras",
+"Abastecimiento de Insumos",
+"Procurement",
+"Purchasing",
+"Gestión de Compras",
+"Requerimientos de Compra"
+],
+"macro_process": "MP-1400 LOGÍSTICA Y ABASTECIMIENTO"
+},
+"blocks": [
+{
+"block_id": "CGI_01_FLUJO_COMPRA",
+"block_name": "Conocimiento tácito crítico de Compras Generales e Insumos",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Compras Generales e Insumos que ayudan a asegurar abastecimiento oportuno, compras correctas, control de proveedores, continuidad operativa y cierre adecuado de requerimientos.",
+"questions": [
+{
+"question_id": "CGI_01_Q01",
+"ai_category": "inicio_correcto_caso_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una compra general, compra de insumo, cotización, reposición, contratación o requerimiento urgente?",
+"context": "Busca capturar los datos y condiciones críticas que Compras valida por experiencia antes de cotizar, seleccionar proveedor, emitir orden o comprometer una fecha de entrega.",
+"tooltip": "Mencione qué dato confirma primero, qué condición técnica, presupuestaria o de urgencia revisa, qué señal le indica que no debe avanzar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso de compra a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de cotizar un insumo confirmo especificación, cantidad, área solicitante, criticidad, fecha requerida, presupuesto o centro de costo y si existe proveedor habitual. Si la especificación llega incompleta o el área solo pide por nombre común, no avanzo como compra cerrada porque se puede comprar algo incorrecto o generar atraso.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de compra",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Compras Generales e Insumos.",
+"No identifica información crítica antes de iniciar.",
+"No menciona especificación, cantidad, área solicitante, presupuesto, proveedor, urgencia o fecha requerida.",
+"No explica el riesgo operativo o económico de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "CGI_01_Q02",
+"ai_category": "priorizacion_casos_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Compras para priorizar requerimientos cuando coinciden insumos críticos, compras urgentes, cotizaciones pendientes, aprobaciones atrasadas, proveedores sin respuesta o solicitudes de varias áreas?",
+"context": "Permite capturar cómo Compras decide qué atender primero cuando hay presión operativa, recursos limitados, riesgo de desabastecimiento o varias áreas solicitando atención al mismo tiempo.",
+"tooltip": "Incluya criterios como impacto en producción, criticidad del insumo, fecha requerida, proveedor único, stock bajo, presupuesto aprobado, tiempo de entrega, urgencia real o riesgo de detener una operación.",
+"expected_answer_structure": [
+"Situación de múltiples requerimientos",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden una compra administrativa y un insumo crítico con stock bajo, priorizo el insumo que puede detener producción o afectar continuidad. Antes de moverlo como urgente confirmo criticidad con el área usuaria, disponibilidad en bodega, proveedor posible y fecha límite real.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a compras o insumos.",
+"No menciona criticidad, stock, proveedor, producción, presupuesto o fecha requerida.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "CGI_01_Q03",
+"ai_category": "excepciones_flujo_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Compras suelen salirse del manejo habitual y requieren criterio adicional antes de cotizar, seleccionar proveedor, emitir orden, modificar una compra o escalar?",
+"context": "Busca identificar excepciones reales del área donde no basta seguir la secuencia normal porque existen datos incompletos, urgencias, proveedores críticos, restricciones de presupuesto o condiciones especiales.",
+"tooltip": "Describa casos como solicitud sin especificación, proveedor único, compra fuera de presupuesto, cotización incompleta, sustituto no validado, entrega parcial, cambio de precio, urgencia no planificada o aprobación pendiente.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es cuando el proveedor habitual no tiene stock de un insumo crítico y propone un sustituto. Antes de comprar, se valida con el área usuaria, calidad o mantenimiento según el caso, porque aceptar un equivalente sin revisión puede generar rechazo o falla operativa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de Compras Generales e Insumos.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "CGI_01_Q04",
+"ai_category": "validaciones_practicas_error_critico_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Compras para evitar errores importantes en especificación, proveedor, precio, plazo, cantidad, centro de costo, aprobación, recepción o cierre documental?",
+"context": "Permite capturar revisiones no escritas que previenen compras incorrectas, sobrecostos, atrasos, rechazos del área usuaria, pagos indebidos o reprocesos con proveedor, bodega, finanzas o contabilidad.",
+"tooltip": "Mencione qué compara, qué fuente consulta, qué cruces realiza entre solicitud, cotización, orden, proveedor y recepción, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de emitir una orden comparo requerimiento, cotización, código o especificación, cantidad, precio, plazo, centro de costo y aprobación. Si el proveedor cotiza una descripción parecida pero no exacta, consulto al usuario antes de confirmar para evitar una compra que luego no sirva.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Compras."
+]
+},
+{
+"question_id": "CGI_01_Q05",
+"ai_category": "senales_tempranas_riesgo_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse desabastecimiento, atraso de entrega, sobrecosto, compra incorrecta, proveedor incumplido, aprobación bloqueada o reproceso en Compras?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte producción, mantenimiento, bodega, finanzas, presupuesto o continuidad operativa.",
+"tooltip": "Incluya señales como proveedor sin respuesta, stock bajo, consumo acelerado, aprobación pendiente, especificación ambigua, cambio de precio, entrega parcial, requerimientos repetidos o compras urgentes recurrentes.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando un proveedor no confirma fecha de entrega y el insumo ya aparece con consumo alto o stock bajo, es señal de posible desabastecimiento. Antes de esperar el atraso, activo proveedor alterno, aviso al área usuaria y escalo si afecta producción.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "CGI_01_Q06",
+"ai_category": "dependencias_reales_destrabe_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, proveedores, datos o canales destraban realmente el trabajo cuando hay dudas sobre especificaciones, aprobaciones, presupuesto, stock, proveedor, recepción, pago o urgencia de compra?",
+"context": "Permite identificar dependencias reales del área para resolver bloqueos sin asumir datos incompletos ni emitir compras con información no confirmada.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona, área o proveedor que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando una especificación está incompleta, se destraba con el usuario técnico o responsable del área, revisando uso, medida, marca aceptada, cantidad y fecha requerida. Si la compra es crítica y no responden, se escala con jefatura mostrando impacto en continuidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona, área o proveedor",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Compras Generales e Insumos.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "CGI_01_Q07",
+"ai_category": "casos_delicados_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Compras considera delicados y requieren más experiencia para manejarlos correctamente sin afectar continuidad operativa, presupuesto, proveedor, usuario interno, calidad o pago?",
+"context": "Busca capturar situaciones donde se necesita criterio operativo y comercial, no solo aplicación mecánica de una cotización, aprobación u orden de compra.",
+"tooltip": "Mencione casos como proveedor único, sustituto de insumo crítico, compra urgente sin aprobación completa, cambio de precio, proveedor incumplido, recepción no conforme, sobrecosto o compra fuera de presupuesto.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es comprar un sustituto para un insumo crítico cuando el proveedor habitual no tiene stock. Requiere validar especificación, uso real, historial, aprobación del área usuaria y posible impacto en calidad o producción antes de confirmar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "CGI_01_Q08",
+"ai_category": "errores_frecuentes_evitar_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Compras Generales e Insumos se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten entrega, costo, recepción, pago o continuidad?",
+"context": "Permite identificar errores que el personal experimentado previene, como comprar con especificación incompleta, elegir proveedor solo por precio, no validar plazos, omitir aprobaciones, duplicar requerimientos o cerrar sin conformidad.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es seleccionar la cotización más barata sin revisar plazo, especificación o historial del proveedor. La señal aparece cuando el precio es bajo pero la entrega no cubre la urgencia. Para evitarlo, se compara costo total, plazo y riesgo antes de decidir.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a compras, recepción, pago o continuidad.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "CGI_01_Q09",
+"ai_category": "practicas_agiles_sin_saltar_controles_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar requerimientos, cotizaciones, selección de proveedor, emisión de órdenes, seguimiento de entregas o cierre documental sin saltarse controles importantes?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo validación de especificación, aprobación, presupuesto, proveedor, evidencia, recepción y conformidad.",
+"tooltip": "Mencione prácticas como prevalidar especificaciones, mantener proveedores alternos, usar histórico de compras, confirmar urgencia real, agrupar requerimientos, revisar órdenes críticas o usar checklist de cierre.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es mantener historial de proveedores y precios para insumos recurrentes. Esto agiliza la cotización, pero no se debe saltar la validación de precio vigente, disponibilidad, plazo y aprobación antes de emitir la orden.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "CGI_01_Q10",
+"ai_category": "criterios_no_escritos_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Compras para decidir si un requerimiento, proveedor, cotización, sustituto, compra urgente, aprobación pendiente o entrega parcial puede avanzar, detenerse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, procedimiento, solicitud o proveedor no da una respuesta completa ante una condición real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si una compra urgente no tiene aprobación completa pero puede detener producción, entonces no se ignora; se valida criticidad con el área usuaria y se escala con evidencia antes de comprometer proveedor. Esto evita compras sin respaldo o atrasos críticos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "CGI_01_Q11",
+"ai_category": "apoyo_escalamiento_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Compras Generales e Insumos conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde Compras?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar presupuesto, continuidad operativa, proveedor, cumplimiento interno, calidad, recepción, pago o relación con áreas usuarias.",
+"tooltip": "Incluya situaciones como sobrecosto relevante, proveedor único sin stock, compra fuera de presupuesto, aprobación atrasada, sustituto no validado, entrega crítica fallida o requerimiento urgente sin respaldo.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona, área o proveedor a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si un proveedor único no tiene stock de un insumo crítico, conviene escalar antes de aceptar cualquier sustituto. Se debe presentar insumo, criticidad, stock disponible, fecha requerida, alternativas, costo y riesgo para que el área usuaria y jefatura decidan.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área, persona o proveedor",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "CGI_01_Q12",
+"ai_category": "aprendizaje_lento_persona_nueva_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Compras Generales e Insumos suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como reconocer especificaciones incompletas, proveedores confiables, urgencias reales, sustitutos aceptables, tiempos reales o riesgos de recepción.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en distinguir cuándo una solicitud urgente es realmente crítica y cuándo falta planificación. Eso requiere conocer áreas, insumos, stock, proveedores y consecuencias operativas. El error típico es tratar todas las solicitudes urgentes con la misma prioridad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Compras.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "CGI_01_Q13",
+"ai_category": "senal_listo_para_avanzar_cerrar_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que un requerimiento, cotización, proveedor, orden de compra, entrega, recepción, conformidad o cierre documental está listo para avanzar, cerrarse o entregarse a otra área?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que una compra quedó correctamente validada, ejecutada o lista para pago, recepción o seguimiento.",
+"tooltip": "Incluya confirmaciones de especificación, aprobación, proveedor, precio, plazo, entrega, recepción física, conformidad del usuario, factura, guía, sistema o soporte documental.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación documental, operativa o financiera",
+"Persona, área o proveedor que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una compra está lista para cerrarse cuando la orden coincide con la cotización, el proveedor entregó lo solicitado, bodega o el usuario confirmó recepción, la documentación está completa y no quedan diferencias de cantidad, precio o especificación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando el sistema lo indica.",
+"No menciona aprobación, proveedor, recepción, conformidad, factura, guía o soporte.",
+"No identifica validación interna o de proveedor.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Compras."
+]
+},
+{
+"question_id": "CGI_01_Q14",
+"ai_category": "aprendizajes_conservar_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Compras Generales e Insumos deberían conservarse porque ayudan a evitar desabastecimiento, sobrecostos, compras incorrectas, proveedores incumplidos, atrasos, pagos indebidos o reprocesos?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes.",
+"tooltip": "Mencione aprendizajes sobre proveedores, insumos críticos, especificaciones, sustitutos, tiempos reales, precios, aprobaciones, recepción, usuarios internos, presupuesto o seguimiento de órdenes.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no esperar a que el proveedor incumpla para revisar alternativas. En insumos críticos conviene conocer proveedor alterno, tiempo real de entrega y sustitutos aprobados antes de que el stock esté bajo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "CGI_01_Q15",
+"ai_category": "recomendacion_persona_nueva_compras",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Compras Generales e Insumos para trabajar con seguridad, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en requerimientos, cotizaciones, proveedores, aprobaciones, órdenes, entregas, recepción, pagos y coordinación interna.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona, área o proveedor de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no comprar solo con una solicitud verbal o una descripción incompleta. Debe validar especificación, cantidad, uso, aprobación, presupuesto, proveedor, plazo y recepción esperada. Si algo no cuadra, debe consultar antes de emitir la orden.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona requerimientos, proveedores, cotizaciones, aprobaciones, órdenes, entregas o recepción.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Compras."
+]
+}
+]
+}
+]
+}

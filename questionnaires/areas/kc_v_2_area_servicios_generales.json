@@ -1,0 +1,633 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Servicios Generales",
+"level": "",
+"metadata": {
+"area_id": "servicios_generales",
+"display_name": "Servicios Generales",
+"aliases": [
+"servicios generales",
+"servicios de apoyo",
+"apoyo operativo",
+"facilities",
+"administración de servicios",
+"infraestructura de apoyo",
+"servicios internos"
+],
+"macro_process": "Gestión de servicios de apoyo, infraestructura operativa y continuidad de condiciones generales"
+},
+"blocks": [
+{
+"block_id": "SG_01_GESTION_SERVICIOS_APOYO",
+"block_name": "Conocimiento tácito crítico de Servicios Generales",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Servicios Generales que ayudan a sostener condiciones básicas, limpieza, orden, suministros, apoyo operativo, atención de requerimientos, coordinación con proveedores y continuidad de servicios internos.",
+"questions": [
+{
+"question_id": "SG_01_Q01",
+"ai_category": "inicio_correcto_caso_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una atención de Servicios Generales, como limpieza, apoyo logístico, adecuación menor, suministro, servicio externo o requerimiento interno?",
+"context": "Busca capturar los datos y condiciones críticas que Servicios Generales valida por experiencia antes de asignar personal, usar recursos, coordinar proveedores o comprometer una atención a un área usuaria.",
+"tooltip": "Mencione qué dato confirma primero, qué condición del área o servicio revisa, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso de Servicios Generales a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de atender una solicitud confirmo área solicitante, tipo de servicio, urgencia real, lugar exacto, condición del área, recursos necesarios, responsable que autoriza y si afecta operación, seguridad o condiciones básicas. Si no está claro el alcance o el área no puede liberar el espacio, conviene validar antes para evitar reproceso o atención incompleta.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de Servicios Generales",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Servicios Generales.",
+"No identifica información crítica antes de iniciar.",
+"No menciona área solicitante, lugar, urgencia, recursos, responsable o condición del servicio.",
+"No explica el riesgo operativo de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "SG_01_Q02",
+"ai_category": "priorizacion_casos_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Servicios Generales para priorizar solicitudes cuando coinciden necesidades de limpieza, suministros, adecuaciones, apoyo logístico, servicios externos o atención a varias áreas?",
+"context": "Permite capturar cómo Servicios Generales decide qué atender primero cuando hay recursos limitados, varias solicitudes simultáneas, áreas críticas, presión operativa o necesidades básicas del personal.",
+"tooltip": "Incluya criterios como continuidad operativa, seguridad, inocuidad, bienestar básico, área crítica, urgencia real, disponibilidad de personal, materiales, proveedor, horario o impacto si no se atiende.",
+"expected_answer_structure": [
+"Situación de múltiples solicitudes",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden una solicitud administrativa y una necesidad de limpieza en zona operativa o servicios higiénicos sin insumos, priorizo la que afecta continuidad, seguridad, inocuidad o bienestar básico. Las solicitudes de menor impacto se reprograman y se comunica el nuevo plazo al área solicitante.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Servicios Generales.",
+"No menciona limpieza, suministros, condiciones básicas, áreas críticas, personal, materiales o proveedores.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "SG_02_Q01",
+"ai_category": "excepciones_flujo_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Servicios Generales suelen salirse del manejo habitual y requieren criterio adicional antes de atender, reprogramar, comprar, coordinar proveedor, cerrar o escalar?",
+"context": "Busca identificar excepciones reales donde no basta seguir la atención normal porque existen solicitudes urgentes sin anticipación, falta de materiales, áreas críticas, proveedores no disponibles, restricciones de horario o cambios de prioridad.",
+"tooltip": "Describa casos como solicitud urgente fuera de programación, falta de insumos críticos, proveedor incumplido, área sin acceso, limpieza especial, evento interno, requerimiento sin responsable claro o servicio que supera la capacidad interna.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona, área o proveedor consultado",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es una limpieza especial urgente en zona sensible cuando el personal ya está asignado a otras tareas. Antes de mover recursos, se valida criticidad, riesgo, área afectada, insumos disponibles y posibilidad de reprogramar actividades de menor impacto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la atención normal.",
+"No identifica excepciones propias de Servicios Generales.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "SG_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Servicios Generales para evitar errores importantes en atención de requerimientos, suministros, limpieza, uso de materiales, proveedores, cierre de servicios o comunicación con áreas?",
+"context": "Permite capturar revisiones no escritas que previenen atención incompleta, uso incorrecto de recursos, desabastecimiento, reprocesos, reclamos, costos innecesarios o cierre sin conformidad del área usuaria.",
+"tooltip": "Mencione qué compara, qué revisa físicamente, qué dato valida con el área solicitante o proveedor, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de cerrar una solicitud reviso si el servicio se ejecutó en el lugar correcto, si se usaron los insumos adecuados, si el área quedó conforme y si queda evidencia cuando aplica. Si solo se atiende parcialmente y se cierra sin confirmar, puede repetirse el reclamo o perderse trazabilidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara o revisa.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Servicios Generales."
+]
+},
+{
+"question_id": "SG_03_Q01",
+"ai_category": "senales_tempranas_riesgo_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso, deterioro de limpieza, falta de suministros, saturación de solicitudes, falla de proveedor, reclamo o reproceso en Servicios Generales?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte condiciones básicas, continuidad, bienestar del personal, imagen interna, seguridad o atención a áreas críticas.",
+"tooltip": "Incluya señales como reclamos repetidos, consumo inusual de insumos, acumulación de residuos, baños sin reposición, solicitudes duplicadas, proveedor demorado, personal insuficiente o áreas con atención pendiente.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando aumentan los reclamos por baños sin insumos o limpieza en una misma zona, es señal de que la frecuencia de atención no está alcanzando. Antes de esperar más reclamos, se ajusta la rutina, se revisa consumo y se valida si existe un pico de uso.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "SG_03_Q02",
+"ai_category": "dependencias_reales_destrabe_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, proveedores, datos o canales destraban realmente el trabajo cuando hay dudas sobre prioridad, acceso, materiales, autorización, proveedor, alcance, presupuesto o cierre de un servicio?",
+"context": "Permite identificar dependencias reales de Servicios Generales para resolver bloqueos sin avanzar con información incompleta, autorizaciones débiles o recursos mal asignados.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona, área o proveedor que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando una solicitud requiere acceso a un área operativa o uso de proveedor externo, se destraba con el responsable del área, Compras, Seguridad Industrial o Mantenimiento según el caso. El dato clave suele ser alcance, horario disponible, autorización y condición de seguridad para ejecutar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona, área o proveedor",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Servicios Generales.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "SG_04_Q01",
+"ai_category": "casos_delicados_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Servicios Generales considera delicados y requieren más experiencia para manejarlos correctamente sin afectar operación, seguridad, inocuidad, bienestar, costos o relación con áreas usuarias?",
+"context": "Busca capturar situaciones donde se necesita criterio operativo, lectura de prioridad y coordinación fina, no solo atención mecánica de una solicitud.",
+"tooltip": "Mencione casos como limpieza en zona sensible, falta de insumo crítico, servicio externo urgente, requerimiento sin autorización, evento con alta demanda, proveedor incumplido o atención que afecta varias áreas.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es atender una condición de limpieza o acumulación de residuos cerca de una zona operativa. Requiere revisar impacto en inocuidad, seguridad, tránsito, disponibilidad de personal, insumos y responsable del área, porque manejarlo tarde puede generar reclamos o detener actividades.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "SG_04_Q02",
+"ai_category": "errores_frecuentes_evitar_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Servicios Generales se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten atención, limpieza, suministros, proveedores, costos o cierre de requerimientos?",
+"context": "Permite identificar errores que el personal experimentado previene, como cerrar sin confirmar, atender sin alcance claro, no registrar salida de insumos, no anticipar reposición, usar proveedor sin validar o no comunicar reprogramaciones.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es entregar insumos urgentes sin registrar la salida. La señal aparece cuando el consumo aumenta y el stock físico ya no coincide. Para evitarlo, se registra incluso la entrega rápida y luego se ajusta reposición con base en consumo real.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a atención, limpieza, suministros, proveedores, costos o cierre.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "SG_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar atención de requerimientos, limpieza, reposición de suministros, coordinación con proveedores, adecuaciones menores o cierre de servicios sin saltarse controles básicos?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo autorización, evidencia, validación del área usuaria, control de insumos, seguridad, registro de atención y trazabilidad del cierre.",
+"tooltip": "Mencione prácticas como prevalidar solicitudes, agrupar atenciones por zona, revisar stock mínimo, confirmar acceso antes de ir, usar checklist, solicitar evidencia de proveedor o cerrar con conformidad del área.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es agrupar solicitudes por zona o tipo de servicio para reducir traslados y tiempos muertos. Esto agiliza la atención, pero no reemplaza la validación de prioridad, registro de materiales usados ni confirmación de cierre con el área solicitante.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "SG_05_Q02",
+"ai_category": "criterios_no_escritos_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Servicios Generales para decidir si una solicitud, suministro, limpieza, adecuación, proveedor, servicio externo o cierre puede avanzar, detenerse, reprogramarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, solicitud, procedimiento o información disponible no da una respuesta completa ante una condición real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si una solicitud afecta seguridad, inocuidad o condiciones básicas del personal, entonces se atiende antes que requerimientos administrativos aunque hayan llegado primero. Esto evita interrupciones, reclamos mayores o deterioro de condiciones generales.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "SG_06_Q01",
+"ai_category": "apoyo_escalamiento_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Servicios Generales conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar seguridad, inocuidad, costos, presupuesto, continuidad, contratos, compras, mantenimiento o condiciones básicas de trabajo.",
+"tooltip": "Incluya situaciones como servicio que requiere especialidad técnica, proveedor incumplido, falta de material crítico, riesgo de seguridad, costo no autorizado, solicitud fuera de alcance o afectación a varias áreas.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona, área o proveedor a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si una adecuación menor implica riesgo eléctrico, trabajo en altura o modificación técnica, conviene escalar a Mantenimiento o Seguridad Industrial antes de ejecutarla. Se debe presentar ubicación, alcance, urgencia, riesgo, recursos requeridos y alternativa de atención.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área, persona o proveedor",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "SG_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Servicios Generales suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como leer prioridades reales, conocer zonas críticas, anticipar faltantes, coordinar proveedores, manejar urgencias o validar cierres.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en entender qué solicitudes son realmente críticas y cuáles pueden reprogramarse. Eso requiere conocer áreas sensibles, horarios, proveedores, consumo de insumos y responsables reales. El error típico es atender por orden de llegada sin medir impacto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Servicios Generales.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "SG_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una solicitud, limpieza, suministro, adecuación, servicio externo, atención de proveedor o requerimiento interno está listo para avanzar, entregarse o cerrarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que una atención de Servicios Generales quedó correctamente ejecutada, validada y comunicada.",
+"tooltip": "Incluya confirmaciones de ejecución, conformidad del área solicitante, evidencia, registro, material entregado, proveedor validado, condición corregida y ausencia de pendientes críticos.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación operativa, documental o física",
+"Persona, área o proveedor que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una solicitud está lista para cerrarse cuando el servicio fue ejecutado, el área usuaria confirma conformidad, existe evidencia si aplica, los insumos usados fueron registrados y no quedan pendientes críticos. Si solo se atendió verbalmente, no debería cerrarse sin validar resultado.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando se terminó la tarea.",
+"No menciona conformidad, evidencia, registro, condición corregida o pendientes.",
+"No identifica validación interna, de proveedor o del área solicitante.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Servicios Generales."
+]
+},
+{
+"question_id": "SG_07_Q02",
+"ai_category": "aprendizajes_conservar_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Servicios Generales deberían conservarse porque ayudan a evitar atrasos, reclamos, falta de insumos, reprocesos, servicios incompletos, sobrecostos o pérdida de continuidad?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes en servicios de apoyo.",
+"tooltip": "Mencione aprendizajes sobre rutinas de limpieza, proveedores, insumos críticos, zonas sensibles, horarios, áreas usuarias, eventos internos, reposición, cierres de atención o coordinación con otras áreas.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es revisar insumos críticos antes de periodos de alta demanda o eventos internos. Cuando se anticipa consumo, se evitan faltantes, reclamos y compras urgentes con mayor costo o menor control.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "SG_08_Q01",
+"ai_category": "recomendacion_persona_nueva_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Servicios Generales para trabajar con criterio, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en atención de requerimientos, limpieza, suministros, proveedores, coordinación con áreas, priorización y cierre de servicios.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona, área o proveedor de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no atender una solicitud solo por mensaje corto o por urgencia aparente. Debe confirmar área, lugar, alcance, prioridad, recursos, autorización y cierre esperado. Si algo no está claro, debe validar antes de mover personal, entregar insumos o comprometer proveedor.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona requerimientos, limpieza, suministros, proveedores, coordinación, priorización o cierre.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Servicios Generales."
+]
+},
+{
+"question_id": "SG_08_Q02",
+"ai_category": "restricciones_criticas_continuidad_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué zonas, servicios, suministros, proveedores, horarios, recursos o condiciones requieren seguimiento especial porque una variación podría afectar operación, seguridad, bienestar, limpieza o continuidad?",
+"context": "Busca capturar conocimiento específico sobre puntos críticos de Servicios Generales que deben vigilarse por experiencia, aunque no siempre aparezcan como urgencia formal.",
+"tooltip": "Mencione elementos críticos, señales que observa, frecuencia práctica de revisión, área relacionada, contingencia posible y qué impacto se evita.",
+"expected_answer_structure": [
+"Elemento crítico",
+"Motivo de criticidad",
+"Señal que debe vigilarse",
+"Responsable, área o proveedor relacionado",
+"Contingencia o acción preventiva",
+"Impacto que se evita"
+],
+"good_answer_example": "Los servicios higiénicos, zonas comunes de alto tránsito y suministros de limpieza requieren seguimiento especial porque cualquier faltante genera reclamos y deterioro rápido de condiciones básicas. Una señal es aumento de consumo o reportes repetidos en la misma zona.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"elemento crítico",
+"motivo",
+"señal",
+"responsable, área o proveedor",
+"contingencia",
+"impacto"
+]
+},
+"incomplete_if": [
+"Solo enumera elementos sin explicar criticidad.",
+"No menciona señales observables.",
+"No identifica responsable, área o proveedor relacionado.",
+"No indica acción preventiva o contingencia.",
+"No conecta el caso con operación, seguridad, bienestar, limpieza o continuidad."
+]
+},
+{
+"question_id": "SG_09_Q01",
+"ai_category": "manejo_proveedores_servicios_externos_servicios_generales",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Servicios Generales para saber si un proveedor o servicio externo está cumpliendo bien antes de aceptarlo, pagarlo, reprogramarlo, corregirlo o escalarlo?",
+"context": "Busca capturar conocimiento tácito sobre evaluación práctica de proveedores, cumplimiento real del servicio, evidencia suficiente, conformidad del área usuaria y señales de incumplimiento antes de cerrar una atención externa.",
+"tooltip": "Explique qué revisa del servicio externo, qué evidencia solicita, quién confirma conformidad, qué señales indican incumplimiento, cuándo se da oportunidad de corrección y cuándo se escala.",
+"expected_answer_structure": [
+"Servicio externo evaluado",
+"Criterios prácticos de cumplimiento",
+"Evidencia requerida",
+"Persona o área que confirma",
+"Señal de incumplimiento",
+"Decisión práctica"
+],
+"good_answer_example": "Antes de aceptar un servicio externo reviso que se haya ejecutado en el lugar acordado, con alcance completo, evidencia visible y conformidad del área usuaria. Si el proveedor llega tarde, entrega incompleto o no deja soporte, se solicita corrección antes de cerrar o validar pago.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"servicio externo",
+"criterios de cumplimiento",
+"evidencia",
+"confirmación",
+"señal de incumplimiento",
+"decisión"
+]
+},
+"incomplete_if": [
+"Solo menciona que revisa al proveedor.",
+"No identifica criterios prácticos de cumplimiento.",
+"No menciona evidencia o conformidad del área usuaria.",
+"No indica señales de incumplimiento.",
+"No explica cuándo corregir, reprogramar o escalar."
+]
+}
+]
+}
+]
+}

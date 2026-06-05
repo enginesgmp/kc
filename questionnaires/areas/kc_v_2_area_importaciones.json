@@ -1,0 +1,562 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Importaciones",
+"level": null,
+"area_metadata": {
+"area_id": "area_importaciones",
+"display_name": "Importaciones",
+"aliases": [
+"Importaciones",
+"Área de Importaciones",
+"Comercio Exterior Importaciones",
+"Importación",
+"Import Logistics",
+"International Procurement",
+"Compras Internacionales",
+"Aduana",
+"Nacionalización",
+"Logística Internacional"
+],
+"macro_process": "MP-1400 LOGÍSTICA Y ABASTECIMIENTO"
+},
+"blocks": [
+{
+"block_id": "IMPOR_01_FLUJO_IMPORTACION",
+"block_name": "Conocimiento tácito crítico de Importaciones",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Importaciones que ayudan a asegurar abastecimiento internacional, documentación correcta, nacionalización oportuna, control de costos y continuidad operativa.",
+"questions": [
+{
+"question_id": "IMPOR_01_Q01",
+"ai_category": "inicio_correcto_caso_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una importación, compra internacional, embarque, trámite documental o nacionalización?",
+"context": "Busca capturar los datos y condiciones críticas que Importaciones valida por experiencia antes de comprometer proveedor, activar embarque, coordinar documentos o iniciar trámites aduaneros.",
+"tooltip": "Mencione qué dato confirma primero, qué condición documental, logística, financiera o aduanera revisa, qué señal le indica que no debe avanzar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso de importación a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de iniciar una importación confirmo necesidad aprobada, proveedor, producto, cantidad, Incoterm, forma de pago, partida o requisito aplicable, fecha requerida y documentos esperados. Si falta un permiso, ficha técnica o confirmación del proveedor, no trato la operación como lista porque puede generar retraso, sobrecosto o bloqueo aduanero.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de importación",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Importaciones.",
+"No identifica información crítica antes de iniciar.",
+"No menciona proveedor, producto, Incoterm, documentos, permiso, pago, partida, fecha o cantidad.",
+"No explica el riesgo operativo, documental o aduanero de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "IMPOR_01_Q02",
+"ai_category": "priorizacion_casos_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Importaciones para priorizar operaciones cuando coinciden embarques, documentos pendientes, pagos, permisos, nacionalizaciones, inspecciones o urgencias internas?",
+"context": "Permite capturar cómo Importaciones decide qué atender primero cuando hay presión por tiempos, costos crecientes, producción esperando, stock crítico, documentos sensibles o terceros sin respuesta.",
+"tooltip": "Incluya criterios como ETA, riesgo de almacenaje, impacto en producción, criticidad del insumo, stock disponible, vencimiento documental, permisos, pagos, inspecciones, costo de demora o urgencia real.",
+"expected_answer_structure": [
+"Situación de múltiples casos",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o actor con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden una nacionalización próxima, un documento pendiente y un pago internacional, priorizo según ETA, riesgo de almacenaje, impacto en producción y criticidad del producto. Si el embarque llega en pocos días y falta un certificado, se atiende antes que una operación con mayor holgura.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Importaciones.",
+"No menciona ETA, documentos, pagos, permisos, nacionalización, costos, stock o producción.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "IMPOR_02_Q01",
+"ai_category": "excepciones_flujo_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Importaciones suelen salirse del manejo habitual y requieren criterio adicional antes de embarcar, nacionalizar, pagar, corregir documentos, aceptar cambios o escalar?",
+"context": "Busca identificar excepciones reales donde no basta seguir la secuencia normal porque existen errores documentales, cambios de ruta, retrasos, sobrecostos, pagos retenidos, permisos pendientes o presión operativa.",
+"tooltip": "Describa casos como documentos con diferencias, proveedor que no responde, cambio de ETA, inspección aduanera, permiso vencido, pago bloqueado, sobrecosto inesperado, cambio de ruta, error en clasificación o stock crítico.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona, área o tercero consultado",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es recibir factura y packing list con descripciones distintas. Antes de enviar al agente o aprobar la declaración, se valida con proveedor y agente si debe corregirse, porque una diferencia aparentemente menor puede generar observación, multa o demora en nacionalización.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de Importaciones.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "IMPOR_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Importaciones para evitar errores importantes en documentos, partidas arancelarias, permisos, valores, fechas, proveedor, agente, pagos, costos o nacionalización?",
+"context": "Permite capturar revisiones no escritas que previenen bloqueos aduaneros, multas, demoras, sobrecostos, pagos errados, observaciones documentales o afectación de abastecimiento.",
+"tooltip": "Mencione qué compara, qué fuente consulta, qué cruces realiza entre documentos, sistema, proveedor y agente, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de nacionalizar comparo factura, packing list, BL, descripción, cantidades, valores, partida, permisos y datos del proveedor. Si la descripción comercial no coincide con la ficha técnica o con antecedentes previos, valido con agente antes de transmitir para evitar observaciones o correcciones tardías.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Importaciones."
+]
+},
+{
+"question_id": "IMPOR_03_Q01",
+"ai_category": "senales_tempranas_riesgo_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso, sobrecosto, bloqueo aduanero, problema documental, pago tardío, inspección compleja o reproceso en una importación?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte costos, producción, recepción, inventario, nacionalización o continuidad operativa.",
+"tooltip": "Incluya señales como proveedor sin respuesta, documentos incompletos, ETA cercana, cambio de ruta, pago no confirmado, agente con observaciones, permiso pendiente, diferencia de valores o incremento de almacenaje.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando el ETA está próximo y el proveedor aún no envía documentos corregidos, es señal de riesgo de almacenaje y demora en nacionalización. En ese caso se insiste con proveedor, se alerta al agente y se informa internamente el impacto esperado.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "IMPOR_03_Q02",
+"ai_category": "dependencias_reales_destrabe_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, terceros, datos o canales destraban realmente el trabajo cuando hay dudas sobre documentos, aduana, permisos, pagos, costos, ETA, proveedor, agente o nacionalización?",
+"context": "Permite identificar dependencias reales de Importaciones para resolver bloqueos sin asumir datos incompletos ni avanzar con información no confirmada.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona, área o tercero que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando existe duda sobre un requisito aduanero, se destraba con el agente revisando partida, ficha técnica, antecedente y documento de soporte. Si la respuesta puede generar costo o retraso relevante, se escala con jefatura, compras o planificación según el impacto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona, área o tercero",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Importaciones.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "IMPOR_04_Q01",
+"ai_category": "casos_delicados_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Importaciones considera delicados y requieren más experiencia para manejarlos correctamente sin afectar costos, cumplimiento, aduana, producción, recepción o relación con proveedores y agentes?",
+"context": "Busca capturar situaciones donde se necesita criterio operativo y lectura de riesgo, no solo aplicación mecánica de un trámite, documento o checklist.",
+"tooltip": "Mencione casos como cambio de datos bancarios, error documental crítico, permiso pendiente, inspección aduanera, sobrecosto por demora, proveedor sensible, embarque urgente o partida arancelaria dudosa.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es un cambio de cuenta bancaria del proveedor antes de un pago internacional. Requiere validar formalmente con compras, finanzas y proveedor por canales seguros, porque si se maneja mal puede generar fraude, pago errado o bloqueo de embarque.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "IMPOR_04_Q02",
+"ai_category": "errores_frecuentes_evitar_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Importaciones se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten nacionalización, embarque, costos, pagos, recepción o cumplimiento?",
+"context": "Permite identificar errores que el personal experimentado previene, como aceptar documentos incompletos, no validar permisos, usar datos bancarios no confirmados, perder vencimientos, asumir ETA fija o no alertar sobrecostos.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es confiar en el ETA inicial sin revisar actualizaciones del forwarder. La señal aparece cuando no llegan avisos de embarque o el tracking no se mueve. Para evitarlo, se hace seguimiento antes del arribo y se alerta a planificación si cambia la fecha.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a Importaciones.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "IMPOR_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar embarques, nacionalizaciones, correcciones documentales, pagos, coordinación con agentes o seguimiento de ETA sin saltarse controles críticos?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo validación documental, evidencia, control aduanero, autorización financiera, trazabilidad y comunicación con áreas afectadas.",
+"tooltip": "Mencione prácticas como prevalidar borradores, usar checklist por operación, anticipar permisos, separar operaciones críticas, confirmar pagos antes del corte bancario, mantener tracker actualizado o revisar ETA con frecuencia definida.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es revisar borradores de factura, packing list y BL antes del embarque. Esto agiliza correcciones, pero no reemplaza la validación final con documentos definitivos y agente aduanero antes de nacionalizar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "IMPOR_05_Q02",
+"ai_category": "criterios_no_escritos_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Importaciones para decidir si una operación, documento, pago, corrección, nacionalización, cambio de ruta, permiso o sobrecosto puede avanzar, detenerse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, documento, proveedor, agente o procedimiento no da una respuesta completa ante una condición real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si un documento crítico llega con diferencia de descripción o cantidad, entonces no se transmite a aduana hasta validar corrección con proveedor y agente. Se puede avanzar con revisión interna, pero no cerrar trámite porque puede generar observación o multa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "IMPOR_06_Q01",
+"ai_category": "apoyo_escalamiento_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Importaciones conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar cumplimiento legal, costos, pagos, producción, recepción, proveedores, aduana, seguros o reputación.",
+"tooltip": "Incluya situaciones como sobrecosto relevante, documento crítico faltante, pago retenido, inspección compleja, permiso pendiente, cambio de datos bancarios, riesgo de multa, proveedor sin respuesta o impacto en producción.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona, área o tercero a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si un embarque está por generar almacenaje por documentos incompletos, conviene escalar antes de esperar la fecha límite. Se debe presentar ETA, documento faltante, proveedor responsable, costo estimado, alternativa y riesgo para producción o usuario interno.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área, persona o tercero",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "IMPOR_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Importaciones suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación internacional de la empresa?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como lectura de documentos, requisitos por producto, tiempos reales, señales de riesgo, comportamiento de agentes o coordinación con áreas internas.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en reconocer qué diferencia documental es menor y cuál puede bloquear aduana. Eso requiere revisar casos anteriores, hablar con el agente y entender producto, partida, permisos y requisitos. El error típico es aceptar el documento solo porque parece completo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Importaciones.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "IMPOR_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una importación, documento, pago, embarque, nacionalización, permiso, reclamo a tercero o cierre está listo para avanzar, cerrarse o entregarse a otra área?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un caso de Importaciones quedó correctamente resuelto y puede pasar a compras, finanzas, contabilidad, bodega, planificación o área usuaria.",
+"tooltip": "Incluya confirmaciones documentales, aduaneras, financieras, logísticas, de agente, proveedor, banco, sistema, archivo soporte, aprobación interna o aceptación del área receptora.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación documental, logística o financiera",
+"Persona, área o tercero que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una nacionalización está lista para cerrarse cuando documentos, declaración, pagos, agente, costos, ingreso físico y soporte contable coinciden. Si falta factura de gasto o confirmación de recepción interna, no debería cerrarse como operación completa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando el sistema lo indica.",
+"No menciona confirmación documental, logística, financiera o aduanera.",
+"No identifica validación interna o de tercero.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Importaciones."
+]
+},
+{
+"question_id": "IMPOR_07_Q02",
+"ai_category": "aprendizajes_conservar_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Importaciones deberían conservarse porque ayudan a evitar bloqueos, multas, demoras, sobrecostos, pagos errados, problemas con agentes o reprocesos documentales?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes.",
+"tooltip": "Mencione aprendizajes sobre proveedores, agentes, documentos sensibles, tiempos reales, permisos, pagos, bancos, aduana, rutas, costos, inspecciones, certificados, nacionalizaciones o coordinación interna.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no esperar al arribo para revisar documentos críticos. Conviene validar borradores antes del embarque y confirmar requisitos con el agente, porque corregir tarde puede generar almacenaje, observaciones o retraso en producción.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "IMPOR_08_Q01",
+"ai_category": "recomendacion_persona_nueva_importaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Importaciones para trabajar con seguridad, evitar errores y aprender más rápido el manejo real de operaciones internacionales?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en documentos, proveedores, agentes, aduana, pagos, permisos, costos, tiempos, nacionalizaciones y coordinación interna.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona, área o tercero de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no asumir que una operación está lista solo porque el proveedor envió documentos. Debe revisar descripción, cantidades, permisos, partida, fechas, pagos y validación del agente. Si algo no cuadra, debe detenerse y consultar antes de transmitir o prometer una fecha.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona documentos, proveedores, agentes, aduana, pagos, permisos, fechas o costos.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Importaciones."
+]
+}
+]
+}
+]
+}

@@ -1,0 +1,559 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Bodega de Producto Terminado",
+"level": null,
+"area_metadata": {
+"area_id": "area_bodega_producto_terminado",
+"display_name": "Bodega de Producto Terminado",
+"aliases": [
+"BPT",
+"Producto Terminado",
+"Bodega PT",
+"Almacén de Producto Terminado",
+"Bodega de PT",
+"Inventario Producto Terminado",
+"Despacho Producto Terminado"
+],
+"macro_process": "MP-1400 LOGÍSTICA Y ABASTECIMIENTO"
+},
+"blocks": [
+{
+"block_id": "BPT_01_INVENTARIO_Y_EXISTENCIAS",
+"block_name": "Conocimiento tácito crítico de Bodega de Producto Terminado",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Bodega de Producto Terminado que ayudan a asegurar inventario confiable, trazabilidad, rotación, liberación, despacho correcto y continuidad operativa.",
+"questions": [
+{
+"question_id": "BPT_01_Q01",
+"ai_category": "inicio_correcto_caso_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una recepción, ubicación, preparación, despacho, bloqueo o ajuste de producto terminado?",
+"context": "Busca capturar los datos y condiciones críticas que Bodega de Producto Terminado valida por experiencia antes de mover, almacenar, separar, cargar o registrar producto.",
+"tooltip": "Mencione qué dato confirma primero, qué condición física o documental revisa, qué señal le indica que no debe avanzar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso o movimiento a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de preparar un despacho confirmo pedido, cliente, lote, presentación, cantidad, ubicación, estado de calidad y documentación. Si el producto está físicamente disponible pero no está liberado por calidad o no coincide el lote, no lo cargo hasta validar porque puede generar despacho incorrecto o pérdida de trazabilidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso o movimiento",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Bodega de Producto Terminado.",
+"No identifica información crítica antes de iniciar.",
+"No menciona lote, cantidad, ubicación, liberación, pedido o documentación.",
+"No explica el riesgo operativo de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "BPT_01_Q02",
+"ai_category": "priorizacion_casos_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa para priorizar casos de Bodega de Producto Terminado cuando coinciden ingresos, ubicaciones, despachos, producto bloqueado, diferencias de inventario o camiones esperando?",
+"context": "Permite capturar cómo se decide qué atender primero cuando hay presión operativa, ventanas de carga, clientes críticos, restricciones de calidad, saturación o varias áreas solicitando atención.",
+"tooltip": "Incluya criterios como despacho comprometido, cliente crítico, producto liberado, ventana de transporte, antigüedad, ocupación, lote correcto, impacto comercial, prioridad de carga o riesgo de incumplimiento.",
+"expected_answer_structure": [
+"Situación de múltiples casos",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden recepción de producto, preparación de pedido y camión esperando, priorizo según ventana de carga, cliente, liberación de calidad y riesgo de incumplimiento. Si un producto no está liberado, no lo priorizo para carga aunque el camión esté esperando; busco lote alterno o escalo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a producto terminado.",
+"No menciona despacho, calidad, cliente, lote, transporte u ocupación.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "BPT_01_Q03",
+"ai_category": "excepciones_flujo_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Bodega de Producto Terminado suelen salirse del manejo habitual y requieren criterio adicional antes de recibir, ubicar, preparar, cargar, bloquear o ajustar producto?",
+"context": "Busca identificar excepciones reales del área donde no basta seguir la secuencia normal porque existen diferencias, urgencias, bloqueos, cambios de pedido o información incompleta.",
+"tooltip": "Describa casos como producto sin liberación, lote mal rotulado, diferencia físico-sistema, cambio urgente de pedido, producto observado, camión esperando, daño de empaque o documentos incompletos.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es cuando Comercial cambia el lote o cliente después de que el pedido ya fue separado. Antes de mover o cargar de nuevo, se valida con Comercial, Calidad y documentos para evitar cargar producto incorrecto o perder trazabilidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de Bodega de Producto Terminado.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "BPT_01_Q04",
+"ai_category": "validaciones_practicas_error_critico_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza para evitar errores importantes de lote, cantidad, ubicación, estado de calidad, documentación, cliente o despacho de producto terminado?",
+"context": "Permite capturar revisiones no escritas que previenen despachos incorrectos, diferencias de inventario, pérdida de trazabilidad, carga de producto bloqueado o reclamos posteriores.",
+"tooltip": "Mencione qué compara, qué revisa físicamente, qué dato cruza con sistema o documento, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de cargar comparo lote físico, presentación, cantidad, orden de despacho, estado de calidad y guía. Si el sistema muestra disponible pero el pallet tiene otra etiqueta o está en zona de observado, detengo la carga hasta validar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a producto terminado."
+]
+},
+{
+"question_id": "BPT_01_Q05",
+"ai_category": "senales_tempranas_riesgo_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso, saturación, diferencia de inventario, error de despacho, producto bloqueado no detectado o reproceso en Bodega de Producto Terminado?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte despacho, cliente, inventario, calidad, transporte o cumplimiento comercial.",
+"tooltip": "Incluya señales como aumento de producto observado, camiones esperando, pedidos cambiados, diferencias físico-sistema, ocupación alta, pallets sin identificación clara, daños de empaque o documentos pendientes.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando hay varios pedidos con cambios de última hora y producto bloqueado en la misma zona de preparación, es señal de riesgo de carga incorrecta. Antes de avanzar, se separan físicamente los lotes, se valida estado de calidad y se confirma pedido vigente.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "BPT_01_Q06",
+"ai_category": "dependencias_reales_destrabe_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, datos o canales destraban realmente el trabajo cuando hay dudas sobre disponibilidad, liberación, lote, documentos, pedido, ubicación, transporte o despacho de producto terminado?",
+"context": "Permite identificar dependencias reales del área para resolver bloqueos sin improvisar ni cargar producto sin respaldo suficiente.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando un pedido está listo pero el producto aparece observado, se destraba con Calidad confirmando estado de liberación y con Comercial validando si existe lote alterno. Si el camión está en ventana de carga, se escala con evidencia del lote, pedido y hora límite.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Bodega de Producto Terminado.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "BPT_01_Q07",
+"ai_category": "casos_delicados_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Bodega de Producto Terminado considera delicados y requieren más experiencia para manejarlos correctamente sin afectar cliente, trazabilidad, inventario, calidad o despacho?",
+"context": "Busca capturar situaciones donde se necesita criterio operativo, lectura de riesgo y coordinación fina, no solo aplicación mecánica de una instrucción o documento.",
+"tooltip": "Mencione casos como producto bloqueado con despacho cercano, diferencia de lote, cambio urgente de cliente, daño físico, inventario descuadrado, producto antiguo, saturación o camión esperando.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es cambiar un lote ya preparado por otro lote alterno cerca de la carga. Requiere validar liberación, documentación, cliente, presentación, cantidad y trazabilidad. Si se maneja mal, puede salir un lote incorrecto o generarse reclamo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "BPT_01_Q08",
+"ai_category": "errores_frecuentes_evitar_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Bodega de Producto Terminado se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten despacho, inventario, cliente o trazabilidad?",
+"context": "Permite identificar errores que el personal experimentado previene, como cargar lote incorrecto, ubicar mal producto, no registrar movimientos, mezclar producto observado o preparar con pedido desactualizado.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es preparar producto con una versión anterior del pedido cuando Comercial hizo un cambio. La señal aparece cuando el documento, el chat y el sistema no coinciden. Para evitarlo, se confirma la última versión antes de separar o cargar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a despacho, inventario, cliente o trazabilidad.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "BPT_01_Q09",
+"ai_category": "practicas_agiles_sin_saltar_controles_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar recepciones, ubicaciones, preparación de pedidos, conteos, reubicaciones o despachos sin saltarse controles de calidad, trazabilidad, inventario y documentación?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo validación física, control documental, estado de calidad, registro de movimientos y coordinación con áreas relacionadas.",
+"tooltip": "Mencione prácticas como prevalidar pedidos, separar lotes liberados, revisar ventanas de carga, preparar zonas por cliente, ordenar por FEFO/FIFO o usar listas internas de producto observado.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es revisar pedidos del día y separar producto liberado por ventana de carga antes de que llegue el transporte. Esto agiliza el despacho, pero no se debe saltar la validación final de lote, cantidad, estado de calidad y documentación antes de cargar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "BPT_01_Q10",
+"ai_category": "criterios_no_escritos_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Bodega de Producto Terminado para decidir si un producto puede recibirse, ubicarse, reservarse, prepararse, despacharse, bloquearse, ajustarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, documento o procedimiento no da una respuesta completa ante condiciones reales de bodega y despacho.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si un producto está físicamente disponible pero tiene estado observado o documento pendiente, entonces no se carga hasta confirmación de Calidad. Se puede separar preventivamente, pero no despachar como liberado.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "BPT_01_Q11",
+"ai_category": "apoyo_escalamiento_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Bodega de Producto Terminado conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente en bodega?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar cliente, calidad, despacho, inventario, trazabilidad, transporte, comercial o cumplimiento documental.",
+"tooltip": "Incluya situaciones como lote bloqueado con despacho cercano, diferencia de inventario relevante, camión esperando, daño de empaque, cambio de pedido, falta documental o presión para cargar producto no liberado.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si el camión está esperando y el producto asignado aparece bloqueado por calidad, conviene escalar antes de cambiar o cargar. Se debe presentar pedido, lote, estado, cantidad, hora límite y alternativa disponible para que Calidad y Comercial definan.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "BPT_01_Q12",
+"ai_category": "aprendizaje_lento_persona_nueva_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Bodega de Producto Terminado suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como ubicaciones reales, criterios de rotación, estados de calidad, pedidos críticos, lotes, documentos o manejo de presión de despacho.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en aprender la relación entre ubicación física, estado de calidad, lote y pedido comercial. El error típico es confiar solo en que el producto está en piso sin validar si está liberado, reservado o bloqueado.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Bodega de Producto Terminado.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "BPT_01_Q13",
+"ai_category": "senal_listo_para_avanzar_cerrar_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una recepción, ubicación, preparación, despacho, conteo, bloqueo, ajuste o reubicación de producto terminado está lista para avanzar, cerrarse o entregarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un movimiento o caso de Bodega de Producto Terminado quedó correctamente resuelto.",
+"tooltip": "Incluya confirmaciones físicas, documentales, sistémicas, de lote, cantidad, ubicación, estado de calidad, aceptación del área receptora, carga correcta o validación del responsable.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación física o documental",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Un despacho está listo para cerrarse cuando lote, cantidad, presentación, cliente, documentos y estado de calidad coinciden, la carga fue validada y el movimiento quedó registrado. Si falta confirmación documental, no debería cerrarse como despacho correcto.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando el sistema lo indica.",
+"No menciona confirmación física o documental.",
+"No identifica validación del responsable o área receptora.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Bodega de Producto Terminado."
+]
+},
+{
+"question_id": "BPT_01_Q14",
+"ai_category": "aprendizajes_conservar_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Bodega de Producto Terminado deberían conservarse porque ayudan a evitar diferencias de inventario, despachos incorrectos, pérdida de trazabilidad, saturación, reclamos o reprocesos?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes.",
+"tooltip": "Mencione aprendizajes sobre lotes, rotación, producto observado, preparación de pedidos, cambios de cliente, ventanas de carga, ubicaciones, documentos, coordinación con calidad o comercial.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no preparar pedidos solo por orden de llegada, sino revisar cliente, ventana de carga, producto liberado y lote correcto. Esto evita reprocesos cuando se separa producto que después no puede cargarse.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "BPT_01_Q15",
+"ai_category": "recomendacion_persona_nueva_bpt",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Bodega de Producto Terminado para trabajar con seguridad, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en recepción, almacenamiento, rotación, producto observado, inventario, preparación, despacho y coordinación con áreas relacionadas.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no mover, separar ni cargar producto solo porque físicamente está disponible. Debe revisar lote, cantidad, presentación, ubicación, estado de calidad, pedido vigente y documentos. Si algo no coincide, debe consultar antes de avanzar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona producto terminado, lote, ubicación, calidad, pedido o despacho.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico del área."
+]
+}
+]
+}
+]
+}

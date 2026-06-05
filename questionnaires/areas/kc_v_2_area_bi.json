@@ -1,0 +1,560 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"generation_type": "AREA",
+"area": {
+"area_id": "AREA_BI",
+"display_name": "BI",
+"aliases": [
+"Business Intelligence",
+"Inteligencia de Negocios",
+"Analítica",
+"Datos",
+"Dashboards",
+"Reportería",
+"Power BI",
+"Indicadores",
+"Data Analytics"
+],
+"macro_process": "Administración Tecnológica"
+},
+"level": "",
+"blocks": [
+{
+"block_id": "AREA_BI_001_INDICADORES_CRITICOS",
+"block_name": "Conocimiento tácito crítico de BI",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de BI que ayudan a asegurar información confiable, tableros útiles, indicadores bien definidos, datos oportunos y decisiones organizacionales mejor sustentadas.",
+"questions": [
+{
+"question_id": "AREA_BI_001_Q001",
+"ai_category": "inicio_correcto_caso_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente un tablero, reporte, indicador, automatización o análisis solicitado a BI?",
+"context": "Busca capturar los datos mínimos y condiciones críticas que BI valida por experiencia antes de construir o modificar una solución analítica, para evitar reportes mal definidos, indicadores ambiguos o decisiones basadas en datos incompletos.",
+"tooltip": "Mencione qué dato confirma primero, qué definición debe estar clara, qué fuente valida, qué usuario o dueño del dato debe participar y qué riesgo existe si se inicia sin esa claridad.",
+"expected_answer_structure": [
+"Caso analítico a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente o dueño de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de iniciar un tablero confirmo objetivo, usuario principal, indicador requerido, fuente de datos, dueño funcional, frecuencia de actualización y decisión que debe soportar. Si el área no define claramente qué significa el indicador o qué fuente manda, no conviene construirlo porque después cada usuario puede interpretar un número distinto.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso analítico",
+"información mínima",
+"condición crítica",
+"fuente o dueño",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo menciona que recibe un requerimiento",
+"No identifica información crítica propia de BI",
+"No menciona fuente, definición, dueño del dato o usuario del indicador",
+"No explica el riesgo de iniciar sin validar",
+"No incluye ejemplo aplicable a BI"
+]
+},
+{
+"question_id": "AREA_BI_001_Q002",
+"ai_category": "priorizacion_casos_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué criterios prácticos usa BI para priorizar solicitudes cuando coinciden tableros nuevos, cambios urgentes, errores de datos, cierres, reportes gerenciales o análisis especiales?",
+"context": "Permite capturar cómo BI decide qué atender primero cuando hay alta demanda analítica, presión de áreas, cierres operativos o riesgos de publicar información incorrecta.",
+"tooltip": "Incluya criterios como impacto en decisión gerencial, criticidad del proceso, riesgo de dato incorrecto, fecha de cierre, número de usuarios afectados, dependencia de otras áreas, esfuerzo requerido o urgencia real.",
+"expected_answer_structure": [
+"Situación de múltiples solicitudes",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden un error en un tablero gerencial y una solicitud nueva de visualización, priorizo el error si puede afectar decisiones de venta, inventario o despacho. También reviso cuántos usuarios dependen del tablero, si afecta cierre y si el dato publicado puede generar una decisión equivocada.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia",
+"No aterriza la priorización a BI",
+"No menciona impacto en decisión, cierre, tablero crítico o calidad del dato",
+"No explica el riesgo de priorizar mal",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_BI_001_Q003",
+"ai_category": "excepciones_flujo_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué casos de BI suelen salirse del manejo habitual y requieren criterio adicional antes de publicar, modificar, automatizar o liberar un reporte o tablero?",
+"context": "Busca identificar excepciones reales del área donde no basta crear el reporte solicitado porque existen dudas de definición, fuente, calidad del dato, impacto, seguridad o interpretación.",
+"tooltip": "Describa casos como fuentes inconsistentes, indicadores con definiciones distintas, solicitudes sin dueño del dato, reportes urgentes sin validación, cambios de lógica, datos sensibles o tableros usados por gerencia.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es cuando comercial pide mostrar disponibilidad, pero operaciones y calidad manejan criterios distintos. Antes de publicar, BI debe validar si disponibilidad significa producto físico, producto liberado o producto vendible, porque el tablero puede generar compromisos comerciales incorrectos.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe solo la creación normal de reportes",
+"No identifica excepciones propias de BI",
+"No menciona validaciones adicionales",
+"No indica a quién consulta",
+"No diferencia operación normal de excepción"
+]
+},
+{
+"question_id": "AREA_BI_001_Q004",
+"ai_category": "validaciones_practicas_error_critico_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué validaciones prácticas realiza BI para evitar errores importantes en indicadores, fuentes, cálculos, filtros, cortes de fecha, versiones de datos o publicación de tableros?",
+"context": "Permite capturar revisiones no escritas que previenen reportes inconsistentes, decisiones erradas, pérdida de confianza en BI o conflictos entre áreas por cifras diferentes.",
+"tooltip": "Mencione qué compara, qué cruces hace entre fuentes, qué datos revisa con usuarios clave, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de publicar un tablero comparo totales con la fuente oficial, reviso filtros activos, fechas de corte, lógica de cálculo y usuarios afectados. Si el total del tablero no coincide con el reporte usado por el área dueña, no se publica hasta validar si la diferencia viene de filtros, actualización o definición del indicador.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona pruebas técnicas generales",
+"No identifica validaciones prácticas de BI",
+"No explica qué compara",
+"No menciona errores específicos que evita",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_BI_001_Q005",
+"ai_category": "senales_tempranas_riesgo_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales tempranas le indican a BI que puede generarse atraso, falla de datos, reporte incorrecto, conflicto entre áreas, saturación de solicitudes o reproceso analítico?",
+"context": "Busca construir un radar de alertas específicas del área antes de que un problema de datos afecte decisiones operativas, comerciales, financieras o gerenciales.",
+"tooltip": "Incluya señales como diferencias entre reportes, cambios manuales repetidos, fuente que no actualiza, usuarios con interpretaciones distintas, solicitudes urgentes sin definición, caídas de carga o datos fuera de rango.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando varios usuarios preguntan por el mismo indicador porque no coincide con sus reportes internos, es señal de conflicto de definición o fuente. Antes de ajustar el tablero, BI revisa la lógica, confirma fuente oficial y convoca al dueño funcional del dato para evitar reprocesos.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas",
+"Confunde la señal con el problema final",
+"No explica qué riesgo anticipa",
+"No indica acción preventiva",
+"No permite extraer reglas SI → ENTONCES"
+]
+},
+{
+"question_id": "AREA_BI_001_Q006",
+"ai_category": "dependencias_reales_destrabe_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué personas, áreas, datos o canales destraban realmente el trabajo de BI cuando hay dudas sobre fuentes, definiciones, reglas de cálculo, accesos, integraciones, errores o uso de tableros?",
+"context": "Permite identificar dependencias reales para resolver bloqueos de BI sin asumir definiciones incorrectas ni corregir datos que deben resolverse en el proceso origen.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando hay duda sobre un indicador comercial, BI no debería decidir solo la definición. Se destraba con el dueño funcional del dato, validando fuente, regla de cálculo y uso esperado. Si varias áreas no se ponen de acuerdo, se escala para definir una versión oficial.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas",
+"No menciona datos que destraban",
+"No aterriza el bloqueo a BI",
+"No diferencia coordinación de escalamiento",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "AREA_BI_001_Q007",
+"ai_category": "casos_delicados_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué casos de BI considera delicados y requieren más experiencia para manejarlos correctamente sin afectar decisiones, confidencialidad, confianza del dato o relación entre áreas?",
+"context": "Busca capturar situaciones donde se necesita criterio analítico y organizacional, no solo conocimiento técnico de reportes, consultas o tableros.",
+"tooltip": "Mencione casos como indicadores sensibles, datos financieros o comerciales, tableros gerenciales, diferencias entre fuentes, cambios de definición, accesos restringidos, cifras que afectan bonos, márgenes o decisiones críticas.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es modificar la lógica de un indicador gerencial ya usado por varias áreas. Requiere validar impacto histórico, dueño funcional, usuarios afectados y comunicación del cambio, porque una modificación silenciosa puede romper confianza o generar decisiones con criterios distintos.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general",
+"No identifica casos delicados del área",
+"No explica por qué requieren experiencia",
+"No menciona señales o validaciones",
+"No explica el impacto de manejarlo mal"
+]
+},
+{
+"question_id": "AREA_BI_001_Q008",
+"ai_category": "errores_frecuentes_evitar_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué errores frecuentes en BI se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten reportes, tableros, indicadores o decisiones?",
+"context": "Permite identificar errores que el personal experimentado previene, como usar fuente incorrecta, aplicar filtros mal definidos, publicar sin validar, duplicar lógica, aceptar definiciones ambiguas o no considerar usuarios impactados.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es construir un indicador sin confirmar si el área quiere corte diario, mensual o acumulado. La señal aparece cuando el usuario compara con otro reporte y no coincide. Para evitarlo, BI valida definición, granularidad, filtros y periodo antes de desarrollar.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos",
+"No explica cómo se detectan antes",
+"No indica práctica preventiva",
+"No aterriza el impacto a BI",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_BI_001_Q009",
+"ai_category": "practicas_agiles_sin_saltar_controles_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué prácticas ayudan a BI a agilizar desarrollos, validaciones, ajustes o publicaciones de tableros sin saltarse controles de calidad de datos, seguridad, trazabilidad y validación funcional?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo definición clara, fuente validada, pruebas mínimas, control de versiones, seguridad de accesos y comunicación a usuarios.",
+"tooltip": "Mencione prácticas como plantillas de requerimientos, diccionario de indicadores, validaciones cruzadas, reutilización de modelos aprobados, checklist de publicación o prevalidación con dueño funcional.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es usar una plantilla corta donde el usuario define objetivo, indicador, fuente, frecuencia y decisión esperada. Esto agiliza el desarrollo, pero no reemplaza la validación con el dueño del dato ni las pruebas contra la fuente oficial.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles",
+"No identifica prácticas concretas de BI",
+"No menciona qué control se mantiene",
+"No explica beneficio operativo",
+"No advierte el riesgo de aplicarlo mal"
+]
+},
+{
+"question_id": "AREA_BI_001_Q010",
+"ai_category": "criterios_no_escritos_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué criterios no escritos usa BI para decidir si un dato, indicador, tablero, cambio de cálculo, acceso o publicación puede avanzar, debe corregirse, bloquearse o escalarse?",
+"context": "Permite capturar reglas prácticas que BI aplica cuando el sistema, requerimiento o usuario no entrega una respuesta completa sobre calidad del dato, definición o riesgo de publicación.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si un indicador no tiene dueño funcional o dos áreas lo interpretan distinto, entonces BI no lo publica como oficial hasta cerrar la definición. Se puede avanzar con prototipo, pero no como tablero definitivo porque puede crear versiones distintas de la verdad.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos",
+"No usa lógica SI → ENTONCES",
+"No identifica decisión tomada",
+"No menciona responsable o validador",
+"No explica el riesgo evitado"
+]
+},
+{
+"question_id": "AREA_BI_001_Q011",
+"ai_category": "apoyo_escalamiento_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿En qué situaciones de BI conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el desarrollo o análisis?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar definiciones oficiales, confidencialidad, indicadores gerenciales, acceso a datos, gobierno de datos o decisiones de negocio.",
+"tooltip": "Incluya situaciones como conflicto entre áreas por una cifra, cambio de definición de indicador, dato sensible, fuente no confiable, acceso restringido, tablero gerencial con error o requerimiento sin dueño funcional.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si un área pide modificar una métrica que usa gerencia y otras áreas, conviene escalar antes de cambiarla. Se debe presentar definición actual, cambio solicitado, impacto histórico, usuarios afectados y responsable funcional que aprueba.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe",
+"No identifica situaciones específicas de BI",
+"No explica riesgo de no escalar",
+"No menciona información necesaria para escalar",
+"No define criterio para continuar"
+]
+},
+{
+"question_id": "AREA_BI_001_Q012",
+"ai_category": "aprendizaje_lento_persona_nueva_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué aspectos de BI suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de una empresa industrial atunera?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo documentación técnica, como entender reglas de negocio, fuentes reales, usuarios críticos, excepciones de datos o diferencias entre indicadores.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en entender qué dato es oficial para cada indicador, porque algunas áreas usan Excel, ERP o validaciones manuales con criterios distintos. El error típico es tomar la primera fuente disponible sin confirmar dueño funcional ni lógica de negocio.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación",
+"No menciona aspectos propios de BI",
+"No explica por qué requiere práctica",
+"No identifica errores típicos de una persona nueva",
+"No propone forma concreta de aprendizaje"
+]
+},
+{
+"question_id": "AREA_BI_001_Q013",
+"ai_category": "senal_listo_para_avanzar_publicar_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales o confirmaciones indican que un tablero, indicador, fuente, modelo, ajuste o automatización de BI está listo para avanzar, publicarse, cerrarse o entregarse al usuario?",
+"context": "Busca capturar criterios de cierre o publicación aplicados por experiencia antes de considerar que un entregable analítico está correctamente validado.",
+"tooltip": "Incluya confirmaciones de fuente, regla de cálculo, dueño funcional, prueba de datos, seguridad de acceso, frecuencia de actualización, usuario aprobador y comunicación de cambios.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación técnica o funcional",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Un tablero está listo cuando la fuente carga correctamente, los totales cuadran con el área dueña, la definición del indicador está aprobada, los accesos son correctos y el usuario clave validó que el tablero soporta la decisión esperada. Si falta una de esas confirmaciones, no debería publicarse como versión final.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando funciona técnicamente",
+"No menciona validación funcional o fuente",
+"No identifica dueño del dato o usuario validador",
+"No explica qué error evita",
+"No aterriza la respuesta a BI"
+]
+},
+{
+"question_id": "AREA_BI_001_Q014",
+"ai_category": "aprendizajes_conservar_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué aprendizajes de BI deberían conservarse porque ayudan a evitar datos mal interpretados, reportes duplicados, indicadores inconsistentes, reprocesos o decisiones con información incorrecta?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores analíticos recurrentes.",
+"tooltip": "Mencione aprendizajes sobre fuentes confiables, definiciones de indicadores, validación con usuarios, gobierno de datos, reportes paralelos, cambios de lógica o publicación de tableros.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no construir un tablero solo con la descripción verbal del usuario. Primero se debe validar definición, fuente, corte, filtros y decisión esperada, porque muchas veces el usuario pide un número pero necesita otro enfoque para decidir.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales",
+"No conecta con riesgos o errores de BI",
+"No menciona señales o criterios",
+"No indica práctica recomendada",
+"No permite transferir conocimiento a otra persona"
+]
+},
+{
+"question_id": "AREA_BI_001_Q015",
+"ai_category": "recomendacion_persona_nueva_bi",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en BI para trabajar con criterio, evitar errores y aprender más rápido el manejo real de datos, tableros e indicadores de la empresa?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en fuentes, reglas de negocio, tableros, validación de datos, usuarios críticos y publicación de información.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no asumir que un dato es correcto solo porque viene del sistema o porque un usuario lo pidió con urgencia. Debe confirmar fuente oficial, dueño funcional, definición del indicador y decisión que soporta. Si dos áreas manejan cifras distintas, debe detenerse y validar antes de publicar.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área",
+"No menciona fuentes, indicadores, tableros, datos o usuarios",
+"No indica cuándo pedir apoyo",
+"No explica qué error evita",
+"No conecta con aprendizaje práctico de BI"
+]
+}
+]
+}
+]
+}

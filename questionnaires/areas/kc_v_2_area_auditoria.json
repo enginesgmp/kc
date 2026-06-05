@@ -1,0 +1,559 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"generation_type": "AREA",
+"area": {
+"area_id": "AREA_AUDITORIA",
+"display_name": "Auditoría",
+"aliases": [
+"Auditoria",
+"Auditoría Interna",
+"Internal Audit",
+"Control Interno",
+"Compliance",
+"Auditoría Operativa",
+"Auditoría de Procesos",
+"Auditoría Corporativa"
+],
+"macro_process": "Gestión Estratégica"
+},
+"level": "",
+"blocks": [
+{
+"block_id": "AREA_AUD_001_RIESGOS_CRITICOS",
+"block_name": "Conocimiento tácito crítico de Auditoría",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Auditoría que ayudan a detectar riesgos, priorizar revisiones, validar controles, sustentar hallazgos y promover cierres efectivos sin limitarse al cumplimiento formal.",
+"questions": [
+{
+"question_id": "AREA_AUD_001_Q001",
+"ai_category": "inicio_correcto_caso_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una revisión, validación, seguimiento de hallazgo o análisis de riesgo en Auditoría?",
+"context": "Busca capturar los elementos críticos que Auditoría valida por experiencia antes de iniciar un caso, para evitar revisiones incompletas, conclusiones débiles o hallazgos mal sustentados.",
+"tooltip": "Mencione qué dato confirma primero, qué evidencia mínima necesita, qué señal le indica que todavía no debe avanzar, qué fuente considera confiable y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso de auditoría a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de iniciar una revisión confirmo alcance, periodo, proceso afectado, responsable del área, evidencia disponible y si el tema tiene impacto operativo, financiero o de cumplimiento. Si la información viene de una sola fuente o no hay soporte suficiente, primero busco evidencia cruzada para evitar emitir una observación débil o incompleta.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de auditoría",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No identifica información crítica para iniciar",
+"Solo menciona que revisa documentos",
+"No menciona evidencia o fuente confiable",
+"No explica el riesgo de iniciar sin validar",
+"No incluye ejemplo aplicable a Auditoría"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q002",
+"ai_category": "priorizacion_casos_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué criterios prácticos usa Auditoría para priorizar revisiones, hallazgos, riesgos o seguimientos cuando existen varios temas abiertos al mismo tiempo?",
+"context": "Permite capturar cómo Auditoría decide qué atender primero cuando hay riesgos simultáneos, hallazgos vencidos, solicitudes de gerencia, procesos críticos o evidencia incompleta.",
+"tooltip": "Incluya criterios como materialidad, impacto financiero, riesgo de cumplimiento, recurrencia, criticidad operativa, cercanía de auditoría externa, exposición reputacional, vencimiento de acciones o afectación a controles clave.",
+"expected_answer_structure": [
+"Situación de múltiples casos",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden un hallazgo vencido, una diferencia de inventario y una solicitud documental, priorizo según impacto, recurrencia, materialidad y exposición del proceso. Un riesgo que afecta inventario, costos o cumplimiento regulatorio se revisa antes que una observación menor de forma.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia",
+"No aterriza la priorización a Auditoría",
+"No menciona materialidad, recurrencia, cumplimiento, control o impacto",
+"No explica el riesgo de priorizar mal",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q003",
+"ai_category": "excepciones_flujo_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué casos de Auditoría suelen salirse del manejo habitual y requieren criterio adicional antes de concluir, reportar, escalar o cerrar una revisión?",
+"context": "Busca identificar excepciones reales donde no basta seguir el plan de auditoría o la matriz de seguimiento, porque la evidencia, el riesgo o la respuesta del área requiere interpretación práctica.",
+"tooltip": "Describa casos como evidencia contradictoria, hallazgo sensible, respuesta incompleta del área, riesgo emergente, reincidencia no reconocida, presión por cierre, falta de soporte o impacto transversal.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo habitual ocurre cuando el área presenta evidencia de cierre, pero la operación sigue mostrando el mismo patrón de falla. En ese caso no cierro solo por el documento; valido con muestras adicionales, reviso reincidencia y escalo si la acción no corrigió la causa.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe solo el flujo normal de auditoría",
+"No identifica excepciones propias del área",
+"No menciona validaciones adicionales",
+"No indica a quién consulta",
+"No diferencia operación normal de excepción"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q004",
+"ai_category": "validaciones_practicas_error_critico_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué validaciones prácticas realiza Auditoría para evitar errores importantes al interpretar evidencia, clasificar hallazgos, medir impacto o recomendar acciones?",
+"context": "Permite capturar revisiones no escritas que previenen conclusiones incorrectas, hallazgos mal clasificados, riesgos subestimados o recomendaciones que no atacan la causa real.",
+"tooltip": "Mencione qué compara, qué cruces realiza entre fuentes, qué evidencia considera insuficiente, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de clasificar un hallazgo como cerrado, comparo evidencia documental, muestra operativa y comportamiento reciente del proceso. Si el área solo envía un formato corregido pero no demuestra que el control funciona, mantengo seguimiento porque puede tratarse de una corrección documental y no de una mejora real.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales",
+"No identifica validaciones prácticas de Auditoría",
+"No explica qué compara",
+"No menciona errores específicos que evita",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q005",
+"ai_category": "senales_tempranas_riesgo_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales tempranas le indican a Auditoría que puede generarse un riesgo mayor, una desviación recurrente, un control debilitado, un cierre ficticio o un reproceso de seguimiento?",
+"context": "Busca construir un radar de alertas específicas de Auditoría antes de que el problema aparezca formalmente como incumplimiento, pérdida, observación externa o incidente crítico.",
+"tooltip": "Incluya señales como respuestas tardías, evidencia repetida sin mejora, ajustes frecuentes, versiones distintas entre áreas, controles manuales excesivos, reincidencia, vencimientos acumulados o datos que no cuadran.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando un área corrige el mismo hallazgo varias veces con soportes similares, pero el indicador no mejora, es señal de cierre débil o acción superficial. En ese caso reviso la causa, pido evidencia operativa y escalo si la reincidencia sigue activa.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas",
+"Confunde la señal con el problema final",
+"No explica qué riesgo anticipa",
+"No indica acción preventiva",
+"No permite extraer reglas SI → ENTONCES"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q006",
+"ai_category": "dependencias_reales_destrabe_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué personas, áreas, datos o canales destraban realmente el trabajo de Auditoría cuando hay dudas sobre evidencia, responsables, causas, impacto, acciones correctivas o cierre de hallazgos?",
+"context": "Permite identificar dependencias reales para resolver bloqueos de Auditoría sin asumir conclusiones incompletas ni cerrar hallazgos sin sustento.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando un hallazgo queda detenido porque el área no entrega evidencia suficiente, se destraba hablando con el responsable operativo directo y contrastando con datos del sistema o registros físicos. Si el riesgo sigue abierto o el plazo vence, se escala con evidencia del impacto y la reincidencia.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas",
+"No menciona datos que destraban",
+"No aterriza el bloqueo a Auditoría",
+"No diferencia coordinación de escalamiento",
+"No incluye ejemplo"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q007",
+"ai_category": "casos_delicados_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué casos de Auditoría considera delicados y requieren más experiencia para manejarlos correctamente sin afectar objetividad, relación con las áreas, cumplimiento o toma de decisiones gerenciales?",
+"context": "Busca capturar situaciones donde se necesita criterio profesional, sensibilidad organizacional y lectura del riesgo, no solo aplicación mecánica de una matriz o checklist.",
+"tooltip": "Mencione casos como hallazgos con impacto alto, evidencia sensible, diferencias entre versiones de áreas, incumplimientos recurrentes, posible conflicto de interés, resistencia del auditado o riesgos que afectan gerencia.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es cuando la evidencia muestra incumplimiento, pero el área sostiene que opera así por presión productiva. Requiere experiencia para separar justificación operativa de debilidad de control, validar impacto real y reportar sin perder objetividad ni generar confrontación innecesaria.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general",
+"No identifica casos delicados del área",
+"No explica por qué requieren experiencia",
+"No menciona señales o validaciones",
+"No explica el impacto de manejarlo mal"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q008",
+"ai_category": "errores_frecuentes_evitar_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué errores frecuentes en Auditoría se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten hallazgos, conclusiones, seguimientos o decisiones?",
+"context": "Permite identificar errores que el personal experimentado previene, como aceptar evidencia insuficiente, cerrar acciones sin efectividad, no detectar causa raíz, sobredimensionar o subestimar un hallazgo.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es cerrar un hallazgo solo porque el área envió un documento corregido. La señal es que no existe prueba de aplicación real o la falla ya había reincidido. Para evitarlo, se valida efectividad con muestra posterior antes de cerrar completamente.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos",
+"No explica cómo se detectan antes",
+"No indica práctica preventiva",
+"No aterriza el impacto a Auditoría",
+"No incluye ejemplo aplicable"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q009",
+"ai_category": "practicas_agiles_sin_saltar_controles_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué prácticas ayudan a Auditoría a agilizar revisiones, validaciones, seguimiento de hallazgos o reportes sin saltarse evidencia, independencia, trazabilidad y sustento técnico?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo calidad de evidencia, objetividad, respaldo documental, trazabilidad del hallazgo y consistencia del seguimiento.",
+"tooltip": "Mencione prácticas como preclasificar hallazgos, usar matrices de riesgo, preparar solicitudes de evidencia claras, validar muestras críticas primero o acordar cortes de información con áreas responsables.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es solicitar evidencia con formato claro, periodo, responsable y criterio de aceptación desde el inicio. Eso agiliza la revisión, pero no se debe saltar la validación independiente ni aceptar evidencia sin trazabilidad.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles",
+"No identifica prácticas concretas de Auditoría",
+"No menciona qué control se mantiene",
+"No explica beneficio operativo",
+"No advierte el riesgo de aplicarlo mal"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q010",
+"ai_category": "criterios_no_escritos_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué criterios no escritos usa Auditoría para decidir si un hallazgo se mantiene abierto, se reclasifica, se escala, se cierra, se reevalúa o requiere nueva evidencia?",
+"context": "Permite capturar reglas prácticas que Auditoría aplica cuando la evidencia, el procedimiento o la respuesta del área no dan una conclusión suficiente.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si el área presenta evidencia de acción pero no demuestra efectividad en la operación, entonces el hallazgo no se cierra totalmente; se deja en seguimiento o se solicita muestra posterior. Esto evita cerrar riesgos que siguen activos.",
+"validation_rules": {
+"min_items": 3,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos",
+"No usa lógica SI → ENTONCES",
+"No identifica decisión tomada",
+"No menciona responsable o validador",
+"No explica el riesgo evitado"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q011",
+"ai_category": "apoyo_escalamiento_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿En qué situaciones de Auditoría conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde la revisión?",
+"context": "Busca capturar límites prácticos de autonomía cuando un tema puede afectar cumplimiento, finanzas, continuidad operativa, reputación, controles clave o decisiones gerenciales.",
+"tooltip": "Incluya situaciones como hallazgo sensible, impacto alto, resistencia del área, evidencia contradictoria, posible fraude, incumplimiento recurrente, riesgo regulatorio o desacuerdo sobre causa raíz.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si una revisión detecta una desviación repetida con impacto financiero y el área no reconoce la causa, conviene escalar antes de cerrar la conclusión. Se debe presentar evidencia, frecuencia, impacto, responsables y riesgo residual para definir tratamiento.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe",
+"No identifica situaciones específicas de Auditoría",
+"No explica riesgo de no escalar",
+"No menciona información necesaria para escalar",
+"No define criterio para continuar"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q012",
+"ai_category": "aprendizaje_lento_persona_nueva_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué aspectos de Auditoría suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de una empresa industrial atunera?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo normas o formatos, como interpretar evidencia, detectar patrones, sostener objetividad, entender riesgos operativos o manejar conversaciones difíciles.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en distinguir entre una evidencia suficiente y una evidencia solo formal. Eso requiere conocer el proceso real, los riesgos del negocio y patrones de reincidencia. El error típico es aceptar un documento sin validar si el control realmente se ejecutó.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación",
+"No menciona aspectos propios de Auditoría",
+"No explica por qué requiere práctica",
+"No identifica errores típicos de una persona nueva",
+"No propone forma concreta de aprendizaje"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q013",
+"ai_category": "senal_listo_para_avanzar_cerrar_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué señales o confirmaciones indican que una revisión, hallazgo, acción correctiva, validación o informe de Auditoría está listo para avanzar, cerrarse, liberarse o entregarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un trabajo de Auditoría quedó correctamente sustentado.",
+"tooltip": "Incluya confirmaciones de evidencia, trazabilidad, validación con área responsable, prueba de efectividad, consistencia del informe, impacto definido, riesgo residual y aprobación correspondiente.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación documental o técnica",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Un hallazgo está listo para cerrarse cuando existe evidencia de acción ejecutada, validación de efectividad, responsable claro, fecha cumplida y ausencia de reincidencia en la muestra revisada. Si solo existe compromiso futuro, no debería cerrarse como corregido.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando se entrega el documento",
+"No menciona evidencia o prueba de efectividad",
+"No identifica validación del responsable",
+"No explica qué error evita",
+"No aterriza la respuesta a Auditoría"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q014",
+"ai_category": "aprendizajes_conservar_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué aprendizajes de Auditoría deberían conservarse porque ayudan a detectar riesgos reales, evitar cierres débiles, reconocer reincidencias o sustentar mejor las recomendaciones?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores de criterio.",
+"tooltip": "Mencione aprendizajes sobre evidencia, muestreo, reincidencias, entrevistas, documentación, controles manuales, respuestas de áreas, seguimiento de acciones o señales de riesgo sistémico.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es que una acción correctiva documentada no siempre significa que el control mejoró. Conviene validar el comportamiento posterior del proceso y revisar si el hallazgo vuelve a aparecer en otro turno, área o periodo.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales",
+"No conecta con riesgos o hallazgos de Auditoría",
+"No menciona señales o criterios",
+"No indica práctica recomendada",
+"No permite transferir conocimiento a otra persona"
+]
+},
+{
+"question_id": "AREA_AUD_001_Q015",
+"ai_category": "recomendacion_persona_nueva_auditoria",
+"required": true,
+"min_characters": 300,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Auditoría para trabajar con criterio, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en revisión de evidencia, seguimiento de hallazgos, análisis de riesgos, entrevistas, escalamiento y cierre de acciones.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no cerrar una revisión solo porque el área entregó soporte. Debe validar que la evidencia corresponda al periodo, al riesgo y al control revisado. Si algo no cuadra, debe preguntar y contrastar con otra fuente antes de concluir.",
+"validation_rules": {
+"min_items": 2,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área",
+"No menciona evidencia, hallazgos, riesgos, controles o seguimiento",
+"No indica cuándo pedir apoyo",
+"No explica qué error evita",
+"No conecta con aprendizaje práctico de Auditoría"
+]
+}
+]
+}
+]
+}

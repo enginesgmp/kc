@@ -1,0 +1,635 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Seguridad Industrial y Medio Ambiente",
+"level": "",
+"metadata": {
+"area_id": "seguridad_industrial_y_medio_ambiente",
+"display_name": "Seguridad Industrial y Medio Ambiente",
+"aliases": [
+"SIMA",
+"seguridad industrial",
+"medio ambiente",
+"seguridad y ambiente",
+"salud ocupacional",
+"prevención de riesgos",
+"gestión ambiental",
+"EHS",
+"HSE"
+],
+"macro_process": "Gestión de seguridad industrial, salud ocupacional, prevención de riesgos y control ambiental"
+},
+"blocks": [
+{
+"block_id": "SIMA_01_IDENTIFICACION_RIESGOS_OPERACIONALES",
+"block_name": "Conocimiento tácito crítico de Seguridad Industrial y Medio Ambiente",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Seguridad Industrial y Medio Ambiente que ayudan a prevenir accidentes, controlar impactos ambientales, proteger la continuidad operativa, sostener cumplimiento legal y actuar oportunamente ante condiciones inseguras o desviaciones ambientales.",
+"questions": [
+{
+"question_id": "SIMA_01_Q01",
+"ai_category": "inicio_correcto_caso_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una inspección, permiso de trabajo, investigación, control ambiental, atención de riesgo o intervención preventiva?",
+"context": "Busca capturar los datos y condiciones críticas que SIMA valida por experiencia antes de autorizar, revisar, detener, intervenir o dar seguimiento a una situación de seguridad industrial o medio ambiente.",
+"tooltip": "Mencione qué dato confirma primero, qué condición de seguridad o ambiente revisa, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso de SIMA a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de validar un trabajo de mantenimiento confirmo actividad, área, riesgo principal, permiso requerido, bloqueo de energía, EPP, responsable, contratista si aplica, condición del área y controles ambientales asociados. Si falta bloqueo, permiso o responsable claro, no conviene iniciar porque puede generarse accidente, exposición ambiental o incumplimiento.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de SIMA",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Seguridad Industrial y Medio Ambiente.",
+"No identifica información crítica antes de iniciar.",
+"No menciona permiso, riesgo, EPP, bloqueo, responsable, área, contratista o control ambiental.",
+"No explica el riesgo de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "SIMA_01_Q02",
+"ai_category": "priorizacion_casos_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa SIMA para priorizar riesgos, inspecciones, condiciones inseguras, eventos ambientales, permisos, capacitaciones o acciones correctivas cuando existen varios pendientes al mismo tiempo?",
+"context": "Permite capturar cómo SIMA decide qué atender primero cuando hay presión operativa, recursos limitados, riesgos críticos, hallazgos abiertos, actividades de alto riesgo o vencimientos legales.",
+"tooltip": "Incluya criterios como severidad, probabilidad, exposición de personas, impacto ambiental, obligación legal, frecuencia de repetición, área crítica, continuidad operativa, vencimiento o historial de incidentes.",
+"expected_answer_structure": [
+"Situación de múltiples pendientes",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden una condición insegura en zona de tránsito, una capacitación pendiente y un hallazgo ambiental menor, priorizo según exposición de personas, severidad, probabilidad, impacto ambiental y obligación legal. Una condición con riesgo inmediato se atiende antes que una acción administrativa sin vencimiento crítico.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Seguridad Industrial y Medio Ambiente.",
+"No menciona severidad, probabilidad, exposición, ambiente, legalidad, vencimiento o área crítica.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "SIMA_02_Q01",
+"ai_category": "excepciones_flujo_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de SIMA suelen salirse del manejo habitual y requieren criterio adicional antes de autorizar, detener, contener, investigar, regularizar, cerrar o escalar?",
+"context": "Busca identificar excepciones reales donde no basta seguir el control normal porque existen riesgos no previstos, presión de producción, contratistas, derrames, permisos incompletos, trabajos urgentes o condiciones cambiantes.",
+"tooltip": "Describa casos como trabajo urgente sin permiso completo, contratista con control incompleto, derrame menor, condición insegura repetitiva, bloqueo dudoso, residuo mal segregado, parámetro ambiental fuera de rango o actividad con presión por continuar.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es cuando Producción necesita continuar una actividad, pero aparece una condición insegura no prevista. Antes de autorizar, SIMA revisa riesgo real, controles mínimos, responsable del área y posibilidad de corregir antes de continuar. Si el riesgo es alto, la actividad se detiene.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de SIMA.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "SIMA_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza SIMA para evitar errores importantes en permisos, EPP, bloqueo de energía, trabajos de riesgo, químicos, residuos, derrames, evidencias o cierre de acciones?",
+"context": "Permite capturar revisiones no escritas que previenen accidentes, incumplimientos, impactos ambientales, investigaciones débiles, acciones correctivas incompletas o controles aplicados solo de forma documental.",
+"tooltip": "Mencione qué compara, qué revisa físicamente, qué dato valida con el área responsable, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de liberar un permiso de trabajo reviso que la actividad real coincida con lo declarado, que el EPP sea adecuado, que el bloqueo esté aplicado, que el área esté controlada y que el responsable entienda los riesgos. Si el permiso está completo en papel pero la condición en campo no coincide, no debería autorizarse.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara o revisa.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a SIMA."
+]
+},
+{
+"question_id": "SIMA_03_Q01",
+"ai_category": "senales_tempranas_riesgo_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse un accidente, casi accidente, desviación ambiental, incumplimiento legal, reproceso de control o saturación de acciones correctivas?",
+"context": "Busca construir un radar de alertas específicas de SIMA antes de que el riesgo se materialice en lesión, evento ambiental, sanción, paralización, reclamo o repetición de hallazgos.",
+"tooltip": "Incluya señales como actos inseguros repetidos, EPP mal usado, derrames menores, residuos mal segregados, permisos incompletos, acciones vencidas, contratistas sin control, olores, fugas o reportes recurrentes.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando aumentan reportes de EPP mal usado o atajos en una misma línea, es señal de posible accidente. Antes de esperar un evento, se refuerza la supervisión, se conversa con el responsable del área y se revisa si el EPP, método o presión operativa están generando la desviación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el evento final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "SIMA_03_Q02",
+"ai_category": "dependencias_reales_destrabe_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, datos, permisos, registros o canales destraban realmente el trabajo cuando hay dudas sobre riesgos, controles, residuos, permisos, incidentes, contratistas o cumplimiento ambiental?",
+"context": "Permite identificar dependencias reales de SIMA para resolver bloqueos sin autorizar trabajos, cerrar acciones o liberar controles con información incompleta.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona, área o tercero que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando un trabajo de mantenimiento tiene duda sobre bloqueo o permiso, se destraba con Mantenimiento, Producción y el responsable del área revisando actividad real, energía involucrada, condición del equipo y controles mínimos. Si no hay acuerdo sobre el nivel de riesgo, se escala antes de iniciar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona, área o tercero",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a SIMA.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "SIMA_04_Q01",
+"ai_category": "casos_delicados_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de SIMA considera delicados y requieren más experiencia para manejarlos correctamente sin afectar personas, ambiente, cumplimiento legal, continuidad, clima o relación con otras áreas?",
+"context": "Busca capturar situaciones donde se necesita criterio preventivo, lectura de riesgo y manejo firme de controles, no solo aplicación mecánica de una inspección, permiso o procedimiento.",
+"tooltip": "Mencione casos como detener una actividad, investigar accidente, manejar contratistas, responder a derrames, tratar incumplimientos ambientales, corregir reincidencias o decidir si un riesgo permite continuar.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es detener una actividad crítica por falta de control de energía cuando existe presión por reiniciar producción. Requiere revisar severidad, control mínimo, responsable, alternativa y evidencia, porque ceder sin control puede generar accidente grave o incumplimiento legal.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "SIMA_04_Q02",
+"ai_category": "errores_frecuentes_evitar_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en SIMA se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten seguridad, ambiente, permisos, evidencias, acciones correctivas o cumplimiento?",
+"context": "Permite identificar errores que el personal experimentado previene, como aceptar permisos solo documentales, cerrar acciones sin verificar, subestimar casi accidentes, no escalar reincidencias o dejar evidencias incompletas.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es cerrar una acción correctiva solo porque el responsable indica que ya se hizo. La señal aparece cuando no hay evidencia en campo, foto, registro o validación. Para evitarlo, se verifica la condición real antes de cerrar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a seguridad, ambiente, permisos, evidencias o cumplimiento.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "SIMA_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar inspecciones, permisos, investigaciones, capacitaciones, gestión de residuos, seguimiento de acciones o controles ambientales sin saltarse controles críticos?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo evidencia, permisos válidos, verificación en campo, trazabilidad, cumplimiento legal, cierre efectivo y comunicación con áreas responsables.",
+"tooltip": "Mencione prácticas como prevalidar actividades de riesgo, usar checklists, revisar evidencias en campo, agrupar hallazgos por área, priorizar acciones críticas, preparar registros antes de auditorías o confirmar controles con responsables.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es revisar permisos y condiciones del área antes de la hora programada del trabajo. Esto agiliza la autorización, pero no reemplaza la verificación final de EPP, bloqueo, condiciones del sitio y responsable presente antes de iniciar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "SIMA_05_Q02",
+"ai_category": "criterios_no_escritos_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa SIMA para decidir si una actividad, permiso, condición insegura, desviación ambiental, contratista, acción correctiva o emergencia puede avanzar, detenerse, ajustarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el procedimiento, registro, inspección o información disponible no da una respuesta completa ante una situación real de riesgo.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si una actividad tiene permiso firmado, pero en campo cambió la condición de riesgo, entonces no se inicia hasta reevaluar controles con el responsable del área. Esto evita trabajar con una autorización que ya no representa la realidad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "SIMA_06_Q01",
+"ai_category": "apoyo_escalamiento_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de SIMA conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar vidas, cumplimiento legal, continuidad, reputación, ambiente, contratistas, autoridad, auditorías o relación entre áreas.",
+"tooltip": "Incluya situaciones como trabajo sin control crítico, accidente, derrame, reincidencia, presión por continuar, incumplimiento legal, contratista fuera de control, evidencia débil o riesgo ambiental significativo.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona, área o tercero a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si ocurre un derrame que puede salir del área contenida o afectar drenajes, conviene escalar antes de tratarlo como limpieza menor. Se debe presentar zona, sustancia, cantidad estimada, contención aplicada, evidencia, áreas afectadas y decisión requerida.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área, persona o tercero",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "SIMA_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de SIMA suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria de planta?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como reconocer riesgos reales, manejar presión operativa, interpretar permisos, leer señales ambientales o decidir cuándo detener una actividad.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en distinguir cuándo una condición parece menor, pero puede convertirse en accidente o evento ambiental. El error típico es confiar solo en el permiso o en lo que dice el área sin verificar la condición real en campo.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de SIMA.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "SIMA_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que un permiso, inspección, acción correctiva, investigación, capacitación, control ambiental o condición insegura está listo para avanzar, liberarse o cerrarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un control de SIMA quedó correctamente validado, evidenciado y comunicado.",
+"tooltip": "Incluya confirmaciones de condición corregida, evidencia en campo, responsable, registro, comunicación, evaluación de riesgo, validación del área y ausencia de pendientes críticos.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación documental, física o sistémica",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una acción correctiva está lista para cerrarse cuando la condición fue corregida en campo, existe evidencia, el responsable validó, el riesgo bajó a nivel aceptable y no quedan causas pendientes. Si solo hay compromiso verbal, no debería cerrarse.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando se completó la tarea.",
+"No menciona evidencia, condición corregida, responsable, riesgo, comunicación o validación.",
+"No identifica validación interna o del área responsable.",
+"No explica qué error evita.",
+"No aterriza la respuesta a SIMA."
+]
+},
+{
+"question_id": "SIMA_07_Q02",
+"ai_category": "aprendizajes_conservar_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de SIMA deberían conservarse porque ayudan a evitar accidentes, eventos ambientales, reincidencias, acciones correctivas débiles, incumplimientos o pérdida de cultura preventiva?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de eventos recurrentes en seguridad y ambiente.",
+"tooltip": "Mencione aprendizajes sobre permisos, bloqueo, EPP, contratistas, residuos, derrames, inspecciones, investigaciones, evidencias, charlas, acciones correctivas, auditorías o presión operativa.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no cerrar un casi accidente solo con charla inmediata. Conviene revisar causa, condición del área, supervisión, recurrencia y evidencia de acción, porque si no se corrige la causa, el evento puede repetirse con mayor gravedad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "SIMA_08_Q01",
+"ai_category": "recomendacion_persona_nueva_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en SIMA para trabajar con criterio, evitar errores y aprender más rápido el manejo real de seguridad industrial y medio ambiente?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en inspecciones, permisos, incidentes, residuos, contratistas, acciones correctivas, cumplimiento legal y coordinación con áreas operativas.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona, área o tercero de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no validar un control solo porque el documento está completo. Debe ir al campo, observar la condición real, conversar con el responsable, revisar evidencia y detenerse si algo no coincide con el permiso, el riesgo o el requisito ambiental.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona inspecciones, permisos, incidentes, residuos, contratistas, acciones correctivas o cumplimiento.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de SIMA."
+]
+},
+{
+"question_id": "SIMA_08_Q02",
+"ai_category": "restricciones_criticas_continuidad_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué actividades, áreas, contratistas, químicos, residuos, permisos, equipos, puntos ambientales o condiciones requieren seguimiento especial porque una variación podría afectar seguridad, ambiente, cumplimiento o continuidad?",
+"context": "Busca capturar conocimiento específico sobre puntos críticos de SIMA que deben vigilarse por experiencia, aunque no siempre aparezcan como urgencia formal.",
+"tooltip": "Mencione elementos críticos, señales que observa, frecuencia práctica de revisión, área relacionada, contingencia posible y qué impacto se evita.",
+"expected_answer_structure": [
+"Elemento crítico",
+"Motivo de criticidad",
+"Señal que debe vigilarse",
+"Responsable, área o tercero relacionado",
+"Contingencia o acción preventiva",
+"Impacto que se evita"
+],
+"good_answer_example": "Los trabajos con energía peligrosa, químicos o contratistas requieren seguimiento especial porque una variación en controles puede generar accidente o incumplimiento. Una señal es que el permiso está aprobado, pero en campo cambió la condición o el equipo intervenido.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"elemento crítico",
+"motivo",
+"señal",
+"responsable, área o tercero",
+"contingencia",
+"impacto"
+]
+},
+"incomplete_if": [
+"Solo enumera elementos sin explicar criticidad.",
+"No menciona señales observables.",
+"No identifica responsable, área o tercero relacionado.",
+"No indica acción preventiva o contingencia.",
+"No conecta el caso con seguridad, ambiente, cumplimiento o continuidad."
+]
+},
+{
+"question_id": "SIMA_09_Q01",
+"ai_category": "manejo_evidencia_cumplimiento_sima",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa SIMA para decidir qué evidencia debe conservarse ante permisos, inspecciones, incidentes, derrames, capacitaciones, acciones correctivas, auditorías o controles ambientales?",
+"context": "Busca capturar conocimiento tácito sobre evidencia suficiente, útil y trazable, especialmente cuando una situación puede requerir auditoría, investigación, respaldo legal, seguimiento de acciones o revisión posterior.",
+"tooltip": "Explique qué evidencia toma, cuándo la genera, quién la valida, dónde se conserva, qué detalle no debe faltar y qué riesgo evita al documentar correctamente.",
+"expected_answer_structure": [
+"Caso que requiere evidencia",
+"Evidencia mínima necesaria",
+"Momento en que se genera",
+"Responsable que la valida",
+"Lugar o medio de resguardo",
+"Riesgo que evita"
+],
+"good_answer_example": "En un incidente o derrame, la evidencia mínima incluye fecha, hora, zona, fotos, responsable, causa probable, acción inmediata, residuo generado si aplica, área notificada y cierre. Si se documenta incompleto, después puede perderse trazabilidad o quedar débil el respaldo ante auditoría.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso",
+"evidencia mínima",
+"momento",
+"responsable",
+"resguardo",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No identifica qué evidencia debe conservarse.",
+"No menciona momento, responsable o resguardo.",
+"No conecta la evidencia con auditoría, investigación o cumplimiento.",
+"No explica el riesgo de documentar mal.",
+"No incluye ejemplo aplicable."
+]
+}
+]
+}
+]
+}

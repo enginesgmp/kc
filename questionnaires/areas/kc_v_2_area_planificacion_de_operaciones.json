@@ -1,0 +1,599 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Planificación de Operaciones",
+"level": null,
+"area_metadata": {
+"area_id": "area_planificacion_operaciones",
+"display_name": "Planificación de Operaciones",
+"aliases": [
+"Planificación de Operaciones",
+"Planificacion de Operaciones",
+"Planning",
+"Operations Planning",
+"Planificación Operativa",
+"Programación de Operaciones",
+"Planificación de Producción",
+"Programación de Producción",
+"Control de Plan",
+"Planificación y Control de Operaciones"
+],
+"macro_process": "MP-1300 PLANIFICACIÓN, PRODUCCIÓN Y CONTROL OPERATIVO"
+},
+"blocks": [
+{
+"block_id": "PO_01_FLUJO_PLANIFICACION",
+"block_name": "Conocimiento tácito crítico de Planificación de Operaciones",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Planificación de Operaciones que ayudan a convertir demanda, capacidad, inventarios, restricciones y prioridades en planes ejecutables, ajustables y sostenibles para la operación.",
+"questions": [
+{
+"question_id": "PO_01_Q01",
+"ai_category": "inicio_correcto_caso_planificacion_operaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una programación, ajuste de plan, liberación de órdenes, reprogramación o seguimiento operativo?",
+"context": "Busca capturar los datos y condiciones críticas que Planificación de Operaciones valida por experiencia antes de armar, comunicar, modificar o liberar un plan operativo.",
+"tooltip": "Mencione qué dato confirma primero, qué condición operativa revisa, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si planifica con información incompleta.",
+"expected_answer_structure": [
+"Caso de planificación a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de emitir un plan confirmo demanda, pedido, fecha compromiso, inventario disponible, materia prima liberada, capacidad real, línea asignada, restricciones de mantenimiento y prioridad comercial. Si el inventario aparece en sistema pero no está liberado por Calidad, no lo considero disponible porque puede generar un plan inviable.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de planificación",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Planificación de Operaciones.",
+"No identifica información crítica antes de planificar.",
+"No menciona demanda, pedido, inventario, capacidad, fecha, línea, calidad o restricción operativa.",
+"No explica el riesgo operativo de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "PO_01_Q02",
+"ai_category": "priorizacion_casos_planificacion_operaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Planificación de Operaciones para priorizar pedidos, líneas, recursos o cambios cuando coinciden demanda urgente, capacidad limitada, inventario restringido o fechas comprometidas?",
+"context": "Permite capturar cómo el área decide qué atender primero cuando hay presión comercial, restricciones de planta, materiales limitados, clientes críticos, atrasos o varias áreas solicitando cambios.",
+"tooltip": "Incluya criterios como cliente crítico, fecha compromiso, disponibilidad real de inventario, capacidad de línea, cambio de formato, margen, riesgo de incumplimiento, stock disponible o impacto en despacho.",
+"expected_answer_structure": [
+"Situación de múltiples necesidades",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si dos pedidos compiten por la misma capacidad, priorizo según fecha compromiso, cliente, disponibilidad de materiales, impacto en despacho y factibilidad de línea. Si un pedido urgente no tiene materia prima liberada, no desplazo otro pedido ejecutable sin validar alternativas.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Planificación de Operaciones.",
+"No menciona cliente, fecha, capacidad, inventario, línea, materiales o despacho.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "PO_02_Q01",
+"ai_category": "excepciones_flujo_planificacion_operaciones",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Planificación de Operaciones suelen salirse del manejo habitual y requieren criterio adicional antes de programar, liberar, congelar, cambiar o escalar el plan?",
+"context": "Busca identificar excepciones reales donde no basta seguir la programación normal porque existen cambios de demanda, pedidos urgentes, materiales no liberados, capacidad sobrecargada, fallas de equipo o restricciones imprevistas.",
+"tooltip": "Describa casos como pedido crítico fuera de corte, inventario dudoso, cambio de cliente, línea no disponible, materia prima retenida, atraso acumulado, falla de equipo, sobreventa o capacidad insuficiente.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es recibir un pedido urgente después de emitir el plan. Antes de cambiar la secuencia, reviso inventario, capacidad, impacto en otros pedidos, fecha de despacho y aprobación comercial para evitar mover una prioridad sin medir consecuencias.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la planificación normal.",
+"No identifica excepciones propias de Planificación de Operaciones.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "PO_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Planificación de Operaciones para evitar errores importantes en demanda, inventario, capacidad, fechas, secuencia, materiales, liberaciones o comunicación del plan?",
+"context": "Permite capturar revisiones no escritas que previenen planes inviables, incumplimientos de pedidos, cambios repetidos, paradas por falta de materiales, sobrecarga de línea o reprocesos de programación.",
+"tooltip": "Mencione qué compara, qué fuente consulta, qué cruza entre sistema, áreas y realidad operativa, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de cerrar el plan comparo pedidos, inventario físico y sistema, liberación de Calidad, capacidad real, restricciones de Mantenimiento y fechas de despacho. Si una cantidad existe en sistema pero Bodega confirma diferencia o bloqueo, ajusto antes de liberar el programa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Planificación de Operaciones."
+]
+},
+{
+"question_id": "PO_03_Q01",
+"ai_category": "senales_tempranas_riesgo_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso, plan inviable, saturación de línea, falta de materiales, incumplimiento de pedido, reproceso o cambio urgente de programación?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte cumplimiento, producción, despacho, inventarios, clientes o continuidad operativa.",
+"tooltip": "Incluya señales como carga superior a capacidad, inventario no liberado, cambios comerciales repetidos, atraso de línea, pedidos sin insumos, mantenimiento pendiente, falta de confirmación o stock que no cuadra.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando la carga planificada supera las horas reales disponibles de una línea y además hay cambios de formato, es señal de posible incumplimiento. Antes de ejecutar, reviso prioridades, ventanas, alternativa de línea o ajuste de fecha con Comercial.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "PO_03_Q02",
+"ai_category": "dependencias_reales_destrabe_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, datos o canales destraban realmente el trabajo cuando hay dudas sobre demanda, inventario, capacidad, materiales, fechas, calidad, mantenimiento, logística o prioridades?",
+"context": "Permite identificar dependencias reales de Planificación de Operaciones para resolver bloqueos sin emitir planes con supuestos débiles o información no confirmada.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando un pedido depende de inventario que aparece disponible pero no está claro si está liberado, se destraba con Bodega y Calidad revisando lote, cantidad, estado y ubicación. Si afecta fecha compromiso, se valida con Comercial y Producción antes de cambiar el plan.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Planificación de Operaciones.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "PO_04_Q01",
+"ai_category": "casos_delicados_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Planificación de Operaciones considera delicados y requieren más experiencia para manejarlos correctamente sin afectar clientes, producción, inventario, costos, despacho o cumplimiento del plan?",
+"context": "Busca capturar situaciones donde se necesita criterio operativo, lectura de riesgo y coordinación fina, no solo aplicación mecánica de una secuencia o programa.",
+"tooltip": "Mencione casos como cliente crítico, pedido urgente, capacidad insuficiente, inventario retenido, línea saturada, reproceso, cambio de última hora, producto complejo o conflicto entre áreas.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es aceptar un cambio de secuencia para un cliente crítico cuando ya hay producción programada. Requiere revisar materiales, capacidad, impacto en otros pedidos, cambios de línea, despacho y aprobación interna para no resolver un caso creando varios atrasos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "PO_04_Q02",
+"ai_category": "errores_frecuentes_evitar_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Planificación de Operaciones se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten producción, clientes, inventarios, capacidad o despacho?",
+"context": "Permite identificar errores que el personal experimentado previene, como planificar con stock no liberado, sobreestimar capacidad, omitir restricciones, no comunicar cambios, duplicar prioridades o secuenciar de forma inviable.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es planificar con inventario que todavía no está liberado por Calidad. La señal aparece cuando el sistema muestra saldo, pero no hay confirmación de estado. Para evitarlo, se cruza con Calidad y Bodega antes de cerrar el programa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a producción, clientes, inventarios, capacidad o despacho.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "PO_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar programación, ajustes de plan, validación de capacidad, coordinación de materiales, comunicación de cambios o seguimiento sin saltarse controles críticos?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo validación de demanda, inventarios, capacidad, liberaciones, restricciones, comunicación formal y trazabilidad de cambios.",
+"tooltip": "Mencione prácticas como prevalidar inventarios, usar hora de corte, revisar restricciones antes de emitir, agrupar cambios, mantener tracker actualizado, confirmar prioridades o comunicar ajustes con responsable y hora.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es validar inventario, liberación y capacidad antes de la reunión de programación. Esto agiliza la emisión del plan, pero no reemplaza la confirmación final cuando hay cambios de demanda o materiales críticos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "PO_05_Q02",
+"ai_category": "criterios_no_escritos_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Planificación de Operaciones para decidir si un pedido, cambio, restricción, línea, material, capacidad o reprogramación puede avanzar, detenerse, ajustarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, procedimiento, pedido o información de otras áreas no da una respuesta completa ante una condición real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si un pedido urgente no tiene materiales liberados o capacidad real confirmada, entonces no se desplaza el plan vigente hasta validar alternativa con Bodega, Calidad, Producción y Comercial. Esto evita crear una programación urgente pero no ejecutable.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "PO_06_Q01",
+"ai_category": "apoyo_escalamiento_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Planificación de Operaciones conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar cliente, cumplimiento, producción, inventarios, costos, capacidad, logística, calidad o relación entre áreas.",
+"tooltip": "Incluya situaciones como demanda mayor a capacidad, cliente crítico en riesgo, falta de material, plan inviable, conflicto entre áreas, cambio fuera de corte, atraso acumulado o restricción no resuelta.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si la demanda supera la capacidad y hay pedidos de clientes críticos, conviene escalar antes de decidir solo por secuencia. Se debe presentar capacidad real, pedidos afectados, fechas, alternativas, impacto y decisión requerida para que Comercial, Producción o jefatura definan prioridad.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "PO_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Planificación de Operaciones suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como leer restricciones reales, distinguir urgencia comercial de factibilidad operativa, entender cambios de línea, anticipar materiales o coordinar prioridades.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en entender que un plan puede verse correcto en Excel pero no ser ejecutable en planta. Debe aprender a leer capacidad real, materiales liberados, restricciones de línea, cambios de formato y prioridades comerciales. El error típico es confiar solo en el dato del sistema.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Planificación de Operaciones.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "PO_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una programación, ajuste de plan, pedido, secuencia, liberación de orden o cambio operativo está listo para avanzar, cerrarse o entregarse a otra área?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un plan quedó correctamente validado, comunicado y listo para ejecución.",
+"tooltip": "Incluya confirmaciones de demanda, capacidad, inventario, liberación de Calidad, materiales, línea, responsable, fecha, comunicación a áreas afectadas, evidencia y ausencia de restricciones críticas.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación operativa, documental o sistémica",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Un plan está listo para liberarse cuando pedidos, cantidades, fechas, inventario, materiales liberados, capacidad de línea, restricciones y áreas afectadas están confirmadas. Si falta validación de stock o capacidad, no debería comunicarse como plan firme.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando se envía el plan.",
+"No menciona demanda, inventario, capacidad, materiales, calidad, fecha o comunicación.",
+"No identifica validación interna o del área ejecutora.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Planificación de Operaciones."
+]
+},
+{
+"question_id": "PO_07_Q02",
+"ai_category": "aprendizajes_conservar_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Planificación de Operaciones deberían conservarse porque ayudan a evitar planes inviables, atrasos, cambios repetidos, incumplimientos, sobrecarga de línea o reprocesos?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes de programación y control operativo.",
+"tooltip": "Mencione aprendizajes sobre clientes críticos, productos complejos, restricciones de línea, materiales, inventarios, fechas de corte, capacidad real, cambios de último momento, coordinación o comunicación del plan.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no emitir el plan solo con demanda comercial sin validar capacidad e inventario liberado. Cuando se cruza la información antes de comunicar, se evitan cambios repetidos, reprocesos y pérdida de credibilidad del programa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "PO_08_Q01",
+"ai_category": "recomendacion_persona_nueva_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Planificación de Operaciones para trabajar con seguridad, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en demanda, capacidad, inventarios, materiales, programación, seguimiento, reprogramaciones y coordinación interárea.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no asumir que un pedido puede planificarse solo porque está solicitado. Debe revisar fecha, prioridad, inventario real, liberación de Calidad, capacidad de línea, materiales y restricciones. Si algo no está confirmado, debe validar antes de comunicar el plan.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona demanda, capacidad, inventario, materiales, programación, seguimiento o reprogramación.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Planificación de Operaciones."
+]
+},
+{
+"question_id": "PO_08_Q02",
+"ai_category": "restricciones_criticas_continuidad_planificacion",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué restricciones, productos, líneas, materiales o pedidos requieren seguimiento especial porque una variación podría afectar directamente cumplimiento, continuidad, despacho, inventario o servicio al cliente?",
+"context": "Busca capturar conocimiento específico sobre puntos críticos de planificación que deben vigilarse por experiencia, aunque no siempre aparezcan como urgencia formal.",
+"tooltip": "Mencione restricciones o elementos críticos, señales que observa, frecuencia práctica de revisión, área relacionada, contingencia posible y qué impacto se evita.",
+"expected_answer_structure": [
+"Restricción, producto, línea, material o pedido crítico",
+"Motivo de criticidad",
+"Señal que debe vigilarse",
+"Responsable o área relacionada",
+"Contingencia o acción preventiva",
+"Impacto que se evita"
+],
+"good_answer_example": "Los pedidos con fecha de despacho cercana y material pendiente requieren seguimiento especial porque cualquier retraso rompe el plan. Una señal es que el material aparece en tránsito o no liberado. Se debe validar con Bodega, Calidad o Compras antes de comprometer la secuencia.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"restricción o elemento crítico",
+"motivo",
+"señal",
+"responsable",
+"contingencia",
+"impacto"
+]
+},
+"incomplete_if": [
+"Solo enumera restricciones sin explicar criticidad.",
+"No menciona señales observables.",
+"No identifica responsable o área relacionada.",
+"No indica acción preventiva o contingencia.",
+"No conecta el caso con cumplimiento, continuidad, despacho, inventario o servicio al cliente."
+]
+}
+]
+}
+]
+}

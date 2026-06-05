@@ -1,0 +1,595 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Recursos Pesqueros",
+"level": "",
+"metadata": {
+"area_id": "recursos_pesqueros",
+"display_name": "Recursos Pesqueros",
+"aliases": [
+"pesca",
+"flota",
+"materia prima pesquera",
+"abastecimiento pesquero",
+"recursos marinos",
+"operaciones pesqueras"
+],
+"macro_process": "Abastecimiento y gestión de materia prima pesquera"
+},
+"blocks": [
+{
+"block_id": "RP_01_PLANIFICACION_ABASTECIMIENTO_PESQUERO",
+"block_name": "Conocimiento tácito crítico de Recursos Pesqueros",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Recursos Pesqueros que ayudan a asegurar abastecimiento de materia prima, recepción oportuna, control de calidad, continuidad operacional, coordinación con planta, manejo de restricciones externas y prevención de riesgos en la gestión pesquera.",
+"questions": [
+{
+"question_id": "RP_01_Q01",
+"ai_category": "inicio_correcto_caso_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente una gestión de abastecimiento, recepción, descarga, transferencia o uso de materia prima pesquera?",
+"context": "Busca capturar los datos y condiciones críticas que Recursos Pesqueros valida por experiencia antes de coordinar arribos, comprometer disponibilidad, activar recepción, informar a planta o tomar decisiones sobre materia prima.",
+"tooltip": "Mencione qué dato confirma primero, qué condición de pesca, flota, puerto, calidad, capacidad o planta revisa, qué señal le indica que no debe avanzar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso de Recursos Pesqueros a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de coordinar una recepción confirmo embarcación, estimación de arribo, volumen aproximado, especie o materia prima, condición reportada, capacidad de descarga, espacio en cámaras, requerimiento de planta y validación de Calidad si aplica. Si el arribo o la condición no están claros, no conviene comprometer uso productivo porque puede generar espera, cambio de programa o saturación.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso de Recursos Pesqueros",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Recursos Pesqueros.",
+"No identifica información crítica antes de iniciar.",
+"No menciona flota, arribo, volumen, calidad, capacidad, cámaras, planta o recepción.",
+"No explica el riesgo operativo de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "RP_01_Q02",
+"ai_category": "priorizacion_casos_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Recursos Pesqueros para priorizar arribos, descargas, materia prima, transferencias o comunicación con planta cuando existen restricciones simultáneas?",
+"context": "Permite capturar cómo Recursos Pesqueros decide qué atender primero cuando hay varias embarcaciones, baja disponibilidad, capacidad limitada, restricciones de cámaras, necesidades de planta o cambios externos.",
+"tooltip": "Incluya criterios como hora estimada de arribo, condición de pesca, volumen, capacidad de recepción, espacio en cámaras, prioridad productiva, riesgo de deterioro, restricciones climáticas, planta disponible o impacto en continuidad.",
+"expected_answer_structure": [
+"Situación de múltiples necesidades",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden dos arribos y hay capacidad limitada de descarga o cámara, priorizo según condición de la pesca, tiempo de espera, volumen, requerimiento de planta, riesgo de deterioro y posibilidad real de transferencia. Si una materia prima puede afectar continuidad de producción, se valida con Planificación, Producción, Calidad y Cámaras antes de decidir.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Recursos Pesqueros.",
+"No menciona arribo, descarga, calidad, cámaras, planta, deterioro o capacidad.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "RP_02_Q01",
+"ai_category": "excepciones_flujo_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Recursos Pesqueros suelen salirse del manejo habitual y requieren criterio adicional antes de recibir, descargar, transferir, segregar, informar disponibilidad o escalar?",
+"context": "Busca identificar excepciones reales donde no basta seguir la coordinación normal porque existen cambios de arribo, condición dudosa de pesca, diferencias de peso, saturación de cámaras, falta de capacidad o restricciones externas.",
+"tooltip": "Describa casos como retraso de embarcación, baja captura, diferencia de peso, pesca con condición especial, puerto congestionado, clima adverso, cámara sin espacio, planta sin capacidad o documentación incompleta.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona, área o tercero consultado",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es recibir una pesca con condición diferente a la reportada inicialmente. Antes de comprometerla a producción, se valida con Calidad, Cámaras y Planificación si se acepta, se segrega o se usa con prioridad específica para evitar mezcla, deterioro o cambio urgente de programa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de Recursos Pesqueros.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "RP_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Recursos Pesqueros para evitar errores importantes en volumen, peso, condición, trazabilidad, recepción, transferencia, cámara o disponibilidad informada a planta?",
+"context": "Permite capturar revisiones no escritas que previenen diferencias de inventario, uso de materia prima no apta, errores de planificación, saturación, reprocesos, pérdidas de trazabilidad o decisiones con datos no confirmados.",
+"tooltip": "Mencione qué compara, qué revisa físicamente, qué dato valida con flota, recepción, Calidad, Cámaras o Planificación, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de informar disponibilidad comparo reporte de captura, peso recibido, condición observada, registro de descarga, espacio en cámara y estado validado por Calidad. Si el volumen reportado no coincide con báscula o recepción, no cierro disponibilidad hasta aclarar la diferencia.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara o revisa.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Recursos Pesqueros."
+]
+},
+{
+"question_id": "RP_03_Q01",
+"ai_category": "senales_tempranas_riesgo_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse falta de abastecimiento, atraso de recepción, saturación de cámaras, deterioro de pesca, cambio de programa o reproceso operativo?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte continuidad operacional, calidad, planificación, costos, inventario o disponibilidad para producción.",
+"tooltip": "Incluya señales como retraso de embarcación, baja captura, clima adverso, puerto congestionado, diferencias de peso, cámara sin espacio, demora en descarga, calidad dudosa o cambios repetidos en requerimientos de planta.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando una embarcación retrasa su arribo y la planta depende de esa materia prima para el programa del día siguiente, es señal de riesgo de desabastecimiento. Antes de esperar la descarga, se alerta a Planificación y Producción para preparar alternativas o ajustar secuencia.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "RP_03_Q02",
+"ai_category": "dependencias_reales_destrabe_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, terceros, datos o canales destraban realmente el trabajo cuando hay dudas sobre arribo, volumen, calidad, descarga, cámara, disponibilidad, permisos o uso de materia prima?",
+"context": "Permite identificar dependencias reales de Recursos Pesqueros para resolver bloqueos sin avanzar con supuestos débiles ni comprometer producción, inventario, calidad o continuidad.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona, área o tercero que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando no está claro si una pesca puede usarse por condición o disponibilidad, se destraba con Calidad, Cámaras, Planificación y Producción revisando estado, volumen, ubicación, capacidad y programa. Si la decisión afecta continuidad de planta, se escala con impacto y alternativas.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona, área o tercero",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Recursos Pesqueros.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "RP_04_Q01",
+"ai_category": "casos_delicados_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Recursos Pesqueros considera delicados y requieren más experiencia para manejarlos correctamente sin afectar calidad, continuidad, costos, inventario, planta o relación con flota y terceros?",
+"context": "Busca capturar situaciones donde se necesita criterio pesquero-operativo, lectura de riesgo y coordinación fina, no solo aplicación mecánica de un registro o coordinación de descarga.",
+"tooltip": "Mencione casos como pesca con condición especial, retraso crítico de flota, diferencia importante de peso, baja captura, cámara saturada, conflicto de prioridad con planta, restricción de puerto o decisión de uso condicionado.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es decidir el uso de una materia prima con condición especial cuando la planta tiene necesidad urgente. Requiere validar calidad, tiempo de espera, volumen, posibilidad de segregación, impacto en programa y alternativa de abastecimiento para evitar reclamos, deterioro o reproceso.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "RP_04_Q02",
+"ai_category": "errores_frecuentes_evitar_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Recursos Pesqueros se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten recepción, calidad, inventario, cámaras, planificación o producción?",
+"context": "Permite identificar errores que el personal experimentado previene, como comprometer disponibilidad no confirmada, no validar condición, no anticipar saturación, informar pesos sin conciliación o no comunicar cambios de arribo a tiempo.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es informar disponibilidad de materia prima antes de validar condición, peso y espacio real en cámaras. La señal aparece cuando hay datos preliminares sin confirmación física. Para evitarlo, se cruza información de flota, recepción, Calidad y Cámaras antes de comunicar a planta.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a recepción, calidad, inventario, cámaras, planificación o producción.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "RP_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar seguimiento de flota, recepción, descarga, conciliación, transferencia, comunicación con planta o manejo de cambios sin saltarse controles críticos?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo validación de calidad, peso, trazabilidad, condición, capacidad de cámaras, coordinación con planta y evidencia de decisiones.",
+"tooltip": "Mencione prácticas como prealertar arribos, validar capacidad antes de descarga, mantener seguimiento de ETA, conciliar pesos oportunamente, informar cambios con evidencia o separar materia prima según condición.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es prealertar a Planificación, Producción, Calidad y Cámaras cuando cambia el ETA o volumen estimado. Esto permite preparar alternativas, pero no reemplaza la validación final de peso, condición y capacidad antes de liberar la materia prima para uso.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "RP_05_Q02",
+"ai_category": "criterios_no_escritos_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Recursos Pesqueros para decidir si una materia prima, descarga, transferencia, segregación, uso condicionado, cambio de prioridad o alerta puede avanzar, detenerse, ajustarse o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, reporte, procedimiento o información disponible no da una respuesta completa ante una condición real de abastecimiento pesquero.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si una pesca tiene condición dudosa o falta validación de Calidad, entonces no se compromete a producción aunque exista necesidad de planta; se mantiene en revisión, se segrega o se escala con evidencia. Esto evita mezcla, reclamos o reproceso.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "RP_06_Q01",
+"ai_category": "apoyo_escalamiento_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Recursos Pesqueros conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar continuidad de planta, calidad, inventario, costos, cumplimiento, uso de materia prima, relación con flota o decisiones gerenciales.",
+"tooltip": "Incluya situaciones como baja captura, retraso crítico, condición de pesca dudosa, diferencia de peso relevante, cámara saturada, puerto restringido, falta de materia prima para programa o conflicto de prioridad entre áreas.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona, área o tercero a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si la disponibilidad real de materia prima no alcanza para cubrir el programa de producción, conviene escalar antes de confirmar una programación. Se debe presentar volumen disponible, ETA, condición, restricciones de cámara, alternativas y posible impacto para que Planificación, Producción y gerencia decidan.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área, persona o tercero",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "RP_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Recursos Pesqueros suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como interpretar señales de flota, anticipar restricciones, reconocer condición de pesca, coordinar con planta o destrabar decisiones de abastecimiento.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en entender cuándo un dato de disponibilidad todavía es preliminar y cuándo ya puede comunicarse como confirmado. Eso requiere experiencia con flota, recepción, Calidad, cámaras y planificación. El error típico es comprometer materia prima antes de validar condición y peso real.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Recursos Pesqueros.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "RP_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que una recepción, descarga, transferencia, conciliación, segregación, disponibilidad o entrega de información está lista para avanzar, liberarse o cerrarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que una gestión de materia prima pesquera quedó correctamente validada, comunicada y disponible para la siguiente etapa.",
+"tooltip": "Incluya confirmaciones de peso, condición, registro, calidad, cámara, trazabilidad, responsable, comunicación a planta, ausencia de diferencias críticas y evidencia del cierre.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación operativa, documental o de calidad",
+"Persona, área o tercero que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una recepción está lista para cerrarse cuando peso, registro, condición, validación de Calidad, ubicación en cámara, trazabilidad y comunicación a Planificación coinciden. Si hay diferencia de peso o condición pendiente, no debería comunicarse como disponibilidad final.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando se termina la descarga.",
+"No menciona peso, condición, registro, calidad, cámara, trazabilidad o comunicación.",
+"No identifica validación interna o de tercero.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Recursos Pesqueros."
+]
+},
+{
+"question_id": "RP_07_Q02",
+"ai_category": "aprendizajes_conservar_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Recursos Pesqueros deberían conservarse porque ayudan a evitar desabastecimiento, saturación, deterioro, diferencias de inventario, cambios urgentes de programa o conflictos con planta?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes en abastecimiento y manejo de materia prima pesquera.",
+"tooltip": "Mencione aprendizajes sobre flota, arribos, condición de pesca, cámaras, descarga, planificación, producción, calidad, restricciones externas, comunicación temprana, conciliación de pesos o decisiones bajo presión.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no esperar a la descarga final para alertar cambios de disponibilidad. Cuando el ETA, volumen o condición cambia, conviene informar temprano a Planificación y Producción para evitar preparación innecesaria, cambios urgentes o uso de materia prima no confirmada.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "RP_08_Q01",
+"ai_category": "recomendacion_persona_nueva_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Recursos Pesqueros para trabajar con criterio, evitar errores y aprender más rápido el manejo real de abastecimiento, flota, recepción y coordinación con planta?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en seguimiento de pesca, comunicación con flota, validación de condición, recepción, cámaras, calidad, planificación y producción.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona, área o tercero de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no comunicar disponibilidad como definitiva solo con datos preliminares de flota. Debe confirmar ETA, volumen, condición, peso recibido, calidad, cámara y necesidad de planta. Si algo no cuadra, debe validar antes de comprometer el programa.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona flota, pesca, recepción, cámaras, calidad, planificación o producción.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Recursos Pesqueros."
+]
+},
+{
+"question_id": "RP_08_Q02",
+"ai_category": "restricciones_criticas_continuidad_recursos_pesqueros",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué embarcaciones, zonas, condiciones externas, cámaras, volúmenes, especies, permisos o restricciones requieren seguimiento especial porque una variación podría afectar abastecimiento, calidad, continuidad o costos?",
+"context": "Busca capturar conocimiento específico sobre puntos críticos de Recursos Pesqueros que deben vigilarse por experiencia, aunque no siempre aparezcan como urgencia formal en la planificación.",
+"tooltip": "Mencione elementos críticos, señales que observa, frecuencia práctica de revisión, área o tercero relacionado, contingencia posible y qué impacto se evita.",
+"expected_answer_structure": [
+"Elemento crítico",
+"Motivo de criticidad",
+"Señal que debe vigilarse",
+"Responsable, área o tercero relacionado",
+"Contingencia o acción preventiva",
+"Impacto que se evita"
+],
+"good_answer_example": "Los arribos con volumen alto cuando las cámaras están cerca de su capacidad requieren seguimiento especial. Una señal es que producción todavía no libera espacio o que coinciden varias descargas. Se debe coordinar con Cámaras, Planificación y Producción para evitar saturación, espera o deterioro.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"elemento crítico",
+"motivo",
+"señal",
+"responsable, área o tercero",
+"contingencia",
+"impacto"
+]
+},
+"incomplete_if": [
+"Solo enumera elementos sin explicar criticidad.",
+"No menciona señales observables.",
+"No identifica responsable, área o tercero relacionado.",
+"No indica acción preventiva o contingencia.",
+"No conecta el caso con abastecimiento, calidad, continuidad o costos."
+]
+}
+]
+}
+]
+}

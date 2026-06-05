@@ -1,0 +1,561 @@
+{
+"questionnaire_version": "KC_V2",
+"industry": "industrial_atunera",
+"source_type": "area",
+"area": "Contabilidad",
+"level": null,
+"area_metadata": {
+"area_id": "area_contabilidad",
+"display_name": "Contabilidad",
+"aliases": [
+"Contabilidad",
+"Área Contable",
+"Contable",
+"Accounting",
+"Registro Contable",
+"Cierre Contable",
+"Impuestos",
+"Cuentas por Pagar",
+"Cuentas por Cobrar"
+],
+"macro_process": "MP-1700 FINANZAS, CONTABILIDAD Y CONTROL"
+},
+"blocks": [
+{
+"block_id": "CONT_01_FLUJO_CONTABLE",
+"block_name": "Conocimiento tácito crítico de Contabilidad",
+"source_type": "area",
+"enabled": true,
+"required": true,
+"order": 10,
+"objective": "Capturar criterios prácticos, señales de alerta, excepciones, validaciones no escritas, dependencias reales, decisiones implícitas y aprendizajes específicos de Contabilidad que ayudan a registrar, conciliar, declarar, cerrar y reportar información confiable sin afectar cumplimiento, pagos, cobranzas, impuestos ni cierre financiero.",
+"questions": [
+{
+"question_id": "CONT_01_Q01",
+"ai_category": "inicio_correcto_caso_contable",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué información, condición o señal debe estar clara antes de iniciar correctamente un registro contable, validación documental, conciliación, provisión, declaración o cierre?",
+"context": "Busca capturar los datos y condiciones críticas que Contabilidad valida por experiencia antes de registrar, conciliar, declarar o cerrar información contable.",
+"tooltip": "Mencione qué dato confirma primero, qué soporte mínimo necesita, qué señal le indica que no debe avanzar, qué fuente usa para validar y qué riesgo existe si inicia con información incompleta.",
+"expected_answer_structure": [
+"Caso contable a iniciar",
+"Información mínima requerida",
+"Condición o señal crítica",
+"Fuente de validación",
+"Riesgo de iniciar sin confirmar"
+],
+"good_answer_example": "Antes de registrar una factura confirmo proveedor, RUC, autorización, orden, recepción, centro de costo, cuenta contable y soporte de conformidad. Si falta recepción o el monto no coincide, no la tomo como lista para registro definitivo porque puede generar error contable, tributario o reclamo posterior.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso contable",
+"información mínima",
+"condición crítica",
+"fuente de validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es genérica y no describe casos reales de Contabilidad.",
+"No identifica información crítica antes de iniciar.",
+"No menciona soporte, factura, cuenta, centro de costo, recepción, impuesto, conciliación o cierre.",
+"No explica el riesgo contable, tributario o financiero de iniciar sin validar.",
+"No permite extraer reglas SI → ENTONCES o criterios de decisión."
+]
+},
+{
+"question_id": "CONT_01_Q02",
+"ai_category": "priorizacion_casos_contables",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios prácticos usa Contabilidad para priorizar registros, conciliaciones, facturas, impuestos, provisiones, diferencias o pendientes cuando coinciden varios casos al mismo tiempo?",
+"context": "Permite capturar cómo Contabilidad decide qué atender primero cuando hay presión de cierre, vencimientos tributarios, pagos críticos, diferencias materiales o reportes urgentes.",
+"tooltip": "Incluya criterios como fecha de cierre, vencimiento tributario, materialidad, impacto en pago, riesgo de multa, cuenta sensible, auditoría, dependencia de otra área o efecto en estados financieros.",
+"expected_answer_structure": [
+"Situación de múltiples casos",
+"Criterios de prioridad",
+"Datos revisados antes de decidir",
+"Área o persona con quien valida",
+"Riesgo de priorizar mal"
+],
+"good_answer_example": "Si coinciden facturas pendientes, una conciliación bancaria y una declaración próxima, priorizo según vencimiento, materialidad e impacto en cierre o cumplimiento tributario. Una diferencia que afecta impuestos o bancos se atiende antes que un pendiente menor sin impacto inmediato.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"criterios",
+"datos revisados",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Solo indica que prioriza por urgencia.",
+"No aterriza la priorización a Contabilidad.",
+"No menciona cierre, impuestos, pagos, conciliaciones, materialidad o vencimientos.",
+"No explica el riesgo de priorizar mal.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "CONT_02_Q01",
+"ai_category": "excepciones_flujo_contable",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos contables suelen salirse del manejo habitual y requieren criterio adicional antes de registrar, provisionar, ajustar, reclasificar, declarar o cerrar?",
+"context": "Busca identificar excepciones reales del área donde no basta seguir la secuencia normal porque existen documentos incompletos, diferencias, fechas límite, saldos sensibles o soporte insuficiente.",
+"tooltip": "Describa casos como factura sin recepción, diferencia de monto, soporte pendiente, retención dudosa, cuenta mal clasificada, partida antigua, provisión estimada, nota de crédito o ajuste fuera de cierre.",
+"expected_answer_structure": [
+"Caso fuera del flujo habitual",
+"Qué lo vuelve diferente",
+"Validación adicional",
+"Persona o área consultada",
+"Cuidado práctico aplicado"
+],
+"good_answer_example": "Un caso fuera de lo normal es una factura próxima a vencer que no tiene conformidad completa. Antes de registrarla o liberarla para pago, se valida con Compras y el área usuaria si el bien o servicio fue recibido, y se deja evidencia para evitar pago sin soporte.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso excepcional",
+"condición diferente",
+"validación adicional",
+"consulta",
+"cuidado práctico"
+]
+},
+"incomplete_if": [
+"Describe únicamente la operación normal.",
+"No identifica excepciones propias de Contabilidad.",
+"No menciona validaciones adicionales.",
+"No indica a quién consulta.",
+"No diferencia operación normal de excepción."
+]
+},
+{
+"question_id": "CONT_02_Q02",
+"ai_category": "validaciones_practicas_error_critico_contable",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué validaciones prácticas realiza Contabilidad para evitar errores importantes en facturas, cuentas, impuestos, retenciones, centros de costo, conciliaciones, provisiones o reportes?",
+"context": "Permite capturar revisiones no escritas que previenen registros incorrectos, duplicidades, errores tributarios, pagos indebidos, ajustes tardíos o cifras poco confiables.",
+"tooltip": "Mencione qué compara, qué fuente consulta, qué cruces realiza entre sistema, documento y área origen, qué señal le genera duda y qué error específico evita.",
+"expected_answer_structure": [
+"Validación práctica",
+"Dato o condición revisada",
+"Fuente contra la que compara",
+"Señal de posible error",
+"Error que evita"
+],
+"good_answer_example": "Antes de registrar una obligación comparo factura, orden, recepción, proveedor, monto, impuestos, retenciones y centro de costo. Si el número de factura, valor o recepción no coincide, detengo el registro hasta validar porque puede haber duplicidad, error tributario o pago indebido.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"validación",
+"dato revisado",
+"fuente de comparación",
+"señal de error",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo menciona controles formales.",
+"No identifica validaciones prácticas del área.",
+"No explica qué compara.",
+"No menciona errores específicos que evita.",
+"No incluye ejemplo aplicable a Contabilidad."
+]
+},
+{
+"question_id": "CONT_03_Q01",
+"ai_category": "senales_tempranas_riesgo_contable",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales tempranas le indican que puede generarse atraso de cierre, error tributario, diferencia conciliatoria, pago retenido, duplicidad, saldo incorrecto o reproceso contable?",
+"context": "Busca construir un radar de alertas específicas del área antes de que el problema afecte cierres, pagos, declaraciones, reportes financieros, auditoría o cumplimiento.",
+"tooltip": "Incluya señales como facturas acumuladas sin soporte, partidas bancarias antiguas, saldos inusuales, diferencias entre áreas, documentos cerca de vencimiento, retenciones dudosas o reportes que no cuadran.",
+"expected_answer_structure": [
+"Señal temprana",
+"Problema que anticipa",
+"Dónde aparece",
+"Acción preventiva",
+"Ejemplo del área"
+],
+"good_answer_example": "Cuando se acumulan facturas sin recepción cerca del cierre, es señal de posible atraso, provisión incompleta o pago retenido. Antes de la fecha límite se alerta al área responsable, se revisa materialidad y se define si corresponde registrar, provisionar o dejar pendiente con evidencia.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"señal",
+"problema anticipado",
+"lugar donde aparece",
+"acción preventiva",
+"ejemplo"
+]
+},
+"incomplete_if": [
+"No menciona señales tempranas específicas.",
+"Confunde la señal con el problema final.",
+"No explica qué riesgo anticipa.",
+"No indica acción preventiva.",
+"No permite extraer reglas SI → ENTONCES."
+]
+},
+{
+"question_id": "CONT_03_Q02",
+"ai_category": "dependencias_reales_destrabe_contable",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué personas, áreas, datos o canales destraban realmente el trabajo cuando hay dudas sobre facturas, recepciones, pagos, cobros, impuestos, conciliaciones, inventarios o cierre contable?",
+"context": "Permite identificar dependencias reales del área para resolver bloqueos sin registrar, declarar, pagar o cerrar con información incompleta.",
+"tooltip": "Indique qué situación se bloquea, quién ayuda a resolverla, qué dato permite avanzar, qué canal funciona mejor y cuándo conviene escalar.",
+"expected_answer_structure": [
+"Situación bloqueada",
+"Persona o área que ayuda",
+"Dato clave para destrabar",
+"Canal más efectivo",
+"Criterio para escalar"
+],
+"good_answer_example": "Cuando una factura no coincide con la recepción, se destraba con Compras, Bodega o el área usuaria revisando orden, guía, recepción física y conformidad. Si afecta cierre o pago crítico, se escala con evidencia del proveedor, monto, fecha y diferencia detectada.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación bloqueada",
+"persona o área",
+"dato clave",
+"canal",
+"criterio de escalamiento"
+]
+},
+"incomplete_if": [
+"No identifica dependencias concretas.",
+"No menciona datos que destraban.",
+"No aterriza el bloqueo a Contabilidad.",
+"No diferencia coordinación de escalamiento.",
+"No incluye ejemplo."
+]
+},
+{
+"question_id": "CONT_04_Q01",
+"ai_category": "casos_delicados_contabilidad",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué casos de Contabilidad considera delicados y requieren más experiencia para manejarlos correctamente sin afectar impuestos, cierre, pagos, estados financieros, auditoría o relación con otras áreas?",
+"context": "Busca capturar situaciones donde se necesita criterio contable-práctico, lectura de riesgo y validación adicional, no solo aplicación mecánica de un registro o formato.",
+"tooltip": "Mencione casos como diferencias materiales, facturas sin soporte, ajustes de cierre, reclasificaciones, provisiones estimadas, saldos antiguos, retenciones dudosas, pagos críticos o errores detectados tarde.",
+"expected_answer_structure": [
+"Caso delicado",
+"Por qué requiere experiencia",
+"Señales que se revisan",
+"Validación o decisión necesaria",
+"Riesgo de manejarlo mal"
+],
+"good_answer_example": "Un caso delicado es decidir una provisión cuando el soporte aún no llega, pero el gasto pertenece al periodo. Requiere revisar materialidad, origen, evidencia disponible, criterio histórico y validación de jefatura para no subestimar gastos ni cerrar con cifras débiles.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso delicado",
+"experiencia requerida",
+"señales",
+"validación",
+"riesgo"
+]
+},
+"incomplete_if": [
+"La respuesta es demasiado general.",
+"No identifica casos delicados del área.",
+"No explica por qué requieren experiencia.",
+"No menciona señales o validaciones.",
+"No explica el impacto de manejarlo mal."
+]
+},
+{
+"question_id": "CONT_04_Q02",
+"ai_category": "errores_frecuentes_evitar_contabilidad",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué errores frecuentes en Contabilidad se evitan con práctica y qué señales ayudan a detectarlos antes de que afecten pagos, impuestos, conciliaciones, reportes o cierre?",
+"context": "Permite identificar errores que el personal experimentado previene, como duplicar facturas, clasificar mal cuentas, registrar sin soporte, omitir retenciones, cerrar diferencias o no detectar saldos inusuales.",
+"tooltip": "Explique el error, cuándo suele ocurrir, qué señal lo anticipa, cómo lo evita una persona con experiencia y qué consecuencia tendría si no se corrige.",
+"expected_answer_structure": [
+"Error frecuente",
+"Cuándo ocurre",
+"Señal que lo anticipa",
+"Práctica para evitarlo",
+"Consecuencia si no se corrige"
+],
+"good_answer_example": "Un error frecuente es registrar una factura en una cuenta o centro de costo incorrecto porque la descripción es ambigua. La señal aparece cuando el gasto no se parece al histórico o no coincide con el área solicitante. Para evitarlo, se valida con el soporte y el responsable antes de contabilizar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"error",
+"cuándo ocurre",
+"señal",
+"práctica preventiva",
+"consecuencia"
+]
+},
+"incomplete_if": [
+"No menciona errores específicos.",
+"No explica cómo se detectan antes.",
+"No indica práctica preventiva.",
+"No aterriza el impacto a pagos, impuestos, conciliaciones o cierre.",
+"No incluye ejemplo real o aplicable."
+]
+},
+{
+"question_id": "CONT_05_Q01",
+"ai_category": "practicas_agiles_sin_saltar_controles_contables",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué prácticas ayudan a agilizar registros, conciliaciones, validaciones tributarias, cuentas por pagar, cuentas por cobrar o cierre sin saltarse controles importantes?",
+"context": "Busca capturar formas prácticas de trabajar más rápido manteniendo soporte, trazabilidad, validación de cuentas, control tributario, conciliación y evidencia suficiente.",
+"tooltip": "Mencione prácticas como prevalidar soportes, revisar pendientes antes del cierre, usar históricos de cuentas, separar partidas sensibles, validar lotes de facturas o mantener controles paralelos de vencimientos.",
+"expected_answer_structure": [
+"Práctica que agiliza",
+"Caso donde aplica",
+"Control que no debe saltarse",
+"Beneficio operativo",
+"Riesgo si se aplica mal"
+],
+"good_answer_example": "Una práctica útil es revisar facturas pendientes y soportes críticos antes de la semana de cierre. Esto agiliza el registro, pero no se debe saltar la validación de recepción, impuestos, cuenta contable y aprobación correspondiente.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"práctica",
+"caso de aplicación",
+"control mantenido",
+"beneficio",
+"riesgo"
+]
+},
+"incomplete_if": [
+"Propone atajos que pueden saltarse controles.",
+"No identifica prácticas concretas del área.",
+"No menciona qué control se mantiene.",
+"No explica beneficio operativo.",
+"No advierte el riesgo de aplicarlo mal."
+]
+},
+{
+"question_id": "CONT_05_Q02",
+"ai_category": "criterios_no_escritos_contabilidad",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué criterios no escritos usa Contabilidad para decidir si una diferencia, factura, partida, provisión, ajuste, reclasificación, declaración o saldo puede registrarse, corregirse, investigarse, dejarse pendiente o escalarse?",
+"context": "Permite capturar reglas prácticas que el área aplica cuando el sistema, documento, procedimiento o área origen no da una respuesta completa ante una condición real.",
+"tooltip": "Formule criterios tipo SI ocurre una condición, ENTONCES se decide una acción. Incluya evidencia mínima, responsables, excepciones permitidas y riesgos asociados.",
+"expected_answer_structure": [
+"Criterio no escrito",
+"Condición que lo activa",
+"Decisión que se toma",
+"Responsable o validador",
+"Riesgo que evita"
+],
+"good_answer_example": "Si una diferencia supera la materialidad o afecta cierre, entonces no se ajusta sin explicación; se investiga con el área origen y se escala con soporte antes de registrar. Esto evita ajustes sin causa y saldos poco confiables.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"criterio",
+"condición",
+"decisión",
+"responsable",
+"riesgo"
+]
+},
+"incomplete_if": [
+"No formula criterios prácticos.",
+"No usa lógica SI → ENTONCES.",
+"No identifica decisión tomada.",
+"No menciona responsable o validador.",
+"No explica el riesgo evitado."
+]
+},
+{
+"question_id": "CONT_06_Q01",
+"ai_category": "apoyo_escalamiento_contabilidad",
+"required": true,
+"min_characters": 350,
+"question": "¿En qué situaciones de Contabilidad conviene pedir apoyo o escalar antes de avanzar, aunque parezca posible resolverlo directamente desde el área?",
+"context": "Busca capturar límites prácticos de autonomía cuando una decisión puede afectar cierre, impuestos, pagos, reportes, auditoría, cumplimiento, estados financieros o relación con proveedores y clientes.",
+"tooltip": "Incluya situaciones como diferencia material, vencimiento tributario próximo, soporte faltante, factura crítica, saldo descuadrado, pago urgente, reclasificación sensible o cierre en riesgo.",
+"expected_answer_structure": [
+"Situación donde conviene pedir apoyo",
+"Riesgo de resolver sin escalar",
+"Persona o área a consultar",
+"Información que se debe presentar",
+"Criterio para continuar"
+],
+"good_answer_example": "Si una conciliación presenta una diferencia material cerca del cierre, conviene escalar antes de registrar un ajuste. Se debe presentar cuenta, monto, periodo, origen probable, soporte revisado e impacto en cierre para decidir si se investiga, provisiona o ajusta.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"situación",
+"riesgo",
+"área o persona",
+"información presentada",
+"criterio para continuar"
+]
+},
+"incomplete_if": [
+"Solo dice que consulta al jefe.",
+"No identifica situaciones específicas.",
+"No explica riesgo de no escalar.",
+"No menciona información necesaria para escalar.",
+"No define criterio para continuar."
+]
+},
+{
+"question_id": "CONT_06_Q02",
+"ai_category": "aprendizaje_lento_persona_nueva_contabilidad",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aspectos de Contabilidad suele tardar más en aprender una persona nueva y por qué requieren práctica dentro de la operación diaria y los cierres?",
+"context": "Permite identificar conocimiento tácito que no se aprende solo leyendo procedimientos, como clasificaciones recurrentes, cuentas sensibles, señales de error, criterios de cierre, soportes mínimos o dependencias entre áreas.",
+"tooltip": "Mencione qué aspecto cuesta aprender, qué señales debe reconocer, qué errores comete una persona nueva, quién suele enseñarlo y cómo podría aprenderlo mejor.",
+"expected_answer_structure": [
+"Aspecto difícil de aprender",
+"Por qué requiere práctica",
+"Señales que debe reconocer",
+"Error típico de persona nueva",
+"Forma recomendada de aprendizaje"
+],
+"good_answer_example": "Una persona nueva suele tardar en identificar qué cuentas requieren revisión especial antes del cierre y qué soportes son realmente suficientes. El error típico es confiar solo en el documento recibido sin revisar historial, cuenta, centro de costo e impacto en impuestos o cierre.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aspecto difícil",
+"razón",
+"señales",
+"error típico",
+"forma de aprendizaje"
+]
+},
+"incomplete_if": [
+"Da una respuesta genérica de capacitación.",
+"No menciona aspectos propios de Contabilidad.",
+"No explica por qué requiere práctica.",
+"No identifica errores típicos de una persona nueva.",
+"No propone forma concreta de aprendizaje."
+]
+},
+{
+"question_id": "CONT_07_Q01",
+"ai_category": "senal_listo_para_avanzar_cerrar_contabilidad",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué señales o confirmaciones indican que un registro, factura, conciliación, provisión, impuesto, ajuste, reporte o cierre contable está listo para avanzar, cerrarse o entregarse?",
+"context": "Busca capturar criterios de cierre o liberación aplicados por experiencia antes de considerar que un caso contable quedó correctamente validado.",
+"tooltip": "Incluya confirmaciones de soporte, cuenta, centro de costo, recepción, conciliación, impuestos, aprobación, evidencia, validación del área origen o ausencia de pendientes críticos.",
+"expected_answer_structure": [
+"Caso que se considera listo",
+"Señales de conformidad",
+"Confirmación documental, sistémica o tributaria",
+"Persona o área que valida",
+"Error que evita antes de cerrar"
+],
+"good_answer_example": "Una factura está lista para pasar a pago cuando soporte, orden, recepción, impuestos, retención, cuenta contable, centro de costo y aprobación coinciden. Si falta conformidad o existe diferencia de monto, no debería liberarse como obligación validada.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"caso listo",
+"señales",
+"confirmación",
+"validación",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Solo dice que está listo cuando el sistema lo indica.",
+"No menciona soporte, conciliación, impuestos, aprobación, cuenta o evidencia.",
+"No identifica validación interna o del área origen.",
+"No explica qué error evita.",
+"No aterriza la respuesta a Contabilidad."
+]
+},
+{
+"question_id": "CONT_07_Q02",
+"ai_category": "aprendizajes_conservar_contabilidad",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué aprendizajes de Contabilidad deberían conservarse porque ayudan a evitar cierres tardíos, registros incorrectos, errores tributarios, pagos indebidos, saldos descuadrados o reprocesos?",
+"context": "Permite transformar la experiencia acumulada del área en conocimiento reutilizable para continuidad, entrenamiento, mejora y prevención de errores recurrentes.",
+"tooltip": "Mencione aprendizajes sobre cierres, cuentas sensibles, soportes, conciliaciones, impuestos, provisiones, facturas, cobros, pagos, auditoría, reportes o coordinación con otras áreas.",
+"expected_answer_structure": [
+"Aprendizaje del área",
+"Situación donde aplica",
+"Señal o criterio asociado",
+"Práctica recomendada",
+"Problema que ayuda a evitar"
+],
+"good_answer_example": "Un aprendizaje importante es no esperar al último día del cierre para revisar soportes críticos. Cuando se detectan facturas, conciliaciones o impuestos pendientes con anticipación, se reducen provisiones apresuradas, ajustes tardíos y reprocesos.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"aprendizaje",
+"situación",
+"señal o criterio",
+"práctica",
+"problema evitado"
+]
+},
+"incomplete_if": [
+"Da aprendizajes demasiado generales.",
+"No conecta con errores o riesgos del área.",
+"No menciona señales o criterios.",
+"No indica práctica recomendada.",
+"No permite transferir conocimiento a otra persona."
+]
+},
+{
+"question_id": "CONT_08_Q01",
+"ai_category": "recomendacion_persona_nueva_contabilidad",
+"required": true,
+"min_characters": 350,
+"question": "¿Qué recomendación práctica le daría a una persona nueva en Contabilidad para trabajar con seguridad, evitar errores y aprender más rápido el manejo real del área?",
+"context": "Busca capturar orientación práctica específica para inducción y transferencia de conocimiento en registros, soportes, conciliaciones, impuestos, cierres, pagos, cobros, reportes y coordinación interna.",
+"tooltip": "Incluya qué debe revisar siempre, qué señales debe observar, qué no debe asumir, a quién consultar, cuándo detenerse y qué error común debe evitar.",
+"expected_answer_structure": [
+"Recomendación práctica",
+"Situación donde aplica",
+"Señal que debe observar",
+"Persona o área de apoyo",
+"Error que ayuda a evitar"
+],
+"good_answer_example": "Le recomendaría no registrar solo porque el documento llegó completo en apariencia. Debe validar soporte, cuenta, centro de costo, impuestos, recepción, aprobación y efecto en cierre. Si algo no cuadra con el histórico o con el área origen, debe consultar antes de contabilizar.",
+"validation_rules": {
+"min_items": 1,
+"requires_examples": true,
+"incomplete_if_missing": [
+"recomendación",
+"situación",
+"señal",
+"apoyo",
+"error evitado"
+]
+},
+"incomplete_if": [
+"Da recomendaciones genéricas aplicables a cualquier área.",
+"No menciona registros, soportes, conciliaciones, impuestos, cierre, pagos o reportes.",
+"No indica cuándo pedir apoyo.",
+"No explica qué error evita.",
+"No conecta con aprendizaje práctico de Contabilidad."
+]
+}
+]
+}
+]
+}
